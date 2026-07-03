@@ -1,0 +1,853 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation_id": "demo_baseline",
+  "generated_at": "2026-07-03T05:43:28Z",
+  "inputs": {
+    "evaluation_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/results/demo_baseline",
+    "dataset_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp",
+    "gold_ontology": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/gold/gold_ontology.json",
+    "acceptable_aliases": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/gold/acceptable_aliases.json"
+  },
+  "summary": {
+    "task_result_file_count": 5,
+    "ontology_file_count": 1,
+    "valid_ontology_file_count": 1,
+    "evidence_file_count": 1,
+    "json_load_error_count": 0
+  },
+  "schema_validation": [
+    {
+      "path": "task_01_code_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_02_ddl_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_03_sample_data_profile_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_04_document_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_05_multi_source_fusion_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/ontology_fused_demo.json",
+      "schema": "ontology.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/evidence_map_demo.json",
+      "schema": "evidence_map",
+      "is_valid": true,
+      "errors": []
+    }
+  ],
+  "gold_comparison": {
+    "matched_concepts": {
+      "concept:purchase_request": {
+        "output_id": "concept:purchase_request",
+        "output_name": "Purchase Request"
+      },
+      "concept:purchase_request_item": {
+        "output_id": "concept:purchase_request_item",
+        "output_name": "Purchase Request Line"
+      },
+      "concept:approval_task": {
+        "output_id": "concept:approval_task",
+        "output_name": "Approval Record"
+      },
+      "concept:supplier": {
+        "output_id": "concept:supplier",
+        "output_name": "Supplier"
+      },
+      "concept:contract": {
+        "output_id": "concept:contract",
+        "output_name": "Contract"
+      },
+      "concept:purchase_order": {
+        "output_id": "concept:purchase_order",
+        "output_name": "Purchase Order"
+      },
+      "concept:invoice": {
+        "output_id": "concept:invoice",
+        "output_name": "Invoice"
+      },
+      "concept:payment": {
+        "output_id": "concept:payment",
+        "output_name": "Payment Request"
+      },
+      "concept:department": {
+        "output_id": "concept:department",
+        "output_name": "Department"
+      },
+      "concept:employee": {
+        "output_id": "concept:employee",
+        "output_name": "User"
+      }
+    },
+    "matched_attributes": {
+      "attr:purchase_request.request_no": {
+        "output_id": "attr:purchase_request.request_no",
+        "output_name": "request_no"
+      },
+      "attr:purchase_request.request_title": {
+        "output_id": "attr:purchase_request.request_title",
+        "output_name": "request_title"
+      },
+      "attr:purchase_request.requester_user_id": {
+        "output_id": "attr:purchase_request.requester_user_id",
+        "output_name": "requester_user_id"
+      },
+      "attr:purchase_request.department_id": {
+        "output_id": "attr:purchase_request.department_id",
+        "output_name": "department_id"
+      },
+      "attr:purchase_request.estimated_amount": {
+        "output_id": "attr:purchase_request.estimated_amount",
+        "output_name": "estimated_amount"
+      },
+      "attr:purchase_request.request_status": {
+        "output_id": "attr:purchase_request.request_status",
+        "output_name": "request_status"
+      },
+      "attr:purchase_request.business_justification": {
+        "output_id": "attr:purchase_request.business_justification",
+        "output_name": "business_justification"
+      },
+      "attr:purchase_request_item.line_id": {
+        "output_id": "attr:purchase_request_item.line_id",
+        "output_name": "line_id"
+      },
+      "attr:purchase_request_item.request_id": {
+        "output_id": "attr:purchase_request_item.request_id",
+        "output_name": "request_id"
+      },
+      "attr:purchase_request_item.item_description": {
+        "output_id": "attr:purchase_request_item.item_description",
+        "output_name": "item_description"
+      },
+      "attr:purchase_request_item.quantity": {
+        "output_id": "attr:purchase_request_item.quantity",
+        "output_name": "quantity"
+      },
+      "attr:purchase_request_item.line_amount": {
+        "output_id": "attr:purchase_request_item.line_amount",
+        "output_name": "line_amount"
+      },
+      "attr:approval_task.approval_id": {
+        "output_id": "attr:approval_task.approval_id",
+        "output_name": "approval_id"
+      },
+      "attr:approval_task.target_type": {
+        "output_id": "attr:approval_task.target_type",
+        "output_name": "target_type"
+      },
+      "attr:approval_task.target_id": {
+        "output_id": "attr:approval_task.target_id",
+        "output_name": "target_id"
+      },
+      "attr:approval_task.step_name": {
+        "output_id": "attr:approval_task.step_name",
+        "output_name": "step_name"
+      },
+      "attr:approval_task.approver_user_id": {
+        "output_id": "attr:approval_task.approver_user_id",
+        "output_name": "approver_user_id"
+      },
+      "attr:approval_task.approval_status": {
+        "output_id": "attr:approval_task.approval_status",
+        "output_name": "approval_status"
+      },
+      "attr:approval_task.submitted_at": {
+        "output_id": "attr:approval_task.submitted_at",
+        "output_name": "submitted_at"
+      },
+      "attr:supplier.supplier_id": {
+        "output_id": "attr:supplier.supplier_id",
+        "output_name": "supplier_id"
+      },
+      "attr:supplier.supplier_code": {
+        "output_id": "attr:supplier.supplier_code",
+        "output_name": "supplier_code"
+      },
+      "attr:supplier.supplier_name": {
+        "output_id": "attr:supplier.supplier_name",
+        "output_name": "supplier_name"
+      },
+      "attr:supplier.supplier_status": {
+        "output_id": "attr:supplier.supplier_status",
+        "output_name": "supplier_status"
+      },
+      "attr:supplier.risk_rating": {
+        "output_id": "attr:supplier.risk_rating",
+        "output_name": "risk_rating"
+      },
+      "attr:contract.contract_id": {
+        "output_id": "attr:contract.contract_id",
+        "output_name": "contract_id"
+      },
+      "attr:contract.contract_no": {
+        "output_id": "attr:contract.contract_no",
+        "output_name": "contract_no"
+      },
+      "attr:contract.request_id": {
+        "output_id": "attr:contract.request_id",
+        "output_name": "request_id"
+      },
+      "attr:contract.supplier_id": {
+        "output_id": "attr:contract.supplier_id",
+        "output_name": "supplier_id"
+      },
+      "attr:contract.contract_title": {
+        "output_id": "attr:contract.contract_title",
+        "output_name": "contract_title"
+      },
+      "attr:contract.contract_amount": {
+        "output_id": "attr:contract.contract_amount",
+        "output_name": "contract_amount"
+      },
+      "attr:contract.contract_status": {
+        "output_id": "attr:contract.contract_status",
+        "output_name": "contract_status"
+      },
+      "attr:purchase_order.po_id": {
+        "output_id": "attr:purchase_order.po_id",
+        "output_name": "po_id"
+      },
+      "attr:purchase_order.po_no": {
+        "output_id": "attr:purchase_order.po_no",
+        "output_name": "po_no"
+      },
+      "attr:purchase_order.contract_id": {
+        "output_id": "attr:purchase_order.contract_id",
+        "output_name": "contract_id"
+      },
+      "attr:purchase_order.request_id": {
+        "output_id": "attr:purchase_order.request_id",
+        "output_name": "request_id"
+      },
+      "attr:purchase_order.supplier_id": {
+        "output_id": "attr:purchase_order.supplier_id",
+        "output_name": "supplier_id"
+      },
+      "attr:purchase_order.po_amount": {
+        "output_id": "attr:purchase_order.po_amount",
+        "output_name": "po_amount"
+      },
+      "attr:purchase_order.po_status": {
+        "output_id": "attr:purchase_order.po_status",
+        "output_name": "po_status"
+      },
+      "attr:invoice.invoice_id": {
+        "output_id": "attr:invoice.invoice_id",
+        "output_name": "invoice_id"
+      },
+      "attr:invoice.invoice_no": {
+        "output_id": "attr:invoice.invoice_no",
+        "output_name": "invoice_no"
+      },
+      "attr:invoice.supplier_id": {
+        "output_id": "attr:invoice.supplier_id",
+        "output_name": "supplier_id"
+      },
+      "attr:invoice.po_id": {
+        "output_id": "attr:invoice.po_id",
+        "output_name": "po_id"
+      },
+      "attr:invoice.invoice_amount": {
+        "output_id": "attr:invoice.invoice_amount",
+        "output_name": "invoice_amount"
+      },
+      "attr:invoice.invoice_date": {
+        "output_id": "attr:invoice.invoice_date",
+        "output_name": "invoice_date"
+      },
+      "attr:invoice.invoice_status": {
+        "output_id": "attr:invoice.invoice_status",
+        "output_name": "invoice_status"
+      },
+      "attr:payment.payment_request_id": {
+        "output_id": "attr:payment.payment_request_id",
+        "output_name": "payment_request_id"
+      },
+      "attr:payment.payment_no": {
+        "output_id": "attr:payment.payment_no",
+        "output_name": "payment_no"
+      },
+      "attr:payment.invoice_id": {
+        "output_id": "attr:payment.invoice_id",
+        "output_name": "invoice_id"
+      },
+      "attr:payment.payment_amount": {
+        "output_id": "attr:payment.payment_amount",
+        "output_name": "payment_amount"
+      },
+      "attr:payment.payment_status": {
+        "output_id": "attr:payment.payment_status",
+        "output_name": "payment_status"
+      },
+      "attr:payment.due_date": {
+        "output_id": "attr:payment.due_date",
+        "output_name": "due_date"
+      },
+      "attr:department.department_id": {
+        "output_id": "attr:department.department_id",
+        "output_name": "department_id"
+      },
+      "attr:department.department_code": {
+        "output_id": "attr:department.department_code",
+        "output_name": "department_code"
+      },
+      "attr:department.department_name": {
+        "output_id": "attr:department.department_name",
+        "output_name": "department_name"
+      },
+      "attr:department.cost_center": {
+        "output_id": "attr:department.cost_center",
+        "output_name": "cost_center"
+      },
+      "attr:department.is_active": {
+        "output_id": "attr:department.is_active",
+        "output_name": "is_active"
+      },
+      "attr:employee.user_id": {
+        "output_id": "attr:employee.user_id",
+        "output_name": "user_id"
+      },
+      "attr:employee.user_name": {
+        "output_id": "attr:employee.user_name",
+        "output_name": "user_name"
+      },
+      "attr:employee.role_code": {
+        "output_id": "attr:employee.role_code",
+        "output_name": "role_code"
+      },
+      "attr:employee.department_id": {
+        "output_id": "attr:employee.department_id",
+        "output_name": "department_id"
+      },
+      "attr:employee.email": {
+        "output_id": "attr:employee.email",
+        "output_name": "email"
+      },
+      "attr:employee.is_active": {
+        "output_id": "attr:employee.is_active",
+        "output_name": "is_active"
+      }
+    },
+    "matched_relations": {
+      "rel:purchase_request.has_item": {
+        "output_id": "rel:purchase_request.has_item",
+        "output_predicate": "has item"
+      },
+      "rel:purchase_request.requested_by_employee": {
+        "output_id": "rel:purchase_request.requested_by_employee",
+        "output_predicate": "requested by"
+      },
+      "rel:purchase_request.belongs_to_department": {
+        "output_id": "rel:purchase_request.belongs_to_department",
+        "output_predicate": "belongs to"
+      },
+      "rel:purchase_request.has_approval_task": {
+        "output_id": "rel:purchase_request.has_approval_task",
+        "output_predicate": "has approval task"
+      },
+      "rel:contract.from_purchase_request": {
+        "output_id": "rel:contract.from_purchase_request",
+        "output_predicate": "created from"
+      },
+      "rel:contract.with_supplier": {
+        "output_id": "rel:contract.with_supplier",
+        "output_predicate": "with"
+      },
+      "rel:purchase_order.released_against_contract": {
+        "output_id": "rel:purchase_order.released_against_contract",
+        "output_predicate": "released against"
+      },
+      "rel:purchase_order.sent_to_supplier": {
+        "output_id": "rel:purchase_order.sent_to_supplier",
+        "output_predicate": "sent to"
+      },
+      "rel:invoice.issued_by_supplier": {
+        "output_id": "rel:invoice.issued_by_supplier",
+        "output_predicate": "issued by"
+      },
+      "rel:invoice.for_purchase_order": {
+        "output_id": "rel:invoice.for_purchase_order",
+        "output_predicate": "for"
+      },
+      "rel:invoice.generates_payment": {
+        "output_id": "rel:invoice.generates_payment",
+        "output_predicate": "generates"
+      },
+      "rel:payment.for_invoice": {
+        "output_id": "rel:payment.for_invoice",
+        "output_predicate": "for"
+      }
+    },
+    "missing_core_concepts": [
+      "concept:goods_receipt",
+      "concept:material"
+    ],
+    "missing_key_attributes": [
+      "attr:goods_receipt.po_id",
+      "attr:goods_receipt.receipt_id",
+      "attr:goods_receipt.receipt_no",
+      "attr:goods_receipt.receipt_status",
+      "attr:goods_receipt.received_by",
+      "attr:material.category_code",
+      "attr:material.item_description",
+      "attr:purchase_request.currency_code",
+      "attr:purchase_request.request_id",
+      "attr:purchase_request_item.category_code",
+      "attr:purchase_request_item.estimated_unit_price",
+      "attr:purchase_request_item.unit_of_measure"
+    ],
+    "missing_key_relations": [
+      "rel:approval_task.approves_payment",
+      "rel:approval_task.approves_purchase_request",
+      "rel:approval_task.performed_by_employee",
+      "rel:contract.enables_purchase_order",
+      "rel:contract.reviewed_by_employee",
+      "rel:department.has_employee",
+      "rel:department.owns_purchase_request",
+      "rel:employee.approves_payment",
+      "rel:employee.belongs_to_department",
+      "rel:employee.creates_purchase_request",
+      "rel:employee.performs_approval_task",
+      "rel:employee.records_goods_receipt",
+      "rel:goods_receipt.for_purchase_order",
+      "rel:goods_receipt.recorded_by_employee",
+      "rel:goods_receipt.supports_invoice_match",
+      "rel:invoice.matched_to_receipt",
+      "rel:material.requested_on_item",
+      "rel:payment.approved_by_employee",
+      "rel:payment.has_approval_task",
+      "rel:purchase_order.for_purchase_request",
+      "rel:purchase_order.has_goods_receipt",
+      "rel:purchase_order.has_invoice",
+      "rel:purchase_request.prefers_supplier",
+      "rel:purchase_request.results_in_contract",
+      "rel:purchase_request.results_in_purchase_order",
+      "rel:purchase_request_item.belongs_to_request",
+      "rel:purchase_request_item.describes_material",
+      "rel:supplier.issues_invoice",
+      "rel:supplier.party_to_contract",
+      "rel:supplier.preferred_by_request",
+      "rel:supplier.receives_purchase_order"
+    ],
+    "possible_hallucinations": {
+      "concepts": [
+        {
+          "id": "concept:budget_reservation",
+          "name": "Budget Reservation"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "attr:budget_reservation.reserved_amount",
+          "name": "reserved_amount",
+          "concept_id": "concept:budget_reservation"
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:budget_reservation.controls_purchase_request",
+          "predicate": "controls",
+          "source_concept_id": "concept:budget_reservation",
+          "target_concept_id": "concept:purchase_request"
+        }
+      ]
+    },
+    "counts": {
+      "output_concepts": 11,
+      "output_attributes": 125,
+      "output_relations": 13,
+      "matched_core_concepts": 10,
+      "total_core_concepts": 12,
+      "matched_key_attributes": 62,
+      "total_key_attributes": 74,
+      "matched_key_relations": 12,
+      "total_key_relations": 43
+    },
+    "coverage": {
+      "core_concept_coverage": 0.8333,
+      "key_attribute_coverage": 0.8378,
+      "key_relation_coverage": 0.2791
+    }
+  },
+  "evidence_check": {
+    "referenced_evidence_count": 126,
+    "available_evidence_ref_count": 254,
+    "missing_evidence_refs": [
+      {
+        "element_type": "concept",
+        "element_id": "concept:purchase_request",
+        "evidence_ref": "code.PurchaseRequest.domain"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:purchase_request_item",
+        "evidence_ref": "csv.pc_purchase_request_line.rows"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:approval_task",
+        "evidence_ref": "doc.role_permission_matrix.roles"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:supplier",
+        "evidence_ref": "csv.pc_supplier.rows"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:contract",
+        "evidence_ref": "code.Contract.domain"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:contract",
+        "evidence_ref": "doc.contract_lifecycle.definition"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:purchase_order",
+        "evidence_ref": "doc.procurement_process.purchase_order_release"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:invoice",
+        "evidence_ref": "doc.receipt_invoice_payment.invoice_matching"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:department",
+        "evidence_ref": "db.table.pc_department"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:department",
+        "evidence_ref": "csv.pc_department.rows"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:employee",
+        "evidence_ref": "db.table.pc_user"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:employee",
+        "evidence_ref": "csv.pc_user.rows"
+      },
+      {
+        "element_type": "concept",
+        "element_id": "concept:budget_reservation",
+        "evidence_ref": "doc:nonexistent_budget_policy"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request.estimated_amount",
+        "evidence_ref": "db.comment.pc_purchase_request.estimated_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request.request_status",
+        "evidence_ref": "db.column.pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request.business_justification",
+        "evidence_ref": "code.PurchaseRequestService.submitPR"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request_item.item_description",
+        "evidence_ref": "csv.pc_purchase_request_line.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request_item.quantity",
+        "evidence_ref": "csv.pc_purchase_request_line.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_request_item.line_amount",
+        "evidence_ref": "csv.pc_purchase_request_line.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:approval_task.step_name",
+        "evidence_ref": "csv.pc_approval_record.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:approval_task.approval_status",
+        "evidence_ref": "db.column.pc_approval_record.approval_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:supplier.supplier_status",
+        "evidence_ref": "csv.pc_supplier.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:supplier.risk_rating",
+        "evidence_ref": "csv.pc_supplier.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:contract.contract_amount",
+        "evidence_ref": "code.Contract.domain"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:contract.contract_status",
+        "evidence_ref": "db.column.pc_contract.contract_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:purchase_order.po_status",
+        "evidence_ref": "db.column.pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:invoice.invoice_amount",
+        "evidence_ref": "code.Invoice.domain"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:invoice.invoice_status",
+        "evidence_ref": "db.column.pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:payment.payment_amount",
+        "evidence_ref": "code.PaymentRequest.domain"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:payment.payment_status",
+        "evidence_ref": "db.column.pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:department.department_id",
+        "evidence_ref": "db.table.pc_department"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:department.department_code",
+        "evidence_ref": "csv.pc_department.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:department.department_name",
+        "evidence_ref": "csv.pc_department.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:department.cost_center",
+        "evidence_ref": "csv.pc_department.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:department.is_active",
+        "evidence_ref": "db.table.pc_department"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.user_id",
+        "evidence_ref": "db.table.pc_user"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.user_name",
+        "evidence_ref": "csv.pc_user.rows"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.role_code",
+        "evidence_ref": "code.RoleCode.constants"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.department_id",
+        "evidence_ref": "db.table.pc_user"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.email",
+        "evidence_ref": "db.table.pc_user"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:employee.is_active",
+        "evidence_ref": "db.table.pc_user"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "attr:budget_reservation.reserved_amount",
+        "evidence_ref": "doc:nonexistent_budget_policy"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel:contract.from_purchase_request",
+        "evidence_ref": "doc.contract_lifecycle.definition"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel:purchase_order.released_against_contract",
+        "evidence_ref": "doc.procurement_process.purchase_order_release"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel:budget_reservation.controls_purchase_request",
+        "evidence_ref": "doc:nonexistent_budget_policy"
+      },
+      {
+        "element_type": "event",
+        "element_id": "event:purchase_request_submitted",
+        "evidence_ref": "code.PurchaseRequestService.submitPR"
+      },
+      {
+        "element_type": "event",
+        "element_id": "event:contract_activated",
+        "evidence_ref": "code.ContractService.activateContract"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule:purchase_request_requires_line",
+        "evidence_ref": "code.PurchaseRequestService.submitPR"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule:high_value_request_finance_approval",
+        "evidence_ref": "code.ApprovalService.requiredApproverRole"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule:invoice_requires_match_before_payment",
+        "evidence_ref": "doc.receipt_invoice_payment.invoice_matching"
+      },
+      {
+        "element_type": "action",
+        "element_id": "action:submit_purchase_request",
+        "evidence_ref": "code.PurchaseRequestService.submitPR"
+      },
+      {
+        "element_type": "action",
+        "element_id": "action:approve_payment",
+        "evidence_ref": "code.PaymentService.approvePayment"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state:purchase_request.submitted",
+        "evidence_ref": "db.column.pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state:contract.active",
+        "evidence_ref": "db.column.pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state:invoice.matched",
+        "evidence_ref": "db.column.pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state:payment.paid",
+        "evidence_ref": "db.column.pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "role",
+        "element_id": "role:requester",
+        "evidence_ref": "doc.role_permission_matrix.roles"
+      },
+      {
+        "element_type": "role",
+        "element_id": "role:finance_manager",
+        "evidence_ref": "doc.role_permission_matrix.roles"
+      },
+      {
+        "element_type": "permission",
+        "element_id": "perm:finance_manager.approve_payment",
+        "evidence_ref": "code.PaymentService.approvePayment"
+      },
+      {
+        "element_type": "uncertainty",
+        "element_id": "uncertainty:material.master_missing",
+        "evidence_ref": "csv.pc_purchase_request_line.rows"
+      },
+      {
+        "element_type": "uncertainty",
+        "element_id": "uncertainty:budget_reservation",
+        "evidence_ref": "doc:nonexistent_budget_policy"
+      }
+    ]
+  },
+  "possible_hallucinations": {
+    "concepts": [
+      {
+        "id": "concept:budget_reservation",
+        "name": "Budget Reservation"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "attr:budget_reservation.reserved_amount",
+        "name": "reserved_amount",
+        "concept_id": "concept:budget_reservation"
+      }
+    ],
+    "relations": [
+      {
+        "id": "rel:budget_reservation.controls_purchase_request",
+        "predicate": "controls",
+        "source_concept_id": "concept:budget_reservation",
+        "target_concept_id": "concept:purchase_request"
+      }
+    ]
+  },
+  "machine_metrics": {
+    "core_concept_coverage": 0.8333,
+    "key_attribute_coverage": 0.8378,
+    "key_relation_coverage": 0.2791,
+    "schema_validity_rate": 1.0,
+    "missing_evidence_ref_count": 61,
+    "possible_hallucinated_concept_count": 1,
+    "possible_hallucinated_attribute_count": 1,
+    "possible_hallucinated_relation_count": 1
+  },
+  "json_load_errors": [],
+  "human_review": {
+    "status": "pending",
+    "reviewer": null,
+    "manual_score": null,
+    "manual_decision": null,
+    "notes": null,
+    "overrides": []
+  },
+  "notes": [
+    "Machine checks are conservative and alias-based; they do not replace human ontology quality review.",
+    "Possible hallucinations are unmatched items, not final false-positive judgments."
+  ]
+}

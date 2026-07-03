@@ -1,0 +1,70 @@
+{
+  "tool_profile_id": "tool:demo_baseline",
+  "tool_name": "Demo Offline AI Tool",
+  "tool_version": "demo-sample",
+  "vendor": "simulated",
+  "model_name": "Simulated LLM",
+  "model_version": "2026-demo",
+  "customer_environment": {
+    "environment_name": "Demo Intranet Lab",
+    "environment_type": "isolated",
+    "network_zone": "offline",
+    "deployment_mode": "desktop",
+    "operating_system": "macOS",
+    "restrictions": [
+      "No internet access",
+      "No direct database connection",
+      "File reading limited to prepared dataset"
+    ]
+  },
+  "capabilities": {
+    "internet_access": false,
+    "can_read_files": true,
+    "can_execute_commands": false,
+    "supports_images": false,
+    "supports_browser": false,
+    "supports_database_connection": false,
+    "long_context_capability": {
+      "level": "medium",
+      "max_context_tokens": 64000,
+      "notes": "Simulated medium context window."
+    },
+    "can_persist_intermediate_results": true
+  },
+  "json_output_stability": {
+    "level": "fair",
+    "failure_modes": [
+      "Occasional Markdown wrapping",
+      "Needs manual normalization for nested evidence refs"
+    ],
+    "notes": "Demo intentionally assumes low-experience operator had to repair JSON once."
+  },
+  "recommended_use_cases": [
+    "Code/DDL/document summarization",
+    "Initial ontology draft generation",
+    "Evidence candidate extraction"
+  ],
+  "not_recommended_use_cases": [
+    "Final ontology approval without human review",
+    "Image analysis",
+    "Live Web crawling",
+    "Direct database profiling"
+  ],
+  "known_limitations": [
+    "No screenshot support in MVP demo",
+    "No Web access",
+    "Possible hallucination on budget reservation concept"
+  ],
+  "evaluated_at": "2026-07-03T10:00:00Z",
+  "provenance": {
+    "created_by": "demo_baseline_generator",
+    "created_at": "2026-07-03T10:00:00Z",
+    "method": "manual",
+    "source_system": "demo",
+    "version": "demo-sample"
+  },
+  "metadata": {
+    "demo_sample": true,
+    "not_real_evaluation": true
+  }
+}

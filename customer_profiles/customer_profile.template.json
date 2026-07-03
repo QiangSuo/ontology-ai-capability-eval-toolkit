@@ -1,0 +1,82 @@
+{
+  "customer_profile_id": "customer:unknown",
+  "customer_name": "unknown",
+  "industry": "unknown",
+  "business_domain": "procurement_contract_mvp",
+  "environment": {
+    "environment_name": "unknown",
+    "environment_type": "unknown",
+    "network_access": "unknown",
+    "deployment_location": "unknown",
+    "operating_systems": [],
+    "notes": "Fill this file before evaluation. Use unknown when a field cannot be verified."
+  },
+  "data_sources": [
+    {
+      "data_source_id": "data:source_code",
+      "name": "source_code",
+      "type": "code",
+      "availability": "unknown",
+      "location": "datasets/generic_procurement_contract_mvp/source_code/",
+      "sensitivity": "internal",
+      "notes": "Do not include gold/reference files as evaluation input."
+    }
+  ],
+  "access_constraints": [
+    {
+      "constraint_type": "policy",
+      "description": "Customer/site restrictions not yet verified.",
+      "impact": "unknown"
+    }
+  ],
+  "security_requirements": [
+    "Do not upload customer-sensitive data to external services unless authorized."
+  ],
+  "available_tools": [
+    {
+      "tool_name": "unknown",
+      "tool_profile_ref": "tool:unknown",
+      "license_status": "unknown",
+      "notes": "Replace with the AI tool being evaluated."
+    }
+  ],
+  "operator_profiles": [
+    {
+      "operator_id": "operator:unknown",
+      "role": "operator",
+      "experience_level": "low",
+      "tool_familiarity": "basic"
+    }
+  ],
+  "evaluation_scope": {
+    "levels": [
+      "smoke"
+    ],
+    "included_capabilities": [
+      "cap:code_understanding",
+      "cap:database_metadata_understanding",
+      "cap:sample_data_analysis",
+      "cap:document_understanding",
+      "cap:multi_source_fusion",
+      "cap:structured_output",
+      "cap:evidence_traceability"
+    ],
+    "excluded_capabilities": [
+      "cap:screenshot_understanding",
+      "cap:web_recursive_analysis"
+    ],
+    "notes": "MVP Smoke Test only. Screenshot and Web are out of scope."
+  },
+  "provenance": {
+    "created_by": "operator",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual",
+    "source_system": "customer_profile_template",
+    "version": "1.0.0",
+    "notes": "Template values must be reviewed and replaced before real evaluation."
+  },
+  "metadata": {
+    "template": true,
+    "requires_operator_review": true
+  }
+}

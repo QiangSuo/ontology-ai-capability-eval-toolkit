@@ -1,0 +1,88 @@
+{
+  "task_id": "task_04_document_to_ontology",
+  "task_name": "文档到本体抽取",
+  "mode": "fixed_prompt",
+  "level": "standard",
+  "status": "completed",
+  "tool_profile_ref": "tool:demo_baseline",
+  "started_at": "2026-07-03T10:00:00Z",
+  "completed_at": "2026-07-03T10:12:00Z",
+  "duration_minutes": 12,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "input_artifacts": [
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp",
+      "description": "MVP dataset used by the simulated demo."
+    },
+    {
+      "artifact_id": "prompt:task_04_document_to_ontology",
+      "artifact_type": "prompt",
+      "path": "prompts/tasks/task_04_document_to_ontology.md",
+      "description": "Task prompt used for this simulated output."
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "artifact:task_04_document_to_ontology.ontology",
+      "artifact_type": "ontology",
+      "path": "normalized_outputs/ontology_fused_demo.json",
+      "schema_ref": "schemas/ontology.schema.json",
+      "description": "Shared simulated ontology output for demo scoring."
+    },
+    {
+      "artifact_id": "artifact:task_04_document_to_ontology.evidence",
+      "artifact_type": "evidence",
+      "path": "normalized_outputs/evidence_map_demo.json",
+      "schema_ref": "schemas/evidence.schema.json",
+      "description": "Shared simulated evidence map for demo scoring."
+    },
+    {
+      "artifact_id": "artifact:task_04_document_to_ontology.raw",
+      "artifact_type": "raw_output",
+      "path": "raw_outputs/task_04_document_to_ontology_raw.md",
+      "description": "Simulated raw AI response."
+    }
+  ],
+  "evidence_refs": [
+    "db.table.pc_purchase_request",
+    "doc.business_overview.core_objects"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "task_result.schema.json",
+    "validator": "demo_manual_check",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "manual_fix",
+      "description": "Operator normalized the simulated AI response into JSON for demo purposes.",
+      "occurred_at": "2026-07-03T10:12:00Z",
+      "operator_id": "operator:demo_low_exp"
+    }
+  ],
+  "limitations": [
+    "Demo sample, not a real tool run.",
+    "Output intentionally omits some concepts/relations and contains one weakly supported inferred concept."
+  ],
+  "metrics": {
+    "prompt_retry_count": 0,
+    "manual_edit_minutes": 8
+  },
+  "notes": "Simulated baseline task result for demonstrating result package structure and score_auto.py flow.",
+  "provenance": {
+    "created_by": "demo_baseline_generator",
+    "created_at": "2026-07-03T10:00:00Z",
+    "method": "hybrid",
+    "source_system": "generic_procurement_contract_mvp",
+    "tool_profile_ref": "tool:demo_baseline",
+    "prompt_ref": "task_04_document_to_ontology",
+    "version": "demo-sample"
+  }
+}

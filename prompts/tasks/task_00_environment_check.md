@@ -100,7 +100,14 @@
 
 ## 输出文件名
 
-`results/task_00_environment_check.json`
+`results/<evaluation_id>/raw_outputs/task_00_environment_check_raw.md`
+
+同时由操作员整理并保存：
+
+- `results/<evaluation_id>/tool_profile.json`：尽量兼容 `schemas/tool_profile.schema.json`。
+- `results/<evaluation_id>/customer_profile.json`：尽量兼容 `schemas/customer_profile.schema.json`。
+
+说明：Task 00 是环境/工具 metadata，不是 ontology 评分任务；默认不要求 `score_auto.py` 发现它。
 
 ## 输出格式
 
@@ -145,7 +152,7 @@
   "failure_type": "invalid_json | hallucinated_capability | missing_uncertainty | incomplete_output | other",
   "failure_description": "",
   "retry_count": 0,
-  "raw_output_path": "results/raw/task_00_environment_check_raw_output.txt"
+  "raw_output_path": "raw_outputs/task_00_environment_check_raw.md"
 }
 ```
 
@@ -158,3 +165,10 @@
 - 多源差异不得被静默合并；需要写入 `aliases`、`mappings`、`conflicts` 或 `uncertainties`。
 - 不要使用依赖某个工具专属能力的表达；如果工具不能读文件，操作员可复制粘贴材料。
 
+## A5 metadata 补充说明
+
+- Task 00 原始输出可以使用本文件 prompt 中的环境登记结构。
+- 操作员应把信息整理为 `tool_profile.json` 和 `customer_profile.json`。
+- 对 schema 中必须为 boolean 的能力字段，如果现场无法验证，使用保守值 `false`，并在 `known_limitations`、`metadata.unverified_capabilities` 或 notes 中记录 unknown/unverified。
+- Task 00 默认不参与 ontology coverage 自动评分。
+- 不要把 gold/reference/demo 文件作为可访问输入目录。

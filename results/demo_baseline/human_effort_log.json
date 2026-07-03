@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation_id": "demo_baseline",
+  "demo_sample": true,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "total_minutes": 74,
+  "activities": [
+    {
+      "activity": "read_operator_instructions",
+      "minutes": 10,
+      "notes": "Read README and task prompts."
+    },
+    {
+      "activity": "run_fixed_prompts",
+      "minutes": 30,
+      "notes": "Simulated five task prompts."
+    },
+    {
+      "activity": "normalize_json",
+      "minutes": 22,
+      "notes": "Manually cleaned JSON wrappers and artifact paths."
+    },
+    {
+      "activity": "run_auto_score",
+      "minutes": 4,
+      "notes": "Generated machine_score outputs."
+    },
+    {
+      "activity": "review_machine_score",
+      "minutes": 8,
+      "notes": "Checked missing items and possible hallucinations."
+    }
+  ],
+  "interventions": [
+    {
+      "task_id": "task_03_sample_data_profile",
+      "intervention_type": "retry",
+      "minutes": 5,
+      "reason": "First simulated output mixed CSV profiling with ontology fields."
+    },
+    {
+      "task_id": "task_05_multi_source_fusion",
+      "intervention_type": "manual_fix",
+      "minutes": 12,
+      "reason": "Normalized evidence_refs and removed Markdown wrappers."
+    }
+  ],
+  "notes": "Demo sample only. Numbers are illustrative and not a real operator measurement."
+}

@@ -88,7 +88,14 @@
 
 ## 输出文件名
 
-`results/task_03_sample_data_profile.json`
+`results/<evaluation_id>/normalized_outputs/task_03_sample_data_profile.json`
+
+同时保存：
+
+- 原始输出：`results/<evaluation_id>/raw_outputs/task_03_sample_data_profile_raw.md`
+- task result wrapper：`results/<evaluation_id>/task_03_sample_data_profile_result.json`
+
+说明：Task 03 输出是 sample data profile，不是完整 ontology。若要参与 `score_auto.py` 的 ontology 覆盖评分，需要在 Task 05 融合后转化为 ontology/evidence artifact。
 
 ## 输出格式
 
@@ -134,7 +141,7 @@
   "failure_type": "invalid_json | over_inference | missing_profile | missing_evidence | partial_input_not_recorded | other",
   "failure_description": "",
   "retry_count": 0,
-  "raw_output_path": "results/raw/task_03_sample_data_profile_raw_output.txt"
+  "raw_output_path": "raw_outputs/task_03_sample_data_profile_raw.md"
 }
 ```
 
@@ -147,3 +154,10 @@
 - 多源差异不得被静默合并；需要写入 `aliases`、`mappings`、`conflicts` 或 `uncertainties`。
 - 不要使用依赖某个工具专属能力的表达；如果工具不能读文件，操作员可复制粘贴材料。
 
+## A5 结果保存补充说明
+
+- 不要把 `datasets/generic_procurement_contract_mvp/gold/`、`results/demo_baseline/`、`machine_score.json` 或人工复核内容提供给被评估 AI。
+- AI 原始回答保存到 `results/<evaluation_id>/raw_outputs/`。
+- 操作员整理后的合法 JSON 保存到 `results/<evaluation_id>/normalized_outputs/`。
+- 每个参与评分的任务还需要一个 `task_result` wrapper，保存到 `results/<evaluation_id>/task_XX_*_result.json`，并通过 `output_artifacts` 指向 raw/normalized 文件。
+- 复制 prompt 时只复制 fenced code block 内的内容；不要把操作员步骤、输出文件名说明或 gold/reference 路径复制给被评估 AI。

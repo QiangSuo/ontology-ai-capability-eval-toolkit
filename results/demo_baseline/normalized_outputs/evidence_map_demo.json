@@ -1,0 +1,202 @@
+{
+  "items": [
+    {
+      "evidence_id": "db.table.pc_purchase_request",
+      "evidence_type": "database",
+      "title": "pc_purchase_request table",
+      "summary": "DDL table for purchase requests.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_purchase_request",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.95,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_purchase_request",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_purchase_request_line",
+      "evidence_type": "database",
+      "title": "pc_purchase_request_line table",
+      "summary": "DDL table for request line items.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_purchase_request_line",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.9,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_purchase_request_line",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_approval_record",
+      "evidence_type": "database",
+      "title": "pc_approval_record table",
+      "summary": "DDL table for approval workflow records.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_approval_record",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.9,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_approval_record",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_supplier",
+      "evidence_type": "database",
+      "title": "pc_supplier table",
+      "summary": "DDL table for supplier master data.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_supplier",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.92,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_supplier",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_contract",
+      "evidence_type": "database",
+      "title": "pc_contract table",
+      "summary": "DDL table for contracts.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_contract",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.92,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_contract",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_purchase_order",
+      "evidence_type": "database",
+      "title": "pc_purchase_order table",
+      "summary": "DDL table for purchase orders.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_purchase_order",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.9,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_purchase_order",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_invoice",
+      "evidence_type": "database",
+      "title": "pc_invoice table",
+      "summary": "DDL table for supplier invoices.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_invoice",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.9,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_invoice",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "db.table.pc_payment_request",
+      "evidence_type": "database",
+      "title": "pc_payment_request table",
+      "summary": "DDL table for payment requests.",
+      "source": {
+        "name": "generic_procurement_contract_mvp",
+        "type": "database"
+      },
+      "locator": "database/ddl.sql#CREATE TABLE pc_payment_request",
+      "content_ref": "database/ddl.sql",
+      "confidence": 0.9,
+      "database": {
+        "database_name": "generic_procurement_contract_mvp",
+        "table_name": "pc_payment_request",
+        "object_type": "table"
+      }
+    },
+    {
+      "evidence_id": "doc.business_overview.core_objects",
+      "evidence_type": "document",
+      "title": "Business overview core objects",
+      "summary": "Business overview lists the main procurement and fulfillment objects.",
+      "source": {
+        "name": "business_overview.md",
+        "type": "document"
+      },
+      "locator": "documents/business_overview.md#Core Business Objects",
+      "content_ref": "documents/business_overview.md",
+      "confidence": 0.9,
+      "document": {
+        "document_path": "documents/business_overview.md",
+        "document_title": "Business Overview",
+        "section": "Core Business Objects"
+      }
+    },
+    {
+      "evidence_id": "doc.receipt_invoice_payment.payment_application",
+      "evidence_type": "document",
+      "title": "Payment application policy",
+      "summary": "Policy describes payment request/application flow.",
+      "source": {
+        "name": "receipt_invoice_payment_policy.md",
+        "type": "document"
+      },
+      "locator": "documents/receipt_invoice_payment_policy.md#Payment Application",
+      "content_ref": "documents/receipt_invoice_payment_policy.md",
+      "confidence": 0.86,
+      "document": {
+        "document_path": "documents/receipt_invoice_payment_policy.md",
+        "document_title": "Receipt Invoice Payment Policy",
+        "section": "Payment Application"
+      }
+    },
+    {
+      "evidence_id": "code.PaymentService.createPaymentApplication",
+      "evidence_type": "code",
+      "title": "PaymentService createPaymentApplication",
+      "summary": "Code creates payment application only for matched invoices.",
+      "source": {
+        "name": "source_code",
+        "type": "repository"
+      },
+      "locator": "PaymentService.createPaymentApplication",
+      "content_ref": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+      "confidence": 0.86,
+      "code": {
+        "file_path": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+        "language": "Java",
+        "symbol": "createPaymentApplication"
+      }
+    }
+  ]
+}

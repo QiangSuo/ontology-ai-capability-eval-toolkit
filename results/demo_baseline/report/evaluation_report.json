@@ -1,0 +1,131 @@
+{
+  "report_id": "report:demo_baseline",
+  "title": "Demo Baseline Procurement Contract MVP Evaluation Report",
+  "customer_profile_ref": "customer:demo_baseline",
+  "tool_profile_ref": "tool:demo_baseline",
+  "evaluation_period": {
+    "start_date": "2026-07-03",
+    "end_date": "2026-07-03"
+  },
+  "executive_summary": "This is a simulated demo report for results/demo_baseline. Automatic scoring ran successfully, but human review remains pending and the demo intentionally contains missing concepts, low relation coverage, missing evidence refs, and possible hallucination candidates.",
+  "overall_grade": "N/A",
+  "capability_results": [
+    {
+      "capability_id": "cap:structured_output",
+      "capability_name": "Structured Output",
+      "grade": "B",
+      "task_result_refs": [
+        "task_01_code_to_ontology",
+        "task_02_ddl_to_ontology",
+        "task_03_sample_data_profile",
+        "task_04_document_to_ontology",
+        "task_05_multi_source_fusion"
+      ],
+      "notes": "Demo task results and fused ontology are schema-valid in machine_score. This is not a real tool grade."
+    },
+    {
+      "capability_id": "cap:evidence_traceability",
+      "capability_name": "Evidence Traceability",
+      "grade": "C",
+      "task_result_refs": [
+        "task_05_multi_source_fusion"
+      ],
+      "notes": "machine_score reports 61 missing evidence refs in the simulated demo; human disposition is pending."
+    },
+    {
+      "capability_id": "cap:multi_source_fusion",
+      "capability_name": "Multi-source Fusion",
+      "grade": "C",
+      "task_result_refs": [
+        "task_05_multi_source_fusion"
+      ],
+      "notes": "The demo fused output intentionally has low key relation coverage and misses goods receipt/material coverage."
+    }
+  ],
+  "task_result_refs": [
+    "task_01_code_to_ontology",
+    "task_02_ddl_to_ontology",
+    "task_03_sample_data_profile",
+    "task_04_document_to_ontology",
+    "task_05_multi_source_fusion"
+  ],
+  "redline_results": [
+    {
+      "rule_id": "redline:human_review_required",
+      "status": "not_tested",
+      "description": "Human review is pending; final customer-site readiness cannot be concluded."
+    },
+    {
+      "rule_id": "redline:evidence_traceability",
+      "status": "fail",
+      "description": "Demo machine score reports missing evidence references; this is intentional for demo but must be reviewed in real runs."
+    },
+    {
+      "rule_id": "redline:no_unreviewed_hallucination",
+      "status": "not_tested",
+      "description": "Possible hallucination candidates require human adjudication."
+    }
+  ],
+  "score_caps": [
+    {
+      "reason": "Human review is pending.",
+      "max_grade": "B-",
+      "affected_capabilities": [
+        "cap:ontology_quality",
+        "cap:evidence_traceability",
+        "cap:multi_source_fusion"
+      ]
+    },
+    {
+      "reason": "Demo baseline is simulated and not a real AI tool evaluation.",
+      "max_grade": "N/A",
+      "affected_capabilities": [
+        "cap:overall_readiness"
+      ]
+    }
+  ],
+  "key_findings": [
+    "score_auto.py discovered 5 task result files, 1 ontology file and 1 evidence file with 0 JSON load errors.",
+    "The demo fused ontology is schema-valid but intentionally incomplete.",
+    "Machine metrics show concept and attribute coverage are stronger than relation coverage.",
+    "Possible hallucination candidates are unmatched items and require human review."
+  ],
+  "risks": [
+    "This is a demo sample only and must not be used as a real tool capability grade.",
+    "Missing evidence refs may include intentional broken refs and naming mismatches.",
+    "Human review has not adjudicated missing evidence refs or possible hallucinations.",
+    "Low key relation coverage would be a major risk in a real evaluation."
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "description": "Use this report only as an end-to-end example of report structure."
+    },
+    {
+      "priority": "high",
+      "description": "Complete manual_review/manual_review.md before issuing a real final decision."
+    },
+    {
+      "priority": "medium",
+      "description": "Review missing evidence refs and possible hallucinations in machine_score.json."
+    }
+  ],
+  "conclusion": {
+    "decision": "insufficient_data",
+    "rationale": "The demo baseline is simulated and human review is pending. It demonstrates the workflow but cannot support a real readiness decision.",
+    "next_steps": [
+      "Use operator_guide/README.md for a real smoke run.",
+      "Complete manual review for real evaluations.",
+      "Regenerate evaluation_report.json after human sign-off."
+    ]
+  },
+  "generated_at": "2026-07-03T00:00:00Z",
+  "provenance": {
+    "created_by": "demo_baseline_generator",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "hybrid",
+    "source_system": "results/demo_baseline",
+    "version": "demo-sample",
+    "notes": "Demo sample only; not a real customer/tool evaluation."
+  }
+}

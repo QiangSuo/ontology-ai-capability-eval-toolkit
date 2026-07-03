@@ -1,0 +1,1441 @@
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "demo:baseline:fused_ontology",
+  "title": "Demo Baseline Procurement Contract Ontology",
+  "domain": "enterprise_procurement_contract_fulfillment",
+  "description": "Simulated demo sample output for MVP scoring demonstration. This is not a real tool evaluation result.",
+  "concepts": [
+    {
+      "id": "concept:purchase_request",
+      "name": "Purchase Request",
+      "type": "concept",
+      "category": "document",
+      "attribute_ids": [
+        "attr:purchase_request.request_no",
+        "attr:purchase_request.request_title",
+        "attr:purchase_request.requester_user_id",
+        "attr:purchase_request.department_id",
+        "attr:purchase_request.estimated_amount",
+        "attr:purchase_request.request_status",
+        "attr:purchase_request.business_justification"
+      ],
+      "evidence_refs": [
+        "db.table.pc_purchase_request",
+        "code.PurchaseRequest.domain",
+        "doc.business_overview.core_objects"
+      ],
+      "confidence": 0.91
+    },
+    {
+      "id": "concept:purchase_request_item",
+      "name": "Purchase Request Line",
+      "type": "concept",
+      "category": "line_item",
+      "attribute_ids": [
+        "attr:purchase_request_item.line_id",
+        "attr:purchase_request_item.request_id",
+        "attr:purchase_request_item.item_description",
+        "attr:purchase_request_item.quantity",
+        "attr:purchase_request_item.line_amount"
+      ],
+      "evidence_refs": [
+        "db.table.pc_purchase_request_line",
+        "csv.pc_purchase_request_line.rows"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "concept:approval_task",
+      "name": "Approval Record",
+      "type": "concept",
+      "category": "workflow_record",
+      "attribute_ids": [
+        "attr:approval_task.approval_id",
+        "attr:approval_task.target_type",
+        "attr:approval_task.target_id",
+        "attr:approval_task.step_name",
+        "attr:approval_task.approver_user_id",
+        "attr:approval_task.approval_status",
+        "attr:approval_task.submitted_at"
+      ],
+      "evidence_refs": [
+        "db.table.pc_approval_record",
+        "doc.role_permission_matrix.roles"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:supplier",
+      "name": "Supplier",
+      "type": "concept",
+      "category": "party",
+      "attribute_ids": [
+        "attr:supplier.supplier_id",
+        "attr:supplier.supplier_code",
+        "attr:supplier.supplier_name",
+        "attr:supplier.supplier_status",
+        "attr:supplier.risk_rating"
+      ],
+      "evidence_refs": [
+        "db.table.pc_supplier",
+        "csv.pc_supplier.rows"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "concept:contract",
+      "name": "Contract",
+      "type": "concept",
+      "category": "agreement",
+      "attribute_ids": [
+        "attr:contract.contract_id",
+        "attr:contract.contract_no",
+        "attr:contract.request_id",
+        "attr:contract.supplier_id",
+        "attr:contract.contract_title",
+        "attr:contract.contract_amount",
+        "attr:contract.contract_status"
+      ],
+      "evidence_refs": [
+        "db.table.pc_contract",
+        "code.Contract.domain",
+        "doc.contract_lifecycle.definition"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept:purchase_order",
+      "name": "Purchase Order",
+      "type": "concept",
+      "category": "order",
+      "attribute_ids": [
+        "attr:purchase_order.po_id",
+        "attr:purchase_order.po_no",
+        "attr:purchase_order.contract_id",
+        "attr:purchase_order.request_id",
+        "attr:purchase_order.supplier_id",
+        "attr:purchase_order.po_amount",
+        "attr:purchase_order.po_status"
+      ],
+      "evidence_refs": [
+        "db.table.pc_purchase_order",
+        "doc.procurement_process.purchase_order_release"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:invoice",
+      "name": "Invoice",
+      "type": "concept",
+      "category": "billing_document",
+      "attribute_ids": [
+        "attr:invoice.invoice_id",
+        "attr:invoice.invoice_no",
+        "attr:invoice.supplier_id",
+        "attr:invoice.po_id",
+        "attr:invoice.invoice_amount",
+        "attr:invoice.invoice_date",
+        "attr:invoice.invoice_status"
+      ],
+      "evidence_refs": [
+        "db.table.pc_invoice",
+        "doc.receipt_invoice_payment.invoice_matching"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "concept:payment",
+      "name": "Payment Request",
+      "type": "concept",
+      "category": "finance_request",
+      "attribute_ids": [
+        "attr:payment.payment_request_id",
+        "attr:payment.payment_no",
+        "attr:payment.invoice_id",
+        "attr:payment.payment_amount",
+        "attr:payment.payment_status",
+        "attr:payment.due_date"
+      ],
+      "evidence_refs": [
+        "db.table.pc_payment_request",
+        "doc.receipt_invoice_payment.payment_application"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "concept:department",
+      "name": "Department",
+      "type": "concept",
+      "category": "organization",
+      "attribute_ids": [
+        "attr:department.department_id",
+        "attr:department.department_code",
+        "attr:department.department_name",
+        "attr:department.cost_center",
+        "attr:department.is_active"
+      ],
+      "evidence_refs": [
+        "db.table.pc_department",
+        "csv.pc_department.rows"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:employee",
+      "name": "User",
+      "type": "concept",
+      "category": "actor",
+      "attribute_ids": [
+        "attr:employee.user_id",
+        "attr:employee.user_name",
+        "attr:employee.role_code",
+        "attr:employee.department_id",
+        "attr:employee.email",
+        "attr:employee.is_active"
+      ],
+      "evidence_refs": [
+        "db.table.pc_user",
+        "csv.pc_user.rows"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "concept:budget_reservation",
+      "name": "Budget Reservation",
+      "type": "concept",
+      "category": "finance_control",
+      "evidence_refs": [
+        "doc:nonexistent_budget_policy"
+      ],
+      "confidence": 0.34
+    }
+  ],
+  "attributes": [
+    {
+      "id": "attr:purchase_request.request_no",
+      "concept_id": "concept:purchase_request",
+      "name": "request_no",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "attr:purchase_request.request_title",
+      "concept_id": "concept:purchase_request",
+      "name": "request_title",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:purchase_request.requester_user_id",
+      "concept_id": "concept:purchase_request",
+      "name": "requester_user_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:purchase_request.department_id",
+      "concept_id": "concept:purchase_request",
+      "name": "department_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:purchase_request.estimated_amount",
+      "concept_id": "concept:purchase_request",
+      "name": "estimated_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "db.comment.pc_purchase_request.estimated_amount"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:purchase_request.request_status",
+      "concept_id": "concept:purchase_request",
+      "name": "request_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_purchase_request.request_status"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:purchase_request.business_justification",
+      "concept_id": "concept:purchase_request",
+      "name": "business_justification",
+      "type": "attribute",
+      "data_type": "text",
+      "required": true,
+      "evidence_refs": [
+        "code.PurchaseRequestService.submitPR"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:purchase_request_item.line_id",
+      "concept_id": "concept:purchase_request_item",
+      "name": "line_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request_line"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_request_item.request_id",
+      "concept_id": "concept:purchase_request_item",
+      "name": "request_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_request_line"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_request_item.item_description",
+      "concept_id": "concept:purchase_request_item",
+      "name": "item_description",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_purchase_request_line.rows"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:purchase_request_item.quantity",
+      "concept_id": "concept:purchase_request_item",
+      "name": "quantity",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_purchase_request_line.rows"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "attr:purchase_request_item.line_amount",
+      "concept_id": "concept:purchase_request_item",
+      "name": "line_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_purchase_request_line.rows"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "attr:approval_task.approval_id",
+      "concept_id": "concept:approval_task",
+      "name": "approval_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attr:approval_task.target_type",
+      "concept_id": "concept:approval_task",
+      "name": "target_type",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:approval_task.target_id",
+      "concept_id": "concept:approval_task",
+      "name": "target_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:approval_task.step_name",
+      "concept_id": "concept:approval_task",
+      "name": "step_name",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_approval_record.rows"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:approval_task.approver_user_id",
+      "concept_id": "concept:approval_task",
+      "name": "approver_user_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:approval_task.approval_status",
+      "concept_id": "concept:approval_task",
+      "name": "approval_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_approval_record.approval_status"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:approval_task.submitted_at",
+      "concept_id": "concept:approval_task",
+      "name": "submitted_at",
+      "type": "attribute",
+      "data_type": "datetime",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:supplier.supplier_id",
+      "concept_id": "concept:supplier",
+      "name": "supplier_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_supplier"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "attr:supplier.supplier_code",
+      "concept_id": "concept:supplier",
+      "name": "supplier_code",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_supplier"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:supplier.supplier_name",
+      "concept_id": "concept:supplier",
+      "name": "supplier_name",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_supplier"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:supplier.supplier_status",
+      "concept_id": "concept:supplier",
+      "name": "supplier_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_supplier.rows"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attr:supplier.risk_rating",
+      "concept_id": "concept:supplier",
+      "name": "risk_rating",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_supplier.rows"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attr:contract.contract_id",
+      "concept_id": "concept:contract",
+      "name": "contract_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:contract.contract_no",
+      "concept_id": "concept:contract",
+      "name": "contract_no",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:contract.request_id",
+      "concept_id": "concept:contract",
+      "name": "request_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:contract.supplier_id",
+      "concept_id": "concept:contract",
+      "name": "supplier_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:contract.contract_title",
+      "concept_id": "concept:contract",
+      "name": "contract_title",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:contract.contract_amount",
+      "concept_id": "concept:contract",
+      "name": "contract_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "code.Contract.domain"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:contract.contract_status",
+      "concept_id": "concept:contract",
+      "name": "contract_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_contract.contract_status"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_order.po_id",
+      "concept_id": "concept:purchase_order",
+      "name": "po_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_order.po_no",
+      "concept_id": "concept:purchase_order",
+      "name": "po_no",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_order.contract_id",
+      "concept_id": "concept:purchase_order",
+      "name": "contract_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_order.request_id",
+      "concept_id": "concept:purchase_order",
+      "name": "request_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:purchase_order.supplier_id",
+      "concept_id": "concept:purchase_order",
+      "name": "supplier_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:purchase_order.po_amount",
+      "concept_id": "concept:purchase_order",
+      "name": "po_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:purchase_order.po_status",
+      "concept_id": "concept:purchase_order",
+      "name": "po_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_purchase_order.po_status"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:invoice.invoice_id",
+      "concept_id": "concept:invoice",
+      "name": "invoice_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:invoice.invoice_no",
+      "concept_id": "concept:invoice",
+      "name": "invoice_no",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:invoice.supplier_id",
+      "concept_id": "concept:invoice",
+      "name": "supplier_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:invoice.po_id",
+      "concept_id": "concept:invoice",
+      "name": "po_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:invoice.invoice_amount",
+      "concept_id": "concept:invoice",
+      "name": "invoice_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "code.Invoice.domain"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:invoice.invoice_date",
+      "concept_id": "concept:invoice",
+      "name": "invoice_date",
+      "type": "attribute",
+      "data_type": "date",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "attr:invoice.invoice_status",
+      "concept_id": "concept:invoice",
+      "name": "invoice_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_invoice.invoice_status"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:payment.payment_request_id",
+      "concept_id": "concept:payment",
+      "name": "payment_request_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_payment_request"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:payment.payment_no",
+      "concept_id": "concept:payment",
+      "name": "payment_no",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_payment_request"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:payment.invoice_id",
+      "concept_id": "concept:payment",
+      "name": "invoice_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_payment_request"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:payment.payment_amount",
+      "concept_id": "concept:payment",
+      "name": "payment_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": true,
+      "evidence_refs": [
+        "code.PaymentRequest.domain"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:payment.payment_status",
+      "concept_id": "concept:payment",
+      "name": "payment_status",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "db.column.pc_payment_request.payment_status"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:payment.due_date",
+      "concept_id": "concept:payment",
+      "name": "due_date",
+      "type": "attribute",
+      "data_type": "date",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_payment_request"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "attr:department.department_id",
+      "concept_id": "concept:department",
+      "name": "department_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_department"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:department.department_code",
+      "concept_id": "concept:department",
+      "name": "department_code",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_department.rows"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:department.department_name",
+      "concept_id": "concept:department",
+      "name": "department_name",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_department.rows"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:department.cost_center",
+      "concept_id": "concept:department",
+      "name": "cost_center",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_department.rows"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:department.is_active",
+      "concept_id": "concept:department",
+      "name": "is_active",
+      "type": "attribute",
+      "data_type": "boolean",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_department"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:employee.user_id",
+      "concept_id": "concept:employee",
+      "name": "user_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_user"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attr:employee.user_name",
+      "concept_id": "concept:employee",
+      "name": "user_name",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "csv.pc_user.rows"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:employee.role_code",
+      "concept_id": "concept:employee",
+      "name": "role_code",
+      "type": "attribute",
+      "data_type": "enum",
+      "required": true,
+      "evidence_refs": [
+        "code.RoleCode.constants"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:employee.department_id",
+      "concept_id": "concept:employee",
+      "name": "department_id",
+      "type": "attribute",
+      "data_type": "integer",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_user"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:employee.email",
+      "concept_id": "concept:employee",
+      "name": "email",
+      "type": "attribute",
+      "data_type": "string",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_user"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:employee.is_active",
+      "concept_id": "concept:employee",
+      "name": "is_active",
+      "type": "attribute",
+      "data_type": "boolean",
+      "required": true,
+      "evidence_refs": [
+        "db.table.pc_user"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attr:budget_reservation.reserved_amount",
+      "concept_id": "concept:budget_reservation",
+      "name": "reserved_amount",
+      "type": "attribute",
+      "data_type": "decimal",
+      "required": false,
+      "evidence_refs": [
+        "doc:nonexistent_budget_policy"
+      ],
+      "confidence": 0.32
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:purchase_request.has_item",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:purchase_request_item",
+      "predicate": "has item",
+      "cardinality": "one_to_many",
+      "evidence_refs": [
+        "db.table.pc_purchase_request_line"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "rel:purchase_request.requested_by_employee",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:employee",
+      "predicate": "requested by",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "rel:purchase_request.belongs_to_department",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:department",
+      "predicate": "belongs to",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "rel:purchase_request.has_approval_task",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:approval_task",
+      "predicate": "has approval task",
+      "cardinality": "one_to_many",
+      "evidence_refs": [
+        "db.table.pc_approval_record"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "rel:contract.from_purchase_request",
+      "type": "relation",
+      "source_concept_id": "concept:contract",
+      "target_concept_id": "concept:purchase_request",
+      "predicate": "created from",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "doc.contract_lifecycle.definition"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "rel:contract.with_supplier",
+      "type": "relation",
+      "source_concept_id": "concept:contract",
+      "target_concept_id": "concept:supplier",
+      "predicate": "with",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "rel:purchase_order.released_against_contract",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_order",
+      "target_concept_id": "concept:contract",
+      "predicate": "released against",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "doc.procurement_process.purchase_order_release"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "rel:purchase_order.sent_to_supplier",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_order",
+      "target_concept_id": "concept:supplier",
+      "predicate": "sent to",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_purchase_order"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "rel:invoice.issued_by_supplier",
+      "type": "relation",
+      "source_concept_id": "concept:invoice",
+      "target_concept_id": "concept:supplier",
+      "predicate": "issued by",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "rel:invoice.for_purchase_order",
+      "type": "relation",
+      "source_concept_id": "concept:invoice",
+      "target_concept_id": "concept:purchase_order",
+      "predicate": "for",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "db.table.pc_invoice"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "rel:invoice.generates_payment",
+      "type": "relation",
+      "source_concept_id": "concept:invoice",
+      "target_concept_id": "concept:payment",
+      "predicate": "generates",
+      "cardinality": "one_to_many",
+      "evidence_refs": [
+        "code.PaymentService.createPaymentApplication"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "id": "rel:payment.for_invoice",
+      "type": "relation",
+      "source_concept_id": "concept:payment",
+      "target_concept_id": "concept:invoice",
+      "predicate": "for",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "code.PaymentService.createPaymentApplication"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "rel:budget_reservation.controls_purchase_request",
+      "type": "relation",
+      "source_concept_id": "concept:budget_reservation",
+      "target_concept_id": "concept:purchase_request",
+      "predicate": "controls",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "doc:nonexistent_budget_policy"
+      ],
+      "confidence": 0.3
+    }
+  ],
+  "events": [
+    {
+      "id": "event:purchase_request_submitted",
+      "type": "event",
+      "name": "Purchase Request Submitted",
+      "participant_concept_ids": [
+        "concept:purchase_request"
+      ],
+      "evidence_refs": [
+        "code.PurchaseRequestService.submitPR"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "event:contract_activated",
+      "type": "event",
+      "name": "Contract Activated",
+      "participant_concept_ids": [
+        "concept:contract"
+      ],
+      "evidence_refs": [
+        "code.ContractService.activateContract"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "event:payment_requested",
+      "type": "event",
+      "name": "Payment Requested",
+      "participant_concept_ids": [
+        "concept:payment",
+        "concept:invoice"
+      ],
+      "evidence_refs": [
+        "code.PaymentService.createPaymentApplication"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule:purchase_request_requires_line",
+      "type": "rule",
+      "name": "Purchase Request Requires Line",
+      "condition": "before submit purchase request",
+      "effect": "request must contain at least one line item",
+      "applies_to_ids": [
+        "concept:purchase_request",
+        "concept:purchase_request_item"
+      ],
+      "evidence_refs": [
+        "code.PurchaseRequestService.submitPR"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "rule:high_value_request_finance_approval",
+      "type": "rule",
+      "name": "High Value Request Finance Approval",
+      "condition": "estimated amount reaches high value threshold",
+      "effect": "finance manager approval is required after department approval",
+      "applies_to_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ],
+      "evidence_refs": [
+        "code.ApprovalService.requiredApproverRole"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "rule:invoice_requires_match_before_payment",
+      "type": "rule",
+      "name": "Invoice Requires Match Before Payment",
+      "condition": "before creating payment request",
+      "effect": "invoice must be matched",
+      "applies_to_ids": [
+        "concept:invoice",
+        "concept:payment"
+      ],
+      "evidence_refs": [
+        "doc.receipt_invoice_payment.invoice_matching"
+      ],
+      "confidence": 0.76
+    }
+  ],
+  "actions": [
+    {
+      "id": "action:submit_purchase_request",
+      "type": "action",
+      "name": "Submit Purchase Request",
+      "actor_role_ids": [
+        "role:requester"
+      ],
+      "target_concept_ids": [
+        "concept:purchase_request"
+      ],
+      "evidence_refs": [
+        "code.PurchaseRequestService.submitPR"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "action:approve_payment",
+      "type": "action",
+      "name": "Approve Payment",
+      "actor_role_ids": [
+        "role:finance_manager"
+      ],
+      "target_concept_ids": [
+        "concept:payment"
+      ],
+      "evidence_refs": [
+        "code.PaymentService.approvePayment"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "states": [
+    {
+      "id": "state:purchase_request.submitted",
+      "type": "state",
+      "name": "SUBMITTED",
+      "owner_concept_id": "concept:purchase_request",
+      "evidence_refs": [
+        "db.column.pc_purchase_request.request_status"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "state:contract.active",
+      "type": "state",
+      "name": "ACTIVE",
+      "owner_concept_id": "concept:contract",
+      "evidence_refs": [
+        "db.column.pc_contract.contract_status"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "state:invoice.matched",
+      "type": "state",
+      "name": "MATCHED",
+      "owner_concept_id": "concept:invoice",
+      "evidence_refs": [
+        "db.column.pc_invoice.invoice_status"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "state:payment.paid",
+      "type": "state",
+      "name": "PAID",
+      "owner_concept_id": "concept:payment",
+      "evidence_refs": [
+        "db.column.pc_payment_request.payment_status"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "roles": [
+    {
+      "id": "role:requester",
+      "type": "role",
+      "name": "Requester",
+      "evidence_refs": [
+        "doc.role_permission_matrix.roles"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "role:finance_manager",
+      "type": "role",
+      "name": "Finance Manager",
+      "evidence_refs": [
+        "doc.role_permission_matrix.roles"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "permissions": [
+    {
+      "id": "perm:finance_manager.approve_payment",
+      "type": "permission",
+      "role_id": "role:finance_manager",
+      "action_id": "action:approve_payment",
+      "resource_concept_id": "concept:payment",
+      "effect": "allow",
+      "evidence_refs": [
+        "code.PaymentService.approvePayment"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "aliases": [
+    {
+      "id": "alias:purchase_request.pr",
+      "type": "alias",
+      "canonical_id": "concept:purchase_request",
+      "alias": "PR",
+      "language": "en",
+      "confidence": 0.8
+    },
+    {
+      "id": "alias:payment.application",
+      "type": "alias",
+      "canonical_id": "concept:payment",
+      "alias": "Payment Application",
+      "language": "en",
+      "confidence": 0.75
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map:purchase_request.table",
+      "type": "mapping",
+      "ontology_element_id": "concept:purchase_request",
+      "source_element": "pc_purchase_request",
+      "source_type": "database",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "db.table.pc_purchase_request"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "map:contract.table",
+      "type": "mapping",
+      "ontology_element_id": "concept:contract",
+      "source_element": "pc_contract",
+      "source_type": "database",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "db.table.pc_contract"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "map:payment.table",
+      "type": "mapping",
+      "ontology_element_id": "concept:payment",
+      "source_element": "pc_payment_request",
+      "source_type": "database",
+      "mapping_type": "derived",
+      "transform_note": "Payment concept merged with Payment Request naming from documents.",
+      "evidence_refs": [
+        "db.table.pc_payment_request",
+        "doc.receipt_invoice_payment.payment_application"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "conflict:payment.naming",
+      "type": "conflict",
+      "description": "Documents call it Payment Application while database table uses pc_payment_request. Demo output resolves both to Payment Request.",
+      "involved_ids": [
+        "concept:payment",
+        "map:payment.table"
+      ],
+      "severity": "low",
+      "resolution_status": "needs_human_review",
+      "evidence_refs": [
+        "db.table.pc_payment_request",
+        "doc.receipt_invoice_payment.payment_application"
+      ],
+      "confidence": 0.64
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:material.master_missing",
+      "type": "uncertainty",
+      "target_id": "concept:purchase_request_item",
+      "description": "The demo output did not create a standalone Material concept because no material master table exists. This is an intentional omission for demo scoring.",
+      "reason": "sample output limitation",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "csv.pc_purchase_request_line.rows"
+      ],
+      "confidence": 0.42
+    },
+    {
+      "id": "uncertainty:budget_reservation",
+      "type": "uncertainty",
+      "target_id": "concept:budget_reservation",
+      "description": "Budget Reservation was inferred from amount approval wording but lacks direct evidence in the MVP dataset.",
+      "reason": "weak evidence",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:nonexistent_budget_policy"
+      ],
+      "confidence": 0.3
+    }
+  ],
+  "evidence_refs": [
+    "db.table.pc_purchase_request",
+    "db.table.pc_contract",
+    "db.table.pc_payment_request",
+    "doc.business_overview.core_objects"
+  ],
+  "confidence": 0.78,
+  "provenance": {
+    "created_by": "demo_baseline_simulated_ai",
+    "created_at": "2026-07-03T10:00:00Z",
+    "method": "ai_generated",
+    "source_system": "generic_procurement_contract_mvp",
+    "tool_profile_ref": "tool:demo_baseline",
+    "prompt_ref": "task_05_multi_source_fusion",
+    "version": "demo-sample"
+  }
+}
