@@ -1,0 +1,375 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/evaluation_report.schema.json",
+  "title": "Evaluation Report Schema",
+  "description": "评估报告结构，汇总客户 profile、工具画像、任务结果、能力结论、红线和建议。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "title",
+    "customer_profile_ref",
+    "tool_profile_ref",
+    "evaluation_period",
+    "executive_summary",
+    "capability_results",
+    "conclusion"
+  ],
+  "properties": {
+    "report_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "customer_profile_ref": {
+      "$ref": "#/$defs/identifier"
+    },
+    "tool_profile_ref": {
+      "$ref": "#/$defs/identifier"
+    },
+    "evaluation_period": {
+      "$ref": "#/$defs/evaluation_period"
+    },
+    "executive_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "overall_grade": {
+      "type": "string",
+      "enum": [
+        "A",
+        "A-",
+        "B+",
+        "B",
+        "B-",
+        "C+",
+        "C",
+        "C-",
+        "D",
+        "N/A"
+      ]
+    },
+    "capability_results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capability_result"
+      },
+      "minItems": 1
+    },
+    "task_result_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true
+    },
+    "redline_results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/redline_result"
+      }
+    },
+    "score_caps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/score_cap"
+      }
+    },
+    "key_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recommendation"
+      }
+    },
+    "conclusion": {
+      "$ref": "#/$defs/conclusion"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "description": "稳定标识符，建议使用英文、数字、下划线、短横线、点号或冒号。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "置信度，0 表示完全不确定，1 表示高度确定。"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "description": "关联的 evidence_id 列表。",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "provenance": {
+      "type": "object",
+      "description": "产出来源、生成方式和可追溯信息。",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "创建人、操作员或工具。"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间。"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "ai_generated",
+            "hybrid",
+            "imported"
+          ],
+          "description": "生成方式。"
+        },
+        "source_system": {
+          "type": "string",
+          "description": "来源系统或数据集。"
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prompt_ref": {
+          "type": "string",
+          "description": "使用的提示词或提示词版本。"
+        },
+        "version": {
+          "type": "string",
+          "description": "产物版本。"
+        },
+        "notes": {
+          "type": "string",
+          "description": "补充说明。"
+        }
+      }
+    },
+    "evaluation_period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_date",
+        "end_date"
+      ],
+      "properties": {
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "capability_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability_id",
+        "capability_name",
+        "grade"
+      ],
+      "properties": {
+        "capability_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "capability_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "grade": {
+          "type": "string",
+          "enum": [
+            "A",
+            "A-",
+            "B+",
+            "B",
+            "B-",
+            "C+",
+            "C",
+            "C-",
+            "D",
+            "N/A"
+          ]
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "task_result_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "redline_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "status"
+      ],
+      "properties": {
+        "rule_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_applicable",
+            "not_tested"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        }
+      }
+    },
+    "score_cap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason",
+        "max_grade"
+      ],
+      "properties": {
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "max_grade": {
+          "type": "string",
+          "enum": [
+            "A",
+            "A-",
+            "B+",
+            "B",
+            "B-",
+            "C+",
+            "C",
+            "C-",
+            "D",
+            "N/A"
+          ]
+        },
+        "affected_capabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "priority",
+        "description"
+      ],
+      "properties": {
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string"
+        },
+        "due_date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "rationale"
+      ],
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "ready",
+            "ready_with_constraints",
+            "not_ready",
+            "insufficient_data"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

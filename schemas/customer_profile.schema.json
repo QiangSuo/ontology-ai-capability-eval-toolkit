@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/customer_profile.schema.json",
+  "title": "Customer Profile Schema",
+  "description": "客户现场环境画像，用于记录客户、网络、权限、数据源、工具和评估范围。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "customer_profile_id",
+    "customer_name",
+    "environment",
+    "data_sources",
+    "access_constraints"
+  ],
+  "properties": {
+    "customer_profile_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "customer_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "industry": {
+      "type": "string"
+    },
+    "business_domain": {
+      "type": "string"
+    },
+    "environment": {
+      "$ref": "#/$defs/environment"
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/data_source"
+      },
+      "minItems": 1
+    },
+    "access_constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/access_constraint"
+      }
+    },
+    "security_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "available_tools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/available_tool"
+      }
+    },
+    "operator_profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/operator_profile"
+      }
+    },
+    "evaluation_scope": {
+      "$ref": "#/$defs/evaluation_scope"
+    },
+    "contact": {
+      "$ref": "#/$defs/contact"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "description": "稳定标识符，建议使用英文、数字、下划线、短横线、点号或冒号。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "置信度，0 表示完全不确定，1 表示高度确定。"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "description": "关联的 evidence_id 列表。",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "provenance": {
+      "type": "object",
+      "description": "产出来源、生成方式和可追溯信息。",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "创建人、操作员或工具。"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间。"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "ai_generated",
+            "hybrid",
+            "imported"
+          ],
+          "description": "生成方式。"
+        },
+        "source_system": {
+          "type": "string",
+          "description": "来源系统或数据集。"
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prompt_ref": {
+          "type": "string",
+          "description": "使用的提示词或提示词版本。"
+        },
+        "version": {
+          "type": "string",
+          "description": "产物版本。"
+        },
+        "notes": {
+          "type": "string",
+          "description": "补充说明。"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment_name",
+        "environment_type"
+      ],
+      "properties": {
+        "environment_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment_type": {
+          "type": "string",
+          "enum": [
+            "internet",
+            "intranet",
+            "isolated",
+            "hybrid",
+            "unknown"
+          ]
+        },
+        "network_access": {
+          "type": "string",
+          "enum": [
+            "full",
+            "restricted",
+            "offline",
+            "unknown"
+          ]
+        },
+        "deployment_location": {
+          "type": "string"
+        },
+        "operating_systems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "data_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data_source_id",
+        "name",
+        "type",
+        "availability"
+      ],
+      "properties": {
+        "data_source_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "code",
+            "database",
+            "sample_data",
+            "screenshot",
+            "document",
+            "web_page",
+            "other"
+          ]
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "available",
+            "restricted",
+            "unavailable",
+            "unknown"
+          ]
+        },
+        "location": {
+          "type": "string"
+        },
+        "sensitivity": {
+          "type": "string",
+          "enum": [
+            "public",
+            "internal",
+            "confidential",
+            "restricted",
+            "unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "access_constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint_type",
+        "description"
+      ],
+      "properties": {
+        "constraint_type": {
+          "type": "string",
+          "enum": [
+            "network",
+            "file",
+            "command",
+            "database",
+            "browser",
+            "image",
+            "export",
+            "policy",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "impact": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "available_tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool_name"
+      ],
+      "properties": {
+        "tool_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "license_status": {
+          "type": "string",
+          "enum": [
+            "available",
+            "limited",
+            "unavailable",
+            "unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "operator_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operator_id",
+        "experience_level"
+      ],
+      "properties": {
+        "operator_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "role": {
+          "type": "string"
+        },
+        "experience_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "expert"
+          ]
+        },
+        "tool_familiarity": {
+          "type": "string",
+          "enum": [
+            "none",
+            "basic",
+            "intermediate",
+            "advanced",
+            "expert"
+          ]
+        }
+      }
+    },
+    "evaluation_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "smoke",
+              "standard",
+              "deep_agentic",
+              "custom"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "included_capabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "excluded_capabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "dataset_id": "generic_procurement_contract_mvp",
+  "dataset_name": "Generic Procurement Approval and Contract Fulfillment MVP",
+  "version": "1.0.0",
+  "domain": "enterprise_procurement_contract_fulfillment",
+  "language": "zh-CN and en-US mixed input",
+  "created_at": "2026-07-03",
+  "data_classification": "fictional_synthetic_data_only",
+  "scope": {
+    "included_input_types": [
+      "source_code",
+      "database_ddl",
+      "sample_data_csv",
+      "business_documents"
+    ],
+    "excluded_artifacts": [
+      "gold_ontology",
+      "gold_evidence_map",
+      "acceptable_aliases",
+      "known_conflicts",
+      "scoring_scripts",
+      "screenshots",
+      "web_pages",
+      "pdf",
+      "excel"
+    ],
+    "business_coverage": [
+      "purchase_request",
+      "approval",
+      "supplier",
+      "contract",
+      "purchase_order",
+      "goods_receipt",
+      "invoice",
+      "payment_request",
+      "contract_fulfillment"
+    ]
+  },
+  "artifacts": [
+    {
+      "type": "dataset_readme",
+      "path": "README.md",
+      "description": "Input artifact: README.md"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/common/ProcurementStatus.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/common/ProcurementStatus.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/common/RoleCode.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/common/RoleCode.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/PurchaseRequest.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/PurchaseRequest.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/PurchaseRequestLine.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/PurchaseRequestLine.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/Supplier.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/Supplier.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/Contract.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/Contract.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/PurchaseOrder.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/PurchaseOrder.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/GoodsReceipt.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/GoodsReceipt.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/Invoice.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/Invoice.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/domain/PaymentRequest.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/domain/PaymentRequest.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/PurchaseRequestService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/PurchaseRequestService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/ApprovalService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/ApprovalService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/ContractService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/ContractService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/PurchaseOrderService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/PurchaseOrderService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/ReceiptInvoiceMatchingService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/ReceiptInvoiceMatchingService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/service/PaymentService.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/controller/PurchaseRequestController.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/controller/PurchaseRequestController.java"
+    },
+    {
+      "type": "source_code",
+      "path": "source_code/src/main/java/com/example/procurement/controller/ContractController.java",
+      "description": "Input artifact: source_code/src/main/java/com/example/procurement/controller/ContractController.java"
+    },
+    {
+      "type": "database_ddl",
+      "path": "database/ddl.sql",
+      "description": "Input artifact: database/ddl.sql"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_department.csv",
+      "description": "Input artifact: database/sample_data/pc_department.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_user.csv",
+      "description": "Input artifact: database/sample_data/pc_user.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_supplier.csv",
+      "description": "Input artifact: database/sample_data/pc_supplier.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_purchase_request.csv",
+      "description": "Input artifact: database/sample_data/pc_purchase_request.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_purchase_request_line.csv",
+      "description": "Input artifact: database/sample_data/pc_purchase_request_line.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_approval_record.csv",
+      "description": "Input artifact: database/sample_data/pc_approval_record.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_contract.csv",
+      "description": "Input artifact: database/sample_data/pc_contract.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_purchase_order.csv",
+      "description": "Input artifact: database/sample_data/pc_purchase_order.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_goods_receipt.csv",
+      "description": "Input artifact: database/sample_data/pc_goods_receipt.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_invoice.csv",
+      "description": "Input artifact: database/sample_data/pc_invoice.csv"
+    },
+    {
+      "type": "sample_data_csv",
+      "path": "database/sample_data/pc_payment_request.csv",
+      "description": "Input artifact: database/sample_data/pc_payment_request.csv"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/business_overview.md",
+      "description": "Input artifact: documents/business_overview.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/procurement_process.md",
+      "description": "Input artifact: documents/procurement_process.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/contract_lifecycle.md",
+      "description": "Input artifact: documents/contract_lifecycle.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/receipt_invoice_payment_policy.md",
+      "description": "Input artifact: documents/receipt_invoice_payment_policy.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/role_permission_matrix.md",
+      "description": "Input artifact: documents/role_permission_matrix.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/business_rules.md",
+      "description": "Input artifact: documents/business_rules.md"
+    },
+    {
+      "type": "business_document",
+      "path": "documents/glossary.md",
+      "description": "Input artifact: documents/glossary.md"
+    }
+  ],
+  "recommended_test_subsets": {
+    "smoke_test": {
+      "estimated_duration": "1-2 hours",
+      "suggested_paths": [
+        "database/ddl.sql",
+        "documents/business_overview.md",
+        "documents/procurement_process.md",
+        "source_code/src/main/java/com/example/procurement/service/PurchaseRequestService.java",
+        "source_code/src/main/java/com/example/procurement/service/ApprovalService.java",
+        "database/sample_data/pc_purchase_request.csv",
+        "database/sample_data/pc_approval_record.csv"
+      ]
+    },
+    "standard_test": {
+      "estimated_duration": "0.5-1 day",
+      "suggested_paths": [
+        "README.md",
+        "source_code/",
+        "database/",
+        "documents/"
+      ]
+    }
+  },
+  "design_notes": {
+    "input_only": true,
+    "fictional_data_statement": "All entities, people, suppliers, transaction numbers, emails, amounts and dates are fictional and created for testing.",
+    "intentional_variations": [
+      "Supplier is the preferred business term, while some code methods use Vendor.",
+      "Purchase Request is often abbreviated as PR in code and data.",
+      "Goods Receipt is also called GRN in warehouse documents and sample receipt numbers.",
+      "Payment Request is also called Payment Application in documents and code method names.",
+      "Approval threshold wording differs slightly between DDL/business rules and code.",
+      "Invoice matching tolerance differs between policy text and code constant.",
+      "Contract activation policy mentions both-party signature, while DDL stores legal approval and activation timestamps only."
+    ]
+  }
+}

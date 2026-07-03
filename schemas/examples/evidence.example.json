@@ -1,0 +1,28 @@
+{
+  "evidence_id": "ev:ddl.purchase_request",
+  "evidence_type": "database",
+  "title": "purchase_request table DDL",
+  "summary": "DDL shows amount and supplier_id fields.",
+  "source": {
+    "name": "procurement_db",
+    "type": "database",
+    "version": "level2"
+  },
+  "locator": "procurement.purchase_request",
+  "excerpt": "CREATE TABLE purchase_request (id bigint, amount decimal(18,2), supplier_id bigint);",
+  "collected_at": "2026-07-03T00:00:00Z",
+  "confidence": 0.95,
+  "relevance": "Supports Purchase Request concept and attributes.",
+  "database": {
+    "database_name": "procurement_db",
+    "schema_name": "procurement",
+    "table_name": "purchase_request",
+    "object_type": "table",
+    "ddl_excerpt": "amount decimal(18,2)"
+  },
+  "provenance": {
+    "created_by": "example",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual"
+  }
+}

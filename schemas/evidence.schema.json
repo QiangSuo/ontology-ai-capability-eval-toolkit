@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/evidence.schema.json",
+  "title": "Evidence Schema",
+  "description": "证据结构，支持代码、数据库、样例数据、截图、文档和网页证据。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "evidence_type",
+    "title",
+    "source",
+    "confidence"
+  ],
+  "properties": {
+    "evidence_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "code",
+        "database",
+        "sample_data",
+        "screenshot",
+        "document",
+        "web_page"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "description": "证据摘要。"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "locator": {
+      "type": "string",
+      "description": "人类可读定位信息，例如文件路径、表名、URL 或页码。"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "证据片段或摘录。"
+    },
+    "content_ref": {
+      "type": "string",
+      "description": "原始内容或附件的相对路径。"
+    },
+    "checksum": {
+      "type": "string",
+      "description": "可选内容校验和。"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "confidence": {
+      "$ref": "#/$defs/confidence"
+    },
+    "relevance": {
+      "type": "string",
+      "description": "该证据支持的结论。"
+    },
+    "code": {
+      "$ref": "#/$defs/code_evidence"
+    },
+    "database": {
+      "$ref": "#/$defs/database_evidence"
+    },
+    "sample_data": {
+      "$ref": "#/$defs/sample_data_evidence"
+    },
+    "screenshot": {
+      "$ref": "#/$defs/screenshot_evidence"
+    },
+    "document": {
+      "$ref": "#/$defs/document_evidence"
+    },
+    "web_page": {
+      "$ref": "#/$defs/web_page_evidence"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "code"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "code"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "database"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "database"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "sample_data"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "sample_data"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "screenshot"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "screenshot"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "document"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "document"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "web_page"
+          }
+        },
+        "required": [
+          "evidence_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "web_page"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "description": "稳定标识符，建议使用英文、数字、下划线、短横线、点号或冒号。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "置信度，0 表示完全不确定，1 表示高度确定。"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "description": "关联的 evidence_id 列表。",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "provenance": {
+      "type": "object",
+      "description": "产出来源、生成方式和可追溯信息。",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "创建人、操作员或工具。"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间。"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "ai_generated",
+            "hybrid",
+            "imported"
+          ],
+          "description": "生成方式。"
+        },
+        "source_system": {
+          "type": "string",
+          "description": "来源系统或数据集。"
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prompt_ref": {
+          "type": "string",
+          "description": "使用的提示词或提示词版本。"
+        },
+        "version": {
+          "type": "string",
+          "description": "产物版本。"
+        },
+        "notes": {
+          "type": "string",
+          "description": "补充说明。"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "repository",
+            "database",
+            "file",
+            "image",
+            "document",
+            "website",
+            "system",
+            "other"
+          ]
+        },
+        "uri": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        }
+      }
+    },
+    "code_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file_path"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "database_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "database_name"
+      ],
+      "properties": {
+        "database_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schema_name": {
+          "type": "string"
+        },
+        "table_name": {
+          "type": "string"
+        },
+        "column_name": {
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string",
+          "enum": [
+            "schema",
+            "table",
+            "column",
+            "view",
+            "procedure",
+            "index",
+            "constraint",
+            "query",
+            "other"
+          ]
+        },
+        "ddl_excerpt": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string"
+        }
+      }
+    },
+    "sample_data_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_name"
+      ],
+      "properties": {
+        "dataset_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "sample_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "screenshot_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "image_path"
+      ],
+      "properties": {
+        "image_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ui_area": {
+          "type": "string"
+        },
+        "ocr_text": {
+          "type": "string"
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "document_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document_path"
+      ],
+      "properties": {
+        "document_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_title": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "paragraph": {
+          "type": "string"
+        }
+      }
+    },
+    "web_page_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "page_title": {
+          "type": "string"
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "archive_ref": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

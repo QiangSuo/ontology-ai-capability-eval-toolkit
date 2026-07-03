@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/tool_profile.schema.json",
+  "title": "Tool Profile Schema",
+  "description": "客户现场 AI 工具组合画像，记录工具、模型、权限、能力边界和推荐/不推荐使用场景。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tool_profile_id",
+    "tool_name",
+    "model_name",
+    "customer_environment",
+    "capabilities",
+    "recommended_use_cases",
+    "not_recommended_use_cases"
+  ],
+  "properties": {
+    "tool_profile_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "tool_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "工具名称。"
+    },
+    "tool_version": {
+      "type": "string",
+      "description": "工具版本。"
+    },
+    "vendor": {
+      "type": "string",
+      "description": "供应商或提供方。"
+    },
+    "model_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "底层模型名称。"
+    },
+    "model_version": {
+      "type": "string",
+      "description": "模型版本。"
+    },
+    "customer_environment": {
+      "$ref": "#/$defs/customer_environment"
+    },
+    "capabilities": {
+      "$ref": "#/$defs/capabilities"
+    },
+    "json_output_stability": {
+      "$ref": "#/$defs/json_output_stability"
+    },
+    "recommended_use_cases": {
+      "type": "array",
+      "description": "推荐使用场景。",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "not_recommended_use_cases": {
+      "type": "array",
+      "description": "不推荐使用场景。",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "description": "稳定标识符，建议使用英文、数字、下划线、短横线、点号或冒号。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "置信度，0 表示完全不确定，1 表示高度确定。"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "description": "关联的 evidence_id 列表。",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "provenance": {
+      "type": "object",
+      "description": "产出来源、生成方式和可追溯信息。",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "创建人、操作员或工具。"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间。"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "ai_generated",
+            "hybrid",
+            "imported"
+          ],
+          "description": "生成方式。"
+        },
+        "source_system": {
+          "type": "string",
+          "description": "来源系统或数据集。"
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prompt_ref": {
+          "type": "string",
+          "description": "使用的提示词或提示词版本。"
+        },
+        "version": {
+          "type": "string",
+          "description": "产物版本。"
+        },
+        "notes": {
+          "type": "string",
+          "description": "补充说明。"
+        }
+      }
+    },
+    "customer_environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment_name",
+        "environment_type"
+      ],
+      "properties": {
+        "environment_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "客户环境名称。"
+        },
+        "environment_type": {
+          "type": "string",
+          "enum": [
+            "internet",
+            "intranet",
+            "isolated",
+            "hybrid",
+            "unknown"
+          ],
+          "description": "客户环境类型。"
+        },
+        "network_zone": {
+          "type": "string"
+        },
+        "deployment_mode": {
+          "type": "string",
+          "enum": [
+            "saas",
+            "private_cloud",
+            "on_premise",
+            "desktop",
+            "ide_plugin",
+            "unknown"
+          ]
+        },
+        "operating_system": {
+          "type": "string"
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internet_access",
+        "can_read_files",
+        "can_execute_commands",
+        "supports_images",
+        "supports_browser",
+        "supports_database_connection",
+        "long_context_capability"
+      ],
+      "properties": {
+        "internet_access": {
+          "type": "boolean",
+          "description": "是否联网。"
+        },
+        "can_read_files": {
+          "type": "boolean",
+          "description": "是否可读文件。"
+        },
+        "can_execute_commands": {
+          "type": "boolean",
+          "description": "是否可执行命令。"
+        },
+        "supports_images": {
+          "type": "boolean",
+          "description": "是否支持图片。"
+        },
+        "supports_browser": {
+          "type": "boolean",
+          "description": "是否支持浏览器。"
+        },
+        "supports_database_connection": {
+          "type": "boolean",
+          "description": "是否支持数据库连接。"
+        },
+        "long_context_capability": {
+          "$ref": "#/$defs/long_context_capability"
+        },
+        "can_persist_intermediate_results": {
+          "type": "boolean",
+          "description": "是否可保存中间结果。"
+        }
+      }
+    },
+    "long_context_capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "none",
+            "limited",
+            "medium",
+            "long",
+            "very_long",
+            "unknown"
+          ],
+          "description": "长上下文能力等级。"
+        },
+        "max_context_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "json_output_stability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "poor",
+            "fair",
+            "good",
+            "excellent",
+            "unknown"
+          ],
+          "description": "JSON 输出稳定性。"
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

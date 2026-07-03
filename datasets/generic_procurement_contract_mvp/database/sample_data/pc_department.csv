@@ -1,0 +1,7 @@
+department_id,department_code,department_name,cost_center,is_active,created_at
+10,OPS,Operations,CC-100,true,2026-01-02 09:00:00
+20,IT,Information Technology,CC-200,true,2026-01-02 09:05:00
+30,FIN,Finance,CC-300,true,2026-01-02 09:10:00
+40,LEGAL,Legal,CC-400,true,2026-01-02 09:15:00
+50,WH,Warehouse,CC-500,true,2026-01-02 09:20:00
+60,ADMIN,Procurement Administration,CC-600,true,2026-01-02 09:25:00

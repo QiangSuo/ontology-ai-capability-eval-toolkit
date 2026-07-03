@@ -1,0 +1,10 @@
+user_id,user_name,role_code,department_id,email,is_active,created_at
+1001,Avery Lin,REQUESTER,20,avery.lin@example.test,true,2026-01-03 08:00:00
+1002,Blair Chen,DEPT_MANAGER,20,blair.chen@example.test,true,2026-01-03 08:05:00
+1003,Casey Wu,PROCUREMENT_SPECIALIST,60,casey.wu@example.test,true,2026-01-03 08:10:00
+1004,Drew Tan,FINANCE_MANAGER,30,drew.tan@example.test,true,2026-01-03 08:15:00
+1005,Emery Zhou,LEGAL_REVIEWER,40,emery.zhou@example.test,true,2026-01-03 08:20:00
+1006,Finley Gao,WAREHOUSE_CLERK,50,finley.gao@example.test,true,2026-01-03 08:25:00
+1007,Gray Sun,AP_CLERK,30,gray.sun@example.test,true,2026-01-03 08:30:00
+1008,Harper Qiao,PROCUREMENT_ADMIN,60,harper.qiao@example.test,true,2026-01-03 08:35:00
+1009,Indigo Ma,REQUESTER,10,indigo.ma@example.test,true,2026-01-03 08:40:00

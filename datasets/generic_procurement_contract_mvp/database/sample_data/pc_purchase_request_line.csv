@@ -1,0 +1,16 @@
+line_id,request_id,item_description,category_code,quantity,unit_of_measure,estimated_unit_price,line_amount
+4001,3001,Standard business laptop,IT_HARDWARE,12,EA,3900.00,46800.00
+4002,3002,Wireless barcode scanner,WAREHOUSE_EQUIP,10,EA,6800.00,68000.00
+4003,3002,Scanner charging dock,WAREHOUSE_EQUIP,10,EA,450.00,4500.00
+4004,3003,Printer paper box,OFFICE_SUPPLY,30,BOX,120.00,3600.00
+4005,3003,Black ink cartridge,OFFICE_SUPPLY,20,EA,180.00,3600.00
+4006,3003,Whiteboard marker set,OFFICE_SUPPLY,50,SET,34.00,1700.00
+4007,3004,Air handling unit inspection,FACILITY_SERVICE,1,JOB,31500.00,31500.00
+4008,3005,Temporary inbound truck service,LOGISTICS_SERVICE,8,DAY,7000.00,56000.00
+4009,3006,Visitor safety helmet,SAFETY_SUPPLY,80,EA,85.00,6800.00
+4010,3006,Visitor reflective vest,SAFETY_SUPPLY,80,EA,72.50,5800.00
+4011,3007,Procurement policy workshop,TRAINING_SERVICE,3,DAY,14000.00,42000.00
+4012,3008,Rack cable manager,IT_HARDWARE,20,EA,280.00,5600.00
+4013,3008,Power distribution unit,IT_HARDWARE,8,EA,1600.00,12800.00
+4014,3009,Quarterly maintenance visit,FACILITY_SERVICE,4,VISIT,24750.00,99000.00
+4015,3010,Emergency valve kit,SAFETY_SUPPLY,6,EA,8500.00,51000.00

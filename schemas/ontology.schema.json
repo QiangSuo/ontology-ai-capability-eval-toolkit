@@ -1,0 +1,849 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/ontology.schema.json",
+  "title": "Ontology Output Schema",
+  "description": "本体抽取与融合结果结构，用于校验概念、属性、关系、事件、规则、权限、冲突、不确定性、证据和 provenance。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ontology_id",
+    "title",
+    "concepts"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Schema 版本。"
+    },
+    "ontology_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "本体名称。"
+    },
+    "domain": {
+      "type": "string",
+      "description": "业务域。"
+    },
+    "description": {
+      "type": "string",
+      "description": "本体说明。"
+    },
+    "concepts": {
+      "type": "array",
+      "description": "业务概念列表。",
+      "items": {
+        "$ref": "#/$defs/concept"
+      },
+      "default": []
+    },
+    "attributes": {
+      "type": "array",
+      "description": "概念属性列表。",
+      "items": {
+        "$ref": "#/$defs/attribute"
+      },
+      "default": []
+    },
+    "relations": {
+      "type": "array",
+      "description": "概念之间的关系。",
+      "items": {
+        "$ref": "#/$defs/relation"
+      },
+      "default": []
+    },
+    "events": {
+      "type": "array",
+      "description": "业务事件。",
+      "items": {
+        "$ref": "#/$defs/event"
+      },
+      "default": []
+    },
+    "rules": {
+      "type": "array",
+      "description": "业务规则。",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "default": []
+    },
+    "actions": {
+      "type": "array",
+      "description": "业务动作。",
+      "items": {
+        "$ref": "#/$defs/action"
+      },
+      "default": []
+    },
+    "states": {
+      "type": "array",
+      "description": "业务状态。",
+      "items": {
+        "$ref": "#/$defs/state"
+      },
+      "default": []
+    },
+    "roles": {
+      "type": "array",
+      "description": "业务角色。",
+      "items": {
+        "$ref": "#/$defs/role"
+      },
+      "default": []
+    },
+    "permissions": {
+      "type": "array",
+      "description": "权限定义。",
+      "items": {
+        "$ref": "#/$defs/permission"
+      },
+      "default": []
+    },
+    "aliases": {
+      "type": "array",
+      "description": "别名、同义词或历史命名。",
+      "items": {
+        "$ref": "#/$defs/alias"
+      },
+      "default": []
+    },
+    "mappings": {
+      "type": "array",
+      "description": "本体元素到源系统对象的映射。",
+      "items": {
+        "$ref": "#/$defs/mapping"
+      },
+      "default": []
+    },
+    "conflicts": {
+      "type": "array",
+      "description": "多源冲突记录。",
+      "items": {
+        "$ref": "#/$defs/conflict"
+      },
+      "default": []
+    },
+    "uncertainties": {
+      "type": "array",
+      "description": "待确认或低置信度记录。",
+      "items": {
+        "$ref": "#/$defs/uncertainty"
+      },
+      "default": []
+    },
+    "evidence_refs": {
+      "$ref": "#/$defs/evidence_refs"
+    },
+    "confidence": {
+      "$ref": "#/$defs/confidence"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "扩展元数据。",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:-]+$",
+      "description": "稳定标识符，建议使用英文、数字、下划线、短横线、点号或冒号。"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "置信度，0 表示完全不确定，1 表示高度确定。"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "description": "关联的 evidence_id 列表。",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "provenance": {
+      "type": "object",
+      "description": "产出来源、生成方式和可追溯信息。",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "创建人、操作员或工具。"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间。"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "ai_generated",
+            "hybrid",
+            "imported"
+          ],
+          "description": "生成方式。"
+        },
+        "source_system": {
+          "type": "string",
+          "description": "来源系统或数据集。"
+        },
+        "tool_profile_ref": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prompt_ref": {
+          "type": "string",
+          "description": "使用的提示词或提示词版本。"
+        },
+        "version": {
+          "type": "string",
+          "description": "产物版本。"
+        },
+        "notes": {
+          "type": "string",
+          "description": "补充说明。"
+        }
+      }
+    },
+    "concept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "概念名称。"
+        },
+        "type": {
+          "type": "string",
+          "const": "concept"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "description": "实体、流程、单据、组织等分类。"
+        },
+        "attribute_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "state_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "alias_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "uncertainty_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "concept_id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "concept_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "const": "attribute"
+        },
+        "data_type": {
+          "type": "string",
+          "description": "业务或技术数据类型。"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "description": {
+          "type": "string"
+        },
+        "allowed_values": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source_concept_id",
+        "target_concept_id",
+        "predicate"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "relation"
+        },
+        "source_concept_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "target_concept_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardinality": {
+          "type": "string",
+          "enum": [
+            "one_to_one",
+            "one_to_many",
+            "many_to_one",
+            "many_to_many",
+            "unknown"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "event"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "participant_concept_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "resulting_state_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "condition",
+        "effect"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "rule"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effect": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applies_to_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "action"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_role_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "target_concept_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "state"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_concept_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "role"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role_id",
+        "action_id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "permission"
+        },
+        "role_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "action_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "resource_concept_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "effect": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "deny",
+            "conditional"
+          ]
+        },
+        "condition": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "canonical_id",
+        "alias"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "alias"
+        },
+        "canonical_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "alias": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string"
+        },
+        "source_context": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "ontology_element_id",
+        "source_element"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "mapping"
+        },
+        "ontology_element_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_element": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "code",
+            "database",
+            "sample_data",
+            "screenshot",
+            "document",
+            "web_page",
+            "other"
+          ]
+        },
+        "mapping_type": {
+          "type": "string",
+          "enum": [
+            "exact",
+            "derived",
+            "partial",
+            "candidate",
+            "conflicting"
+          ]
+        },
+        "transform_note": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "involved_ids"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "conflict"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "involved_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "resolution_status": {
+          "type": "string",
+          "enum": [
+            "unresolved",
+            "resolved",
+            "accepted",
+            "needs_human_review"
+          ]
+        },
+        "resolution_note": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "type": "string",
+          "const": "uncertainty"
+        },
+        "target_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string"
+        },
+        "needs_human_review": {
+          "type": "boolean",
+          "default": true
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    }
+  }
+}

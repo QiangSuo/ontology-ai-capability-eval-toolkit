@@ -1,0 +1,11 @@
+request_id,request_no,request_title,requester_user_id,department_id,preferred_supplier_id,estimated_amount,currency_code,request_status,business_justification,required_by_date,submitted_at,approved_at,created_at
+3001,PR-2026-0001,Laptop refresh for analytics team,1001,20,2003,46800.00,CNY,APPROVED,Replace aging laptops for data analytics work,2026-03-15,2026-02-01 09:10:00,2026-02-01 14:30:00,2026-02-01 08:50:00
+3002,PR-2026-0002,Warehouse barcode scanner purchase,1009,10,2005,72500.00,CNY,APPROVED,Improve receiving accuracy for warehouse operations,2026-03-20,2026-02-02 10:20:00,2026-02-03 11:15:00,2026-02-02 09:40:00
+3003,PR-2026-0003,Office stationery quarterly replenishment,1001,20,2001,8900.00,CNY,SUBMITTED,Quarterly office supply replenishment,2026-02-28,2026-02-05 16:10:00,,2026-02-05 15:50:00
+3004,PR-2026-0004,Facility repair service,1009,10,2002,31500.00,CNY,REJECTED,Repair old air handling units,2026-03-01,2026-02-06 09:00:00,,2026-02-06 08:20:00
+3005,PR-2026-0005,Temporary logistics support,1009,10,2006,56000.00,CNY,DRAFT,Peak season inbound logistics support,2026-04-05,,,2026-02-08 10:00:00
+3006,PR-2026-0006,Visitor safety kit purchase,1001,20,2005,12600.00,CNY,APPROVED,Safety kits for external site visitors,2026-03-10,2026-02-08 11:30:00,2026-02-08 15:00:00,2026-02-08 11:00:00
+3007,PR-2026-0007,Training workshop package,1001,20,2007,42000.00,CNY,CANCELLED,Procurement training package for new team members,2026-04-10,2026-02-09 09:30:00,,2026-02-09 09:00:00
+3008,PR-2026-0008,Server rack accessories,1001,20,2003,18400.00,CNY,APPROVED,Accessories for new internal server racks,2026-03-25,2026-02-10 13:00:00,2026-02-10 17:00:00,2026-02-10 12:30:00
+3009,PR-2026-0009,Annual maintenance support,1009,10,2002,99000.00,CNY,APPROVED,Annual preventive maintenance for facility systems,2026-04-15,2026-02-11 09:15:00,2026-02-12 16:45:00,2026-02-11 08:40:00
+3010,PR-2026-0010,Emergency spare parts,1009,10,2005,51000.00,CNY,SUBMITTED,Spare parts for contingency repairs,2026-03-05,2026-02-12 11:20:00,,2026-02-12 10:55:00

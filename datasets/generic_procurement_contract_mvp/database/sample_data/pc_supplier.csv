@@ -1,0 +1,8 @@
+supplier_id,supplier_code,supplier_name,supplier_status,risk_rating,contact_email,onboarded_at
+2001,SUP-ASTER,Aster Office Supply Co.,ACTIVE,LOW,contact@aster-supply.example.test,2025-09-01 10:00:00
+2002,SUP-BRAVO,Bravo Industrial Services,ACTIVE,MEDIUM,service@bravo-industrial.example.test,2025-09-15 10:00:00
+2003,SUP-CEDAR,Cedar Cloud Equipment,ACTIVE,LOW,sales@cedar-cloud.example.test,2025-10-01 10:00:00
+2004,SUP-DUNE,Dune Facility Maintenance,SUSPENDED,HIGH,ops@dune-facility.example.test,2025-10-18 10:00:00
+2005,SUP-EMBER,Ember Safety Products,ACTIVE,LOW,hello@ember-safety.example.test,2025-11-05 10:00:00
+2006,SUP-FIELD,Fieldstone Logistics,ACTIVE,MEDIUM,desk@fieldstone-logistics.example.test,2025-11-20 10:00:00
+2007,SUP-GROVE,Grove Training Services,PENDING_REVIEW,MEDIUM,team@grove-training.example.test,2025-12-04 10:00:00

@@ -1,0 +1,1598 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_map_id": "gold_evidence_map:generic_procurement_contract_mvp",
+  "title": "Gold Evidence Map for Generic Procurement Contract MVP",
+  "description": "Maps gold ontology concepts, attributes, relations, events, rules and actions to input dataset sources. This is not an acceptable aliases file, known conflicts file, or scoring script.",
+  "ontology_ref": "gold/gold_ontology.json",
+  "source_types": [
+    "code",
+    "database_ddl",
+    "sample_data",
+    "document"
+  ],
+  "evidence": [
+    {
+      "evidence_id": "db.table.pc_department",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_department",
+      "evidence_text": "",
+      "evidence_summary": "Department table defines organizational units with department code, name, cost center, active flag and created timestamp.",
+      "supports": [
+        "concept:department",
+        "attr:department.department_id",
+        "attr:department.department_code",
+        "attr:department.department_name",
+        "attr:department.cost_center",
+        "attr:department.is_active",
+        "rel:department.has_employee",
+        "rel:department.owns_purchase_request"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "db.table.pc_user",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_user",
+      "evidence_text": "",
+      "evidence_summary": "User table defines internal users/employees, role code, department reference, email, active flag and role code check constraint.",
+      "supports": [
+        "concept:employee",
+        "attr:employee.user_id",
+        "attr:employee.user_name",
+        "attr:employee.role_code",
+        "attr:employee.department_id",
+        "attr:employee.email",
+        "attr:employee.is_active",
+        "rel:employee.belongs_to_department",
+        "rel:employee.creates_purchase_request",
+        "rel:employee.performs_approval_task",
+        "rel:employee.records_goods_receipt",
+        "rel:employee.approves_payment",
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:finance_manager",
+        "role:legal_reviewer",
+        "role:warehouse_clerk",
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "db.table.pc_supplier",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_supplier",
+      "evidence_text": "",
+      "evidence_summary": "Supplier table defines supplier code, name, supplier status, risk rating, contact email and onboarding timestamp.",
+      "supports": [
+        "concept:supplier",
+        "attr:supplier.supplier_id",
+        "attr:supplier.supplier_code",
+        "attr:supplier.supplier_name",
+        "attr:supplier.supplier_status",
+        "attr:supplier.risk_rating",
+        "attr:supplier.contact_email",
+        "attr:supplier.onboarded_at",
+        "rel:supplier.preferred_by_request",
+        "rel:supplier.party_to_contract",
+        "rel:supplier.receives_purchase_order",
+        "rel:supplier.issues_invoice"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.table.pc_purchase_request",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_purchase_request",
+      "evidence_text": "",
+      "evidence_summary": "Purchase request table defines request number, requester, department, preferred supplier, amount, status, justification and lifecycle timestamps.",
+      "supports": [
+        "concept:purchase_request",
+        "attr:purchase_request.request_id",
+        "attr:purchase_request.request_no",
+        "attr:purchase_request.request_title",
+        "attr:purchase_request.requester_user_id",
+        "attr:purchase_request.department_id",
+        "attr:purchase_request.preferred_supplier_id",
+        "attr:purchase_request.estimated_amount",
+        "attr:purchase_request.currency_code",
+        "attr:purchase_request.request_status",
+        "attr:purchase_request.business_justification",
+        "attr:purchase_request.required_by_date",
+        "attr:purchase_request.submitted_at",
+        "attr:purchase_request.approved_at",
+        "rel:purchase_request.requested_by_employee",
+        "rel:purchase_request.belongs_to_department",
+        "rel:purchase_request.prefers_supplier"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_purchase_request.request_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (request_status IN ('DRAFT','SUBMITTED','APPROVED','REJECTED','CANCELLED'))",
+      "evidence_text": "",
+      "evidence_summary": "Request status check constraint enumerates purchase request lifecycle states.",
+      "supports": [
+        "state:purchase_request.draft",
+        "state:purchase_request.submitted",
+        "state:purchase_request.approved",
+        "state:purchase_request.rejected",
+        "state:purchase_request.cancelled"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.comment.pc_purchase_request.estimated_amount",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "COMMENT ON COLUMN pc_purchase_request.estimated_amount",
+      "evidence_text": "",
+      "evidence_summary": "DDL comment states that PR amount >= 50000 requires finance manager approval.",
+      "supports": [
+        "rule:high_value_request_finance_approval",
+        "rule:normal_request_department_approval",
+        "attr:purchase_request.estimated_amount"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "db.table.pc_purchase_request_line",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_purchase_request_line",
+      "evidence_text": "",
+      "evidence_summary": "Purchase request line table defines line-level item description, category, quantity, unit, estimated unit price and line amount.",
+      "supports": [
+        "concept:purchase_request_item",
+        "concept:material",
+        "attr:purchase_request_item.line_id",
+        "attr:purchase_request_item.request_id",
+        "attr:purchase_request_item.item_description",
+        "attr:purchase_request_item.category_code",
+        "attr:purchase_request_item.quantity",
+        "attr:purchase_request_item.unit_of_measure",
+        "attr:purchase_request_item.estimated_unit_price",
+        "attr:purchase_request_item.line_amount",
+        "attr:material.item_description",
+        "attr:material.category_code",
+        "attr:material.unit_of_measure",
+        "rel:purchase_request.has_item",
+        "rel:purchase_request_item.belongs_to_request",
+        "rel:purchase_request_item.describes_material",
+        "rel:material.requested_on_item",
+        "rule:purchase_request_requires_line"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "db.table.pc_approval_record",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_approval_record",
+      "evidence_text": "",
+      "evidence_summary": "Approval record table defines target type/id, step name, approver, status, comments and decision timestamps.",
+      "supports": [
+        "concept:approval_task",
+        "attr:approval_task.approval_id",
+        "attr:approval_task.target_type",
+        "attr:approval_task.target_id",
+        "attr:approval_task.step_name",
+        "attr:approval_task.approver_user_id",
+        "attr:approval_task.approval_status",
+        "attr:approval_task.approval_comment",
+        "attr:approval_task.submitted_at",
+        "attr:approval_task.decided_at",
+        "rel:purchase_request.has_approval_task",
+        "rel:approval_task.approves_purchase_request",
+        "rel:approval_task.approves_payment",
+        "rel:approval_task.performed_by_employee",
+        "rel:payment.has_approval_task"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "db.column.pc_approval_record.approval_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (approval_status IN ('PENDING','APPROVED','REJECTED','SKIPPED'))",
+      "evidence_text": "",
+      "evidence_summary": "Approval status check constraint enumerates approval lifecycle states.",
+      "supports": [
+        "concept:approval_task"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "db.table.pc_contract",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_contract",
+      "evidence_text": "",
+      "evidence_summary": "Contract table defines contract number, request, supplier, amount, status, term dates, legal reviewer, legal approval and activation timestamps.",
+      "supports": [
+        "concept:contract",
+        "attr:contract.contract_id",
+        "attr:contract.contract_no",
+        "attr:contract.request_id",
+        "attr:contract.supplier_id",
+        "attr:contract.contract_title",
+        "attr:contract.contract_amount",
+        "attr:contract.contract_status",
+        "attr:contract.start_date",
+        "attr:contract.end_date",
+        "attr:contract.legal_reviewer_id",
+        "attr:contract.legal_approved_at",
+        "attr:contract.activated_at",
+        "attr:contract.termination_reason",
+        "rel:purchase_request.results_in_contract",
+        "rel:contract.from_purchase_request",
+        "rel:contract.with_supplier",
+        "rel:contract.reviewed_by_employee",
+        "rel:contract.enables_purchase_order"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_contract.contract_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (contract_status IN ('DRAFT','LEGAL_REVIEW','ACTIVE','EXPIRED','TERMINATED'))",
+      "evidence_text": "",
+      "evidence_summary": "Contract status check constraint enumerates contract lifecycle states.",
+      "supports": [
+        "state:contract.legal_review",
+        "state:contract.active"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "db.table.pc_purchase_order",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_purchase_order",
+      "evidence_text": "",
+      "evidence_summary": "Purchase order table references contract, request and supplier and contains PO amount, status, release and close timestamps.",
+      "supports": [
+        "concept:purchase_order",
+        "attr:purchase_order.po_id",
+        "attr:purchase_order.po_no",
+        "attr:purchase_order.contract_id",
+        "attr:purchase_order.request_id",
+        "attr:purchase_order.supplier_id",
+        "attr:purchase_order.po_amount",
+        "attr:purchase_order.po_status",
+        "attr:purchase_order.released_at",
+        "attr:purchase_order.closed_at",
+        "rel:purchase_request.results_in_purchase_order",
+        "rel:purchase_order.released_against_contract",
+        "rel:purchase_order.for_purchase_request",
+        "rel:purchase_order.sent_to_supplier",
+        "rel:supplier.receives_purchase_order"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_purchase_order.po_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (po_status IN ('RELEASED','PARTIALLY_RECEIVED','CLOSED','CANCELLED'))",
+      "evidence_text": "",
+      "evidence_summary": "Purchase order status check constraint includes released and partially received states.",
+      "supports": [
+        "state:purchase_order.released"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "db.table.pc_goods_receipt",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_goods_receipt",
+      "evidence_text": "",
+      "evidence_summary": "Goods receipt table references purchase order and receiver, with receipt status, received time, inspection result and remarks.",
+      "supports": [
+        "concept:goods_receipt",
+        "attr:goods_receipt.receipt_id",
+        "attr:goods_receipt.receipt_no",
+        "attr:goods_receipt.po_id",
+        "attr:goods_receipt.receipt_status",
+        "attr:goods_receipt.received_by",
+        "attr:goods_receipt.received_at",
+        "attr:goods_receipt.inspection_result",
+        "attr:goods_receipt.remarks",
+        "rel:purchase_order.has_goods_receipt",
+        "rel:goods_receipt.for_purchase_order",
+        "rel:goods_receipt.recorded_by_employee",
+        "rel:goods_receipt.supports_invoice_match"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_goods_receipt.receipt_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (receipt_status IN ('PENDING','PARTIAL','COMPLETE','REJECTED'))",
+      "evidence_text": "",
+      "evidence_summary": "Receipt status check constraint enumerates goods receipt lifecycle states.",
+      "supports": [
+        "state:goods_receipt.complete"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "db.table.pc_invoice",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_invoice",
+      "evidence_text": "",
+      "evidence_summary": "Invoice table references supplier, purchase order and goods receipt and stores invoice amount, date, status, variance and matched timestamp.",
+      "supports": [
+        "concept:invoice",
+        "attr:invoice.invoice_id",
+        "attr:invoice.invoice_no",
+        "attr:invoice.supplier_id",
+        "attr:invoice.po_id",
+        "attr:invoice.receipt_id",
+        "attr:invoice.invoice_amount",
+        "attr:invoice.invoice_date",
+        "attr:invoice.invoice_status",
+        "attr:invoice.match_variance_amount",
+        "attr:invoice.matched_at",
+        "rel:purchase_order.has_invoice",
+        "rel:invoice.issued_by_supplier",
+        "rel:invoice.for_purchase_order",
+        "rel:invoice.matched_to_receipt",
+        "rel:supplier.issues_invoice",
+        "rel:goods_receipt.supports_invoice_match"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_invoice.invoice_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (invoice_status IN ('PENDING_MATCH','MATCHED','EXCEPTION','CANCELLED'))",
+      "evidence_text": "",
+      "evidence_summary": "Invoice status check constraint enumerates invoice matching lifecycle states.",
+      "supports": [
+        "state:invoice.matched",
+        "state:invoice.exception"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "db.table.pc_payment_request",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CREATE TABLE pc_payment_request",
+      "evidence_text": "",
+      "evidence_summary": "Payment request table references invoice and stores payment amount, status, due date, approver and payment timestamps.",
+      "supports": [
+        "concept:payment",
+        "attr:payment.payment_request_id",
+        "attr:payment.payment_no",
+        "attr:payment.invoice_id",
+        "attr:payment.payment_amount",
+        "attr:payment.payment_status",
+        "attr:payment.due_date",
+        "attr:payment.approved_by",
+        "attr:payment.approved_at",
+        "attr:payment.paid_at",
+        "rel:invoice.generates_payment",
+        "rel:payment.for_invoice",
+        "rel:payment.approved_by_employee"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "evidence_id": "db.column.pc_payment_request.payment_status",
+      "source_type": "database_ddl",
+      "source_file": "database/ddl.sql",
+      "source_location": "CHECK (payment_status IN ('REQUESTED','APPROVED','PAID','HELD','CANCELLED'))",
+      "evidence_text": "",
+      "evidence_summary": "Payment status check constraint enumerates payment lifecycle states.",
+      "supports": [
+        "state:payment.paid"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "code.PurchaseRequest.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/PurchaseRequest.java",
+      "source_location": "class PurchaseRequest",
+      "evidence_text": "",
+      "evidence_summary": "PurchaseRequest domain class defines request attributes, editability and finance review rule.",
+      "supports": [
+        "concept:purchase_request",
+        "rule:high_value_request_finance_approval",
+        "attr:purchase_request.estimated_amount",
+        "attr:purchase_request.request_status"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "code.PurchaseRequestService.submitPR",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PurchaseRequestService.java",
+      "source_location": "submitPR(PurchaseRequest request)",
+      "evidence_text": "",
+      "evidence_summary": "Submit PR logic requires editable status, at least one line and business justification before submission.",
+      "supports": [
+        "action:submit_purchase_request",
+        "event:purchase_request_submitted",
+        "rule:purchase_request_requires_line",
+        "rule:purchase_request_requires_justification",
+        "state:purchase_request.submitted"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "code.PurchaseRequestService.cancelPR",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PurchaseRequestService.java",
+      "source_location": "cancelPR(PurchaseRequest request, String reason)",
+      "evidence_text": "",
+      "evidence_summary": "Cancel PR logic blocks normal cancellation of approved PR and requires cancellation reason.",
+      "supports": [
+        "state:purchase_request.cancelled"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "evidence_id": "code.ApprovalService.requiredApproverRole",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ApprovalService.java",
+      "source_location": "requiredApproverRole(PurchaseRequest request)",
+      "evidence_text": "",
+      "evidence_summary": "Approval service routes requests over 50000 to finance manager and other requests to department manager.",
+      "supports": [
+        "rule:normal_request_department_approval",
+        "rule:high_value_request_finance_approval",
+        "action:approve_normal_purchase_request",
+        "action:approve_high_value_purchase_request",
+        "role:department_manager",
+        "role:finance_manager"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "code.ApprovalService.approveRequest",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ApprovalService.java",
+      "source_location": "approveRequest(PurchaseRequest request, String approverRole)",
+      "evidence_text": "",
+      "evidence_summary": "Approval service validates whether approver role has permission for the PR amount.",
+      "supports": [
+        "event:purchase_request_approved",
+        "action:approve_normal_purchase_request",
+        "action:approve_high_value_purchase_request",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "code.ApprovalService.rejectRequest",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ApprovalService.java",
+      "source_location": "rejectRequest(PurchaseRequest request, String comment)",
+      "evidence_text": "",
+      "evidence_summary": "Rejection logic requires explanatory comment with minimum length.",
+      "supports": [
+        "event:purchase_request_rejected",
+        "rule:rejection_requires_comment"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "code.Supplier.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/Supplier.java",
+      "source_location": "class Supplier / isEligibleForAward()",
+      "evidence_text": "",
+      "evidence_summary": "Supplier domain class defines supplier attributes and eligibility rule for active and non-high-risk suppliers.",
+      "supports": [
+        "concept:supplier",
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "code.Contract.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/Contract.java",
+      "source_location": "class Contract",
+      "evidence_text": "",
+      "evidence_summary": "Contract domain class defines contract fields including request, supplier, amount, status, legal approval and activation timestamps.",
+      "supports": [
+        "concept:contract",
+        "attr:contract.contract_id",
+        "attr:contract.contract_no",
+        "attr:contract.request_id",
+        "attr:contract.supplier_id",
+        "attr:contract.contract_amount",
+        "attr:contract.contract_status",
+        "attr:contract.legal_approved_at",
+        "attr:contract.activated_at"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "code.ContractService.createContractFromApprovedPR",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ContractService.java",
+      "source_location": "createContractFromApprovedPR(Long requestId, Supplier vendor)",
+      "evidence_text": "",
+      "evidence_summary": "Contract creation checks vendor/supplier eligibility and creates contract from approved PR context.",
+      "supports": [
+        "action:draft_contract",
+        "event:contract_drafted",
+        "rel:contract.from_purchase_request",
+        "rel:contract.with_supplier",
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "evidence_id": "code.ContractService.submitLegalReview",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ContractService.java",
+      "source_location": "submitLegalReview(Contract contract)",
+      "evidence_text": "",
+      "evidence_summary": "Only draft contracts can enter legal review.",
+      "supports": [
+        "action:legal_review_contract",
+        "state:contract.legal_review",
+        "event:contract_legal_approved"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "evidence_id": "code.ContractService.activateContract",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ContractService.java",
+      "source_location": "activateContract(Contract contract)",
+      "evidence_text": "",
+      "evidence_summary": "Contract activation requires legal approval and contract term dates, then sets activation timestamp.",
+      "supports": [
+        "action:activate_contract",
+        "event:contract_activated",
+        "state:contract.active",
+        "rule:contract_requires_legal_approval"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "code.ContractService.terminateContract",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ContractService.java",
+      "source_location": "terminateContract(Contract contract, String reason)",
+      "evidence_text": "",
+      "evidence_summary": "Contract termination requires a reason.",
+      "supports": [
+        "rule:terminated_contract_requires_reason"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "code.PurchaseOrderService.releasePurchaseOrder",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PurchaseOrderService.java",
+      "source_location": "releasePurchaseOrder(Contract contract)",
+      "evidence_text": "",
+      "evidence_summary": "PO release is allowed only when the related contract is active.",
+      "supports": [
+        "concept:purchase_order",
+        "action:release_purchase_order",
+        "event:purchase_order_released",
+        "rule:po_requires_active_contract",
+        "state:purchase_order.released"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "code.GoodsReceipt.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/GoodsReceipt.java",
+      "source_location": "class GoodsReceipt",
+      "evidence_text": "",
+      "evidence_summary": "GoodsReceipt domain class defines receipt number, PO reference, status, receiver, received time, inspection result and remarks.",
+      "supports": [
+        "concept:goods_receipt",
+        "attr:goods_receipt.receipt_id",
+        "attr:goods_receipt.receipt_no",
+        "attr:goods_receipt.po_id",
+        "attr:goods_receipt.receipt_status",
+        "attr:goods_receipt.received_by",
+        "attr:goods_receipt.received_at",
+        "attr:goods_receipt.inspection_result",
+        "attr:goods_receipt.remarks"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "code.ReceiptInvoiceMatchingService.recordGoodsReceipt",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ReceiptInvoiceMatchingService.java",
+      "source_location": "recordGoodsReceipt(PurchaseOrder order, GoodsReceipt receipt)",
+      "evidence_text": "",
+      "evidence_summary": "Recording goods receipt requires received time.",
+      "supports": [
+        "action:record_goods_receipt",
+        "event:goods_receipt_recorded",
+        "rule:receipt_requires_time"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "code.ReceiptInvoiceMatchingService.matchInvoice",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/ReceiptInvoiceMatchingService.java",
+      "source_location": "matchInvoice(PurchaseOrder order, GoodsReceipt receipt, Invoice invoice)",
+      "evidence_text": "",
+      "evidence_summary": "Invoice matching requires goods receipt and checks invoice amount variance against a tolerance rate.",
+      "supports": [
+        "action:match_invoice",
+        "event:invoice_matched",
+        "event:invoice_exception_created",
+        "rule:invoice_variance_tolerance",
+        "rel:invoice.matched_to_receipt"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "code.Invoice.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/Invoice.java",
+      "source_location": "class Invoice",
+      "evidence_text": "",
+      "evidence_summary": "Invoice domain class defines invoice number, supplier, PO, receipt, amount, date, status, variance and matched timestamp.",
+      "supports": [
+        "concept:invoice",
+        "attr:invoice.invoice_id",
+        "attr:invoice.invoice_no",
+        "attr:invoice.supplier_id",
+        "attr:invoice.po_id",
+        "attr:invoice.receipt_id",
+        "attr:invoice.invoice_amount",
+        "attr:invoice.invoice_date",
+        "attr:invoice.invoice_status",
+        "attr:invoice.match_variance_amount",
+        "attr:invoice.matched_at"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "code.PaymentRequest.domain",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/domain/PaymentRequest.java",
+      "source_location": "class PaymentRequest",
+      "evidence_text": "",
+      "evidence_summary": "PaymentRequest domain class defines payment number, invoice, amount, status, due date, approver and paid timestamp.",
+      "supports": [
+        "concept:payment",
+        "attr:payment.payment_request_id",
+        "attr:payment.payment_no",
+        "attr:payment.invoice_id",
+        "attr:payment.payment_amount",
+        "attr:payment.payment_status",
+        "attr:payment.due_date",
+        "attr:payment.approved_by",
+        "attr:payment.approved_at",
+        "attr:payment.paid_at"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "code.PaymentService.createPaymentApplication",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+      "source_location": "createPaymentApplication(Invoice invoice)",
+      "evidence_text": "",
+      "evidence_summary": "Payment application can be created only for matched invoice.",
+      "supports": [
+        "action:create_payment_request",
+        "event:payment_requested",
+        "rule:invoice_requires_match_before_payment",
+        "rel:invoice.generates_payment",
+        "rel:payment.for_invoice"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "code.PaymentService.approvePayment",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+      "source_location": "approvePayment(PaymentRequest request, String roleCode)",
+      "evidence_text": "",
+      "evidence_summary": "Only finance manager or procurement admin can approve payment.",
+      "supports": [
+        "action:approve_payment",
+        "event:payment_approved",
+        "rule:payment_requires_finance_approval",
+        "role:finance_manager",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "code.PaymentService.markPaid",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/service/PaymentService.java",
+      "source_location": "markPaid(PaymentRequest request)",
+      "evidence_text": "",
+      "evidence_summary": "Only approved payment request can be marked paid.",
+      "supports": [
+        "action:mark_payment_paid",
+        "event:payment_paid",
+        "state:payment.paid"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "code.ProcurementStatus.constants",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/common/ProcurementStatus.java",
+      "source_location": "class ProcurementStatus",
+      "evidence_text": "",
+      "evidence_summary": "Status constants define PR, contract, PO, invoice and payment states.",
+      "supports": [
+        "state:purchase_request.draft",
+        "state:purchase_request.submitted",
+        "state:purchase_request.approved",
+        "state:purchase_request.rejected",
+        "state:purchase_request.cancelled",
+        "state:contract.legal_review",
+        "state:contract.active",
+        "state:purchase_order.released",
+        "state:invoice.matched",
+        "state:invoice.exception",
+        "state:payment.paid"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "code.RoleCode.constants",
+      "source_type": "code",
+      "source_file": "source_code/src/main/java/com/example/procurement/common/RoleCode.java",
+      "source_location": "class RoleCode",
+      "evidence_text": "",
+      "evidence_summary": "Role constants define requester, manager, procurement, finance, legal, warehouse, AP and admin roles.",
+      "supports": [
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:finance_manager",
+        "role:legal_reviewer",
+        "role:warehouse_clerk",
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "evidence_id": "csv.pc_department.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_department.csv",
+      "source_location": "rows 1-6",
+      "evidence_text": "",
+      "evidence_summary": "Department sample rows provide department codes, names and cost centers.",
+      "supports": [
+        "concept:department",
+        "attr:department.department_code",
+        "attr:department.department_name",
+        "attr:department.cost_center"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_user.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_user.csv",
+      "source_location": "rows 1-9",
+      "evidence_text": "",
+      "evidence_summary": "User sample rows provide employees across requester, manager, procurement, finance, legal, warehouse, AP and admin roles.",
+      "supports": [
+        "concept:employee",
+        "attr:employee.role_code",
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:finance_manager",
+        "role:legal_reviewer",
+        "role:warehouse_clerk",
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "csv.pc_supplier.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_supplier.csv",
+      "source_location": "rows 1-7",
+      "evidence_text": "",
+      "evidence_summary": "Supplier sample rows show active, suspended and pending review suppliers with low, medium and high risk ratings.",
+      "supports": [
+        "concept:supplier",
+        "attr:supplier.supplier_status",
+        "attr:supplier.risk_rating",
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_purchase_request.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_purchase_request.csv",
+      "source_location": "rows 1-10",
+      "evidence_text": "",
+      "evidence_summary": "Purchase request sample rows cover draft, submitted, approved, rejected and cancelled statuses with amounts and timestamps.",
+      "supports": [
+        "concept:purchase_request",
+        "state:purchase_request.draft",
+        "state:purchase_request.submitted",
+        "state:purchase_request.approved",
+        "state:purchase_request.rejected",
+        "state:purchase_request.cancelled",
+        "attr:purchase_request.estimated_amount",
+        "attr:purchase_request.request_status"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "csv.pc_purchase_request_line.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_purchase_request_line.csv",
+      "source_location": "rows 1-15",
+      "evidence_text": "",
+      "evidence_summary": "Request line sample rows show item descriptions, categories, quantities, units, unit prices and line amounts.",
+      "supports": [
+        "concept:purchase_request_item",
+        "concept:material",
+        "attr:purchase_request_item.item_description",
+        "attr:purchase_request_item.category_code",
+        "attr:purchase_request_item.quantity",
+        "attr:purchase_request_item.unit_of_measure",
+        "attr:purchase_request_item.estimated_unit_price",
+        "attr:purchase_request_item.line_amount",
+        "attr:material.item_description",
+        "attr:material.category_code",
+        "attr:material.unit_of_measure"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "csv.pc_approval_record.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_approval_record.csv",
+      "source_location": "rows 1-14",
+      "evidence_text": "",
+      "evidence_summary": "Approval sample rows cover department approval, finance approval, legal review and payment approval with pending, approved and rejected statuses.",
+      "supports": [
+        "concept:approval_task",
+        "attr:approval_task.target_type",
+        "attr:approval_task.step_name",
+        "attr:approval_task.approval_status",
+        "event:purchase_request_approved",
+        "event:purchase_request_rejected",
+        "event:payment_approved"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "csv.pc_contract.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_contract.csv",
+      "source_location": "rows 1-7",
+      "evidence_text": "",
+      "evidence_summary": "Contract sample rows cover active, legal review, draft, expired and terminated contracts with legal approval and activation timestamps.",
+      "supports": [
+        "concept:contract",
+        "state:contract.legal_review",
+        "state:contract.active",
+        "event:contract_activated",
+        "rule:terminated_contract_requires_reason"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_purchase_order.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_purchase_order.csv",
+      "source_location": "rows 1-8",
+      "evidence_text": "",
+      "evidence_summary": "Purchase order sample rows show released, partially received, closed and cancelled orders linked to contracts, requests and suppliers.",
+      "supports": [
+        "concept:purchase_order",
+        "state:purchase_order.released",
+        "event:purchase_order_released",
+        "rel:purchase_order.released_against_contract",
+        "rel:purchase_order.for_purchase_request",
+        "rel:purchase_order.sent_to_supplier"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_goods_receipt.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_goods_receipt.csv",
+      "source_location": "rows 1-8",
+      "evidence_text": "",
+      "evidence_summary": "Goods receipt sample rows include GRN numbers, pending, partial, complete and rejected receipt statuses and inspection outcomes.",
+      "supports": [
+        "concept:goods_receipt",
+        "state:goods_receipt.complete",
+        "event:goods_receipt_recorded",
+        "attr:goods_receipt.receipt_no",
+        "attr:goods_receipt.inspection_result"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_invoice.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_invoice.csv",
+      "source_location": "rows 1-9",
+      "evidence_text": "",
+      "evidence_summary": "Invoice sample rows cover matched, pending match, exception and cancelled invoices with match variance amounts.",
+      "supports": [
+        "concept:invoice",
+        "state:invoice.matched",
+        "state:invoice.exception",
+        "event:invoice_matched",
+        "event:invoice_exception_created",
+        "attr:invoice.match_variance_amount"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "csv.pc_payment_request.rows",
+      "source_type": "sample_data",
+      "source_file": "database/sample_data/pc_payment_request.csv",
+      "source_location": "rows 1-8",
+      "evidence_text": "",
+      "evidence_summary": "Payment request sample rows cover requested, approved, paid, held and cancelled payment statuses.",
+      "supports": [
+        "concept:payment",
+        "state:payment.paid",
+        "event:payment_requested",
+        "event:payment_approved",
+        "event:payment_paid",
+        "attr:payment.payment_status",
+        "attr:payment.paid_at"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "doc.business_overview.core_objects",
+      "source_type": "document",
+      "source_file": "documents/business_overview.md",
+      "source_location": "Core Business Objects",
+      "evidence_text": "",
+      "evidence_summary": "Business overview lists core objects: Purchase Request, line, Supplier, Approval Record, Contract, Purchase Order, Goods Receipt, Invoice, Payment Request, Department and User.",
+      "supports": [
+        "concept:purchase_request",
+        "concept:purchase_request_item",
+        "concept:supplier",
+        "concept:approval_task",
+        "concept:contract",
+        "concept:purchase_order",
+        "concept:goods_receipt",
+        "concept:invoice",
+        "concept:payment",
+        "concept:department",
+        "concept:employee"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "doc.business_overview.end_to_end_flow",
+      "source_type": "document",
+      "source_file": "documents/business_overview.md",
+      "source_location": "End-to-End Flow",
+      "evidence_text": "",
+      "evidence_summary": "End-to-end flow describes request creation, approval, supplier confirmation, contract, PO, goods receipt, invoice matching and payment.",
+      "supports": [
+        "event:purchase_request_created",
+        "event:purchase_request_submitted",
+        "event:supplier_selected",
+        "event:contract_drafted",
+        "event:purchase_order_released",
+        "event:goods_receipt_recorded",
+        "event:invoice_matched",
+        "event:payment_paid"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "doc.procurement_process.status_flow",
+      "source_type": "document",
+      "source_file": "documents/procurement_process.md",
+      "source_location": "Purchase Request Status Flow",
+      "evidence_text": "",
+      "evidence_summary": "Procurement process document defines DRAFT, SUBMITTED, APPROVED, REJECTED and CANCELLED request status transitions.",
+      "supports": [
+        "state:purchase_request.draft",
+        "state:purchase_request.submitted",
+        "state:purchase_request.approved",
+        "state:purchase_request.rejected",
+        "state:purchase_request.cancelled",
+        "event:purchase_request_submitted",
+        "event:purchase_request_approved",
+        "event:purchase_request_rejected"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "doc.procurement_process.approval_flow",
+      "source_type": "document",
+      "source_file": "documents/procurement_process.md",
+      "source_location": "Approval Flow",
+      "evidence_text": "",
+      "evidence_summary": "Approval flow states approval thresholds, manager and finance approval requirements, and rejection/cancellation reason requirements.",
+      "supports": [
+        "rule:normal_request_department_approval",
+        "rule:high_value_request_finance_approval",
+        "rule:rejection_requires_comment",
+        "role:department_manager",
+        "role:finance_manager",
+        "action:approve_normal_purchase_request",
+        "action:approve_high_value_purchase_request"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.procurement_process.supplier_selection",
+      "source_type": "document",
+      "source_file": "documents/procurement_process.md",
+      "source_location": "Supplier Selection",
+      "evidence_text": "",
+      "evidence_summary": "Supplier selection states procurement must confirm supplier is active and not high risk before award.",
+      "supports": [
+        "concept:supplier",
+        "event:supplier_selected",
+        "action:select_supplier",
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "doc.procurement_process.purchase_order_release",
+      "source_type": "document",
+      "source_file": "documents/procurement_process.md",
+      "source_location": "Purchase Order Release",
+      "evidence_text": "",
+      "evidence_summary": "Purchase order can be released only after related contract is active and one purchase request may lead to multiple purchase orders.",
+      "supports": [
+        "concept:purchase_order",
+        "action:release_purchase_order",
+        "event:purchase_order_released",
+        "rule:po_requires_active_contract",
+        "rel:purchase_request.results_in_purchase_order"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.contract_lifecycle.definition",
+      "source_type": "document",
+      "source_file": "documents/contract_lifecycle.md",
+      "source_location": "Contract Definition",
+      "evidence_text": "",
+      "evidence_summary": "Contract is a legal agreement with a supplier, normally created from an approved purchase request.",
+      "supports": [
+        "concept:contract",
+        "rel:contract.from_purchase_request",
+        "rel:contract.with_supplier"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "doc.contract_lifecycle.status_flow",
+      "source_type": "document",
+      "source_file": "documents/contract_lifecycle.md",
+      "source_location": "Contract Status Flow",
+      "evidence_text": "",
+      "evidence_summary": "Contract lifecycle document defines DRAFT to LEGAL_REVIEW to ACTIVE to EXPIRED or TERMINATED.",
+      "supports": [
+        "state:contract.legal_review",
+        "state:contract.active",
+        "event:contract_drafted",
+        "event:contract_legal_approved",
+        "event:contract_activated"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "doc.contract_lifecycle.rules",
+      "source_type": "document",
+      "source_file": "documents/contract_lifecycle.md",
+      "source_location": "Contract Rules",
+      "evidence_text": "",
+      "evidence_summary": "Contract rules require request, supplier, legal approval before activation, supplier risk control and termination reason.",
+      "supports": [
+        "rule:contract_requires_legal_approval",
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded",
+        "rule:terminated_contract_requires_reason",
+        "action:legal_review_contract",
+        "action:activate_contract"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.receipt_invoice_payment.goods_receipt",
+      "source_type": "document",
+      "source_file": "documents/receipt_invoice_payment_policy.md",
+      "source_location": "Goods Receipt",
+      "evidence_text": "",
+      "evidence_summary": "Receipt policy defines Goods Receipt/GRN and PENDING, PARTIAL, COMPLETE, REJECTED status flow.",
+      "supports": [
+        "concept:goods_receipt",
+        "state:goods_receipt.complete",
+        "action:record_goods_receipt",
+        "event:goods_receipt_recorded",
+        "rule:receipt_requires_time"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "doc.receipt_invoice_payment.invoice_matching",
+      "source_type": "document",
+      "source_file": "documents/receipt_invoice_payment_policy.md",
+      "source_location": "Invoice Matching",
+      "evidence_text": "",
+      "evidence_summary": "Invoice matching policy defines invoice status flow, PO and goods receipt matching, payment block before match and variance tolerance.",
+      "supports": [
+        "concept:invoice",
+        "state:invoice.matched",
+        "state:invoice.exception",
+        "action:match_invoice",
+        "event:invoice_matched",
+        "event:invoice_exception_created",
+        "rule:invoice_requires_match_before_payment",
+        "rule:invoice_variance_tolerance"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.receipt_invoice_payment.payment_application",
+      "source_type": "document",
+      "source_file": "documents/receipt_invoice_payment_policy.md",
+      "source_location": "Payment Application",
+      "evidence_text": "",
+      "evidence_summary": "Payment policy defines Payment Request/Payment Application status flow and finance approval before payment.",
+      "supports": [
+        "concept:payment",
+        "action:create_payment_request",
+        "action:approve_payment",
+        "action:mark_payment_paid",
+        "event:payment_requested",
+        "event:payment_approved",
+        "event:payment_paid",
+        "rule:payment_requires_finance_approval",
+        "rule:paid_payment_requires_paid_time",
+        "state:payment.paid"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.role_permission_matrix.roles",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Roles",
+      "evidence_text": "",
+      "evidence_summary": "Role matrix defines requester, department manager, procurement specialist, finance manager, legal reviewer, warehouse clerk, AP clerk and procurement admin.",
+      "supports": [
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:finance_manager",
+        "role:legal_reviewer",
+        "role:warehouse_clerk",
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "evidence_id": "doc.role_permission_matrix.permissions",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix maps roles to actions such as create request, approve request, select supplier, draft contract, record receipt, match invoice and approve payment.",
+      "supports": [
+        "action:create_purchase_request",
+        "action:submit_purchase_request",
+        "action:approve_normal_purchase_request",
+        "action:approve_high_value_purchase_request",
+        "action:select_supplier",
+        "action:draft_contract",
+        "action:legal_review_contract",
+        "action:activate_contract",
+        "action:release_purchase_order",
+        "action:record_goods_receipt",
+        "action:match_invoice",
+        "action:approve_payment",
+        "action:mark_payment_paid"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "evidence_id": "doc.business_rules.purchase_request",
+      "source_type": "document",
+      "source_file": "documents/business_rules.md",
+      "source_location": "Purchase Request Rules",
+      "evidence_text": "",
+      "evidence_summary": "Business rules state PR requires line item and justification, amount non-negative, approved PR cannot be cancelled normally, and rejected requests may be resubmitted.",
+      "supports": [
+        "rule:purchase_request_requires_line",
+        "rule:purchase_request_requires_justification",
+        "state:purchase_request.rejected"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "evidence_id": "doc.business_rules.supplier_contract_po",
+      "source_type": "document",
+      "source_file": "documents/business_rules.md",
+      "source_location": "## Supplier Rules; ## Contract Rules; ## Purchase Order Rules",
+      "evidence_text": "",
+      "evidence_summary": "Business rules state supplier must be active, high-risk suppliers should not be selected, contract requires legal approval and PO requires active contract.",
+      "supports": [
+        "rule:supplier_must_be_active",
+        "rule:high_risk_supplier_not_awarded",
+        "rule:contract_requires_legal_approval",
+        "rule:po_requires_active_contract"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.business_rules.invoice_payment",
+      "source_type": "document",
+      "source_file": "documents/business_rules.md",
+      "source_location": "Invoice and Payment Rules",
+      "evidence_text": "",
+      "evidence_summary": "Business rules define invoice matching, variance tolerance, matched invoice requirement before payment approval and paid timestamp.",
+      "supports": [
+        "rule:invoice_variance_tolerance",
+        "rule:invoice_requires_match_before_payment",
+        "rule:payment_requires_finance_approval",
+        "rule:paid_payment_requires_paid_time"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "evidence_id": "doc.glossary.terms",
+      "source_type": "document",
+      "source_file": "documents/glossary.md",
+      "source_location": "Preferred Term table rows",
+      "evidence_text": "",
+      "evidence_summary": "Glossary lists preferred terms and other terms: Purchase Request/PR, Supplier/Vendor, PO, Goods Receipt/GRN, Payment Request/Payment Application, and Contract/Agreement.",
+      "supports": [
+        "concept:purchase_request",
+        "concept:supplier",
+        "concept:purchase_order",
+        "concept:goods_receipt",
+        "concept:payment",
+        "concept:contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "doc.permission.create_purchase_request",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action create_purchase_request.",
+      "supports": [
+        "action:create_purchase_request",
+        "permission:requester.create_purchase_request",
+        "permission:department_manager.create_purchase_request",
+        "permission:procurement_specialist.create_purchase_request",
+        "permission:procurement_admin.create_purchase_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.submit_purchase_request",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action submit_purchase_request.",
+      "supports": [
+        "action:submit_purchase_request",
+        "permission:requester.submit_purchase_request",
+        "permission:department_manager.submit_purchase_request",
+        "permission:procurement_specialist.submit_purchase_request",
+        "permission:procurement_admin.submit_purchase_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.approve_normal_purchase_request",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action approve_normal_purchase_request.",
+      "supports": [
+        "action:approve_normal_purchase_request",
+        "permission:department_manager.approve_normal_purchase_request",
+        "permission:procurement_admin.approve_normal_purchase_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.approve_high_value_purchase_request",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action approve_high_value_purchase_request.",
+      "supports": [
+        "action:approve_high_value_purchase_request",
+        "permission:finance_manager.approve_high_value_purchase_request",
+        "permission:procurement_admin.approve_high_value_purchase_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.select_supplier",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action select_supplier.",
+      "supports": [
+        "action:select_supplier",
+        "permission:procurement_specialist.select_supplier",
+        "permission:procurement_admin.select_supplier"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.draft_contract",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action draft_contract.",
+      "supports": [
+        "action:draft_contract",
+        "permission:procurement_specialist.draft_contract",
+        "permission:procurement_admin.draft_contract"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.legal_review_contract",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action legal_review_contract.",
+      "supports": [
+        "action:legal_review_contract",
+        "permission:legal_reviewer.legal_review_contract",
+        "permission:procurement_admin.legal_review_contract"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.activate_contract",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action activate_contract.",
+      "supports": [
+        "action:activate_contract",
+        "permission:procurement_specialist.activate_contract",
+        "permission:procurement_admin.activate_contract"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.release_purchase_order",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action release_purchase_order.",
+      "supports": [
+        "action:release_purchase_order",
+        "permission:procurement_specialist.release_purchase_order",
+        "permission:procurement_admin.release_purchase_order"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.record_goods_receipt",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action record_goods_receipt.",
+      "supports": [
+        "action:record_goods_receipt",
+        "permission:warehouse_clerk.record_goods_receipt",
+        "permission:procurement_admin.record_goods_receipt"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.match_invoice",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action match_invoice.",
+      "supports": [
+        "action:match_invoice",
+        "permission:ap_clerk.match_invoice",
+        "permission:procurement_admin.match_invoice"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.create_payment_request",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action create_payment_request.",
+      "supports": [
+        "action:create_payment_request",
+        "permission:ap_clerk.create_payment_request",
+        "permission:procurement_admin.create_payment_request"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.approve_payment",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action approve_payment.",
+      "supports": [
+        "action:approve_payment",
+        "permission:finance_manager.approve_payment",
+        "permission:procurement_admin.approve_payment"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "evidence_id": "doc.permission.mark_payment_paid",
+      "source_type": "document",
+      "source_file": "documents/role_permission_matrix.md",
+      "source_location": "Permissions",
+      "evidence_text": "",
+      "evidence_summary": "Permission matrix provides allowed roles for action mark_payment_paid.",
+      "supports": [
+        "action:mark_payment_paid",
+        "permission:finance_manager.mark_payment_paid",
+        "permission:procurement_admin.mark_payment_paid"
+      ],
+      "confidence": 0.92
+    }
+  ],
+  "coverage_summary": {
+    "evidence_count": 85,
+    "source_type_counts": {
+      "code": 23,
+      "database_ddl": 19,
+      "sample_data": 11,
+      "document": 32
+    },
+    "multi_source_concepts": [
+      "concept:approval_task",
+      "concept:contract",
+      "concept:department",
+      "concept:employee",
+      "concept:goods_receipt",
+      "concept:invoice",
+      "concept:material",
+      "concept:payment",
+      "concept:purchase_order",
+      "concept:purchase_request",
+      "concept:purchase_request_item",
+      "concept:supplier"
+    ],
+    "single_source_concepts": [],
+    "concept_source_types": {
+      "concept:approval_task": [
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:contract": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:department": [
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:employee": [
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:goods_receipt": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:invoice": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:material": [
+        "database_ddl",
+        "sample_data"
+      ],
+      "concept:payment": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:purchase_order": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:purchase_request": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:purchase_request_item": [
+        "database_ddl",
+        "document",
+        "sample_data"
+      ],
+      "concept:supplier": [
+        "code",
+        "database_ddl",
+        "document",
+        "sample_data"
+      ]
+    }
+  },
+  "usage_notes": [
+    "Use evidence supports to check whether an AI output cites or can be traced to the same input sources as the gold ontology element.",
+    "One evidence item may support multiple ontology elements, and one ontology element may be supported by multiple evidence items.",
+    "Evidence IDs are stable references for manual review and future scoring rules, but this file does not implement scoring."
+  ],
+  "provenance": {
+    "created_by": "Claude Code",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual_gold_reference",
+    "source_system": "datasets/generic_procurement_contract_mvp"
+  }
+}

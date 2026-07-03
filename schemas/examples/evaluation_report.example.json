@@ -1,0 +1,73 @@
+{
+  "report_id": "report:run-001",
+  "title": "Example AI Workbench Capability Evaluation",
+  "customer_profile_ref": "customer:example-corp",
+  "tool_profile_ref": "tool:example-ai",
+  "evaluation_period": {
+    "start_date": "2026-07-03",
+    "end_date": "2026-07-03"
+  },
+  "executive_summary": "The tool is usable for standard ontology drafting with constraints.",
+  "overall_score": 78,
+  "overall_grade": "B+",
+  "capability_results": [
+    {
+      "capability_id": "cap:db_metadata",
+      "capability_name": "Database Metadata Understanding",
+      "score": 82,
+      "grade": "B+",
+      "evidence_refs": [
+        "ev:ddl.purchase_request"
+      ],
+      "task_result_refs": [
+        "STD-02"
+      ],
+      "notes": "Good table and column interpretation."
+    }
+  ],
+  "task_result_refs": [
+    "STD-02"
+  ],
+  "redline_results": [
+    {
+      "rule_id": "redline:json_valid",
+      "status": "pass",
+      "description": "Final output validates against schema."
+    }
+  ],
+  "score_caps": [
+    {
+      "reason": "Cannot execute commands",
+      "max_grade": "B",
+      "affected_capabilities": [
+        "cap:agentic_delivery"
+      ]
+    }
+  ],
+  "key_findings": [
+    "Structured output is stable after one retry."
+  ],
+  "risks": [
+    "No command execution limits autonomous delivery."
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "description": "Provide a controlled command execution sandbox for deep agentic tests.",
+      "owner": "customer IT"
+    }
+  ],
+  "conclusion": {
+    "decision": "ready_with_constraints",
+    "rationale": "Suitable for assisted ontology drafting, not full autonomous delivery.",
+    "next_steps": [
+      "Run Standard Test on Level 3 data."
+    ]
+  },
+  "generated_at": "2026-07-03T10:00:00Z",
+  "provenance": {
+    "created_by": "example",
+    "created_at": "2026-07-03T10:00:00Z",
+    "method": "manual"
+  }
+}

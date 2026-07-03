@@ -30,6 +30,7 @@
 
 ## 使用规范
 
-- 当前阶段不创建实际 JSON Schema 文件。
-- schema 设计必须先经过 FDE 负责人确认。
+- JSON Schema 文件位于本目录根路径，示例文件位于 `examples/`。
+- schema 字段使用英文命名，`description` 可使用中文解释业务含义。
 - schema 字段应支持证据、来源、置信度、不确定性、冲突和 provenance。
+- schema 应保持可自动校验，不在本目录内放置评分脚本。

@@ -1,0 +1,56 @@
+{
+  "tool_profile_id": "tool:example-ai",
+  "tool_name": "Example AI Workbench",
+  "tool_version": "2.1",
+  "vendor": "Example Vendor",
+  "model_name": "Example-Large-Model",
+  "model_version": "2026-06",
+  "customer_environment": {
+    "environment_name": "customer intranet",
+    "environment_type": "intranet",
+    "network_zone": "office",
+    "deployment_mode": "private_cloud",
+    "operating_system": "Windows 11",
+    "restrictions": [
+      "No public internet"
+    ]
+  },
+  "capabilities": {
+    "internet_access": false,
+    "can_read_files": true,
+    "can_execute_commands": false,
+    "supports_images": true,
+    "supports_browser": false,
+    "supports_database_connection": true,
+    "long_context_capability": {
+      "level": "long",
+      "max_context_tokens": 200000
+    },
+    "can_persist_intermediate_results": true
+  },
+  "json_output_stability": {
+    "level": "good",
+    "failure_modes": [
+      "Occasional markdown wrapper"
+    ],
+    "notes": "Valid JSON after explicit prompt."
+  },
+  "recommended_use_cases": [
+    "DDL to ontology draft",
+    "document rule extraction",
+    "evidence map drafting"
+  ],
+  "not_recommended_use_cases": [
+    "autonomous repository modification",
+    "web recursive analysis"
+  ],
+  "known_limitations": [
+    "Cannot execute shell commands."
+  ],
+  "evaluated_at": "2026-07-03T00:00:00Z",
+  "provenance": {
+    "created_by": "example",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual"
+  }
+}

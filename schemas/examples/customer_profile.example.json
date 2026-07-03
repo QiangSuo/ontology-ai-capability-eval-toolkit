@@ -1,0 +1,83 @@
+{
+  "customer_profile_id": "customer:example-corp",
+  "customer_name": "Example Corp",
+  "industry": "manufacturing",
+  "business_domain": "procurement and contract fulfillment",
+  "environment": {
+    "environment_name": "Example intranet",
+    "environment_type": "intranet",
+    "network_access": "restricted",
+    "deployment_location": "customer data center",
+    "operating_systems": [
+      "Windows 11",
+      "Linux"
+    ],
+    "notes": "Internet egress is blocked."
+  },
+  "data_sources": [
+    {
+      "data_source_id": "ds:ddl",
+      "name": "Procurement DDL",
+      "type": "database",
+      "availability": "available",
+      "location": "datasets/level2/schema.sql",
+      "sensitivity": "internal"
+    },
+    {
+      "data_source_id": "ds:docs",
+      "name": "Approval Policy",
+      "type": "document",
+      "availability": "available",
+      "location": "datasets/level2/policy.md",
+      "sensitivity": "internal"
+    }
+  ],
+  "access_constraints": [
+    {
+      "constraint_type": "network",
+      "description": "No public web access during evaluation.",
+      "impact": "medium"
+    }
+  ],
+  "security_requirements": [
+    "Do not export customer data outside intranet."
+  ],
+  "available_tools": [
+    {
+      "tool_name": "Example AI Workbench",
+      "tool_profile_ref": "tool:example-ai",
+      "license_status": "available"
+    }
+  ],
+  "operator_profiles": [
+    {
+      "operator_id": "op:junior-1",
+      "role": "FDE trainee",
+      "experience_level": "low",
+      "tool_familiarity": "basic"
+    }
+  ],
+  "evaluation_scope": {
+    "levels": [
+      "smoke",
+      "standard"
+    ],
+    "included_capabilities": [
+      "cap:db_metadata",
+      "cap:structured_output"
+    ],
+    "excluded_capabilities": [
+      "cap:web_recursive"
+    ],
+    "notes": "Web tasks are out of scope due to network policy."
+  },
+  "contact": {
+    "owner": "Evaluation Owner",
+    "department": "IT"
+  },
+  "provenance": {
+    "created_by": "example",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual"
+  }
+}

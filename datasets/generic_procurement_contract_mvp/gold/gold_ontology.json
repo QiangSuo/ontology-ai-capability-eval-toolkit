@@ -1,0 +1,2564 @@
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "gold:generic_procurement_contract_mvp",
+  "title": "Gold Ontology for Generic Procurement Contract MVP",
+  "domain": "enterprise_procurement_contract_fulfillment",
+  "description": "Gold ontology based only on the generic_procurement_contract_mvp input dataset. This file is a reference ontology, not a gold evidence map or scoring script.",
+  "design_principles": [
+    "Use business concepts only; exclude technical Controller, Service, DTO, Mapper, repository, package and framework concepts.",
+    "Include only concepts with support in source code, DDL, CSV, or business documents.",
+    "Represent synonyms inside each concept as aliases, not as separate concepts.",
+    "Keep evidence_refs as lightweight source placeholders; do not create a separate evidence map in this round.",
+    "Classify required core concepts and optional enrichment concepts for evaluator use."
+  ],
+  "core_required_concept_ids": [
+    "concept:purchase_request",
+    "concept:purchase_request_item",
+    "concept:approval_task",
+    "concept:supplier",
+    "concept:contract",
+    "concept:purchase_order",
+    "concept:goods_receipt",
+    "concept:invoice",
+    "concept:payment",
+    "concept:department",
+    "concept:employee",
+    "concept:material"
+  ],
+  "optional_bonus_concept_ids": [],
+  "concepts": [
+    {
+      "id": "concept:purchase_request",
+      "name": "PurchaseRequest",
+      "aliases": [
+        "Purchase Request",
+        "PR",
+        "purchase requisition"
+      ],
+      "description": "Business request for goods or services before sourcing, contracting, ordering, receiving, invoicing, and payment.",
+      "attributes": [
+        {
+          "id": "attr:purchase_request.request_id",
+          "name": "request_id",
+          "data_type": "integer",
+          "description": "Stable identifier of the purchase request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.request_no",
+          "name": "request_no",
+          "data_type": "string",
+          "description": "Human-readable PR number.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.request_title",
+          "name": "request_title",
+          "data_type": "string",
+          "description": "Short business title of the request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.requester_user_id",
+          "name": "requester_user_id",
+          "data_type": "integer",
+          "description": "Employee who created or owns the request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.department_id",
+          "name": "department_id",
+          "data_type": "integer",
+          "description": "Owning department.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.preferred_supplier_id",
+          "name": "preferred_supplier_id",
+          "data_type": "integer",
+          "description": "Preferred supplier, if known before award.",
+          "required": false
+        },
+        {
+          "id": "attr:purchase_request.estimated_amount",
+          "name": "estimated_amount",
+          "data_type": "decimal",
+          "description": "Estimated total amount for approval routing.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.currency_code",
+          "name": "currency_code",
+          "data_type": "string",
+          "description": "Currency of estimated amount.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.request_status",
+          "name": "request_status",
+          "data_type": "enum",
+          "description": "Lifecycle status of the request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.business_justification",
+          "name": "business_justification",
+          "data_type": "text",
+          "description": "Reason for the procurement need.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request.required_by_date",
+          "name": "required_by_date",
+          "data_type": "date",
+          "description": "Requested delivery or completion date.",
+          "required": false
+        },
+        {
+          "id": "attr:purchase_request.submitted_at",
+          "name": "submitted_at",
+          "data_type": "datetime",
+          "description": "Submission timestamp.",
+          "required": false
+        },
+        {
+          "id": "attr:purchase_request.approved_at",
+          "name": "approved_at",
+          "data_type": "datetime",
+          "description": "Final approval timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:purchase_request.has_item",
+          "name": "has item",
+          "target_concept_id": "concept:purchase_request_item",
+          "cardinality": "one_to_many",
+          "description": "A request contains one or more request lines."
+        },
+        {
+          "id": "rel:purchase_request.requested_by_employee",
+          "name": "requested by",
+          "target_concept_id": "concept:employee",
+          "cardinality": "many_to_one",
+          "description": "A request is created by an employee."
+        },
+        {
+          "id": "rel:purchase_request.belongs_to_department",
+          "name": "belongs to",
+          "target_concept_id": "concept:department",
+          "cardinality": "many_to_one",
+          "description": "A request belongs to a department."
+        },
+        {
+          "id": "rel:purchase_request.prefers_supplier",
+          "name": "prefers",
+          "target_concept_id": "concept:supplier",
+          "cardinality": "many_to_one",
+          "description": "A request can identify a preferred supplier."
+        },
+        {
+          "id": "rel:purchase_request.has_approval_task",
+          "name": "has approval task",
+          "target_concept_id": "concept:approval_task",
+          "cardinality": "one_to_many",
+          "description": "A request can have approval records."
+        },
+        {
+          "id": "rel:purchase_request.results_in_contract",
+          "name": "results in",
+          "target_concept_id": "concept:contract",
+          "cardinality": "one_to_many",
+          "description": "Approved requests can lead to contracts."
+        },
+        {
+          "id": "rel:purchase_request.results_in_purchase_order",
+          "name": "results in",
+          "target_concept_id": "concept:purchase_order",
+          "cardinality": "one_to_many",
+          "description": "A request can lead to purchase orders."
+        }
+      ],
+      "lifecycle_states": [
+        "DRAFT",
+        "SUBMITTED",
+        "APPROVED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_purchase_request",
+        "code:PurchaseRequest",
+        "doc:procurement_process"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:purchase_request_item",
+      "name": "PurchaseRequestItem",
+      "aliases": [
+        "Purchase Request Line",
+        "PR line",
+        "request line",
+        "line item"
+      ],
+      "description": "Line-level item or service requested under a purchase request.",
+      "attributes": [
+        {
+          "id": "attr:purchase_request_item.line_id",
+          "name": "line_id",
+          "data_type": "integer",
+          "description": "Stable line identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.request_id",
+          "name": "request_id",
+          "data_type": "integer",
+          "description": "Parent purchase request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.item_description",
+          "name": "item_description",
+          "data_type": "string",
+          "description": "Description of the requested material or service.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.category_code",
+          "name": "category_code",
+          "data_type": "string",
+          "description": "Procurement category.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.quantity",
+          "name": "quantity",
+          "data_type": "decimal",
+          "description": "Requested quantity.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.unit_of_measure",
+          "name": "unit_of_measure",
+          "data_type": "string",
+          "description": "Unit of measure.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.estimated_unit_price",
+          "name": "estimated_unit_price",
+          "data_type": "decimal",
+          "description": "Estimated unit price.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_request_item.line_amount",
+          "name": "line_amount",
+          "data_type": "decimal",
+          "description": "Estimated line amount.",
+          "required": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:purchase_request_item.belongs_to_request",
+          "name": "belongs to",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "many_to_one",
+          "description": "Each line belongs to one purchase request."
+        },
+        {
+          "id": "rel:purchase_request_item.describes_material",
+          "name": "describes",
+          "target_concept_id": "concept:material",
+          "cardinality": "many_to_one",
+          "description": "Line item text and category describe a material or service need."
+        }
+      ],
+      "lifecycle_states": [],
+      "evidence_refs": [
+        "ddl:pc_purchase_request_line",
+        "code:PurchaseRequestLine",
+        "csv:pc_purchase_request_line"
+      ],
+      "confidence": 0.98,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:approval_task",
+      "name": "ApprovalTask",
+      "aliases": [
+        "Approval Record",
+        "Approval Step",
+        "decision record"
+      ],
+      "description": "Workflow decision record for purchase request, contract, or payment approval.",
+      "attributes": [
+        {
+          "id": "attr:approval_task.approval_id",
+          "name": "approval_id",
+          "data_type": "integer",
+          "description": "Stable approval record identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.target_type",
+          "name": "target_type",
+          "data_type": "enum",
+          "description": "Approved object type.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.target_id",
+          "name": "target_id",
+          "data_type": "integer",
+          "description": "Identifier of the approved object.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.step_name",
+          "name": "step_name",
+          "data_type": "string",
+          "description": "Approval step name.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.approver_user_id",
+          "name": "approver_user_id",
+          "data_type": "integer",
+          "description": "Approver employee.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.approval_status",
+          "name": "approval_status",
+          "data_type": "enum",
+          "description": "Decision status.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.approval_comment",
+          "name": "approval_comment",
+          "data_type": "string",
+          "description": "Approval or rejection comment.",
+          "required": false
+        },
+        {
+          "id": "attr:approval_task.submitted_at",
+          "name": "submitted_at",
+          "data_type": "datetime",
+          "description": "Approval step submission time.",
+          "required": true
+        },
+        {
+          "id": "attr:approval_task.decided_at",
+          "name": "decided_at",
+          "data_type": "datetime",
+          "description": "Decision timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:approval_task.approves_purchase_request",
+          "name": "approves",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "many_to_one",
+          "description": "Approval tasks can target purchase requests."
+        },
+        {
+          "id": "rel:approval_task.approves_payment",
+          "name": "approves",
+          "target_concept_id": "concept:payment",
+          "cardinality": "many_to_one",
+          "description": "Approval tasks can target payment requests."
+        },
+        {
+          "id": "rel:approval_task.performed_by_employee",
+          "name": "performed by",
+          "target_concept_id": "concept:employee",
+          "cardinality": "many_to_one",
+          "description": "Approval decision is performed by an employee."
+        }
+      ],
+      "lifecycle_states": [
+        "PENDING",
+        "APPROVED",
+        "REJECTED",
+        "SKIPPED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_approval_record",
+        "csv:pc_approval_record",
+        "doc:role_permission_matrix"
+      ],
+      "confidence": 0.98,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:supplier",
+      "name": "Supplier",
+      "aliases": [
+        "Vendor",
+        "external provider"
+      ],
+      "description": "External organization that provides goods or services to the company.",
+      "attributes": [
+        {
+          "id": "attr:supplier.supplier_id",
+          "name": "supplier_id",
+          "data_type": "integer",
+          "description": "Stable supplier identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:supplier.supplier_code",
+          "name": "supplier_code",
+          "data_type": "string",
+          "description": "Supplier code.",
+          "required": true
+        },
+        {
+          "id": "attr:supplier.supplier_name",
+          "name": "supplier_name",
+          "data_type": "string",
+          "description": "Supplier display name.",
+          "required": true
+        },
+        {
+          "id": "attr:supplier.supplier_status",
+          "name": "supplier_status",
+          "data_type": "enum",
+          "description": "Supplier availability status.",
+          "required": true
+        },
+        {
+          "id": "attr:supplier.risk_rating",
+          "name": "risk_rating",
+          "data_type": "enum",
+          "description": "Supplier risk rating.",
+          "required": true
+        },
+        {
+          "id": "attr:supplier.contact_email",
+          "name": "contact_email",
+          "data_type": "string",
+          "description": "Supplier contact email.",
+          "required": false
+        },
+        {
+          "id": "attr:supplier.onboarded_at",
+          "name": "onboarded_at",
+          "data_type": "datetime",
+          "description": "Supplier onboarding timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:supplier.preferred_by_request",
+          "name": "preferred by",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "one_to_many",
+          "description": "Supplier can be preferred by requests."
+        },
+        {
+          "id": "rel:supplier.party_to_contract",
+          "name": "party to",
+          "target_concept_id": "concept:contract",
+          "cardinality": "one_to_many",
+          "description": "Supplier is party to contracts."
+        },
+        {
+          "id": "rel:supplier.receives_purchase_order",
+          "name": "receives",
+          "target_concept_id": "concept:purchase_order",
+          "cardinality": "one_to_many",
+          "description": "Supplier receives purchase orders."
+        },
+        {
+          "id": "rel:supplier.issues_invoice",
+          "name": "issues",
+          "target_concept_id": "concept:invoice",
+          "cardinality": "one_to_many",
+          "description": "Supplier issues invoices."
+        }
+      ],
+      "lifecycle_states": [
+        "ACTIVE",
+        "SUSPENDED",
+        "PENDING_REVIEW"
+      ],
+      "evidence_refs": [
+        "ddl:pc_supplier",
+        "code:Supplier",
+        "doc:business_overview",
+        "doc:glossary"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:contract",
+      "name": "Contract",
+      "aliases": [
+        "Agreement"
+      ],
+      "description": "Legal agreement between the company and a supplier, normally created from an approved purchase request.",
+      "attributes": [
+        {
+          "id": "attr:contract.contract_id",
+          "name": "contract_id",
+          "data_type": "integer",
+          "description": "Stable contract identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.contract_no",
+          "name": "contract_no",
+          "data_type": "string",
+          "description": "Contract number.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.request_id",
+          "name": "request_id",
+          "data_type": "integer",
+          "description": "Source purchase request.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.supplier_id",
+          "name": "supplier_id",
+          "data_type": "integer",
+          "description": "Contract supplier.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.contract_title",
+          "name": "contract_title",
+          "data_type": "string",
+          "description": "Contract title.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.contract_amount",
+          "name": "contract_amount",
+          "data_type": "decimal",
+          "description": "Contract amount.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.contract_status",
+          "name": "contract_status",
+          "data_type": "enum",
+          "description": "Contract lifecycle status.",
+          "required": true
+        },
+        {
+          "id": "attr:contract.start_date",
+          "name": "start_date",
+          "data_type": "date",
+          "description": "Contract start date.",
+          "required": false
+        },
+        {
+          "id": "attr:contract.end_date",
+          "name": "end_date",
+          "data_type": "date",
+          "description": "Contract end date.",
+          "required": false
+        },
+        {
+          "id": "attr:contract.legal_reviewer_id",
+          "name": "legal_reviewer_id",
+          "data_type": "integer",
+          "description": "Legal reviewer employee.",
+          "required": false
+        },
+        {
+          "id": "attr:contract.legal_approved_at",
+          "name": "legal_approved_at",
+          "data_type": "datetime",
+          "description": "Legal approval time.",
+          "required": false
+        },
+        {
+          "id": "attr:contract.activated_at",
+          "name": "activated_at",
+          "data_type": "datetime",
+          "description": "Activation timestamp.",
+          "required": false
+        },
+        {
+          "id": "attr:contract.termination_reason",
+          "name": "termination_reason",
+          "data_type": "string",
+          "description": "Reason for contract termination.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:contract.from_purchase_request",
+          "name": "created from",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "many_to_one",
+          "description": "Contract references an approved purchase request."
+        },
+        {
+          "id": "rel:contract.with_supplier",
+          "name": "with",
+          "target_concept_id": "concept:supplier",
+          "cardinality": "many_to_one",
+          "description": "Contract is with one supplier."
+        },
+        {
+          "id": "rel:contract.reviewed_by_employee",
+          "name": "reviewed by",
+          "target_concept_id": "concept:employee",
+          "cardinality": "many_to_one",
+          "description": "Legal reviewer is an employee."
+        },
+        {
+          "id": "rel:contract.enables_purchase_order",
+          "name": "enables",
+          "target_concept_id": "concept:purchase_order",
+          "cardinality": "one_to_many",
+          "description": "Active contracts enable purchase order release."
+        }
+      ],
+      "lifecycle_states": [
+        "DRAFT",
+        "LEGAL_REVIEW",
+        "ACTIVE",
+        "EXPIRED",
+        "TERMINATED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_contract",
+        "code:Contract",
+        "doc:contract_lifecycle"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:purchase_order",
+      "name": "PurchaseOrder",
+      "aliases": [
+        "Purchase Order",
+        "PO"
+      ],
+      "description": "Operational order released against an active contract and purchase request.",
+      "attributes": [
+        {
+          "id": "attr:purchase_order.po_id",
+          "name": "po_id",
+          "data_type": "integer",
+          "description": "Stable purchase order identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.po_no",
+          "name": "po_no",
+          "data_type": "string",
+          "description": "Purchase order number.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.contract_id",
+          "name": "contract_id",
+          "data_type": "integer",
+          "description": "Related contract.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.request_id",
+          "name": "request_id",
+          "data_type": "integer",
+          "description": "Related purchase request.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.supplier_id",
+          "name": "supplier_id",
+          "data_type": "integer",
+          "description": "Supplier receiving the order.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.po_amount",
+          "name": "po_amount",
+          "data_type": "decimal",
+          "description": "Purchase order amount.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.po_status",
+          "name": "po_status",
+          "data_type": "enum",
+          "description": "Purchase order status.",
+          "required": true
+        },
+        {
+          "id": "attr:purchase_order.released_at",
+          "name": "released_at",
+          "data_type": "datetime",
+          "description": "PO release timestamp.",
+          "required": false
+        },
+        {
+          "id": "attr:purchase_order.closed_at",
+          "name": "closed_at",
+          "data_type": "datetime",
+          "description": "PO close timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:purchase_order.released_against_contract",
+          "name": "released against",
+          "target_concept_id": "concept:contract",
+          "cardinality": "many_to_one",
+          "description": "PO is released against a contract."
+        },
+        {
+          "id": "rel:purchase_order.for_purchase_request",
+          "name": "for",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "many_to_one",
+          "description": "PO traces back to a purchase request."
+        },
+        {
+          "id": "rel:purchase_order.sent_to_supplier",
+          "name": "sent to",
+          "target_concept_id": "concept:supplier",
+          "cardinality": "many_to_one",
+          "description": "PO is sent to supplier."
+        },
+        {
+          "id": "rel:purchase_order.has_goods_receipt",
+          "name": "has receipt",
+          "target_concept_id": "concept:goods_receipt",
+          "cardinality": "one_to_many",
+          "description": "PO can have goods receipts."
+        },
+        {
+          "id": "rel:purchase_order.has_invoice",
+          "name": "has invoice",
+          "target_concept_id": "concept:invoice",
+          "cardinality": "one_to_many",
+          "description": "PO can have supplier invoices."
+        }
+      ],
+      "lifecycle_states": [
+        "RELEASED",
+        "PARTIALLY_RECEIVED",
+        "CLOSED",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_purchase_order",
+        "code:PurchaseOrder",
+        "doc:business_overview"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:goods_receipt",
+      "name": "GoodsReceipt",
+      "aliases": [
+        "Goods Receipt",
+        "GRN",
+        "receipt record",
+        "Goods Receipt Note"
+      ],
+      "description": "Receiving record created by warehouse when goods or services are delivered.",
+      "attributes": [
+        {
+          "id": "attr:goods_receipt.receipt_id",
+          "name": "receipt_id",
+          "data_type": "integer",
+          "description": "Stable receipt identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:goods_receipt.receipt_no",
+          "name": "receipt_no",
+          "data_type": "string",
+          "description": "Receipt or GRN number.",
+          "required": true
+        },
+        {
+          "id": "attr:goods_receipt.po_id",
+          "name": "po_id",
+          "data_type": "integer",
+          "description": "Related purchase order.",
+          "required": true
+        },
+        {
+          "id": "attr:goods_receipt.receipt_status",
+          "name": "receipt_status",
+          "data_type": "enum",
+          "description": "Receipt lifecycle status.",
+          "required": true
+        },
+        {
+          "id": "attr:goods_receipt.received_by",
+          "name": "received_by",
+          "data_type": "integer",
+          "description": "Warehouse employee who recorded receipt.",
+          "required": true
+        },
+        {
+          "id": "attr:goods_receipt.received_at",
+          "name": "received_at",
+          "data_type": "datetime",
+          "description": "Receiving time.",
+          "required": false
+        },
+        {
+          "id": "attr:goods_receipt.inspection_result",
+          "name": "inspection_result",
+          "data_type": "enum",
+          "description": "Inspection outcome.",
+          "required": false
+        },
+        {
+          "id": "attr:goods_receipt.remarks",
+          "name": "remarks",
+          "data_type": "string",
+          "description": "Receipt remarks.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:goods_receipt.for_purchase_order",
+          "name": "for",
+          "target_concept_id": "concept:purchase_order",
+          "cardinality": "many_to_one",
+          "description": "Receipt is recorded against a purchase order."
+        },
+        {
+          "id": "rel:goods_receipt.recorded_by_employee",
+          "name": "recorded by",
+          "target_concept_id": "concept:employee",
+          "cardinality": "many_to_one",
+          "description": "Receipt is recorded by a warehouse employee."
+        },
+        {
+          "id": "rel:goods_receipt.supports_invoice_match",
+          "name": "supports",
+          "target_concept_id": "concept:invoice",
+          "cardinality": "one_to_many",
+          "description": "Receipt can support invoice matching."
+        }
+      ],
+      "lifecycle_states": [
+        "PENDING",
+        "PARTIAL",
+        "COMPLETE",
+        "REJECTED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_goods_receipt",
+        "code:GoodsReceipt",
+        "doc:receipt_invoice_payment_policy"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:invoice",
+      "name": "Invoice",
+      "aliases": [
+        "supplier invoice",
+        "billing document"
+      ],
+      "description": "Supplier billing document matched against purchase order and goods receipt before payment.",
+      "attributes": [
+        {
+          "id": "attr:invoice.invoice_id",
+          "name": "invoice_id",
+          "data_type": "integer",
+          "description": "Stable invoice identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.invoice_no",
+          "name": "invoice_no",
+          "data_type": "string",
+          "description": "Supplier invoice number.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.supplier_id",
+          "name": "supplier_id",
+          "data_type": "integer",
+          "description": "Invoice supplier.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.po_id",
+          "name": "po_id",
+          "data_type": "integer",
+          "description": "Related purchase order.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.receipt_id",
+          "name": "receipt_id",
+          "data_type": "integer",
+          "description": "Related receipt, if matched to receipt.",
+          "required": false
+        },
+        {
+          "id": "attr:invoice.invoice_amount",
+          "name": "invoice_amount",
+          "data_type": "decimal",
+          "description": "Invoice amount.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.invoice_date",
+          "name": "invoice_date",
+          "data_type": "date",
+          "description": "Invoice date.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.invoice_status",
+          "name": "invoice_status",
+          "data_type": "enum",
+          "description": "Invoice matching status.",
+          "required": true
+        },
+        {
+          "id": "attr:invoice.match_variance_amount",
+          "name": "match_variance_amount",
+          "data_type": "decimal",
+          "description": "Amount variance from matching.",
+          "required": false
+        },
+        {
+          "id": "attr:invoice.matched_at",
+          "name": "matched_at",
+          "data_type": "datetime",
+          "description": "Matching timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:invoice.issued_by_supplier",
+          "name": "issued by",
+          "target_concept_id": "concept:supplier",
+          "cardinality": "many_to_one",
+          "description": "Invoice is issued by supplier."
+        },
+        {
+          "id": "rel:invoice.for_purchase_order",
+          "name": "for",
+          "target_concept_id": "concept:purchase_order",
+          "cardinality": "many_to_one",
+          "description": "Invoice references a purchase order."
+        },
+        {
+          "id": "rel:invoice.matched_to_receipt",
+          "name": "matched to",
+          "target_concept_id": "concept:goods_receipt",
+          "cardinality": "many_to_one",
+          "description": "Invoice may match against goods receipt."
+        },
+        {
+          "id": "rel:invoice.generates_payment",
+          "name": "generates",
+          "target_concept_id": "concept:payment",
+          "cardinality": "one_to_many",
+          "description": "Matched invoices can generate payment requests."
+        }
+      ],
+      "lifecycle_states": [
+        "PENDING_MATCH",
+        "MATCHED",
+        "EXCEPTION",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_invoice",
+        "code:Invoice",
+        "doc:receipt_invoice_payment_policy"
+      ],
+      "confidence": 0.99,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:payment",
+      "name": "Payment",
+      "aliases": [
+        "Payment Request",
+        "Payment Application",
+        "payment request"
+      ],
+      "description": "Finance request and execution record for paying a matched supplier invoice.",
+      "attributes": [
+        {
+          "id": "attr:payment.payment_request_id",
+          "name": "payment_request_id",
+          "data_type": "integer",
+          "description": "Stable payment request identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.payment_no",
+          "name": "payment_no",
+          "data_type": "string",
+          "description": "Payment number.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.invoice_id",
+          "name": "invoice_id",
+          "data_type": "integer",
+          "description": "Related invoice.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.payment_amount",
+          "name": "payment_amount",
+          "data_type": "decimal",
+          "description": "Amount to pay.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.payment_status",
+          "name": "payment_status",
+          "data_type": "enum",
+          "description": "Payment lifecycle status.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.due_date",
+          "name": "due_date",
+          "data_type": "date",
+          "description": "Payment due date.",
+          "required": true
+        },
+        {
+          "id": "attr:payment.approved_by",
+          "name": "approved_by",
+          "data_type": "integer",
+          "description": "Approving finance employee.",
+          "required": false
+        },
+        {
+          "id": "attr:payment.approved_at",
+          "name": "approved_at",
+          "data_type": "datetime",
+          "description": "Payment approval timestamp.",
+          "required": false
+        },
+        {
+          "id": "attr:payment.paid_at",
+          "name": "paid_at",
+          "data_type": "datetime",
+          "description": "Payment execution timestamp.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:payment.for_invoice",
+          "name": "for",
+          "target_concept_id": "concept:invoice",
+          "cardinality": "many_to_one",
+          "description": "Payment request is for one invoice."
+        },
+        {
+          "id": "rel:payment.approved_by_employee",
+          "name": "approved by",
+          "target_concept_id": "concept:employee",
+          "cardinality": "many_to_one",
+          "description": "Payment approval is performed by finance employee."
+        },
+        {
+          "id": "rel:payment.has_approval_task",
+          "name": "has approval task",
+          "target_concept_id": "concept:approval_task",
+          "cardinality": "one_to_many",
+          "description": "Payment can have approval records."
+        }
+      ],
+      "lifecycle_states": [
+        "REQUESTED",
+        "APPROVED",
+        "PAID",
+        "HELD",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "ddl:pc_payment_request",
+        "code:PaymentRequest",
+        "doc:receipt_invoice_payment_policy"
+      ],
+      "confidence": 0.98,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:department",
+      "name": "Department",
+      "aliases": [
+        "business department",
+        "cost center owner"
+      ],
+      "description": "Organizational unit that owns purchase requests and users.",
+      "attributes": [
+        {
+          "id": "attr:department.department_id",
+          "name": "department_id",
+          "data_type": "integer",
+          "description": "Stable department identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:department.department_code",
+          "name": "department_code",
+          "data_type": "string",
+          "description": "Department code.",
+          "required": true
+        },
+        {
+          "id": "attr:department.department_name",
+          "name": "department_name",
+          "data_type": "string",
+          "description": "Department name.",
+          "required": true
+        },
+        {
+          "id": "attr:department.cost_center",
+          "name": "cost_center",
+          "data_type": "string",
+          "description": "Cost center code.",
+          "required": true
+        },
+        {
+          "id": "attr:department.is_active",
+          "name": "is_active",
+          "data_type": "boolean",
+          "description": "Whether department is active.",
+          "required": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:department.has_employee",
+          "name": "has employee",
+          "target_concept_id": "concept:employee",
+          "cardinality": "one_to_many",
+          "description": "Department contains employees."
+        },
+        {
+          "id": "rel:department.owns_purchase_request",
+          "name": "owns",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "one_to_many",
+          "description": "Department owns purchase requests."
+        }
+      ],
+      "lifecycle_states": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "evidence_refs": [
+        "ddl:pc_department",
+        "csv:pc_department"
+      ],
+      "confidence": 0.95,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:employee",
+      "name": "Employee",
+      "aliases": [
+        "User",
+        "system user",
+        "approver",
+        "requester"
+      ],
+      "description": "Internal user or employee who performs procurement, approval, receipt, invoice, legal, or payment actions.",
+      "attributes": [
+        {
+          "id": "attr:employee.user_id",
+          "name": "user_id",
+          "data_type": "integer",
+          "description": "Stable employee/user identifier.",
+          "required": true
+        },
+        {
+          "id": "attr:employee.user_name",
+          "name": "user_name",
+          "data_type": "string",
+          "description": "Employee display name.",
+          "required": true
+        },
+        {
+          "id": "attr:employee.role_code",
+          "name": "role_code",
+          "data_type": "enum",
+          "description": "Primary role code.",
+          "required": true
+        },
+        {
+          "id": "attr:employee.department_id",
+          "name": "department_id",
+          "data_type": "integer",
+          "description": "Employee department.",
+          "required": true
+        },
+        {
+          "id": "attr:employee.email",
+          "name": "email",
+          "data_type": "string",
+          "description": "Employee email.",
+          "required": true
+        },
+        {
+          "id": "attr:employee.is_active",
+          "name": "is_active",
+          "data_type": "boolean",
+          "description": "Whether employee account is active.",
+          "required": true
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:employee.belongs_to_department",
+          "name": "belongs to",
+          "target_concept_id": "concept:department",
+          "cardinality": "many_to_one",
+          "description": "Employee belongs to a department."
+        },
+        {
+          "id": "rel:employee.creates_purchase_request",
+          "name": "creates",
+          "target_concept_id": "concept:purchase_request",
+          "cardinality": "one_to_many",
+          "description": "Employee can create purchase requests."
+        },
+        {
+          "id": "rel:employee.performs_approval_task",
+          "name": "performs",
+          "target_concept_id": "concept:approval_task",
+          "cardinality": "one_to_many",
+          "description": "Employee can perform approval tasks."
+        },
+        {
+          "id": "rel:employee.records_goods_receipt",
+          "name": "records",
+          "target_concept_id": "concept:goods_receipt",
+          "cardinality": "one_to_many",
+          "description": "Warehouse employee records goods receipt."
+        },
+        {
+          "id": "rel:employee.approves_payment",
+          "name": "approves",
+          "target_concept_id": "concept:payment",
+          "cardinality": "one_to_many",
+          "description": "Finance employee approves payment."
+        }
+      ],
+      "lifecycle_states": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "evidence_refs": [
+        "ddl:pc_user",
+        "csv:pc_user",
+        "doc:role_permission_matrix"
+      ],
+      "confidence": 0.97,
+      "classification": "core_required"
+    },
+    {
+      "id": "concept:material",
+      "name": "Material",
+      "aliases": [
+        "Item",
+        "goods",
+        "service item",
+        "procurement category item"
+      ],
+      "description": "Requested good or service described by purchase request line item description and category. The input dataset does not contain a standalone material master table.",
+      "attributes": [
+        {
+          "id": "attr:material.item_description",
+          "name": "item_description",
+          "data_type": "string",
+          "description": "Text description from purchase request line.",
+          "required": true
+        },
+        {
+          "id": "attr:material.category_code",
+          "name": "category_code",
+          "data_type": "string",
+          "description": "Procurement category code.",
+          "required": true
+        },
+        {
+          "id": "attr:material.unit_of_measure",
+          "name": "unit_of_measure",
+          "data_type": "string",
+          "description": "Unit used on request line.",
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "id": "rel:material.requested_on_item",
+          "name": "requested on",
+          "target_concept_id": "concept:purchase_request_item",
+          "cardinality": "one_to_many",
+          "description": "Material or service need appears on request line items."
+        }
+      ],
+      "lifecycle_states": [],
+      "evidence_refs": [
+        "ddl:pc_purchase_request_line.item_description",
+        "ddl:pc_purchase_request_line.category_code",
+        "csv:pc_purchase_request_line"
+      ],
+      "confidence": 0.78,
+      "classification": "core_required"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:purchase_request.has_item",
+      "name": "has item",
+      "target_concept_id": "concept:purchase_request_item",
+      "cardinality": "one_to_many",
+      "description": "A request contains one or more request lines.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.requested_by_employee",
+      "name": "requested by",
+      "target_concept_id": "concept:employee",
+      "cardinality": "many_to_one",
+      "description": "A request is created by an employee.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.belongs_to_department",
+      "name": "belongs to",
+      "target_concept_id": "concept:department",
+      "cardinality": "many_to_one",
+      "description": "A request belongs to a department.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.prefers_supplier",
+      "name": "prefers",
+      "target_concept_id": "concept:supplier",
+      "cardinality": "many_to_one",
+      "description": "A request can identify a preferred supplier.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.has_approval_task",
+      "name": "has approval task",
+      "target_concept_id": "concept:approval_task",
+      "cardinality": "one_to_many",
+      "description": "A request can have approval records.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.results_in_contract",
+      "name": "results in",
+      "target_concept_id": "concept:contract",
+      "cardinality": "one_to_many",
+      "description": "Approved requests can lead to contracts.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request.results_in_purchase_order",
+      "name": "results in",
+      "target_concept_id": "concept:purchase_order",
+      "cardinality": "one_to_many",
+      "description": "A request can lead to purchase orders.",
+      "source_concept_id": "concept:purchase_request"
+    },
+    {
+      "id": "rel:purchase_request_item.belongs_to_request",
+      "name": "belongs to",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "many_to_one",
+      "description": "Each line belongs to one purchase request.",
+      "source_concept_id": "concept:purchase_request_item"
+    },
+    {
+      "id": "rel:purchase_request_item.describes_material",
+      "name": "describes",
+      "target_concept_id": "concept:material",
+      "cardinality": "many_to_one",
+      "description": "Line item text and category describe a material or service need.",
+      "source_concept_id": "concept:purchase_request_item"
+    },
+    {
+      "id": "rel:approval_task.approves_purchase_request",
+      "name": "approves",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "many_to_one",
+      "description": "Approval tasks can target purchase requests.",
+      "source_concept_id": "concept:approval_task"
+    },
+    {
+      "id": "rel:approval_task.approves_payment",
+      "name": "approves",
+      "target_concept_id": "concept:payment",
+      "cardinality": "many_to_one",
+      "description": "Approval tasks can target payment requests.",
+      "source_concept_id": "concept:approval_task"
+    },
+    {
+      "id": "rel:approval_task.performed_by_employee",
+      "name": "performed by",
+      "target_concept_id": "concept:employee",
+      "cardinality": "many_to_one",
+      "description": "Approval decision is performed by an employee.",
+      "source_concept_id": "concept:approval_task"
+    },
+    {
+      "id": "rel:supplier.preferred_by_request",
+      "name": "preferred by",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "one_to_many",
+      "description": "Supplier can be preferred by requests.",
+      "source_concept_id": "concept:supplier"
+    },
+    {
+      "id": "rel:supplier.party_to_contract",
+      "name": "party to",
+      "target_concept_id": "concept:contract",
+      "cardinality": "one_to_many",
+      "description": "Supplier is party to contracts.",
+      "source_concept_id": "concept:supplier"
+    },
+    {
+      "id": "rel:supplier.receives_purchase_order",
+      "name": "receives",
+      "target_concept_id": "concept:purchase_order",
+      "cardinality": "one_to_many",
+      "description": "Supplier receives purchase orders.",
+      "source_concept_id": "concept:supplier"
+    },
+    {
+      "id": "rel:supplier.issues_invoice",
+      "name": "issues",
+      "target_concept_id": "concept:invoice",
+      "cardinality": "one_to_many",
+      "description": "Supplier issues invoices.",
+      "source_concept_id": "concept:supplier"
+    },
+    {
+      "id": "rel:contract.from_purchase_request",
+      "name": "created from",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "many_to_one",
+      "description": "Contract references an approved purchase request.",
+      "source_concept_id": "concept:contract"
+    },
+    {
+      "id": "rel:contract.with_supplier",
+      "name": "with",
+      "target_concept_id": "concept:supplier",
+      "cardinality": "many_to_one",
+      "description": "Contract is with one supplier.",
+      "source_concept_id": "concept:contract"
+    },
+    {
+      "id": "rel:contract.reviewed_by_employee",
+      "name": "reviewed by",
+      "target_concept_id": "concept:employee",
+      "cardinality": "many_to_one",
+      "description": "Legal reviewer is an employee.",
+      "source_concept_id": "concept:contract"
+    },
+    {
+      "id": "rel:contract.enables_purchase_order",
+      "name": "enables",
+      "target_concept_id": "concept:purchase_order",
+      "cardinality": "one_to_many",
+      "description": "Active contracts enable purchase order release.",
+      "source_concept_id": "concept:contract"
+    },
+    {
+      "id": "rel:purchase_order.released_against_contract",
+      "name": "released against",
+      "target_concept_id": "concept:contract",
+      "cardinality": "many_to_one",
+      "description": "PO is released against a contract.",
+      "source_concept_id": "concept:purchase_order"
+    },
+    {
+      "id": "rel:purchase_order.for_purchase_request",
+      "name": "for",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "many_to_one",
+      "description": "PO traces back to a purchase request.",
+      "source_concept_id": "concept:purchase_order"
+    },
+    {
+      "id": "rel:purchase_order.sent_to_supplier",
+      "name": "sent to",
+      "target_concept_id": "concept:supplier",
+      "cardinality": "many_to_one",
+      "description": "PO is sent to supplier.",
+      "source_concept_id": "concept:purchase_order"
+    },
+    {
+      "id": "rel:purchase_order.has_goods_receipt",
+      "name": "has receipt",
+      "target_concept_id": "concept:goods_receipt",
+      "cardinality": "one_to_many",
+      "description": "PO can have goods receipts.",
+      "source_concept_id": "concept:purchase_order"
+    },
+    {
+      "id": "rel:purchase_order.has_invoice",
+      "name": "has invoice",
+      "target_concept_id": "concept:invoice",
+      "cardinality": "one_to_many",
+      "description": "PO can have supplier invoices.",
+      "source_concept_id": "concept:purchase_order"
+    },
+    {
+      "id": "rel:goods_receipt.for_purchase_order",
+      "name": "for",
+      "target_concept_id": "concept:purchase_order",
+      "cardinality": "many_to_one",
+      "description": "Receipt is recorded against a purchase order.",
+      "source_concept_id": "concept:goods_receipt"
+    },
+    {
+      "id": "rel:goods_receipt.recorded_by_employee",
+      "name": "recorded by",
+      "target_concept_id": "concept:employee",
+      "cardinality": "many_to_one",
+      "description": "Receipt is recorded by a warehouse employee.",
+      "source_concept_id": "concept:goods_receipt"
+    },
+    {
+      "id": "rel:goods_receipt.supports_invoice_match",
+      "name": "supports",
+      "target_concept_id": "concept:invoice",
+      "cardinality": "one_to_many",
+      "description": "Receipt can support invoice matching.",
+      "source_concept_id": "concept:goods_receipt"
+    },
+    {
+      "id": "rel:invoice.issued_by_supplier",
+      "name": "issued by",
+      "target_concept_id": "concept:supplier",
+      "cardinality": "many_to_one",
+      "description": "Invoice is issued by supplier.",
+      "source_concept_id": "concept:invoice"
+    },
+    {
+      "id": "rel:invoice.for_purchase_order",
+      "name": "for",
+      "target_concept_id": "concept:purchase_order",
+      "cardinality": "many_to_one",
+      "description": "Invoice references a purchase order.",
+      "source_concept_id": "concept:invoice"
+    },
+    {
+      "id": "rel:invoice.matched_to_receipt",
+      "name": "matched to",
+      "target_concept_id": "concept:goods_receipt",
+      "cardinality": "many_to_one",
+      "description": "Invoice may match against goods receipt.",
+      "source_concept_id": "concept:invoice"
+    },
+    {
+      "id": "rel:invoice.generates_payment",
+      "name": "generates",
+      "target_concept_id": "concept:payment",
+      "cardinality": "one_to_many",
+      "description": "Matched invoices can generate payment requests.",
+      "source_concept_id": "concept:invoice"
+    },
+    {
+      "id": "rel:payment.for_invoice",
+      "name": "for",
+      "target_concept_id": "concept:invoice",
+      "cardinality": "many_to_one",
+      "description": "Payment request is for one invoice.",
+      "source_concept_id": "concept:payment"
+    },
+    {
+      "id": "rel:payment.approved_by_employee",
+      "name": "approved by",
+      "target_concept_id": "concept:employee",
+      "cardinality": "many_to_one",
+      "description": "Payment approval is performed by finance employee.",
+      "source_concept_id": "concept:payment"
+    },
+    {
+      "id": "rel:payment.has_approval_task",
+      "name": "has approval task",
+      "target_concept_id": "concept:approval_task",
+      "cardinality": "one_to_many",
+      "description": "Payment can have approval records.",
+      "source_concept_id": "concept:payment"
+    },
+    {
+      "id": "rel:department.has_employee",
+      "name": "has employee",
+      "target_concept_id": "concept:employee",
+      "cardinality": "one_to_many",
+      "description": "Department contains employees.",
+      "source_concept_id": "concept:department"
+    },
+    {
+      "id": "rel:department.owns_purchase_request",
+      "name": "owns",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "one_to_many",
+      "description": "Department owns purchase requests.",
+      "source_concept_id": "concept:department"
+    },
+    {
+      "id": "rel:employee.belongs_to_department",
+      "name": "belongs to",
+      "target_concept_id": "concept:department",
+      "cardinality": "many_to_one",
+      "description": "Employee belongs to a department.",
+      "source_concept_id": "concept:employee"
+    },
+    {
+      "id": "rel:employee.creates_purchase_request",
+      "name": "creates",
+      "target_concept_id": "concept:purchase_request",
+      "cardinality": "one_to_many",
+      "description": "Employee can create purchase requests.",
+      "source_concept_id": "concept:employee"
+    },
+    {
+      "id": "rel:employee.performs_approval_task",
+      "name": "performs",
+      "target_concept_id": "concept:approval_task",
+      "cardinality": "one_to_many",
+      "description": "Employee can perform approval tasks.",
+      "source_concept_id": "concept:employee"
+    },
+    {
+      "id": "rel:employee.records_goods_receipt",
+      "name": "records",
+      "target_concept_id": "concept:goods_receipt",
+      "cardinality": "one_to_many",
+      "description": "Warehouse employee records goods receipt.",
+      "source_concept_id": "concept:employee"
+    },
+    {
+      "id": "rel:employee.approves_payment",
+      "name": "approves",
+      "target_concept_id": "concept:payment",
+      "cardinality": "one_to_many",
+      "description": "Finance employee approves payment.",
+      "source_concept_id": "concept:employee"
+    },
+    {
+      "id": "rel:material.requested_on_item",
+      "name": "requested on",
+      "target_concept_id": "concept:purchase_request_item",
+      "cardinality": "one_to_many",
+      "description": "Material or service need appears on request line items.",
+      "source_concept_id": "concept:material"
+    }
+  ],
+  "events": [
+    {
+      "id": "event:purchase_request_created",
+      "name": "Purchase Request Created",
+      "participant_concept_ids": [
+        "concept:purchase_request",
+        "concept:employee"
+      ]
+    },
+    {
+      "id": "event:purchase_request_submitted",
+      "name": "Purchase Request Submitted",
+      "participant_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "event:purchase_request_approved",
+      "name": "Purchase Request Approved",
+      "participant_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "event:purchase_request_rejected",
+      "name": "Purchase Request Rejected",
+      "participant_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "event:supplier_selected",
+      "name": "Supplier Selected",
+      "participant_concept_ids": [
+        "concept:supplier",
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "event:contract_drafted",
+      "name": "Contract Drafted",
+      "participant_concept_ids": [
+        "concept:contract",
+        "concept:purchase_request",
+        "concept:supplier"
+      ]
+    },
+    {
+      "id": "event:contract_legal_approved",
+      "name": "Contract Legal Approved",
+      "participant_concept_ids": [
+        "concept:contract",
+        "concept:employee"
+      ]
+    },
+    {
+      "id": "event:contract_activated",
+      "name": "Contract Activated",
+      "participant_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "event:purchase_order_released",
+      "name": "Purchase Order Released",
+      "participant_concept_ids": [
+        "concept:purchase_order",
+        "concept:contract",
+        "concept:supplier"
+      ]
+    },
+    {
+      "id": "event:goods_receipt_recorded",
+      "name": "Goods Receipt Recorded",
+      "participant_concept_ids": [
+        "concept:goods_receipt",
+        "concept:purchase_order",
+        "concept:employee"
+      ]
+    },
+    {
+      "id": "event:invoice_matched",
+      "name": "Invoice Matched",
+      "participant_concept_ids": [
+        "concept:invoice",
+        "concept:purchase_order",
+        "concept:goods_receipt"
+      ]
+    },
+    {
+      "id": "event:invoice_exception_created",
+      "name": "Invoice Exception Created",
+      "participant_concept_ids": [
+        "concept:invoice"
+      ]
+    },
+    {
+      "id": "event:payment_requested",
+      "name": "Payment Requested",
+      "participant_concept_ids": [
+        "concept:payment",
+        "concept:invoice"
+      ]
+    },
+    {
+      "id": "event:payment_approved",
+      "name": "Payment Approved",
+      "participant_concept_ids": [
+        "concept:payment",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "event:payment_paid",
+      "name": "Payment Paid",
+      "participant_concept_ids": [
+        "concept:payment"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "id": "state:purchase_request.draft",
+      "name": "DRAFT",
+      "owner_concept_id": "concept:purchase_request",
+      "description": "Editable purchase request draft."
+    },
+    {
+      "id": "state:purchase_request.submitted",
+      "name": "SUBMITTED",
+      "owner_concept_id": "concept:purchase_request",
+      "description": "Submitted for approval."
+    },
+    {
+      "id": "state:purchase_request.approved",
+      "name": "APPROVED",
+      "owner_concept_id": "concept:purchase_request",
+      "description": "Approved request."
+    },
+    {
+      "id": "state:purchase_request.rejected",
+      "name": "REJECTED",
+      "owner_concept_id": "concept:purchase_request",
+      "description": "Rejected request that may be revised."
+    },
+    {
+      "id": "state:purchase_request.cancelled",
+      "name": "CANCELLED",
+      "owner_concept_id": "concept:purchase_request",
+      "description": "Cancelled request."
+    },
+    {
+      "id": "state:contract.legal_review",
+      "name": "LEGAL_REVIEW",
+      "owner_concept_id": "concept:contract",
+      "description": "Contract under legal review."
+    },
+    {
+      "id": "state:contract.active",
+      "name": "ACTIVE",
+      "owner_concept_id": "concept:contract",
+      "description": "Activated contract."
+    },
+    {
+      "id": "state:purchase_order.released",
+      "name": "RELEASED",
+      "owner_concept_id": "concept:purchase_order",
+      "description": "Purchase order released to supplier."
+    },
+    {
+      "id": "state:goods_receipt.complete",
+      "name": "COMPLETE",
+      "owner_concept_id": "concept:goods_receipt",
+      "description": "Goods receipt complete."
+    },
+    {
+      "id": "state:invoice.matched",
+      "name": "MATCHED",
+      "owner_concept_id": "concept:invoice",
+      "description": "Invoice matched."
+    },
+    {
+      "id": "state:invoice.exception",
+      "name": "EXCEPTION",
+      "owner_concept_id": "concept:invoice",
+      "description": "Invoice has matching exception."
+    },
+    {
+      "id": "state:payment.paid",
+      "name": "PAID",
+      "owner_concept_id": "concept:payment",
+      "description": "Payment executed."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule:purchase_request_requires_line",
+      "name": "Purchase Request Requires Line",
+      "condition": "before submit purchase request",
+      "effect": "request must contain at least one line item",
+      "applies_to_ids": [
+        "concept:purchase_request",
+        "concept:purchase_request_item"
+      ]
+    },
+    {
+      "id": "rule:purchase_request_requires_justification",
+      "name": "Purchase Request Requires Justification",
+      "condition": "before submit purchase request",
+      "effect": "business justification is required",
+      "applies_to_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "rule:normal_request_department_approval",
+      "name": "Normal Request Department Approval",
+      "condition": "estimated amount is below 50000 CNY",
+      "effect": "department manager approval is required",
+      "applies_to_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "rule:high_value_request_finance_approval",
+      "name": "High Value Request Finance Approval",
+      "condition": "estimated amount reaches high value threshold",
+      "effect": "finance manager approval is required after department approval",
+      "applies_to_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "rule:rejection_requires_comment",
+      "name": "Rejection Requires Comment",
+      "condition": "approval is rejected",
+      "effect": "approval comment must explain the rejection reason",
+      "applies_to_ids": [
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "rule:supplier_must_be_active",
+      "name": "Supplier Must Be Active",
+      "condition": "before supplier award or new contract",
+      "effect": "supplier must be active",
+      "applies_to_ids": [
+        "concept:supplier",
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "rule:high_risk_supplier_not_awarded",
+      "name": "High Risk Supplier Not Awarded",
+      "condition": "supplier risk rating is high",
+      "effect": "supplier should not receive a new active contract",
+      "applies_to_ids": [
+        "concept:supplier",
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "rule:contract_requires_legal_approval",
+      "name": "Contract Requires Legal Approval",
+      "condition": "before contract activation",
+      "effect": "legal approval is required",
+      "applies_to_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "rule:terminated_contract_requires_reason",
+      "name": "Terminated Contract Requires Reason",
+      "condition": "contract is terminated",
+      "effect": "termination reason is required",
+      "applies_to_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "rule:po_requires_active_contract",
+      "name": "PO Requires Active Contract",
+      "condition": "before purchase order release",
+      "effect": "related contract must be active",
+      "applies_to_ids": [
+        "concept:purchase_order",
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "rule:receipt_requires_time",
+      "name": "Receipt Requires Time",
+      "condition": "when recording goods receipt",
+      "effect": "received time is required",
+      "applies_to_ids": [
+        "concept:goods_receipt"
+      ]
+    },
+    {
+      "id": "rule:invoice_requires_match_before_payment",
+      "name": "Invoice Requires Match Before Payment",
+      "condition": "before creating payment request",
+      "effect": "invoice must be matched",
+      "applies_to_ids": [
+        "concept:invoice",
+        "concept:payment"
+      ]
+    },
+    {
+      "id": "rule:invoice_variance_tolerance",
+      "name": "Invoice Variance Tolerance",
+      "condition": "during invoice matching",
+      "effect": "invoice amount variance must be within allowed tolerance or become exception",
+      "applies_to_ids": [
+        "concept:invoice",
+        "concept:purchase_order"
+      ]
+    },
+    {
+      "id": "rule:payment_requires_finance_approval",
+      "name": "Payment Requires Finance Approval",
+      "condition": "before payment is paid",
+      "effect": "finance manager or admin approval is required",
+      "applies_to_ids": [
+        "concept:payment",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "rule:paid_payment_requires_paid_time",
+      "name": "Paid Payment Requires Paid Time",
+      "condition": "payment status is PAID",
+      "effect": "paid_at timestamp is required",
+      "applies_to_ids": [
+        "concept:payment"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "action:create_purchase_request",
+      "name": "Create Purchase Request",
+      "target_concept_ids": [
+        "concept:purchase_request"
+      ],
+      "actor_role_ids": [
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:submit_purchase_request",
+      "name": "Submit Purchase Request",
+      "target_concept_ids": [
+        "concept:purchase_request"
+      ],
+      "actor_role_ids": [
+        "role:requester",
+        "role:department_manager",
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:approve_normal_purchase_request",
+      "name": "Approve Normal Purchase Request",
+      "target_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ],
+      "actor_role_ids": [
+        "role:department_manager",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:approve_high_value_purchase_request",
+      "name": "Approve High Value Purchase Request",
+      "target_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ],
+      "actor_role_ids": [
+        "role:finance_manager",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:select_supplier",
+      "name": "Select Supplier",
+      "target_concept_ids": [
+        "concept:supplier",
+        "concept:purchase_request"
+      ],
+      "actor_role_ids": [
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:draft_contract",
+      "name": "Draft Contract",
+      "target_concept_ids": [
+        "concept:contract"
+      ],
+      "actor_role_ids": [
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:legal_review_contract",
+      "name": "Legal Review Contract",
+      "target_concept_ids": [
+        "concept:contract"
+      ],
+      "actor_role_ids": [
+        "role:legal_reviewer",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:activate_contract",
+      "name": "Activate Contract",
+      "target_concept_ids": [
+        "concept:contract"
+      ],
+      "actor_role_ids": [
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:release_purchase_order",
+      "name": "Release Purchase Order",
+      "target_concept_ids": [
+        "concept:purchase_order"
+      ],
+      "actor_role_ids": [
+        "role:procurement_specialist",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:record_goods_receipt",
+      "name": "Record Goods Receipt",
+      "target_concept_ids": [
+        "concept:goods_receipt"
+      ],
+      "actor_role_ids": [
+        "role:warehouse_clerk",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:match_invoice",
+      "name": "Match Invoice",
+      "target_concept_ids": [
+        "concept:invoice"
+      ],
+      "actor_role_ids": [
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:create_payment_request",
+      "name": "Create Payment Request",
+      "target_concept_ids": [
+        "concept:payment"
+      ],
+      "actor_role_ids": [
+        "role:ap_clerk",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:approve_payment",
+      "name": "Approve Payment",
+      "target_concept_ids": [
+        "concept:payment",
+        "concept:approval_task"
+      ],
+      "actor_role_ids": [
+        "role:finance_manager",
+        "role:procurement_admin"
+      ]
+    },
+    {
+      "id": "action:mark_payment_paid",
+      "name": "Mark Payment Paid",
+      "target_concept_ids": [
+        "concept:payment"
+      ],
+      "actor_role_ids": [
+        "role:finance_manager",
+        "role:procurement_admin"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "role:requester",
+      "name": "Requester",
+      "aliases": [],
+      "description": "Creates and submits purchase requests."
+    },
+    {
+      "id": "role:department_manager",
+      "name": "Department Manager",
+      "aliases": [
+        "Dept Manager"
+      ],
+      "description": "Approves normal purchase requests for their department."
+    },
+    {
+      "id": "role:procurement_specialist",
+      "name": "Procurement Specialist",
+      "aliases": [],
+      "description": "Reviews supplier, prepares contracts, releases purchase orders."
+    },
+    {
+      "id": "role:finance_manager",
+      "name": "Finance Manager",
+      "aliases": [
+        "Finance Approver"
+      ],
+      "description": "Approves high-value requests and payments."
+    },
+    {
+      "id": "role:legal_reviewer",
+      "name": "Legal Reviewer",
+      "aliases": [
+        "Legal Approver"
+      ],
+      "description": "Reviews contract legal terms."
+    },
+    {
+      "id": "role:warehouse_clerk",
+      "name": "Warehouse Clerk",
+      "aliases": [],
+      "description": "Records goods receipt."
+    },
+    {
+      "id": "role:ap_clerk",
+      "name": "AP Clerk",
+      "aliases": [
+        "Accounts Payable Clerk"
+      ],
+      "description": "Matches invoices and creates payment requests."
+    },
+    {
+      "id": "role:procurement_admin",
+      "name": "Procurement Admin",
+      "aliases": [],
+      "description": "Maintains master data and can override workflow issues."
+    }
+  ],
+  "permissions": [
+    {
+      "id": "permission:requester.create_purchase_request",
+      "role_id": "role:requester",
+      "action_id": "action:create_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:department_manager.create_purchase_request",
+      "role_id": "role:department_manager",
+      "action_id": "action:create_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.create_purchase_request",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:create_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.create_purchase_request",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:create_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:requester.submit_purchase_request",
+      "role_id": "role:requester",
+      "action_id": "action:submit_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:department_manager.submit_purchase_request",
+      "role_id": "role:department_manager",
+      "action_id": "action:submit_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.submit_purchase_request",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:submit_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.submit_purchase_request",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:submit_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:department_manager.approve_normal_purchase_request",
+      "role_id": "role:department_manager",
+      "action_id": "action:approve_normal_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.approve_normal_purchase_request",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:approve_normal_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:finance_manager.approve_high_value_purchase_request",
+      "role_id": "role:finance_manager",
+      "action_id": "action:approve_high_value_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.approve_high_value_purchase_request",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:approve_high_value_purchase_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_request",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.select_supplier",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:select_supplier",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:supplier",
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.select_supplier",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:select_supplier",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:supplier",
+        "concept:purchase_request"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.draft_contract",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:draft_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.draft_contract",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:draft_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:legal_reviewer.legal_review_contract",
+      "role_id": "role:legal_reviewer",
+      "action_id": "action:legal_review_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.legal_review_contract",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:legal_review_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.activate_contract",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:activate_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.activate_contract",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:activate_contract",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:contract"
+      ]
+    },
+    {
+      "id": "permission:procurement_specialist.release_purchase_order",
+      "role_id": "role:procurement_specialist",
+      "action_id": "action:release_purchase_order",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_order"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.release_purchase_order",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:release_purchase_order",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:purchase_order"
+      ]
+    },
+    {
+      "id": "permission:warehouse_clerk.record_goods_receipt",
+      "role_id": "role:warehouse_clerk",
+      "action_id": "action:record_goods_receipt",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:goods_receipt"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.record_goods_receipt",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:record_goods_receipt",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:goods_receipt"
+      ]
+    },
+    {
+      "id": "permission:ap_clerk.match_invoice",
+      "role_id": "role:ap_clerk",
+      "action_id": "action:match_invoice",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:invoice"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.match_invoice",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:match_invoice",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:invoice"
+      ]
+    },
+    {
+      "id": "permission:ap_clerk.create_payment_request",
+      "role_id": "role:ap_clerk",
+      "action_id": "action:create_payment_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.create_payment_request",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:create_payment_request",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment"
+      ]
+    },
+    {
+      "id": "permission:finance_manager.approve_payment",
+      "role_id": "role:finance_manager",
+      "action_id": "action:approve_payment",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.approve_payment",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:approve_payment",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment",
+        "concept:approval_task"
+      ]
+    },
+    {
+      "id": "permission:finance_manager.mark_payment_paid",
+      "role_id": "role:finance_manager",
+      "action_id": "action:mark_payment_paid",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment"
+      ]
+    },
+    {
+      "id": "permission:procurement_admin.mark_payment_paid",
+      "role_id": "role:procurement_admin",
+      "action_id": "action:mark_payment_paid",
+      "effect": "allow",
+      "resource_concept_ids": [
+        "concept:payment"
+      ]
+    }
+  ],
+  "evidence_refs": [
+    "source_code/src/main/java/com/example/procurement/domain",
+    "source_code/src/main/java/com/example/procurement/service",
+    "database/ddl.sql",
+    "database/sample_data/*.csv",
+    "documents/*.md"
+  ],
+  "confidence": 0.96,
+  "provenance": {
+    "created_by": "Claude Code",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual_gold_reference",
+    "source_system": "datasets/generic_procurement_contract_mvp"
+  }
+}

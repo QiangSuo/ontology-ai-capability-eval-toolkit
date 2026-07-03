@@ -1,0 +1,8 @@
+contract_id,contract_no,request_id,supplier_id,contract_title,contract_amount,contract_status,start_date,end_date,legal_reviewer_id,legal_approved_at,activated_at,termination_reason,created_at
+6001,CT-2026-0001,3001,2003,Laptop refresh supply contract,46800.00,ACTIVE,2026-02-14,2026-05-31,1005,2026-02-13 16:30:00,2026-02-14 09:00:00,,2026-02-12 10:00:00
+6002,CT-2026-0002,3002,2005,Warehouse scanner supply contract,72500.00,ACTIVE,2026-02-15,2026-06-30,1005,2026-02-14 17:00:00,2026-02-15 09:10:00,,2026-02-13 10:00:00
+6003,CT-2026-0003,3006,2005,Visitor safety kit contract,12600.00,LEGAL_REVIEW,2026-02-20,2026-04-30,1005,,,,2026-02-15 11:00:00
+6004,CT-2026-0004,3008,2003,Server rack accessories contract,18400.00,DRAFT,2026-02-25,2026-05-31,,,,,2026-02-16 10:15:00
+6005,CT-2026-0005,3009,2002,Annual maintenance support contract,99000.00,ACTIVE,2026-03-01,2027-02-28,1005,2026-02-18 16:00:00,2026-02-19 09:00:00,,2026-02-17 09:30:00
+6006,CT-2025-0048,2990,2001,Legacy office supply contract,30000.00,EXPIRED,2025-01-01,2025-12-31,1005,2024-12-20 16:00:00,2025-01-01 09:00:00,,2024-12-15 10:00:00
+6007,CT-2025-0052,2988,2004,Facility cleaning contract,58000.00,TERMINATED,2025-08-01,2026-07-31,1005,2025-07-20 16:00:00,2025-08-01 09:00:00,Supplier suspended after risk review,2025-07-10 10:00:00

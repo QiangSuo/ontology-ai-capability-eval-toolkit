@@ -1,0 +1,61 @@
+{
+  "task_id": "STD-02",
+  "task_name": "DB metadata understanding",
+  "mode": "fixed_prompt",
+  "level": "standard",
+  "status": "completed",
+  "tool_profile_ref": "tool:example-ai",
+  "customer_profile_ref": "customer:example-corp",
+  "started_at": "2026-07-03T09:00:00Z",
+  "completed_at": "2026-07-03T09:35:00Z",
+  "duration_minutes": 35,
+  "operator": {
+    "operator_id": "op:junior-1",
+    "experience_level": "low",
+    "role": "FDE trainee"
+  },
+  "input_artifacts": [
+    {
+      "artifact_id": "input:ddl",
+      "artifact_type": "other",
+      "path": "datasets/level2/schema.sql"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "output:ontology",
+      "artifact_type": "ontology",
+      "path": "results/run-001/ontology.json",
+      "schema_ref": "schemas/ontology.schema.json"
+    }
+  ],
+  "evidence_refs": [
+    "ev:ddl.purchase_request"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "ontology.schema.json",
+    "validator": "jsonschema",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "retry",
+      "description": "Retried once after invalid JSON output.",
+      "occurred_at": "2026-07-03T09:20:00Z",
+      "operator_id": "op:junior-1"
+    }
+  ],
+  "limitations": [
+    "No direct database connection; DDL file only."
+  ],
+  "metrics": {
+    "retry_count": 1,
+    "json_valid": true
+  },
+  "provenance": {
+    "created_by": "example",
+    "created_at": "2026-07-03T09:40:00Z",
+    "method": "manual"
+  }
+}

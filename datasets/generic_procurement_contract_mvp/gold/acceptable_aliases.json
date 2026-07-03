@@ -1,0 +1,4247 @@
+{
+  "schema_version": "1.0.0",
+  "alias_map_id": "acceptable_aliases:generic_procurement_contract_mvp",
+  "title": "Acceptable Aliases for Generic Procurement Contract MVP",
+  "description": "Acceptable aliases for matching AI-generated ontology names to canonical gold ontology ids. This file is not a known conflicts file and not a scoring script.",
+  "ontology_ref": "gold/gold_ontology.json",
+  "evidence_map_ref": "gold/gold_evidence_map.json",
+  "alias_types": [
+    "Chinese name",
+    "English name",
+    "abbreviation",
+    "database name",
+    "code name",
+    "UI/business term"
+  ],
+  "aliases": [
+    {
+      "alias_id": "alias:concept.purchase_request.0001",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "PurchaseRequest",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0002",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "Purchase Request",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0003",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "purchase request",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0004",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "PR",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0005",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "purchase requisition",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0006",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "采购申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0007",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "采购需求",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0008",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "采购申请单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0009",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "pc_purchase_request",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request.0010",
+      "canonical_id": "concept:purchase_request",
+      "canonical_name": "PurchaseRequest",
+      "alias": "request",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.75,
+      "note": "Generic request only acceptable when procurement context is clear"
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0011",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "PurchaseRequestItem",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0012",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "PurchaseRequestLine",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0013",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "Purchase Request Line",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0014",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "Purchase Request Item",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0015",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "PR line",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0016",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "line item",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0017",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "request line",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0018",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "采购申请行",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0019",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "采购需求行",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0020",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "采购申请明细",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_request_item.0021",
+      "canonical_id": "concept:purchase_request_item",
+      "canonical_name": "PurchaseRequestItem",
+      "alias": "pc_purchase_request_line",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0022",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "ApprovalTask",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0023",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "Approval Record",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0024",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "Approval Step",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0025",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "decision record",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0026",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "approval record",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0027",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "审批任务",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0028",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "审批记录",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0029",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "审批节点",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0030",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "审批步骤",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.approval_task.0031",
+      "canonical_id": "concept:approval_task",
+      "canonical_name": "ApprovalTask",
+      "alias": "pc_approval_record",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0032",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "Supplier",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0033",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "supplier",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0034",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "Vendor",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0035",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "vendor",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0036",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "external provider",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0037",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "供应商",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0038",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "供方",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0039",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "外部供应商",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.supplier.0040",
+      "canonical_id": "concept:supplier",
+      "canonical_name": "Supplier",
+      "alias": "pc_supplier",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0041",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "Contract",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0042",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "contract",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0043",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "Agreement",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0044",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "agreement",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0045",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "采购合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0046",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0047",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "供应商合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.contract.0048",
+      "canonical_id": "concept:contract",
+      "canonical_name": "Contract",
+      "alias": "pc_contract",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0049",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "PurchaseOrder",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0050",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "Purchase Order",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0051",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "purchase order",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0052",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "PO",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0053",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "采购订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0054",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.8,
+      "note": "Only acceptable in procurement order context"
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0055",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "采购单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.75,
+      "note": "Potentially ambiguous; do not use for purchase request"
+    },
+    {
+      "alias_id": "alias:concept.purchase_order.0056",
+      "canonical_id": "concept:purchase_order",
+      "canonical_name": "PurchaseOrder",
+      "alias": "pc_purchase_order",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0057",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "GoodsReceipt",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0058",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "Goods Receipt",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0059",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "goods receipt",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0060",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "GRN",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0061",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "Goods Receipt Note",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0062",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "receipt record",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0063",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "收货单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0064",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "收货记录",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0065",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "到货验收",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0066",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "收货验收",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.goods_receipt.0067",
+      "canonical_id": "concept:goods_receipt",
+      "canonical_name": "GoodsReceipt",
+      "alias": "pc_goods_receipt",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0068",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "Invoice",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0069",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "invoice",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0070",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "supplier invoice",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0071",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "billing document",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0072",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "发票",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0073",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "供应商发票",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.invoice.0074",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "账单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.75,
+      "note": "Only acceptable when supplier invoice context is clear"
+    },
+    {
+      "alias_id": "alias:concept.invoice.0075",
+      "canonical_id": "concept:invoice",
+      "canonical_name": "Invoice",
+      "alias": "pc_invoice",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0076",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "Payment",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0077",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "PaymentRequest",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0078",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "Payment Request",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0079",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "Payment Application",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0080",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "payment application",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0081",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "付款",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0082",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "付款申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0083",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "付款请求",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0084",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "支付申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.payment.0085",
+      "canonical_id": "concept:payment",
+      "canonical_name": "Payment",
+      "alias": "pc_payment_request",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0086",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "Department",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0087",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "department",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0088",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "business department",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0089",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "cost center owner",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0090",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "部门",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0091",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "业务部门",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0092",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "成本中心归属部门",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.department.0093",
+      "canonical_id": "concept:department",
+      "canonical_name": "Department",
+      "alias": "pc_department",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0094",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "Employee",
+      "alias_type": "English name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0095",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "User",
+      "alias_type": "code name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0096",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "system user",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0097",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "approver",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0098",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "requester",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0099",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "员工",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0100",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "用户",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0101",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "系统用户",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0102",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "审批人",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0103",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "申请人",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.employee.0104",
+      "canonical_id": "concept:employee",
+      "canonical_name": "Employee",
+      "alias": "pc_user",
+      "alias_type": "database name",
+      "source": "gold_ontology",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0105",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "Material",
+      "alias_type": "English name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0106",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "Item",
+      "alias_type": "UI/business term",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0107",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "goods",
+      "alias_type": "UI/business term",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0108",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "service item",
+      "alias_type": "UI/business term",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0109",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "procurement category item",
+      "alias_type": "UI/business term",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0110",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "物料",
+      "alias_type": "Chinese name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0111",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "采购物料",
+      "alias_type": "Chinese name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0112",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "品类项目",
+      "alias_type": "Chinese name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0113",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "服务项目",
+      "alias_type": "Chinese name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0114",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "item_description",
+      "alias_type": "database name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:concept.material.0115",
+      "canonical_id": "concept:material",
+      "canonical_name": "Material",
+      "alias": "category_code",
+      "alias_type": "database name",
+      "source": "database/ddl.sql + sample_data",
+      "confidence": 0.95,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_id.0116",
+      "canonical_id": "attr:purchase_request.request_id",
+      "canonical_name": "purchase_request.request_id",
+      "alias": "request_id",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_id.0117",
+      "canonical_id": "attr:purchase_request.request_id",
+      "canonical_name": "purchase_request.request_id",
+      "alias": "requestId",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_id.0118",
+      "canonical_id": "attr:purchase_request.request_id",
+      "canonical_name": "purchase_request.request_id",
+      "alias": "PR id",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_id.0119",
+      "canonical_id": "attr:purchase_request.request_id",
+      "canonical_name": "purchase_request.request_id",
+      "alias": "采购申请ID",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_no.0120",
+      "canonical_id": "attr:purchase_request.request_no",
+      "canonical_name": "purchase_request.request_no",
+      "alias": "request_no",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_no.0121",
+      "canonical_id": "attr:purchase_request.request_no",
+      "canonical_name": "purchase_request.request_no",
+      "alias": "requestNo",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_no.0122",
+      "canonical_id": "attr:purchase_request.request_no",
+      "canonical_name": "purchase_request.request_no",
+      "alias": "PR number",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_no.0123",
+      "canonical_id": "attr:purchase_request.request_no",
+      "canonical_name": "purchase_request.request_no",
+      "alias": "PR No",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_no.0124",
+      "canonical_id": "attr:purchase_request.request_no",
+      "canonical_name": "purchase_request.request_no",
+      "alias": "采购申请编号",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_title.0125",
+      "canonical_id": "attr:purchase_request.request_title",
+      "canonical_name": "purchase_request.request_title",
+      "alias": "request_title",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_title.0126",
+      "canonical_id": "attr:purchase_request.request_title",
+      "canonical_name": "purchase_request.request_title",
+      "alias": "requestTitle",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_title.0127",
+      "canonical_id": "attr:purchase_request.request_title",
+      "canonical_name": "purchase_request.request_title",
+      "alias": "PR title",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_title.0128",
+      "canonical_id": "attr:purchase_request.request_title",
+      "canonical_name": "purchase_request.request_title",
+      "alias": "采购申请标题",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.requester_user_id.0129",
+      "canonical_id": "attr:purchase_request.requester_user_id",
+      "canonical_name": "purchase_request.requester_user_id",
+      "alias": "requester_user_id",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.requester_user_id.0130",
+      "canonical_id": "attr:purchase_request.requester_user_id",
+      "canonical_name": "purchase_request.requester_user_id",
+      "alias": "requesterUserId",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.requester_user_id.0131",
+      "canonical_id": "attr:purchase_request.requester_user_id",
+      "canonical_name": "purchase_request.requester_user_id",
+      "alias": "requester",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.requester_user_id.0132",
+      "canonical_id": "attr:purchase_request.requester_user_id",
+      "canonical_name": "purchase_request.requester_user_id",
+      "alias": "申请人ID",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.department_id.0133",
+      "canonical_id": "attr:purchase_request.department_id",
+      "canonical_name": "purchase_request.department_id",
+      "alias": "department_id",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.department_id.0134",
+      "canonical_id": "attr:purchase_request.department_id",
+      "canonical_name": "purchase_request.department_id",
+      "alias": "departmentId",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.department_id.0135",
+      "canonical_id": "attr:purchase_request.department_id",
+      "canonical_name": "purchase_request.department_id",
+      "alias": "owning department",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.department_id.0136",
+      "canonical_id": "attr:purchase_request.department_id",
+      "canonical_name": "purchase_request.department_id",
+      "alias": "所属部门ID",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.preferred_supplier_id.0137",
+      "canonical_id": "attr:purchase_request.preferred_supplier_id",
+      "canonical_name": "purchase_request.preferred_supplier_id",
+      "alias": "preferred_supplier_id",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.preferred_supplier_id.0138",
+      "canonical_id": "attr:purchase_request.preferred_supplier_id",
+      "canonical_name": "purchase_request.preferred_supplier_id",
+      "alias": "preferredSupplierId",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.preferred_supplier_id.0139",
+      "canonical_id": "attr:purchase_request.preferred_supplier_id",
+      "canonical_name": "purchase_request.preferred_supplier_id",
+      "alias": "preferred vendor",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.preferred_supplier_id.0140",
+      "canonical_id": "attr:purchase_request.preferred_supplier_id",
+      "canonical_name": "purchase_request.preferred_supplier_id",
+      "alias": "首选供应商ID",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.estimated_amount.0141",
+      "canonical_id": "attr:purchase_request.estimated_amount",
+      "canonical_name": "purchase_request.estimated_amount",
+      "alias": "estimated_amount",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.estimated_amount.0142",
+      "canonical_id": "attr:purchase_request.estimated_amount",
+      "canonical_name": "purchase_request.estimated_amount",
+      "alias": "estimatedAmount",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.estimated_amount.0143",
+      "canonical_id": "attr:purchase_request.estimated_amount",
+      "canonical_name": "purchase_request.estimated_amount",
+      "alias": "PR amount",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.estimated_amount.0144",
+      "canonical_id": "attr:purchase_request.estimated_amount",
+      "canonical_name": "purchase_request.estimated_amount",
+      "alias": "request amount",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.estimated_amount.0145",
+      "canonical_id": "attr:purchase_request.estimated_amount",
+      "canonical_name": "purchase_request.estimated_amount",
+      "alias": "预估金额",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.currency_code.0146",
+      "canonical_id": "attr:purchase_request.currency_code",
+      "canonical_name": "purchase_request.currency_code",
+      "alias": "currency_code",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.currency_code.0147",
+      "canonical_id": "attr:purchase_request.currency_code",
+      "canonical_name": "purchase_request.currency_code",
+      "alias": "currencyCode",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.currency_code.0148",
+      "canonical_id": "attr:purchase_request.currency_code",
+      "canonical_name": "purchase_request.currency_code",
+      "alias": "currency",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.currency_code.0149",
+      "canonical_id": "attr:purchase_request.currency_code",
+      "canonical_name": "purchase_request.currency_code",
+      "alias": "币种",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_status.0150",
+      "canonical_id": "attr:purchase_request.request_status",
+      "canonical_name": "purchase_request.request_status",
+      "alias": "request_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_status.0151",
+      "canonical_id": "attr:purchase_request.request_status",
+      "canonical_name": "purchase_request.request_status",
+      "alias": "requestStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_status.0152",
+      "canonical_id": "attr:purchase_request.request_status",
+      "canonical_name": "purchase_request.request_status",
+      "alias": "PR status",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.request_status.0153",
+      "canonical_id": "attr:purchase_request.request_status",
+      "canonical_name": "purchase_request.request_status",
+      "alias": "采购申请状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.business_justification.0154",
+      "canonical_id": "attr:purchase_request.business_justification",
+      "canonical_name": "purchase_request.business_justification",
+      "alias": "business_justification",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.business_justification.0155",
+      "canonical_id": "attr:purchase_request.business_justification",
+      "canonical_name": "purchase_request.business_justification",
+      "alias": "businessJustification",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.business_justification.0156",
+      "canonical_id": "attr:purchase_request.business_justification",
+      "canonical_name": "purchase_request.business_justification",
+      "alias": "justification",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.business_justification.0157",
+      "canonical_id": "attr:purchase_request.business_justification",
+      "canonical_name": "purchase_request.business_justification",
+      "alias": "业务理由",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.required_by_date.0158",
+      "canonical_id": "attr:purchase_request.required_by_date",
+      "canonical_name": "purchase_request.required_by_date",
+      "alias": "required_by_date",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.required_by_date.0159",
+      "canonical_id": "attr:purchase_request.required_by_date",
+      "canonical_name": "purchase_request.required_by_date",
+      "alias": "requiredByDate",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.required_by_date.0160",
+      "canonical_id": "attr:purchase_request.required_by_date",
+      "canonical_name": "purchase_request.required_by_date",
+      "alias": "needed by date",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request.required_by_date.0161",
+      "canonical_id": "attr:purchase_request.required_by_date",
+      "canonical_name": "purchase_request.required_by_date",
+      "alias": "需求日期",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.item_description.0162",
+      "canonical_id": "attr:purchase_request_item.item_description",
+      "canonical_name": "purchase_request_item.item_description",
+      "alias": "item_description",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.item_description.0163",
+      "canonical_id": "attr:purchase_request_item.item_description",
+      "canonical_name": "purchase_request_item.item_description",
+      "alias": "itemDescription",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.item_description.0164",
+      "canonical_id": "attr:purchase_request_item.item_description",
+      "canonical_name": "purchase_request_item.item_description",
+      "alias": "material description",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.item_description.0165",
+      "canonical_id": "attr:purchase_request_item.item_description",
+      "canonical_name": "purchase_request_item.item_description",
+      "alias": "物料描述",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.category_code.0166",
+      "canonical_id": "attr:purchase_request_item.category_code",
+      "canonical_name": "purchase_request_item.category_code",
+      "alias": "category_code",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.category_code.0167",
+      "canonical_id": "attr:purchase_request_item.category_code",
+      "canonical_name": "purchase_request_item.category_code",
+      "alias": "categoryCode",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.category_code.0168",
+      "canonical_id": "attr:purchase_request_item.category_code",
+      "canonical_name": "purchase_request_item.category_code",
+      "alias": "procurement category",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.category_code.0169",
+      "canonical_id": "attr:purchase_request_item.category_code",
+      "canonical_name": "purchase_request_item.category_code",
+      "alias": "采购品类",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.quantity.0170",
+      "canonical_id": "attr:purchase_request_item.quantity",
+      "canonical_name": "purchase_request_item.quantity",
+      "alias": "quantity",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.quantity.0171",
+      "canonical_id": "attr:purchase_request_item.quantity",
+      "canonical_name": "purchase_request_item.quantity",
+      "alias": "qty",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.quantity.0172",
+      "canonical_id": "attr:purchase_request_item.quantity",
+      "canonical_name": "purchase_request_item.quantity",
+      "alias": "数量",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.unit_of_measure.0173",
+      "canonical_id": "attr:purchase_request_item.unit_of_measure",
+      "canonical_name": "purchase_request_item.unit_of_measure",
+      "alias": "unit_of_measure",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.unit_of_measure.0174",
+      "canonical_id": "attr:purchase_request_item.unit_of_measure",
+      "canonical_name": "purchase_request_item.unit_of_measure",
+      "alias": "uom",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.unit_of_measure.0175",
+      "canonical_id": "attr:purchase_request_item.unit_of_measure",
+      "canonical_name": "purchase_request_item.unit_of_measure",
+      "alias": "unit",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.unit_of_measure.0176",
+      "canonical_id": "attr:purchase_request_item.unit_of_measure",
+      "canonical_name": "purchase_request_item.unit_of_measure",
+      "alias": "计量单位",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.line_amount.0177",
+      "canonical_id": "attr:purchase_request_item.line_amount",
+      "canonical_name": "purchase_request_item.line_amount",
+      "alias": "line_amount",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.line_amount.0178",
+      "canonical_id": "attr:purchase_request_item.line_amount",
+      "canonical_name": "purchase_request_item.line_amount",
+      "alias": "lineAmount",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.line_amount.0179",
+      "canonical_id": "attr:purchase_request_item.line_amount",
+      "canonical_name": "purchase_request_item.line_amount",
+      "alias": "line total",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_request_item.line_amount.0180",
+      "canonical_id": "attr:purchase_request_item.line_amount",
+      "canonical_name": "purchase_request_item.line_amount",
+      "alias": "行金额",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approval_status.0181",
+      "canonical_id": "attr:approval_task.approval_status",
+      "canonical_name": "approval_task.approval_status",
+      "alias": "approval_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approval_status.0182",
+      "canonical_id": "attr:approval_task.approval_status",
+      "canonical_name": "approval_task.approval_status",
+      "alias": "approvalStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approval_status.0183",
+      "canonical_id": "attr:approval_task.approval_status",
+      "canonical_name": "approval_task.approval_status",
+      "alias": "decision status",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approval_status.0184",
+      "canonical_id": "attr:approval_task.approval_status",
+      "canonical_name": "approval_task.approval_status",
+      "alias": "审批状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approver_user_id.0185",
+      "canonical_id": "attr:approval_task.approver_user_id",
+      "canonical_name": "approval_task.approver_user_id",
+      "alias": "approver_user_id",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approver_user_id.0186",
+      "canonical_id": "attr:approval_task.approver_user_id",
+      "canonical_name": "approval_task.approver_user_id",
+      "alias": "approverUserId",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approver_user_id.0187",
+      "canonical_id": "attr:approval_task.approver_user_id",
+      "canonical_name": "approval_task.approver_user_id",
+      "alias": "approver",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.approval_task.approver_user_id.0188",
+      "canonical_id": "attr:approval_task.approver_user_id",
+      "canonical_name": "approval_task.approver_user_id",
+      "alias": "审批人ID",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.supplier_status.0189",
+      "canonical_id": "attr:supplier.supplier_status",
+      "canonical_name": "supplier.supplier_status",
+      "alias": "supplier_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.supplier_status.0190",
+      "canonical_id": "attr:supplier.supplier_status",
+      "canonical_name": "supplier.supplier_status",
+      "alias": "supplierStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.supplier_status.0191",
+      "canonical_id": "attr:supplier.supplier_status",
+      "canonical_name": "supplier.supplier_status",
+      "alias": "vendor status",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.supplier_status.0192",
+      "canonical_id": "attr:supplier.supplier_status",
+      "canonical_name": "supplier.supplier_status",
+      "alias": "供应商状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.risk_rating.0193",
+      "canonical_id": "attr:supplier.risk_rating",
+      "canonical_name": "supplier.risk_rating",
+      "alias": "risk_rating",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.risk_rating.0194",
+      "canonical_id": "attr:supplier.risk_rating",
+      "canonical_name": "supplier.risk_rating",
+      "alias": "riskRating",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.risk_rating.0195",
+      "canonical_id": "attr:supplier.risk_rating",
+      "canonical_name": "supplier.risk_rating",
+      "alias": "supplier risk",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.supplier.risk_rating.0196",
+      "canonical_id": "attr:supplier.risk_rating",
+      "canonical_name": "supplier.risk_rating",
+      "alias": "风险评级",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_no.0197",
+      "canonical_id": "attr:contract.contract_no",
+      "canonical_name": "contract.contract_no",
+      "alias": "contract_no",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_no.0198",
+      "canonical_id": "attr:contract.contract_no",
+      "canonical_name": "contract.contract_no",
+      "alias": "contractNo",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_no.0199",
+      "canonical_id": "attr:contract.contract_no",
+      "canonical_name": "contract.contract_no",
+      "alias": "contract number",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_no.0200",
+      "canonical_id": "attr:contract.contract_no",
+      "canonical_name": "contract.contract_no",
+      "alias": "合同编号",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_status.0201",
+      "canonical_id": "attr:contract.contract_status",
+      "canonical_name": "contract.contract_status",
+      "alias": "contract_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_status.0202",
+      "canonical_id": "attr:contract.contract_status",
+      "canonical_name": "contract.contract_status",
+      "alias": "contractStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_status.0203",
+      "canonical_id": "attr:contract.contract_status",
+      "canonical_name": "contract.contract_status",
+      "alias": "contract state",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_status.0204",
+      "canonical_id": "attr:contract.contract_status",
+      "canonical_name": "contract.contract_status",
+      "alias": "合同状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_amount.0205",
+      "canonical_id": "attr:contract.contract_amount",
+      "canonical_name": "contract.contract_amount",
+      "alias": "contract_amount",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_amount.0206",
+      "canonical_id": "attr:contract.contract_amount",
+      "canonical_name": "contract.contract_amount",
+      "alias": "contractAmount",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_amount.0207",
+      "canonical_id": "attr:contract.contract_amount",
+      "canonical_name": "contract.contract_amount",
+      "alias": "agreement amount",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.contract.contract_amount.0208",
+      "canonical_id": "attr:contract.contract_amount",
+      "canonical_name": "contract.contract_amount",
+      "alias": "合同金额",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_no.0209",
+      "canonical_id": "attr:purchase_order.po_no",
+      "canonical_name": "purchase_order.po_no",
+      "alias": "po_no",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_no.0210",
+      "canonical_id": "attr:purchase_order.po_no",
+      "canonical_name": "purchase_order.po_no",
+      "alias": "poNo",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_no.0211",
+      "canonical_id": "attr:purchase_order.po_no",
+      "canonical_name": "purchase_order.po_no",
+      "alias": "PO number",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_no.0212",
+      "canonical_id": "attr:purchase_order.po_no",
+      "canonical_name": "purchase_order.po_no",
+      "alias": "采购订单编号",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_status.0213",
+      "canonical_id": "attr:purchase_order.po_status",
+      "canonical_name": "purchase_order.po_status",
+      "alias": "po_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_status.0214",
+      "canonical_id": "attr:purchase_order.po_status",
+      "canonical_name": "purchase_order.po_status",
+      "alias": "poStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_status.0215",
+      "canonical_id": "attr:purchase_order.po_status",
+      "canonical_name": "purchase_order.po_status",
+      "alias": "PO status",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.purchase_order.po_status.0216",
+      "canonical_id": "attr:purchase_order.po_status",
+      "canonical_name": "purchase_order.po_status",
+      "alias": "采购订单状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_no.0217",
+      "canonical_id": "attr:goods_receipt.receipt_no",
+      "canonical_name": "goods_receipt.receipt_no",
+      "alias": "receipt_no",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_no.0218",
+      "canonical_id": "attr:goods_receipt.receipt_no",
+      "canonical_name": "goods_receipt.receipt_no",
+      "alias": "receiptNo",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_no.0219",
+      "canonical_id": "attr:goods_receipt.receipt_no",
+      "canonical_name": "goods_receipt.receipt_no",
+      "alias": "GRN number",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_no.0220",
+      "canonical_id": "attr:goods_receipt.receipt_no",
+      "canonical_name": "goods_receipt.receipt_no",
+      "alias": "收货单号",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_status.0221",
+      "canonical_id": "attr:goods_receipt.receipt_status",
+      "canonical_name": "goods_receipt.receipt_status",
+      "alias": "receipt_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_status.0222",
+      "canonical_id": "attr:goods_receipt.receipt_status",
+      "canonical_name": "goods_receipt.receipt_status",
+      "alias": "receiptStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_status.0223",
+      "canonical_id": "attr:goods_receipt.receipt_status",
+      "canonical_name": "goods_receipt.receipt_status",
+      "alias": "GRN state",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.goods_receipt.receipt_status.0224",
+      "canonical_id": "attr:goods_receipt.receipt_status",
+      "canonical_name": "goods_receipt.receipt_status",
+      "alias": "收货状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.invoice_status.0225",
+      "canonical_id": "attr:invoice.invoice_status",
+      "canonical_name": "invoice.invoice_status",
+      "alias": "invoice_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.invoice_status.0226",
+      "canonical_id": "attr:invoice.invoice_status",
+      "canonical_name": "invoice.invoice_status",
+      "alias": "invoiceStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.invoice_status.0227",
+      "canonical_id": "attr:invoice.invoice_status",
+      "canonical_name": "invoice.invoice_status",
+      "alias": "matching status",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.invoice_status.0228",
+      "canonical_id": "attr:invoice.invoice_status",
+      "canonical_name": "invoice.invoice_status",
+      "alias": "发票状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.match_variance_amount.0229",
+      "canonical_id": "attr:invoice.match_variance_amount",
+      "canonical_name": "invoice.match_variance_amount",
+      "alias": "match_variance_amount",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.match_variance_amount.0230",
+      "canonical_id": "attr:invoice.match_variance_amount",
+      "canonical_name": "invoice.match_variance_amount",
+      "alias": "matchVarianceAmount",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.match_variance_amount.0231",
+      "canonical_id": "attr:invoice.match_variance_amount",
+      "canonical_name": "invoice.match_variance_amount",
+      "alias": "variance",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.invoice.match_variance_amount.0232",
+      "canonical_id": "attr:invoice.match_variance_amount",
+      "canonical_name": "invoice.match_variance_amount",
+      "alias": "匹配差异金额",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.payment_status.0233",
+      "canonical_id": "attr:payment.payment_status",
+      "canonical_name": "payment.payment_status",
+      "alias": "payment_status",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.payment_status.0234",
+      "canonical_id": "attr:payment.payment_status",
+      "canonical_name": "payment.payment_status",
+      "alias": "paymentStatus",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.payment_status.0235",
+      "canonical_id": "attr:payment.payment_status",
+      "canonical_name": "payment.payment_status",
+      "alias": "payment application status",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.payment_status.0236",
+      "canonical_id": "attr:payment.payment_status",
+      "canonical_name": "payment.payment_status",
+      "alias": "付款状态",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.paid_at.0237",
+      "canonical_id": "attr:payment.paid_at",
+      "canonical_name": "payment.paid_at",
+      "alias": "paid_at",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.paid_at.0238",
+      "canonical_id": "attr:payment.paid_at",
+      "canonical_name": "payment.paid_at",
+      "alias": "paidAt",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.paid_at.0239",
+      "canonical_id": "attr:payment.paid_at",
+      "canonical_name": "payment.paid_at",
+      "alias": "payment time",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.payment.paid_at.0240",
+      "canonical_id": "attr:payment.paid_at",
+      "canonical_name": "payment.paid_at",
+      "alias": "付款时间",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.employee.role_code.0241",
+      "canonical_id": "attr:employee.role_code",
+      "canonical_name": "employee.role_code",
+      "alias": "role_code",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.employee.role_code.0242",
+      "canonical_id": "attr:employee.role_code",
+      "canonical_name": "employee.role_code",
+      "alias": "roleCode",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.employee.role_code.0243",
+      "canonical_id": "attr:employee.role_code",
+      "canonical_name": "employee.role_code",
+      "alias": "user role",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.employee.role_code.0244",
+      "canonical_id": "attr:employee.role_code",
+      "canonical_name": "employee.role_code",
+      "alias": "角色编码",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.department.cost_center.0245",
+      "canonical_id": "attr:department.cost_center",
+      "canonical_name": "department.cost_center",
+      "alias": "cost_center",
+      "alias_type": "database name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.department.cost_center.0246",
+      "canonical_id": "attr:department.cost_center",
+      "canonical_name": "department.cost_center",
+      "alias": "costCenter",
+      "alias_type": "code name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.department.cost_center.0247",
+      "canonical_id": "attr:department.cost_center",
+      "canonical_name": "department.cost_center",
+      "alias": "cost centre",
+      "alias_type": "English name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:attr.department.cost_center.0248",
+      "canonical_id": "attr:department.cost_center",
+      "canonical_name": "department.cost_center",
+      "alias": "成本中心",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology + input fields",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_item.0249",
+      "canonical_id": "rel:purchase_request.has_item",
+      "canonical_name": "purchase_request.has_item",
+      "alias": "has item",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_item.0250",
+      "canonical_id": "rel:purchase_request.has_item",
+      "canonical_name": "purchase_request.has_item",
+      "alias": "contains line item",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_item.0251",
+      "canonical_id": "rel:purchase_request.has_item",
+      "canonical_name": "purchase_request.has_item",
+      "alias": "包含明细",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_item.0252",
+      "canonical_id": "rel:purchase_request.has_item",
+      "canonical_name": "purchase_request.has_item",
+      "alias": "包含采购申请行",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.requested_by_employee.0253",
+      "canonical_id": "rel:purchase_request.requested_by_employee",
+      "canonical_name": "purchase_request.requested_by_employee",
+      "alias": "requested by",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.requested_by_employee.0254",
+      "canonical_id": "rel:purchase_request.requested_by_employee",
+      "canonical_name": "purchase_request.requested_by_employee",
+      "alias": "created by",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.requested_by_employee.0255",
+      "canonical_id": "rel:purchase_request.requested_by_employee",
+      "canonical_name": "purchase_request.requested_by_employee",
+      "alias": "申请人",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.requested_by_employee.0256",
+      "canonical_id": "rel:purchase_request.requested_by_employee",
+      "canonical_name": "purchase_request.requested_by_employee",
+      "alias": "由员工申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.belongs_to_department.0257",
+      "canonical_id": "rel:purchase_request.belongs_to_department",
+      "canonical_name": "purchase_request.belongs_to_department",
+      "alias": "belongs to department",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.belongs_to_department.0258",
+      "canonical_id": "rel:purchase_request.belongs_to_department",
+      "canonical_name": "purchase_request.belongs_to_department",
+      "alias": "owned by department",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.belongs_to_department.0259",
+      "canonical_id": "rel:purchase_request.belongs_to_department",
+      "canonical_name": "purchase_request.belongs_to_department",
+      "alias": "所属部门",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.prefers_supplier.0260",
+      "canonical_id": "rel:purchase_request.prefers_supplier",
+      "canonical_name": "purchase_request.prefers_supplier",
+      "alias": "preferred supplier",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.prefers_supplier.0261",
+      "canonical_id": "rel:purchase_request.prefers_supplier",
+      "canonical_name": "purchase_request.prefers_supplier",
+      "alias": "preferred vendor",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.prefers_supplier.0262",
+      "canonical_id": "rel:purchase_request.prefers_supplier",
+      "canonical_name": "purchase_request.prefers_supplier",
+      "alias": "首选供应商",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_approval_task.0263",
+      "canonical_id": "rel:purchase_request.has_approval_task",
+      "canonical_name": "purchase_request.has_approval_task",
+      "alias": "has approval",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_approval_task.0264",
+      "canonical_id": "rel:purchase_request.has_approval_task",
+      "canonical_name": "purchase_request.has_approval_task",
+      "alias": "has approval record",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.has_approval_task.0265",
+      "canonical_id": "rel:purchase_request.has_approval_task",
+      "canonical_name": "purchase_request.has_approval_task",
+      "alias": "有审批记录",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.results_in_contract.0266",
+      "canonical_id": "rel:purchase_request.results_in_contract",
+      "canonical_name": "purchase_request.results_in_contract",
+      "alias": "results in contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.results_in_contract.0267",
+      "canonical_id": "rel:purchase_request.results_in_contract",
+      "canonical_name": "purchase_request.results_in_contract",
+      "alias": "leads to contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_request.results_in_contract.0268",
+      "canonical_id": "rel:purchase_request.results_in_contract",
+      "canonical_name": "purchase_request.results_in_contract",
+      "alias": "生成合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.with_supplier.0269",
+      "canonical_id": "rel:contract.with_supplier",
+      "canonical_name": "contract.with_supplier",
+      "alias": "with supplier",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.with_supplier.0270",
+      "canonical_id": "rel:contract.with_supplier",
+      "canonical_name": "contract.with_supplier",
+      "alias": "contract party",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.with_supplier.0271",
+      "canonical_id": "rel:contract.with_supplier",
+      "canonical_name": "contract.with_supplier",
+      "alias": "供应商合同关系",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.enables_purchase_order.0272",
+      "canonical_id": "rel:contract.enables_purchase_order",
+      "canonical_name": "contract.enables_purchase_order",
+      "alias": "enables PO",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.enables_purchase_order.0273",
+      "canonical_id": "rel:contract.enables_purchase_order",
+      "canonical_name": "contract.enables_purchase_order",
+      "alias": "allows purchase order release",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.contract.enables_purchase_order.0274",
+      "canonical_id": "rel:contract.enables_purchase_order",
+      "canonical_name": "contract.enables_purchase_order",
+      "alias": "允许释放采购订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_order.has_goods_receipt.0275",
+      "canonical_id": "rel:purchase_order.has_goods_receipt",
+      "canonical_name": "purchase_order.has_goods_receipt",
+      "alias": "has goods receipt",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_order.has_goods_receipt.0276",
+      "canonical_id": "rel:purchase_order.has_goods_receipt",
+      "canonical_name": "purchase_order.has_goods_receipt",
+      "alias": "has GRN",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.purchase_order.has_goods_receipt.0277",
+      "canonical_id": "rel:purchase_order.has_goods_receipt",
+      "canonical_name": "purchase_order.has_goods_receipt",
+      "alias": "有收货记录",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.matched_to_receipt.0278",
+      "canonical_id": "rel:invoice.matched_to_receipt",
+      "canonical_name": "invoice.matched_to_receipt",
+      "alias": "matched to receipt",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.matched_to_receipt.0279",
+      "canonical_id": "rel:invoice.matched_to_receipt",
+      "canonical_name": "invoice.matched_to_receipt",
+      "alias": "matched to GRN",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.matched_to_receipt.0280",
+      "canonical_id": "rel:invoice.matched_to_receipt",
+      "canonical_name": "invoice.matched_to_receipt",
+      "alias": "匹配收货单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.generates_payment.0281",
+      "canonical_id": "rel:invoice.generates_payment",
+      "canonical_name": "invoice.generates_payment",
+      "alias": "generates payment request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.generates_payment.0282",
+      "canonical_id": "rel:invoice.generates_payment",
+      "canonical_name": "invoice.generates_payment",
+      "alias": "creates payment application",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.invoice.generates_payment.0283",
+      "canonical_id": "rel:invoice.generates_payment",
+      "canonical_name": "invoice.generates_payment",
+      "alias": "生成付款申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.payment.for_invoice.0284",
+      "canonical_id": "rel:payment.for_invoice",
+      "canonical_name": "payment.for_invoice",
+      "alias": "payment for invoice",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.payment.for_invoice.0285",
+      "canonical_id": "rel:payment.for_invoice",
+      "canonical_name": "payment.for_invoice",
+      "alias": "pays invoice",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:rel.payment.for_invoice.0286",
+      "canonical_id": "rel:payment.for_invoice",
+      "canonical_name": "payment.for_invoice",
+      "alias": "支付发票",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology relations",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.draft.0287",
+      "canonical_id": "state:purchase_request.draft",
+      "canonical_name": "purchase_request.draft",
+      "alias": "DRAFT",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.draft.0288",
+      "canonical_id": "state:purchase_request.draft",
+      "canonical_name": "purchase_request.draft",
+      "alias": "Draft",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.draft.0289",
+      "canonical_id": "state:purchase_request.draft",
+      "canonical_name": "purchase_request.draft",
+      "alias": "草稿",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.submitted.0290",
+      "canonical_id": "state:purchase_request.submitted",
+      "canonical_name": "purchase_request.submitted",
+      "alias": "SUBMITTED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.submitted.0291",
+      "canonical_id": "state:purchase_request.submitted",
+      "canonical_name": "purchase_request.submitted",
+      "alias": "Submitted",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.submitted.0292",
+      "canonical_id": "state:purchase_request.submitted",
+      "canonical_name": "purchase_request.submitted",
+      "alias": "已提交",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.submitted.0293",
+      "canonical_id": "state:purchase_request.submitted",
+      "canonical_name": "purchase_request.submitted",
+      "alias": "待审批",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.approved.0294",
+      "canonical_id": "state:purchase_request.approved",
+      "canonical_name": "purchase_request.approved",
+      "alias": "APPROVED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.approved.0295",
+      "canonical_id": "state:purchase_request.approved",
+      "canonical_name": "purchase_request.approved",
+      "alias": "Approved",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.approved.0296",
+      "canonical_id": "state:purchase_request.approved",
+      "canonical_name": "purchase_request.approved",
+      "alias": "已批准",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.approved.0297",
+      "canonical_id": "state:purchase_request.approved",
+      "canonical_name": "purchase_request.approved",
+      "alias": "审批通过",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.rejected.0298",
+      "canonical_id": "state:purchase_request.rejected",
+      "canonical_name": "purchase_request.rejected",
+      "alias": "REJECTED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.rejected.0299",
+      "canonical_id": "state:purchase_request.rejected",
+      "canonical_name": "purchase_request.rejected",
+      "alias": "Rejected",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.rejected.0300",
+      "canonical_id": "state:purchase_request.rejected",
+      "canonical_name": "purchase_request.rejected",
+      "alias": "已拒绝",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.rejected.0301",
+      "canonical_id": "state:purchase_request.rejected",
+      "canonical_name": "purchase_request.rejected",
+      "alias": "审批拒绝",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.cancelled.0302",
+      "canonical_id": "state:purchase_request.cancelled",
+      "canonical_name": "purchase_request.cancelled",
+      "alias": "CANCELLED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.cancelled.0303",
+      "canonical_id": "state:purchase_request.cancelled",
+      "canonical_name": "purchase_request.cancelled",
+      "alias": "Canceled",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.cancelled.0304",
+      "canonical_id": "state:purchase_request.cancelled",
+      "canonical_name": "purchase_request.cancelled",
+      "alias": "Cancelled",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_request.cancelled.0305",
+      "canonical_id": "state:purchase_request.cancelled",
+      "canonical_name": "purchase_request.cancelled",
+      "alias": "已取消",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.legal_review.0306",
+      "canonical_id": "state:contract.legal_review",
+      "canonical_name": "contract.legal_review",
+      "alias": "LEGAL_REVIEW",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.legal_review.0307",
+      "canonical_id": "state:contract.legal_review",
+      "canonical_name": "contract.legal_review",
+      "alias": "Legal Review",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.legal_review.0308",
+      "canonical_id": "state:contract.legal_review",
+      "canonical_name": "contract.legal_review",
+      "alias": "法务审核",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.active.0309",
+      "canonical_id": "state:contract.active",
+      "canonical_name": "contract.active",
+      "alias": "ACTIVE",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.active.0310",
+      "canonical_id": "state:contract.active",
+      "canonical_name": "contract.active",
+      "alias": "Active",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.active.0311",
+      "canonical_id": "state:contract.active",
+      "canonical_name": "contract.active",
+      "alias": "生效",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.contract.active.0312",
+      "canonical_id": "state:contract.active",
+      "canonical_name": "contract.active",
+      "alias": "有效",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_order.released.0313",
+      "canonical_id": "state:purchase_order.released",
+      "canonical_name": "purchase_order.released",
+      "alias": "RELEASED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_order.released.0314",
+      "canonical_id": "state:purchase_order.released",
+      "canonical_name": "purchase_order.released",
+      "alias": "Released",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_order.released.0315",
+      "canonical_id": "state:purchase_order.released",
+      "canonical_name": "purchase_order.released",
+      "alias": "已释放",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.purchase_order.released.0316",
+      "canonical_id": "state:purchase_order.released",
+      "canonical_name": "purchase_order.released",
+      "alias": "已下达",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.goods_receipt.complete.0317",
+      "canonical_id": "state:goods_receipt.complete",
+      "canonical_name": "goods_receipt.complete",
+      "alias": "COMPLETE",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.goods_receipt.complete.0318",
+      "canonical_id": "state:goods_receipt.complete",
+      "canonical_name": "goods_receipt.complete",
+      "alias": "Complete",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.goods_receipt.complete.0319",
+      "canonical_id": "state:goods_receipt.complete",
+      "canonical_name": "goods_receipt.complete",
+      "alias": "Completed",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.goods_receipt.complete.0320",
+      "canonical_id": "state:goods_receipt.complete",
+      "canonical_name": "goods_receipt.complete",
+      "alias": "收货完成",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.matched.0321",
+      "canonical_id": "state:invoice.matched",
+      "canonical_name": "invoice.matched",
+      "alias": "MATCHED",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.matched.0322",
+      "canonical_id": "state:invoice.matched",
+      "canonical_name": "invoice.matched",
+      "alias": "Matched",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.matched.0323",
+      "canonical_id": "state:invoice.matched",
+      "canonical_name": "invoice.matched",
+      "alias": "已匹配",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.exception.0324",
+      "canonical_id": "state:invoice.exception",
+      "canonical_name": "invoice.exception",
+      "alias": "EXCEPTION",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.exception.0325",
+      "canonical_id": "state:invoice.exception",
+      "canonical_name": "invoice.exception",
+      "alias": "Exception",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.exception.0326",
+      "canonical_id": "state:invoice.exception",
+      "canonical_name": "invoice.exception",
+      "alias": "匹配异常",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.invoice.exception.0327",
+      "canonical_id": "state:invoice.exception",
+      "canonical_name": "invoice.exception",
+      "alias": "异常",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.payment.paid.0328",
+      "canonical_id": "state:payment.paid",
+      "canonical_name": "payment.paid",
+      "alias": "PAID",
+      "alias_type": "database name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.payment.paid.0329",
+      "canonical_id": "state:payment.paid",
+      "canonical_name": "payment.paid",
+      "alias": "Paid",
+      "alias_type": "English name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.payment.paid.0330",
+      "canonical_id": "state:payment.paid",
+      "canonical_name": "payment.paid",
+      "alias": "已付款",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:state.payment.paid.0331",
+      "canonical_id": "state:payment.paid",
+      "canonical_name": "payment.paid",
+      "alias": "已支付",
+      "alias_type": "Chinese name",
+      "source": "status constants and DDL checks",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_created.0332",
+      "canonical_id": "event:purchase_request_created",
+      "canonical_name": "purchase_request_created",
+      "alias": "Purchase Request Created",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_created.0333",
+      "canonical_id": "event:purchase_request_created",
+      "canonical_name": "purchase_request_created",
+      "alias": "PR Created",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_created.0334",
+      "canonical_id": "event:purchase_request_created",
+      "canonical_name": "purchase_request_created",
+      "alias": "创建采购申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_created.0335",
+      "canonical_id": "event:purchase_request_created",
+      "canonical_name": "purchase_request_created",
+      "alias": "采购申请创建",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_submitted.0336",
+      "canonical_id": "event:purchase_request_submitted",
+      "canonical_name": "purchase_request_submitted",
+      "alias": "Purchase Request Submitted",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_submitted.0337",
+      "canonical_id": "event:purchase_request_submitted",
+      "canonical_name": "purchase_request_submitted",
+      "alias": "PR Submitted",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_submitted.0338",
+      "canonical_id": "event:purchase_request_submitted",
+      "canonical_name": "purchase_request_submitted",
+      "alias": "提交采购申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_submitted.0339",
+      "canonical_id": "event:purchase_request_submitted",
+      "canonical_name": "purchase_request_submitted",
+      "alias": "采购申请提交",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_approved.0340",
+      "canonical_id": "event:purchase_request_approved",
+      "canonical_name": "purchase_request_approved",
+      "alias": "Purchase Request Approved",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_approved.0341",
+      "canonical_id": "event:purchase_request_approved",
+      "canonical_name": "purchase_request_approved",
+      "alias": "PR Approved",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_approved.0342",
+      "canonical_id": "event:purchase_request_approved",
+      "canonical_name": "purchase_request_approved",
+      "alias": "采购申请审批通过",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_rejected.0343",
+      "canonical_id": "event:purchase_request_rejected",
+      "canonical_name": "purchase_request_rejected",
+      "alias": "Purchase Request Rejected",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_rejected.0344",
+      "canonical_id": "event:purchase_request_rejected",
+      "canonical_name": "purchase_request_rejected",
+      "alias": "PR Rejected",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_request_rejected.0345",
+      "canonical_id": "event:purchase_request_rejected",
+      "canonical_name": "purchase_request_rejected",
+      "alias": "采购申请被拒绝",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.supplier_selected.0346",
+      "canonical_id": "event:supplier_selected",
+      "canonical_name": "supplier_selected",
+      "alias": "Supplier Selected",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.supplier_selected.0347",
+      "canonical_id": "event:supplier_selected",
+      "canonical_name": "supplier_selected",
+      "alias": "Vendor Selected",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.supplier_selected.0348",
+      "canonical_id": "event:supplier_selected",
+      "canonical_name": "supplier_selected",
+      "alias": "选择供应商",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.supplier_selected.0349",
+      "canonical_id": "event:supplier_selected",
+      "canonical_name": "supplier_selected",
+      "alias": "供应商确认",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_drafted.0350",
+      "canonical_id": "event:contract_drafted",
+      "canonical_name": "contract_drafted",
+      "alias": "Contract Drafted",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_drafted.0351",
+      "canonical_id": "event:contract_drafted",
+      "canonical_name": "contract_drafted",
+      "alias": "Draft Contract Created",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_drafted.0352",
+      "canonical_id": "event:contract_drafted",
+      "canonical_name": "contract_drafted",
+      "alias": "起草合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_drafted.0353",
+      "canonical_id": "event:contract_drafted",
+      "canonical_name": "contract_drafted",
+      "alias": "合同草稿创建",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_legal_approved.0354",
+      "canonical_id": "event:contract_legal_approved",
+      "canonical_name": "contract_legal_approved",
+      "alias": "Contract Legal Approved",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_legal_approved.0355",
+      "canonical_id": "event:contract_legal_approved",
+      "canonical_name": "contract_legal_approved",
+      "alias": "Legal Approved",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_legal_approved.0356",
+      "canonical_id": "event:contract_legal_approved",
+      "canonical_name": "contract_legal_approved",
+      "alias": "合同法务审核通过",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_activated.0357",
+      "canonical_id": "event:contract_activated",
+      "canonical_name": "contract_activated",
+      "alias": "Contract Activated",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_activated.0358",
+      "canonical_id": "event:contract_activated",
+      "canonical_name": "contract_activated",
+      "alias": "Activate Contract",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.contract_activated.0359",
+      "canonical_id": "event:contract_activated",
+      "canonical_name": "contract_activated",
+      "alias": "合同生效",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_order_released.0360",
+      "canonical_id": "event:purchase_order_released",
+      "canonical_name": "purchase_order_released",
+      "alias": "Purchase Order Released",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_order_released.0361",
+      "canonical_id": "event:purchase_order_released",
+      "canonical_name": "purchase_order_released",
+      "alias": "PO Released",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_order_released.0362",
+      "canonical_id": "event:purchase_order_released",
+      "canonical_name": "purchase_order_released",
+      "alias": "释放采购订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.purchase_order_released.0363",
+      "canonical_id": "event:purchase_order_released",
+      "canonical_name": "purchase_order_released",
+      "alias": "下达采购订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.goods_receipt_recorded.0364",
+      "canonical_id": "event:goods_receipt_recorded",
+      "canonical_name": "goods_receipt_recorded",
+      "alias": "Goods Receipt Recorded",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.goods_receipt_recorded.0365",
+      "canonical_id": "event:goods_receipt_recorded",
+      "canonical_name": "goods_receipt_recorded",
+      "alias": "GRN Recorded",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.goods_receipt_recorded.0366",
+      "canonical_id": "event:goods_receipt_recorded",
+      "canonical_name": "goods_receipt_recorded",
+      "alias": "记录收货",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.goods_receipt_recorded.0367",
+      "canonical_id": "event:goods_receipt_recorded",
+      "canonical_name": "goods_receipt_recorded",
+      "alias": "登记GRN",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.invoice_matched.0368",
+      "canonical_id": "event:invoice_matched",
+      "canonical_name": "invoice_matched",
+      "alias": "Invoice Matched",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.invoice_matched.0369",
+      "canonical_id": "event:invoice_matched",
+      "canonical_name": "invoice_matched",
+      "alias": "发票匹配完成",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.invoice_exception_created.0370",
+      "canonical_id": "event:invoice_exception_created",
+      "canonical_name": "invoice_exception_created",
+      "alias": "Invoice Exception Created",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.invoice_exception_created.0371",
+      "canonical_id": "event:invoice_exception_created",
+      "canonical_name": "invoice_exception_created",
+      "alias": "Invoice Match Exception",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.invoice_exception_created.0372",
+      "canonical_id": "event:invoice_exception_created",
+      "canonical_name": "invoice_exception_created",
+      "alias": "发票匹配异常",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_requested.0373",
+      "canonical_id": "event:payment_requested",
+      "canonical_name": "payment_requested",
+      "alias": "Payment Requested",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_requested.0374",
+      "canonical_id": "event:payment_requested",
+      "canonical_name": "payment_requested",
+      "alias": "Payment Application Created",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_requested.0375",
+      "canonical_id": "event:payment_requested",
+      "canonical_name": "payment_requested",
+      "alias": "创建付款申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_approved.0376",
+      "canonical_id": "event:payment_approved",
+      "canonical_name": "payment_approved",
+      "alias": "Payment Approved",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_approved.0377",
+      "canonical_id": "event:payment_approved",
+      "canonical_name": "payment_approved",
+      "alias": "付款审批通过",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_paid.0378",
+      "canonical_id": "event:payment_paid",
+      "canonical_name": "payment_paid",
+      "alias": "Payment Paid",
+      "alias_type": "English name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_paid.0379",
+      "canonical_id": "event:payment_paid",
+      "canonical_name": "payment_paid",
+      "alias": "付款完成",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:event.payment_paid.0380",
+      "canonical_id": "event:payment_paid",
+      "canonical_name": "payment_paid",
+      "alias": "支付完成",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology events",
+      "confidence": 0.9,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_purchase_request.0381",
+      "canonical_id": "action:create_purchase_request",
+      "canonical_name": "create_purchase_request",
+      "alias": "create purchase request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_purchase_request.0382",
+      "canonical_id": "action:create_purchase_request",
+      "canonical_name": "create_purchase_request",
+      "alias": "create PR",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_purchase_request.0383",
+      "canonical_id": "action:create_purchase_request",
+      "canonical_name": "create_purchase_request",
+      "alias": "创建采购申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.submit_purchase_request.0384",
+      "canonical_id": "action:submit_purchase_request",
+      "canonical_name": "submit_purchase_request",
+      "alias": "submit purchase request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.submit_purchase_request.0385",
+      "canonical_id": "action:submit_purchase_request",
+      "canonical_name": "submit_purchase_request",
+      "alias": "submit PR",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.submit_purchase_request.0386",
+      "canonical_id": "action:submit_purchase_request",
+      "canonical_name": "submit_purchase_request",
+      "alias": "提交采购申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_normal_purchase_request.0387",
+      "canonical_id": "action:approve_normal_purchase_request",
+      "canonical_name": "approve_normal_purchase_request",
+      "alias": "approve normal purchase request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_normal_purchase_request.0388",
+      "canonical_id": "action:approve_normal_purchase_request",
+      "canonical_name": "approve_normal_purchase_request",
+      "alias": "department approval",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_normal_purchase_request.0389",
+      "canonical_id": "action:approve_normal_purchase_request",
+      "canonical_name": "approve_normal_purchase_request",
+      "alias": "部门经理审批",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_high_value_purchase_request.0390",
+      "canonical_id": "action:approve_high_value_purchase_request",
+      "canonical_name": "approve_high_value_purchase_request",
+      "alias": "approve high value purchase request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_high_value_purchase_request.0391",
+      "canonical_id": "action:approve_high_value_purchase_request",
+      "canonical_name": "approve_high_value_purchase_request",
+      "alias": "finance approval",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_high_value_purchase_request.0392",
+      "canonical_id": "action:approve_high_value_purchase_request",
+      "canonical_name": "approve_high_value_purchase_request",
+      "alias": "财务审批",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.select_supplier.0393",
+      "canonical_id": "action:select_supplier",
+      "canonical_name": "select_supplier",
+      "alias": "select supplier",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.select_supplier.0394",
+      "canonical_id": "action:select_supplier",
+      "canonical_name": "select_supplier",
+      "alias": "select vendor",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.select_supplier.0395",
+      "canonical_id": "action:select_supplier",
+      "canonical_name": "select_supplier",
+      "alias": "选择供应商",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.draft_contract.0396",
+      "canonical_id": "action:draft_contract",
+      "canonical_name": "draft_contract",
+      "alias": "draft contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.draft_contract.0397",
+      "canonical_id": "action:draft_contract",
+      "canonical_name": "draft_contract",
+      "alias": "prepare contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.draft_contract.0398",
+      "canonical_id": "action:draft_contract",
+      "canonical_name": "draft_contract",
+      "alias": "起草合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.legal_review_contract.0399",
+      "canonical_id": "action:legal_review_contract",
+      "canonical_name": "legal_review_contract",
+      "alias": "legal review contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.legal_review_contract.0400",
+      "canonical_id": "action:legal_review_contract",
+      "canonical_name": "legal_review_contract",
+      "alias": "法务审核合同",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.activate_contract.0401",
+      "canonical_id": "action:activate_contract",
+      "canonical_name": "activate_contract",
+      "alias": "activate contract",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.activate_contract.0402",
+      "canonical_id": "action:activate_contract",
+      "canonical_name": "activate_contract",
+      "alias": "合同生效",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.release_purchase_order.0403",
+      "canonical_id": "action:release_purchase_order",
+      "canonical_name": "release_purchase_order",
+      "alias": "release purchase order",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.release_purchase_order.0404",
+      "canonical_id": "action:release_purchase_order",
+      "canonical_name": "release_purchase_order",
+      "alias": "release PO",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.release_purchase_order.0405",
+      "canonical_id": "action:release_purchase_order",
+      "canonical_name": "release_purchase_order",
+      "alias": "下达采购订单",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.record_goods_receipt.0406",
+      "canonical_id": "action:record_goods_receipt",
+      "canonical_name": "record_goods_receipt",
+      "alias": "record goods receipt",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.record_goods_receipt.0407",
+      "canonical_id": "action:record_goods_receipt",
+      "canonical_name": "record_goods_receipt",
+      "alias": "record GRN",
+      "alias_type": "abbreviation",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.record_goods_receipt.0408",
+      "canonical_id": "action:record_goods_receipt",
+      "canonical_name": "record_goods_receipt",
+      "alias": "登记收货",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.match_invoice.0409",
+      "canonical_id": "action:match_invoice",
+      "canonical_name": "match_invoice",
+      "alias": "match invoice",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.match_invoice.0410",
+      "canonical_id": "action:match_invoice",
+      "canonical_name": "match_invoice",
+      "alias": "发票匹配",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_payment_request.0411",
+      "canonical_id": "action:create_payment_request",
+      "canonical_name": "create_payment_request",
+      "alias": "create payment request",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_payment_request.0412",
+      "canonical_id": "action:create_payment_request",
+      "canonical_name": "create_payment_request",
+      "alias": "create payment application",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.create_payment_request.0413",
+      "canonical_id": "action:create_payment_request",
+      "canonical_name": "create_payment_request",
+      "alias": "创建付款申请",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_payment.0414",
+      "canonical_id": "action:approve_payment",
+      "canonical_name": "approve_payment",
+      "alias": "approve payment",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.approve_payment.0415",
+      "canonical_id": "action:approve_payment",
+      "canonical_name": "approve_payment",
+      "alias": "付款审批",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.mark_payment_paid.0416",
+      "canonical_id": "action:mark_payment_paid",
+      "canonical_name": "mark_payment_paid",
+      "alias": "mark payment paid",
+      "alias_type": "UI/business term",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    },
+    {
+      "alias_id": "alias:action.mark_payment_paid.0417",
+      "canonical_id": "action:mark_payment_paid",
+      "canonical_name": "mark_payment_paid",
+      "alias": "付款完成",
+      "alias_type": "Chinese name",
+      "source": "gold_ontology actions",
+      "confidence": 0.88,
+      "note": ""
+    }
+  ],
+  "non_equivalences": [
+    {
+      "left_id": "concept:purchase_request",
+      "right_id": "concept:purchase_order",
+      "reason": "PurchaseRequest is a pre-approval demand object; PurchaseOrder is an operational order released after contract activation. PR and PO must not be merged."
+    },
+    {
+      "left_id": "concept:purchase_request_item",
+      "right_id": "concept:material",
+      "reason": "PurchaseRequestItem is a line record with quantity and price; Material is the requested good/service semantics represented by item description/category."
+    },
+    {
+      "left_id": "concept:approval_task",
+      "right_id": "concept:payment",
+      "reason": "ApprovalTask records workflow decisions; Payment is a finance payment request/execution object. Payment approval records should not be merged into Payment itself."
+    },
+    {
+      "left_id": "concept:supplier",
+      "right_id": "concept:employee",
+      "reason": "Supplier/Vendor is external provider; Employee/User is internal actor. Do not merge even though both can have contact information."
+    },
+    {
+      "left_id": "concept:contract",
+      "right_id": "concept:purchase_order",
+      "reason": "Contract is legal agreement; PurchaseOrder is operational order against a contract."
+    },
+    {
+      "left_id": "concept:goods_receipt",
+      "right_id": "concept:invoice",
+      "reason": "GoodsReceipt/GRN is receiving evidence; Invoice is supplier billing document. They are matched but not equivalent."
+    },
+    {
+      "left_id": "concept:invoice",
+      "right_id": "concept:payment",
+      "reason": "Invoice is billing document; Payment/Payment Request is finance approval and execution for an invoice."
+    },
+    {
+      "left_id": "concept:department",
+      "right_id": "concept:employee",
+      "reason": "Department is organizational unit; Employee/User is an actor belonging to a department."
+    },
+    {
+      "left_id": "concept:contract",
+      "right_id": "concept:payment",
+      "reason": "Agreement/Contract should not be confused with payment agreement or payment request."
+    }
+  ],
+  "usage_notes": [
+    "Aliases are intended for name matching tolerance in future scoring.",
+    "An alias maps to exactly one canonical_id in this file.",
+    "Ambiguous generic words should only be accepted when surrounding context matches the canonical concept.",
+    "Non-equivalences define boundaries that must not be merged even when terms look similar."
+  ],
+  "provenance": {
+    "created_by": "Claude Code",
+    "created_at": "2026-07-03T00:00:00Z",
+    "method": "manual_gold_reference",
+    "source_system": "datasets/generic_procurement_contract_mvp"
+  }
+}

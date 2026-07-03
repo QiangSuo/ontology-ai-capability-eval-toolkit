@@ -1,0 +1,9 @@
+receipt_id,receipt_no,po_id,receipt_status,received_by,received_at,inspection_result,remarks
+8001,GRN-2026-0001,7001,COMPLETE,1006,2026-02-22 15:30:00,PASS,Laptops received and tagged
+8002,GRN-2026-0002,7002,PARTIAL,1006,2026-02-24 11:20:00,PASS,Seven scanners received first batch
+8003,GRN-2026-0003,7003,PENDING,1006,,NOT_REQUIRED,Awaiting safety kit delivery
+8004,GRN-2026-0004,7004,PENDING,1006,,NOT_REQUIRED,Not yet received
+8005,GRN-2026-0005,7005,PENDING,1006,,NOT_REQUIRED,Service visit not started
+8006,GRN-2025-0077,7006,COMPLETE,1006,2025-02-01 10:00:00,PASS,Legacy office supplies received
+8007,GRN-2025-0080,7007,REJECTED,1006,2025-08-05 10:30:00,FAIL,Cancelled after supplier suspension
+8008,GRN-2026-0006,7008,PARTIAL,1006,2026-02-25 16:00:00,PASS,Accessories partial batch received
