@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "generic_procurement_contract_mvp",
+  "description": "Evaluator-only known Web conflicts for the optional C-stage Web snapshot extension. Do not provide this file to AI tools under evaluation.",
+  "conflicts": [
+    {
+      "conflict_id": "web_conflict:web_vs_document_flow_mismatch",
+      "conflict_type": "web_vs_document_flow_mismatch",
+      "title": "Page flow differs from documented business sequence",
+      "description": "Web navigation may combine shortcuts such as PR detail to contract or invoice workbench links, while policy documents describe a stricter sequential business process.",
+      "web_evidence_refs": [
+        "web:purchase_request_detail.button.create_contract",
+        "web:flow.purchase_request_to_contract",
+        "web:flow.contract_to_invoice"
+      ],
+      "related_non_web_sources": [
+        "documents/procurement_process.md",
+        "documents/contract_lifecycle.md",
+        "documents/receipt_invoice_payment_policy.md"
+      ],
+      "expected_handling": "Record as candidate page-flow evidence and do not claim it is the only or canonical process order.",
+      "severity": "medium",
+      "review_notes": "Useful for testing whether tools distinguish navigation shortcuts from business rules."
+    },
+    {
+      "conflict_id": "web_conflict:page_action_without_backend_evidence",
+      "conflict_type": "page_action_without_backend_evidence",
+      "title": "Visible Web buttons do not prove backend capability",
+      "description": "Buttons such as Activate Contract, Release Hold, Return, Match Invoice and Mark Paid are UI evidence only unless confirmed by code, DDL or documents.",
+      "web_evidence_refs": [
+        "web:contract_detail.button.activate_contract",
+        "web:payments.button.release_hold",
+        "web:approval_tasks.button.return",
+        "web:invoices.button.match_invoice",
+        "web:payments.button.mark_paid"
+      ],
+      "related_non_web_sources": [
+        "source_code/",
+        "documents/",
+        "database/ddl.sql"
+      ],
+      "expected_handling": "Keep as candidate actions with uncertainty until fused with non-Web sources.",
+      "severity": "high",
+      "review_notes": "This is the main hallucination-control boundary for Web UI analysis."
+    },
+    {
+      "conflict_id": "web_conflict:ui_vs_database_naming_mismatch",
+      "conflict_type": "ui_vs_database_naming_mismatch",
+      "title": "UI labels differ from DDL/code naming",
+      "description": "UI labels include PR No, Preferred Vendor, Vendor, GRN and Payment Application, while database and other sources may use request_no, Supplier, goods_receipt and payment_request.",
+      "web_evidence_refs": [
+        "web:purchase_requests.table.pr_no",
+        "web:purchase_request_detail.field.preferred_vendor",
+        "web:contract_detail.field.vendor",
+        "web:invoices.field.grn_no",
+        "web:payments.field.payment_application_no"
+      ],
+      "related_non_web_sources": [
+        "database/ddl.sql",
+        "documents/glossary.md",
+        "source_code/"
+      ],
+      "expected_handling": "Create aliases and mappings rather than duplicate concepts.",
+      "severity": "medium",
+      "review_notes": "Expected to test alias handling across UI, documents and database sources."
+    },
+    {
+      "conflict_id": "web_conflict:role_permission_web_vs_doc_mismatch",
+      "conflict_type": "role_permission_web_vs_doc_mismatch",
+      "title": "UI visibility hints are not final permission rules",
+      "description": "Page role hints and visible buttons can differ from the role permission matrix and must not be treated as final authorization rules without fusion.",
+      "web_evidence_refs": [
+        "web:approval_tasks.button.approve",
+        "web:contract_detail.button.activate_contract",
+        "web:payments.button.mark_paid"
+      ],
+      "related_non_web_sources": [
+        "documents/role_permission_matrix.md"
+      ],
+      "expected_handling": "Represent as role visibility evidence or permission candidates with uncertainty.",
+      "severity": "medium",
+      "review_notes": "Useful for testing role/permission overclaiming."
+    },
+    {
+      "conflict_id": "web_conflict:missing_page_or_broken_link",
+      "conflict_type": "missing_page_or_broken_link",
+      "title": "Some implied business objects have no standalone page snapshot",
+      "description": "Supplier Master, Purchase Order Detail and Goods Receipt Detail are intentionally absent or only represented through related pages.",
+      "web_evidence_refs": [
+        "web:page_map.missing_pages",
+        "web:contract_detail.field.source_po_no",
+        "web:invoices.field.grn_no"
+      ],
+      "related_non_web_sources": [
+        "web_map/page_map.json",
+        "web_map/page_map.md"
+      ],
+      "expected_handling": "Record missing pages and do not invent unseen fields or flows.",
+      "severity": "high",
+      "review_notes": "This guards against invented recursive crawling results."
+    },
+    {
+      "conflict_id": "web_conflict:web_only_business_term",
+      "conflict_type": "web_only_business_term",
+      "title": "Some UI terms are Web-only or operational candidates",
+      "description": "Release Hold, Payment Application No and Hold Reason appear as UI terms and should remain candidates unless confirmed elsewhere.",
+      "web_evidence_refs": [
+        "web:payments.button.release_hold",
+        "web:payments.field.payment_application_no",
+        "web:payments.field.hold_reason"
+      ],
+      "related_non_web_sources": [
+        "documents/receipt_invoice_payment_policy.md",
+        "database/ddl.sql"
+      ],
+      "expected_handling": "Represent as Web-only candidates or uncertainties; do not add required database fields without evidence.",
+      "severity": "medium",
+      "review_notes": "Especially important for payment hold reason and release-hold action handling."
+    }
+  ]
+}

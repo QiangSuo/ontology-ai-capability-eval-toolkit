@@ -5,7 +5,7 @@ This report contains automatic, offline checks only. Human review is still requi
 ## Summary
 
 - Evaluation ID: `demo_baseline`
-- Generated at: `2026-07-03T05:43:28Z`
+- Generated at: `2026-07-04T12:23:21Z`
 - Ontology files checked: 1
 - Task result files checked: 5
 - Schema-valid ontology files: 1 / 1
@@ -72,6 +72,13 @@ This report contains automatic, offline checks only. Human review is still requi
 
 - Evidence references checked: 126
 - Missing evidence references: 61
+- Screenshot evidence enabled: True
+- Screenshot evidence refs checked: 0
+- Missing screenshot evidence refs: 0
+- Web evidence enabled: True
+- Web evidence refs checked: 0
+- Missing Web evidence refs: 0
+- Invalid Web snapshot paths: 0
 ### Missing evidence reference details
 
 - element_id=`concept:purchase_request`, evidence_ref=`code.PurchaseRequest.domain`

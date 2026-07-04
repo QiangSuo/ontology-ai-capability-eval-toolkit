@@ -1,12 +1,14 @@
 {
   "schema_version": "1.0.0",
   "evaluation_id": "demo_baseline",
-  "generated_at": "2026-07-03T05:43:28Z",
+  "generated_at": "2026-07-04T12:23:21Z",
   "inputs": {
     "evaluation_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/results/demo_baseline",
     "dataset_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp",
-    "gold_ontology": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/gold/gold_ontology.json",
-    "acceptable_aliases": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/gold/acceptable_aliases.json"
+    "gold_ontology": "gold/gold_ontology.json",
+    "acceptable_aliases": "gold/acceptable_aliases.json",
+    "gold_screenshot_evidence": "gold/gold_evidence_map.screenshot.json",
+    "gold_web_evidence": "gold/gold_evidence_map.web.json"
   },
   "summary": {
     "task_result_file_count": 5,
@@ -495,7 +497,7 @@
   },
   "evidence_check": {
     "referenced_evidence_count": 126,
-    "available_evidence_ref_count": 254,
+    "available_evidence_ref_count": 439,
     "missing_evidence_refs": [
       {
         "element_type": "concept",
@@ -802,7 +804,28 @@
         "element_id": "uncertainty:budget_reservation",
         "evidence_ref": "doc:nonexistent_budget_policy"
       }
-    ]
+    ],
+    "screenshot_evidence": {
+      "enabled": true,
+      "gold_screenshot_evidence_count": 15,
+      "referenced_screenshot_evidence_count": 0,
+      "matched_screenshot_evidence_count": 0,
+      "missing_screenshot_evidence_refs": [],
+      "invalid_screenshot_source_files": [],
+      "input_mode": "surrogate_only",
+      "note": "Screenshot evidence checks are optional and do not change MVP gold ontology coverage."
+    },
+    "web_evidence": {
+      "enabled": true,
+      "gold_web_evidence_count": 40,
+      "referenced_web_evidence_count": 0,
+      "matched_web_evidence_count": 0,
+      "missing_web_evidence_refs": [],
+      "invalid_web_snapshot_paths": [],
+      "page_map_file_count": 1,
+      "input_mode": "html_snapshot",
+      "note": "Web evidence checks are optional and do not change MVP gold ontology coverage."
+    }
   },
   "possible_hallucinations": {
     "concepts": [
@@ -833,6 +856,13 @@
     "key_relation_coverage": 0.2791,
     "schema_validity_rate": 1.0,
     "missing_evidence_ref_count": 61,
+    "missing_screenshot_evidence_ref_count": 0,
+    "referenced_screenshot_evidence_count": 0,
+    "web_evidence_enabled": true,
+    "referenced_web_evidence_count": 0,
+    "matched_web_evidence_count": 0,
+    "missing_web_evidence_ref_count": 0,
+    "invalid_web_snapshot_path_count": 0,
     "possible_hallucinated_concept_count": 1,
     "possible_hallucinated_attribute_count": 1,
     "possible_hallucinated_relation_count": 1
@@ -848,6 +878,7 @@
   },
   "notes": [
     "Machine checks are conservative and alias-based; they do not replace human ontology quality review.",
-    "Possible hallucinations are unmatched items, not final false-positive judgments."
+    "Possible hallucinations are unmatched items, not final false-positive judgments.",
+    "Gold/reference paths in inputs are evaluator-side relative identifiers and must not be provided to AI tools under evaluation."
   ]
 }

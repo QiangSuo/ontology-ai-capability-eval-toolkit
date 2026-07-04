@@ -11,7 +11,8 @@
       "source_code",
       "database_ddl",
       "sample_data_csv",
-      "business_documents"
+      "business_documents",
+      "optional_web_snapshots"
     ],
     "excluded_artifacts": [
       "gold_ontology",
@@ -19,8 +20,9 @@
       "acceptable_aliases",
       "known_conflicts",
       "scoring_scripts",
-      "screenshots",
-      "web_pages",
+      "live_web_pages",
+      "web_gold_evidence_map",
+      "web_known_conflicts",
       "pdf",
       "excel"
     ],
@@ -34,6 +36,28 @@
       "invoice",
       "payment_request",
       "contract_fulfillment"
+    ],
+    "optional_extensions": [
+      {
+        "extension_id": "B2_screenshot_surrogates",
+        "input_mode": "surrogate_only",
+        "manifest_path": "metadata/screenshot_manifest.json",
+        "artifact_root": "screenshots/",
+        "baseline_included": false,
+        "description": "Optional Markdown screenshot surrogate inputs for UI semantic extraction; not part of the MVP smoke or standard baseline."
+      },
+      {
+        "extension_id": "C_web_snapshots",
+        "input_mode": "html_snapshot",
+        "fallback_input_modes": [
+          "page_map_only",
+          "manual_page_notes"
+        ],
+        "manifest_path": "web_map/page_map.json",
+        "artifact_root": "web_snapshots/",
+        "baseline_included": false,
+        "description": "Optional offline HTML snapshot and page map inputs for Web semantic extraction and page-flow analysis; not live Web crawling."
+      }
     ]
   },
   "artifacts": [
@@ -226,6 +250,125 @@
       "type": "business_document",
       "path": "documents/glossary.md",
       "description": "Input artifact: documents/glossary.md"
+    },
+    {
+      "type": "optional_screenshot_manifest",
+      "path": "metadata/screenshot_manifest.json",
+      "description": "Optional B2 screenshot surrogate extension artifact: metadata/screenshot_manifest.json",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_documentation",
+      "path": "screenshots/README.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/README.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_surrogate",
+      "path": "screenshots/purchase_request_list.screen.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/purchase_request_list.screen.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_surrogate",
+      "path": "screenshots/purchase_request_detail.screen.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/purchase_request_detail.screen.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_surrogate",
+      "path": "screenshots/approval_task.screen.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/approval_task.screen.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_surrogate",
+      "path": "screenshots/contract_detail.screen.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/contract_detail.screen.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_screenshot_surrogate",
+      "path": "screenshots/invoice_payment.screen.md",
+      "description": "Optional B2 screenshot surrogate extension artifact: screenshots/invoice_payment.screen.md",
+      "baseline_included": false,
+      "input_mode": "surrogate_only"
+    },
+    {
+      "type": "optional_web_page_map",
+      "path": "web_map/page_map.json",
+      "description": "Optional C-stage Web snapshot extension artifact: web_map/page_map.json",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_page_map_documentation",
+      "path": "web_map/page_map.md",
+      "description": "Optional C-stage Web snapshot extension artifact: web_map/page_map.md",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/index.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/index.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/purchase_requests.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/purchase_requests.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/approval_tasks.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/approval_tasks.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/contracts.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/contracts.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/contract_detail_CT-2024-001.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/contract_detail_CT-2024-001.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/invoices.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/invoices.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
+    },
+    {
+      "type": "optional_web_snapshot",
+      "path": "web_snapshots/payments.html",
+      "description": "Optional C-stage Web snapshot extension artifact: web_snapshots/payments.html",
+      "baseline_included": false,
+      "input_mode": "html_snapshot"
     }
   ],
   "recommended_test_subsets": {
@@ -262,6 +405,8 @@
       "Approval threshold wording differs slightly between DDL/business rules and code.",
       "Invoice matching tolerance differs between policy text and code constant.",
       "Contract activation policy mentions both-party signature, while DDL stores legal approval and activation timestamps only."
-    ]
+    ],
+    "screenshot_surrogate_policy": "B2 screenshot surrogate files are optional text inputs for UI semantic extraction. They are not required by the MVP baseline and do not test real image, OCR, visual layout, icon recognition or bounding-box capability.",
+    "web_snapshot_policy": "C-stage Web snapshot files are optional static HTML/page-map inputs for page semantic extraction and navigation analysis. They are not required by the MVP baseline and do not test live crawling, login state, JavaScript execution, browser automation, API calls or real system reachability."
   }
 }

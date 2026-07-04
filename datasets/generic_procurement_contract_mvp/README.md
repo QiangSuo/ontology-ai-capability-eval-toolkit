@@ -33,6 +33,26 @@ Only these paths are evaluation inputs:
 4. Business documents: Markdown process and policy documents under `documents/`
 5. Dataset metadata/manifest when the operator needs file inventory: `metadata/dataset_manifest.json`
 
+### Optional Screenshot Surrogate Extension
+
+The following paths may be provided only when the evaluation lead explicitly enables the optional B2 screenshot-surrogate extension:
+
+- `screenshots/*.screen.md`
+- `screenshots/README.md`
+- `metadata/screenshot_manifest.json`
+
+These files are text surrogates for UI screens. They can test UI semantic extraction from Markdown descriptions, but they do not test real image perception, OCR quality, visual layout detection, icon recognition or bounding boxes. The MVP Smoke Test and Standard Test baseline do not require these files.
+
+### Optional Web Snapshot Extension
+
+The following paths may be provided only when the evaluation lead explicitly enables the optional C-stage Web snapshot extension:
+
+- `web_snapshots/*.html`
+- `web_map/page_map.json`
+- `web_map/page_map.md`
+
+These files are offline static HTML snapshots and page-map inputs. They can test Web page semantic extraction, menu/link understanding, UI-to-business mapping and page-flow analysis, but they do not test live Web crawling, login state, JavaScript execution, browser automation, API calls or real system reachability. Use `input_mode = html_snapshot` when HTML is provided, and `input_mode = page_map_only` when only the page map is provided. The MVP Smoke Test and Standard Test baseline do not require these files.
+
 ### Reference / Scoring Materials Not To Provide To The AI Tool
 
 The following files exist in the repository but are **not** input materials for the AI under evaluation:
@@ -43,6 +63,8 @@ The following files exist in the repository but are **not** input materials for 
 - `gold/known_conflicts.json` and `gold/known_conflicts.md`
 - Any files under `results/demo_baseline/`
 - Any scoring output such as `machine_score.json` or `machine_score.md`
+- Future screenshot gold, screenshot known-conflict or screenshot scoring artifacts, if added later
+- Future Web gold, Web known-conflict or Web scoring artifacts, including `gold/gold_evidence_map.web.*` and `gold/known_conflicts.web.*`, if added later
 
 These files are used only by the evaluator for scoring, review, consistency checks and demo explanation. Providing them to the AI tool would leak the answer key.
 

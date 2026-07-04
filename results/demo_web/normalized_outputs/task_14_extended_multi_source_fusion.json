@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-extended-web-demo",
+  "title": "Procurement Contract MVP Extended Web Demo Ontology",
+  "domain": "procurement_contract",
+  "description": "Demo extended ontology fused from MVP baseline and optional Web snapshot/page-map outputs. Web evidence is additive and does not prove live crawling.",
+  "concepts": [
+    {
+      "id": "concept:purchase_request",
+      "name": "Purchase Request",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "web:purchase_requests.table.pr_no"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:contract",
+      "name": "Contract",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "web:contract_detail.page"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:invoice",
+      "name": "Invoice",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "web:invoices.field.invoice_no"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "concept:payment_request",
+      "name": "Payment Request",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "web:payments.field.payment_application_no"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "concept:goods_receipt",
+      "name": "Goods Receipt",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "web:invoices.field.grn_no"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "concept:approval_task",
+      "name": "Approval Task",
+      "type": "concept",
+      "category": "workflow",
+      "evidence_refs": [
+        "web:approval_tasks.field.target_type"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "concept:supplier",
+      "name": "Supplier",
+      "type": "concept",
+      "category": "party",
+      "evidence_refs": [
+        "web:purchase_request_detail.field.preferred_vendor"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "attributes": [
+    {
+      "id": "attr:purchase_request.request_no",
+      "concept_id": "concept:purchase_request",
+      "name": "request_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "web:purchase_requests.table.pr_no"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attr:payment_request.payment_request_no",
+      "concept_id": "concept:payment_request",
+      "name": "payment_request_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "web:payments.field.payment_request_no"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attr:approval_task.target_type",
+      "concept_id": "concept:approval_task",
+      "name": "target_type",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "web:approval_tasks.field.target_type"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:purchase_request.prefers_supplier",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:supplier",
+      "predicate": "prefers_supplier",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "web:purchase_request_detail.field.preferred_vendor"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "id": "rel:invoice.matched_with_goods_receipt",
+      "type": "relation",
+      "source_concept_id": "concept:invoice",
+      "target_concept_id": "concept:goods_receipt",
+      "predicate": "matched_with_goods_receipt",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "web:invoices.field.grn_no"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "events": [],
+  "rules": [],
+  "actions": [
+    {
+      "id": "action:activate_contract",
+      "type": "action",
+      "name": "Activate Contract",
+      "target_concept_ids": [
+        "concept:contract"
+      ],
+      "evidence_refs": [
+        "web:contract_detail.button.activate_contract"
+      ],
+      "confidence": 0.68
+    },
+    {
+      "id": "action:match_invoice_to_receipt",
+      "type": "action",
+      "name": "Match Invoice",
+      "target_concept_ids": [
+        "concept:invoice"
+      ],
+      "evidence_refs": [
+        "web:invoices.button.match_invoice"
+      ],
+      "confidence": 0.68
+    },
+    {
+      "id": "action:mark_payment_paid",
+      "type": "action",
+      "name": "Mark Payment Paid",
+      "target_concept_ids": [
+        "concept:payment_request"
+      ],
+      "evidence_refs": [
+        "web:payments.button.mark_paid"
+      ],
+      "confidence": 0.66
+    }
+  ],
+  "states": [
+    {
+      "id": "state:contract.active",
+      "type": "state",
+      "name": "ACTIVE",
+      "owner_concept_id": "concept:contract",
+      "evidence_refs": [
+        "web:contract_detail.status.active"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "roles": [
+    {
+      "id": "role:finance_manager",
+      "type": "role",
+      "name": "Finance Manager",
+      "evidence_refs": [
+        "web:approval_tasks.button.approve"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "permissions": [],
+  "aliases": [
+    {
+      "id": "alias:supplier.vendor.web",
+      "type": "alias",
+      "canonical_id": "concept:supplier",
+      "alias": "Vendor",
+      "source_context": "Web labels Preferred Vendor and Vendor",
+      "evidence_refs": [
+        "web:purchase_request_detail.field.preferred_vendor"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "alias:goods_receipt.grn.web",
+      "type": "alias",
+      "canonical_id": "concept:goods_receipt",
+      "alias": "GRN",
+      "source_context": "Invoice workbench GRN No field",
+      "evidence_refs": [
+        "web:invoices.field.grn_no"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "alias:payment_request.payment_application.web",
+      "type": "alias",
+      "canonical_id": "concept:payment_request",
+      "alias": "Payment Application",
+      "source_context": "Payment Applications page title and field label",
+      "evidence_refs": [
+        "web:payments.field.payment_application_no"
+      ],
+      "confidence": 0.84
+    }
+  ],
+  "mappings": [
+    {
+      "id": "mapping:web.pr_no",
+      "type": "mapping",
+      "ontology_element_id": "attr:purchase_request.request_no",
+      "source_element": "Purchase Requests table header PR No",
+      "source_type": "web_page",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "web:purchase_requests.table.pr_no"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "mapping:web.preferred_vendor",
+      "type": "mapping",
+      "ontology_element_id": "concept:supplier",
+      "source_element": "Preferred Vendor field",
+      "source_type": "web_page",
+      "mapping_type": "candidate",
+      "evidence_refs": [
+        "web:purchase_request_detail.field.preferred_vendor"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "conflict:web.ui_action_backend_unknown",
+      "type": "conflict",
+      "description": "Web buttons are visible but do not prove backend action implementation.",
+      "involved_ids": [
+        "action:activate_contract"
+      ],
+      "severity": "medium",
+      "resolution_status": "needs_human_review",
+      "evidence_refs": [
+        "web:contract_detail.button.activate_contract"
+      ],
+      "confidence": 0.72
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:web.missing_standalone_pages",
+      "type": "uncertainty",
+      "target_id": "concept:purchase_order",
+      "description": "Purchase Order Detail and Goods Receipt Detail have no standalone snapshot pages.",
+      "reason": "page_map known_broken_or_missing_pages lists missing pages.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "web:page_map.missing_pages"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "uncertainty:web.not_live_crawl",
+      "type": "uncertainty",
+      "description": "HTML snapshot input does not prove live Web crawling, login, JS execution or API behavior.",
+      "reason": "input_mode is html_snapshot.",
+      "needs_human_review": false,
+      "evidence_refs": [
+        "web:home.page"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence_refs": [
+    "web:contract_detail.button.activate_contract",
+    "web:flow.contract_to_invoice",
+    "web:flow.home_to_purchase_requests",
+    "web:flow.invoice_to_payment",
+    "web:flow.purchase_request_to_contract",
+    "web:home.page",
+    "web:invoices.field.grn_no",
+    "web:page_map.missing_pages",
+    "web:payments.field.payment_application_no",
+    "web:purchase_request_detail.field.preferred_vendor",
+    "web:purchase_requests.table.pr_no"
+  ],
+  "confidence": 0.78,
+  "provenance": {
+    "created_by": "demo_web_generator",
+    "created_at": "2026-07-04T11:00:00Z",
+    "method": "hybrid",
+    "source_system": "extended_multi_source_fusion",
+    "tool_profile_ref": "tool:demo_web",
+    "prompt_ref": "task_14_extended_multi_source_fusion",
+    "version": "demo-sample"
+  },
+  "metadata": {
+    "input_mode": "mvp_plus_web_snapshot",
+    "source_coverage": {
+      "task_05_mvp_fusion": "provided",
+      "task_08_screenshot": "missing",
+      "task_12_web_snapshot": "provided",
+      "task_13_page_map_flow": "provided"
+    },
+    "fusion_decisions": [
+      {
+        "decision_id": "fusion:web.vendor_supplier",
+        "topic": "Vendor/Supplier alias",
+        "decision": "merged",
+        "evidence_refs": [
+          "web:purchase_request_detail.field.preferred_vendor"
+        ],
+        "confidence": 0.84
+      },
+      {
+        "decision_id": "fusion:web.ui_actions",
+        "topic": "UI button actions",
+        "decision": "candidate_only",
+        "evidence_refs": [
+          "web:contract_detail.button.activate_contract"
+        ],
+        "confidence": 0.68
+      }
+    ],
+    "page_flows": [
+      {
+        "flow_id": "flow:pr_to_payment",
+        "flow_name": "Purchase Request to Payment candidate page path",
+        "pages_in_order": [
+          "web:home",
+          "web:purchase_requests",
+          "web:purchase_request_detail",
+          "web:contract_detail",
+          "web:invoices",
+          "web:payments"
+        ],
+        "primary_business_objects": [
+          "purchase_request",
+          "contract",
+          "invoice",
+          "payment_request"
+        ],
+        "roles_involved": [
+          "Requester",
+          "Procurement Specialist",
+          "AP Clerk",
+          "Finance Manager"
+        ],
+        "navigation_edges": [
+          "web:flow.home_to_purchase_requests",
+          "web:flow.purchase_request_to_contract",
+          "web:flow.contract_to_invoice",
+          "web:flow.invoice_to_payment"
+        ],
+        "missing_or_implied_pages": [
+          "Purchase Order Detail",
+          "Goods Receipt Detail"
+        ],
+        "evidence_refs": [
+          "web:flow.home_to_purchase_requests",
+          "web:flow.purchase_request_to_contract",
+          "web:flow.contract_to_invoice",
+          "web:flow.invoice_to_payment"
+        ],
+        "confidence": 0.78,
+        "uncertainties": [
+          "Flow is static snapshot navigation, not live crawl or backend proof."
+        ]
+      }
+    ]
+  }
+}

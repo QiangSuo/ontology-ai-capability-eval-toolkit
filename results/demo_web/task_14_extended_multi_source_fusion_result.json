@@ -1,0 +1,104 @@
+{
+  "task_id": "task_14_extended_multi_source_fusion",
+  "task_name": "扩展多源融合（含 Web）",
+  "mode": "fixed_prompt",
+  "level": "custom",
+  "status": "completed",
+  "tool_profile_ref": "tool:demo_web",
+  "started_at": "2026-07-04T11:18:00Z",
+  "completed_at": "2026-07-04T11:30:00Z",
+  "duration_minutes": 12,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "input_artifacts": [
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp.web_snapshots",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp/web_snapshots/",
+      "description": "Optional C-stage offline HTML snapshots."
+    },
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp.page_map",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp/web_map/page_map.json",
+      "description": "Optional C-stage Web page map."
+    },
+    {
+      "artifact_id": "result:demo_baseline.task_05",
+      "artifact_type": "other",
+      "path": "results/demo_baseline/normalized_outputs/ontology_fused_demo.json",
+      "description": "Existing MVP fused ontology demo used as baseline context."
+    },
+    {
+      "artifact_id": "prompt:task_14_extended_multi_source_fusion",
+      "artifact_type": "prompt",
+      "path": "prompts/tasks/task_14_extended_multi_source_fusion.md",
+      "description": "Extended fusion prompt."
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "artifact:task_14_extended_multi_source_fusion.ontology",
+      "artifact_type": "ontology",
+      "path": "normalized_outputs/task_14_extended_multi_source_fusion.json",
+      "schema_ref": "schemas/ontology.schema.json",
+      "description": "Simulated extended Web fusion ontology output."
+    },
+    {
+      "artifact_id": "artifact:task_14_extended_multi_source_fusion.raw",
+      "artifact_type": "raw_output",
+      "path": "raw_outputs/task_14_extended_multi_source_fusion_raw.md",
+      "description": "Simulated raw AI response."
+    }
+  ],
+  "evidence_refs": [
+    "web:contract_detail.button.activate_contract",
+    "web:flow.contract_to_invoice",
+    "web:flow.home_to_purchase_requests",
+    "web:flow.invoice_to_payment",
+    "web:flow.purchase_request_to_contract",
+    "web:home.page",
+    "web:invoices.field.grn_no",
+    "web:page_map.missing_pages",
+    "web:payments.field.payment_application_no",
+    "web:purchase_request_detail.field.preferred_vendor",
+    "web:purchase_requests.table.pr_no"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "task_result.schema.json",
+    "validator": "demo_manual_check",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "manual_fix",
+      "description": "Operator normalized the simulated AI response into schema-compatible JSON for demo purposes.",
+      "occurred_at": "2026-07-04T11:30:00Z",
+      "operator_id": "operator:demo_low_exp"
+    }
+  ],
+  "limitations": [
+    "Demo sample, not a real tool run.",
+    "Web evidence is additive and does not alter MVP baseline scoring by itself."
+  ],
+  "metrics": {
+    "prompt_retry_count": 0,
+    "manual_edit_minutes": 10,
+    "fusion_decision_count": 2,
+    "referenced_web_evidence_count": 11
+  },
+  "notes": "Simulated Web snapshot task result for demonstrating optional C-stage Web scoring flow.",
+  "provenance": {
+    "created_by": "demo_web_generator",
+    "created_at": "2026-07-04T11:18:00Z",
+    "method": "hybrid",
+    "source_system": "generic_procurement_contract_mvp",
+    "tool_profile_ref": "tool:demo_web",
+    "prompt_ref": "task_14_extended_multi_source_fusion",
+    "version": "demo-sample"
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation_id": "demo_web",
+  "generated_at": "2026-07-04T12:23:21Z",
+  "inputs": {
+    "evaluation_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/results/demo_web",
+    "dataset_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp",
+    "gold_ontology": "gold/gold_ontology.json",
+    "acceptable_aliases": "gold/acceptable_aliases.json",
+    "gold_screenshot_evidence": "gold/gold_evidence_map.screenshot.json",
+    "gold_web_evidence": "gold/gold_evidence_map.web.json"
+  },
+  "summary": {
+    "task_result_file_count": 3,
+    "ontology_file_count": 2,
+    "valid_ontology_file_count": 2,
+    "evidence_file_count": 1,
+    "json_load_error_count": 0
+  },
+  "schema_validation": [
+    {
+      "path": "task_12_web_snapshot_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_13_page_map_to_business_flow_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_14_extended_multi_source_fusion_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/task_12_web_snapshot_to_ontology.json",
+      "schema": "ontology.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/task_14_extended_multi_source_fusion.json",
+      "schema": "ontology.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/evidence_map_web_demo.json",
+      "schema": "evidence_map",
+      "is_valid": true,
+      "errors": []
+    }
+  ],
+  "gold_comparison": {
+    "matched_concepts": {
+      "concept:purchase_request": {
+        "output_id": "concept:purchase_request",
+        "output_name": "Purchase Request"
+      },
+      "concept:contract": {
+        "output_id": "concept:contract",
+        "output_name": "Contract"
+      },
+      "concept:invoice": {
+        "output_id": "concept:invoice",
+        "output_name": "Invoice"
+      },
+      "concept:payment": {
+        "output_id": "concept:payment_request",
+        "output_name": "Payment Request"
+      },
+      "concept:goods_receipt": {
+        "output_id": "concept:goods_receipt",
+        "output_name": "Goods Receipt"
+      },
+      "concept:approval_task": {
+        "output_id": "concept:approval_task",
+        "output_name": "Approval Task"
+      },
+      "concept:supplier": {
+        "output_id": "concept:supplier",
+        "output_name": "Supplier"
+      }
+    },
+    "matched_attributes": {
+      "attr:purchase_request.request_no": {
+        "output_id": "attr:purchase_request.request_no",
+        "output_name": "request_no"
+      },
+      "attr:approval_task.target_type": {
+        "output_id": "attr:approval_task.target_type",
+        "output_name": "target_type"
+      }
+    },
+    "matched_relations": {
+      "rel:purchase_request.prefers_supplier": {
+        "output_id": "rel:purchase_request.prefers_supplier",
+        "output_predicate": "prefers_supplier"
+      },
+      "rel:invoice.matched_to_receipt": {
+        "output_id": "rel:invoice.matched_with_goods_receipt",
+        "output_predicate": "matched_with_goods_receipt"
+      }
+    },
+    "missing_core_concepts": [
+      "concept:department",
+      "concept:employee",
+      "concept:material",
+      "concept:purchase_order",
+      "concept:purchase_request_item"
+    ],
+    "missing_key_attributes": [
+      "attr:approval_task.approval_id",
+      "attr:approval_task.approval_status",
+      "attr:approval_task.approver_user_id",
+      "attr:approval_task.step_name",
+      "attr:approval_task.submitted_at",
+      "attr:approval_task.target_id",
+      "attr:contract.contract_amount",
+      "attr:contract.contract_id",
+      "attr:contract.contract_no",
+      "attr:contract.contract_status",
+      "attr:contract.contract_title",
+      "attr:contract.request_id",
+      "attr:contract.supplier_id",
+      "attr:department.cost_center",
+      "attr:department.department_code",
+      "attr:department.department_id",
+      "attr:department.department_name",
+      "attr:department.is_active",
+      "attr:employee.department_id",
+      "attr:employee.email",
+      "attr:employee.is_active",
+      "attr:employee.role_code",
+      "attr:employee.user_id",
+      "attr:employee.user_name",
+      "attr:goods_receipt.po_id",
+      "attr:goods_receipt.receipt_id",
+      "attr:goods_receipt.receipt_no",
+      "attr:goods_receipt.receipt_status",
+      "attr:goods_receipt.received_by",
+      "attr:invoice.invoice_amount",
+      "attr:invoice.invoice_date",
+      "attr:invoice.invoice_id",
+      "attr:invoice.invoice_no",
+      "attr:invoice.invoice_status",
+      "attr:invoice.po_id",
+      "attr:invoice.supplier_id",
+      "attr:material.category_code",
+      "attr:material.item_description",
+      "attr:payment.due_date",
+      "attr:payment.invoice_id",
+      "attr:payment.payment_amount",
+      "attr:payment.payment_no",
+      "attr:payment.payment_request_id",
+      "attr:payment.payment_status",
+      "attr:purchase_order.contract_id",
+      "attr:purchase_order.po_amount",
+      "attr:purchase_order.po_id",
+      "attr:purchase_order.po_no",
+      "attr:purchase_order.po_status",
+      "attr:purchase_order.request_id",
+      "attr:purchase_order.supplier_id",
+      "attr:purchase_request.business_justification",
+      "attr:purchase_request.currency_code",
+      "attr:purchase_request.department_id",
+      "attr:purchase_request.estimated_amount",
+      "attr:purchase_request.request_id",
+      "attr:purchase_request.request_status",
+      "attr:purchase_request.request_title",
+      "attr:purchase_request.requester_user_id",
+      "attr:purchase_request_item.category_code",
+      "attr:purchase_request_item.estimated_unit_price",
+      "attr:purchase_request_item.item_description",
+      "attr:purchase_request_item.line_amount",
+      "attr:purchase_request_item.line_id",
+      "attr:purchase_request_item.quantity",
+      "attr:purchase_request_item.request_id",
+      "attr:purchase_request_item.unit_of_measure",
+      "attr:supplier.risk_rating",
+      "attr:supplier.supplier_code",
+      "attr:supplier.supplier_id",
+      "attr:supplier.supplier_name",
+      "attr:supplier.supplier_status"
+    ],
+    "missing_key_relations": [
+      "rel:approval_task.approves_payment",
+      "rel:approval_task.approves_purchase_request",
+      "rel:approval_task.performed_by_employee",
+      "rel:contract.enables_purchase_order",
+      "rel:contract.from_purchase_request",
+      "rel:contract.reviewed_by_employee",
+      "rel:contract.with_supplier",
+      "rel:department.has_employee",
+      "rel:department.owns_purchase_request",
+      "rel:employee.approves_payment",
+      "rel:employee.belongs_to_department",
+      "rel:employee.creates_purchase_request",
+      "rel:employee.performs_approval_task",
+      "rel:employee.records_goods_receipt",
+      "rel:goods_receipt.for_purchase_order",
+      "rel:goods_receipt.recorded_by_employee",
+      "rel:goods_receipt.supports_invoice_match",
+      "rel:invoice.for_purchase_order",
+      "rel:invoice.generates_payment",
+      "rel:invoice.issued_by_supplier",
+      "rel:material.requested_on_item",
+      "rel:payment.approved_by_employee",
+      "rel:payment.for_invoice",
+      "rel:payment.has_approval_task",
+      "rel:purchase_order.for_purchase_request",
+      "rel:purchase_order.has_goods_receipt",
+      "rel:purchase_order.has_invoice",
+      "rel:purchase_order.released_against_contract",
+      "rel:purchase_order.sent_to_supplier",
+      "rel:purchase_request.belongs_to_department",
+      "rel:purchase_request.has_approval_task",
+      "rel:purchase_request.has_item",
+      "rel:purchase_request.requested_by_employee",
+      "rel:purchase_request.results_in_contract",
+      "rel:purchase_request.results_in_purchase_order",
+      "rel:purchase_request_item.belongs_to_request",
+      "rel:purchase_request_item.describes_material",
+      "rel:supplier.issues_invoice",
+      "rel:supplier.party_to_contract",
+      "rel:supplier.preferred_by_request",
+      "rel:supplier.receives_purchase_order"
+    ],
+    "possible_hallucinations": {
+      "concepts": [],
+      "attributes": [
+        {
+          "id": "attr:payment_request.payment_request_no",
+          "name": "payment_request_no",
+          "concept_id": "concept:payment_request"
+        },
+        {
+          "id": "attr:payment_request.payment_request_no",
+          "name": "payment_request_no",
+          "concept_id": "concept:payment_request"
+        }
+      ],
+      "relations": []
+    },
+    "counts": {
+      "output_concepts": 14,
+      "output_attributes": 6,
+      "output_relations": 4,
+      "matched_core_concepts": 7,
+      "total_core_concepts": 12,
+      "matched_key_attributes": 2,
+      "total_key_attributes": 74,
+      "matched_key_relations": 2,
+      "total_key_relations": 43
+    },
+    "coverage": {
+      "core_concept_coverage": 0.5833,
+      "key_attribute_coverage": 0.027,
+      "key_relation_coverage": 0.0465
+    }
+  },
+  "evidence_check": {
+    "referenced_evidence_count": 68,
+    "available_evidence_ref_count": 408,
+    "missing_evidence_refs": [],
+    "screenshot_evidence": {
+      "enabled": true,
+      "gold_screenshot_evidence_count": 15,
+      "referenced_screenshot_evidence_count": 0,
+      "matched_screenshot_evidence_count": 0,
+      "missing_screenshot_evidence_refs": [],
+      "invalid_screenshot_source_files": [],
+      "input_mode": "surrogate_only",
+      "note": "Screenshot evidence checks are optional and do not change MVP gold ontology coverage."
+    },
+    "web_evidence": {
+      "enabled": true,
+      "gold_web_evidence_count": 40,
+      "referenced_web_evidence_count": 19,
+      "matched_web_evidence_count": 19,
+      "missing_web_evidence_refs": [],
+      "invalid_web_snapshot_paths": [],
+      "page_map_file_count": 1,
+      "input_mode": "html_snapshot",
+      "note": "Web evidence checks are optional and do not change MVP gold ontology coverage."
+    }
+  },
+  "possible_hallucinations": {
+    "concepts": [],
+    "attributes": [
+      {
+        "id": "attr:payment_request.payment_request_no",
+        "name": "payment_request_no",
+        "concept_id": "concept:payment_request"
+      },
+      {
+        "id": "attr:payment_request.payment_request_no",
+        "name": "payment_request_no",
+        "concept_id": "concept:payment_request"
+      }
+    ],
+    "relations": []
+  },
+  "machine_metrics": {
+    "core_concept_coverage": 0.5833,
+    "key_attribute_coverage": 0.027,
+    "key_relation_coverage": 0.0465,
+    "schema_validity_rate": 1.0,
+    "missing_evidence_ref_count": 0,
+    "missing_screenshot_evidence_ref_count": 0,
+    "referenced_screenshot_evidence_count": 0,
+    "web_evidence_enabled": true,
+    "referenced_web_evidence_count": 19,
+    "matched_web_evidence_count": 19,
+    "missing_web_evidence_ref_count": 0,
+    "invalid_web_snapshot_path_count": 0,
+    "possible_hallucinated_concept_count": 0,
+    "possible_hallucinated_attribute_count": 2,
+    "possible_hallucinated_relation_count": 0
+  },
+  "json_load_errors": [],
+  "human_review": {
+    "status": "pending",
+    "reviewer": null,
+    "manual_score": null,
+    "manual_decision": null,
+    "notes": null,
+    "overrides": []
+  },
+  "notes": [
+    "Machine checks are conservative and alias-based; they do not replace human ontology quality review.",
+    "Possible hallucinations are unmatched items, not final false-positive judgments.",
+    "Gold/reference paths in inputs are evaluator-side relative identifiers and must not be provided to AI tools under evaluation."
+  ]
+}

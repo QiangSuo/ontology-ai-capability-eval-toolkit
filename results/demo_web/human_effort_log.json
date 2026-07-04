@@ -1,0 +1,19 @@
+{
+  "evaluation_id": "demo_web",
+  "total_minutes": 35,
+  "entries": [
+    {
+      "task_id": "task_12_web_snapshot_to_ontology",
+      "minutes": 13
+    },
+    {
+      "task_id": "task_13_page_map_to_business_flow",
+      "minutes": 8
+    },
+    {
+      "task_id": "task_14_extended_multi_source_fusion",
+      "minutes": 14
+    }
+  ],
+  "notes": "Simulated demo effort log."
+}

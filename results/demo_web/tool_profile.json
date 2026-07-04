@@ -1,0 +1,48 @@
+{
+  "tool_profile_id": "tool:demo_web",
+  "tool_name": "Demo Web Snapshot Tool",
+  "tool_version": "demo",
+  "vendor": "internal_demo",
+  "model_name": "simulated-model",
+  "model_version": "demo-sample",
+  "customer_environment": {
+    "environment_type": "offline_demo",
+    "network_access": "disabled",
+    "data_access": "local_files_only"
+  },
+  "capabilities": {
+    "can_read_files": true,
+    "can_execute_commands": false,
+    "can_access_live_web": false,
+    "can_process_html_snapshots": true,
+    "can_process_page_map": true,
+    "long_context_capability": {
+      "supported": true,
+      "notes": "Simulated demo only."
+    }
+  },
+  "json_output_stability": "medium",
+  "recommended_use_cases": [
+    "offline HTML snapshot semantic extraction demo",
+    "page map flow analysis demo"
+  ],
+  "not_recommended_use_cases": [
+    "live Web crawling claim",
+    "browser automation claim",
+    "JavaScript execution claim"
+  ],
+  "known_limitations": [
+    "Demo sample only.",
+    "No live Web system was accessed."
+  ],
+  "evaluated_at": "2026-07-04T11:00:00Z",
+  "provenance": {
+    "created_by": "demo_web_generator",
+    "method": "manual",
+    "source_system": "demo_web"
+  },
+  "metadata": {
+    "demo_sample": true,
+    "input_mode": "html_snapshot"
+  }
+}

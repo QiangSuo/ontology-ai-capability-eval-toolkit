@@ -1,0 +1,172 @@
+{
+  "evidence": [
+    {
+      "evidence_id": "web:purchase_requests.table.pr_no",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests PR No column",
+      "summary": "PR list table exposes the PR No field.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "Purchase request search results table header: PR No",
+      "excerpt": "PR No",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports purchase request request_no UI mapping.",
+      "web_page": {
+        "url": "file://web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": "table thead th",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_request_detail.field.preferred_vendor",
+      "evidence_type": "web_page",
+      "title": "Purchase Request Detail Preferred Vendor field",
+      "summary": "PR detail uses Preferred Vendor as a UI label.",
+      "source": {
+        "name": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "locator": "Basic Information field label: Preferred Vendor",
+      "excerpt": "Preferred Vendor: Northwind Office Supplies",
+      "content_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.88,
+      "relevance": "Supports Vendor/Supplier alias and preferred supplier mapping.",
+      "web_page": {
+        "url": "file://web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "page_title": "Purchase Request Detail PR-2024-001",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.button.activate_contract",
+      "evidence_type": "web_page",
+      "title": "Contract Detail Activate Contract button",
+      "summary": "Contract detail shows an Activate Contract button.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Action Panel button text: Activate Contract",
+      "excerpt": "Activate Contract",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.78,
+      "relevance": "Supports contract activation as UI-derived candidate action.",
+      "web_page": {
+        "url": "file://web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail CT-2024-001",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": ".actions .button.primary",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.field.grn_no",
+      "evidence_type": "web_page",
+      "title": "Invoices GRN No field",
+      "summary": "Invoice workbench shows GRN No.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Selected invoice field label: GRN No",
+      "excerpt": "GRN No: GRN-2024-001",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.86,
+      "relevance": "Supports GRN/Goods Receipt alias and invoice matching relation.",
+      "web_page": {
+        "url": "file://web_snapshots/invoices.html",
+        "page_title": "Invoice Matching Workbench",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:payments.field.payment_application_no",
+      "evidence_type": "web_page",
+      "title": "Payments Payment Application No field",
+      "summary": "Payment page shows Payment Application No and Payment Request No together.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Selected payment details field label: Payment Application No",
+      "excerpt": "Payment Application No: PAY-2024-001",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.86,
+      "relevance": "Supports Payment Application / Payment Request alias.",
+      "web_page": {
+        "url": "file://web_snapshots/payments.html",
+        "page_title": "Payment Applications",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:page_map.missing_pages",
+      "evidence_type": "web_page",
+      "title": "Page map missing page notes",
+      "summary": "Page map records absent Supplier Master, Purchase Order Detail and Goods Receipt Detail snapshots.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "known_broken_or_missing_pages",
+      "excerpt": "Supplier Master, Purchase Order Detail, Goods Receipt Detail",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T11:00:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports missing page uncertainty.",
+      "web_page": {
+        "url": "file://web_map/page_map.json",
+        "page_title": "Web Page Map",
+        "captured_at": "2026-07-04T11:00:00Z",
+        "selector": "$.known_broken_or_missing_pages",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:home"
+      }
+    }
+  ]
+}

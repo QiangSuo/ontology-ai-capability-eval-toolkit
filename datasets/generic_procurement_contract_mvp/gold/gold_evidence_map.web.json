@@ -1,0 +1,1128 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "generic_procurement_contract_mvp",
+  "input_mode": "html_snapshot",
+  "description": "Evaluator-only Web evidence reference for offline HTML snapshots and page map. Do not provide this file to AI tools under evaluation.",
+  "evidence": [
+    {
+      "evidence_id": "web:home.page",
+      "evidence_type": "web_page",
+      "title": "Procurement Console Home - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/index.html",
+        "type": "file",
+        "uri": "web_snapshots/index.html"
+      },
+      "locator": "html[data-page-id=\"web:home\"]",
+      "excerpt": "Procurement Operations Home",
+      "content_ref": "web_snapshots/index.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/index.html",
+        "page_title": "Procurement Console Home",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/index.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:home"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_requests.page",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "html[data-page-id=\"web:purchase_requests\"]",
+      "excerpt": "Purchase Requests",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_request_detail.page",
+      "evidence_type": "web_page",
+      "title": "Purchase Request Detail - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "locator": "html[data-page-id=\"web:purchase_request_detail\"]",
+      "excerpt": "PR-2024-001 - Office laptop refresh",
+      "content_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "page_title": "Purchase Request Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:approval_tasks.page",
+      "evidence_type": "web_page",
+      "title": "My Approval Tasks - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/approval_tasks.html",
+        "type": "file",
+        "uri": "web_snapshots/approval_tasks.html"
+      },
+      "locator": "html[data-page-id=\"web:approval_tasks\"]",
+      "excerpt": "My Approval Tasks",
+      "content_ref": "web_snapshots/approval_tasks.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/approval_tasks.html",
+        "page_title": "My Approval Tasks",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/approval_tasks.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:approval_tasks"
+      }
+    },
+    {
+      "evidence_id": "web:contracts.page",
+      "evidence_type": "web_page",
+      "title": "Contracts - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/contracts.html",
+        "type": "file",
+        "uri": "web_snapshots/contracts.html"
+      },
+      "locator": "html[data-page-id=\"web:contracts\"]",
+      "excerpt": "Contracts",
+      "content_ref": "web_snapshots/contracts.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/contracts.html",
+        "page_title": "Contracts",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/contracts.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contracts"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.page",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "html[data-page-id=\"web:contract_detail\"]",
+      "excerpt": "CT-2024-001 - Office laptop framework agreement",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.page",
+      "evidence_type": "web_page",
+      "title": "Invoice Matching Workbench - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "html[data-page-id=\"web:invoices\"]",
+      "excerpt": "Invoice Matching Workbench",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoice Matching Workbench",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:payments.page",
+      "evidence_type": "web_page",
+      "title": "Payment Applications - page",
+      "summary": "Supports Web-derived UI ontology evidence.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "html[data-page-id=\"web:payments\"]",
+      "excerpt": "Payment Applications",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Web-derived UI ontology evidence.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payment Applications",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "body",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_requests.table.pr_no",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests - PR No column",
+      "summary": "Supports Purchase Request request number field.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "Purchase request search results table header: PR No",
+      "excerpt": "PR No",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Purchase Request request number field.",
+      "web_page": {
+        "url": "web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table thead th",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_requests.table.supplier",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests - Supplier column",
+      "summary": "Supports supplier display in PR list.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "Purchase request search results table header: Supplier",
+      "excerpt": "Supplier",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports supplier display in PR list.",
+      "web_page": {
+        "url": "web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table thead th",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_requests.status.approved",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests - APPROVED status",
+      "summary": "Supports Purchase Request approved state.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "Status badge in PR row",
+      "excerpt": "APPROVED",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Purchase Request approved state.",
+      "web_page": {
+        "url": "web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".status.ok",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_requests.button.new",
+      "evidence_type": "web_page",
+      "title": "Purchase Requests - New Purchase Request button",
+      "summary": "Supports create purchase request action candidate.",
+      "source": {
+        "name": "web_snapshots/purchase_requests.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_requests.html"
+      },
+      "locator": "toolbar button text",
+      "excerpt": "New Purchase Request",
+      "content_ref": "web_snapshots/purchase_requests.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports create purchase request action candidate.",
+      "web_page": {
+        "url": "web_snapshots/purchase_requests.html",
+        "page_title": "Purchase Requests",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".toolbar .button.primary",
+        "archive_ref": "web_snapshots/purchase_requests.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_requests"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_request_detail.field.preferred_vendor",
+      "evidence_type": "web_page",
+      "title": "Purchase Request Detail - Preferred Vendor field",
+      "summary": "Supports Vendor/Supplier alias and PR preferred supplier relationship.",
+      "source": {
+        "name": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "locator": "Basic Information field label: Preferred Vendor",
+      "excerpt": "Preferred Vendor: Northwind Office Supplies",
+      "content_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Vendor/Supplier alias and PR preferred supplier relationship.",
+      "web_page": {
+        "url": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "page_title": "Purchase Request Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_request_detail.table.line_items",
+      "evidence_type": "web_page",
+      "title": "Purchase Request Detail - Line Items table",
+      "summary": "Supports purchase request item fields.",
+      "source": {
+        "name": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "locator": "Line Items section",
+      "excerpt": "Line No, Item Description, Category, Qty, UOM, Unit Price, Line Amount",
+      "content_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports purchase request item fields.",
+      "web_page": {
+        "url": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "page_title": "Purchase Request Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "section table",
+        "archive_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:purchase_request_detail.button.create_contract",
+      "evidence_type": "web_page",
+      "title": "Purchase Request Detail - Create Contract button",
+      "summary": "Supports PR-to-contract action candidate.",
+      "source": {
+        "name": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "locator": "Action Panel button text",
+      "excerpt": "Create Contract",
+      "content_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports PR-to-contract action candidate.",
+      "web_page": {
+        "url": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+        "page_title": "Purchase Request Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button.primary",
+        "archive_ref": "web_snapshots/purchase_request_detail_PR-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:approval_tasks.field.target_type",
+      "evidence_type": "web_page",
+      "title": "Approval Tasks - Target Type field",
+      "summary": "Supports polymorphic approval target candidate.",
+      "source": {
+        "name": "web_snapshots/approval_tasks.html",
+        "type": "file",
+        "uri": "web_snapshots/approval_tasks.html"
+      },
+      "locator": "Selected Target Details field label: Target Type",
+      "excerpt": "Target Type: Purchase Request",
+      "content_ref": "web_snapshots/approval_tasks.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports polymorphic approval target candidate.",
+      "web_page": {
+        "url": "web_snapshots/approval_tasks.html",
+        "page_title": "Approval Tasks",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/approval_tasks.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:approval_tasks"
+      }
+    },
+    {
+      "evidence_id": "web:approval_tasks.button.approve",
+      "evidence_type": "web_page",
+      "title": "Approval Tasks - Approve button",
+      "summary": "Supports approval action candidate.",
+      "source": {
+        "name": "web_snapshots/approval_tasks.html",
+        "type": "file",
+        "uri": "web_snapshots/approval_tasks.html"
+      },
+      "locator": "Selected task action button",
+      "excerpt": "Approve",
+      "content_ref": "web_snapshots/approval_tasks.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports approval action candidate.",
+      "web_page": {
+        "url": "web_snapshots/approval_tasks.html",
+        "page_title": "Approval Tasks",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button.primary",
+        "archive_ref": "web_snapshots/approval_tasks.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:approval_tasks"
+      }
+    },
+    {
+      "evidence_id": "web:approval_tasks.button.return",
+      "evidence_type": "web_page",
+      "title": "Approval Tasks - Return button",
+      "summary": "Supports UI-only return-for-revision candidate action.",
+      "source": {
+        "name": "web_snapshots/approval_tasks.html",
+        "type": "file",
+        "uri": "web_snapshots/approval_tasks.html"
+      },
+      "locator": "Selected task action button",
+      "excerpt": "Return",
+      "content_ref": "web_snapshots/approval_tasks.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports UI-only return-for-revision candidate action.",
+      "web_page": {
+        "url": "web_snapshots/approval_tasks.html",
+        "page_title": "Approval Tasks",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button",
+        "archive_ref": "web_snapshots/approval_tasks.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:approval_tasks"
+      }
+    },
+    {
+      "evidence_id": "web:contracts.table.vendor",
+      "evidence_type": "web_page",
+      "title": "Contracts - Vendor column",
+      "summary": "Supports Vendor/Supplier UI naming difference.",
+      "source": {
+        "name": "web_snapshots/contracts.html",
+        "type": "file",
+        "uri": "web_snapshots/contracts.html"
+      },
+      "locator": "Contract list table header: Vendor",
+      "excerpt": "Vendor",
+      "content_ref": "web_snapshots/contracts.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Vendor/Supplier UI naming difference.",
+      "web_page": {
+        "url": "web_snapshots/contracts.html",
+        "page_title": "Contracts",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table thead th",
+        "archive_ref": "web_snapshots/contracts.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contracts"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.field.vendor",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - Vendor field",
+      "summary": "Supports contract signed-with supplier relation and alias.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Basic Information field label: Vendor",
+      "excerpt": "Vendor: Northwind Office Supplies",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports contract signed-with supplier relation and alias.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.field.source_pr_no",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - Source PR No field",
+      "summary": "Supports contract-to-purchase-request relation candidate.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Basic Information field label: Source PR No",
+      "excerpt": "Source PR No: PR-2024-001",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports contract-to-purchase-request relation candidate.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.field.source_po_no",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - Source PO No field",
+      "summary": "Supports purchase order trace as UI evidence.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Basic Information field label: Source PO No",
+      "excerpt": "Source PO No: PO-2024-001",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports purchase order trace as UI evidence.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.button.activate_contract",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - Activate Contract button",
+      "summary": "Supports contract activation action candidate.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Action Panel button text",
+      "excerpt": "Activate Contract",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports contract activation action candidate.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button.primary",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:contract_detail.status.active",
+      "evidence_type": "web_page",
+      "title": "Contract Detail - ACTIVE status",
+      "summary": "Supports active contract state.",
+      "source": {
+        "name": "web_snapshots/contract_detail_CT-2024-001.html",
+        "type": "file",
+        "uri": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "locator": "Contract Status field",
+      "excerpt": "ACTIVE",
+      "content_ref": "web_snapshots/contract_detail_CT-2024-001.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports active contract state.",
+      "web_page": {
+        "url": "web_snapshots/contract_detail_CT-2024-001.html",
+        "page_title": "Contract Detail",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".status.ok",
+        "archive_ref": "web_snapshots/contract_detail_CT-2024-001.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.field.invoice_no",
+      "evidence_type": "web_page",
+      "title": "Invoices - Invoice No field",
+      "summary": "Supports invoice number field.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Selected invoice field label: Invoice No",
+      "excerpt": "Invoice No: INV-2024-001",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports invoice number field.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.field.supplier_invoice_no",
+      "evidence_type": "web_page",
+      "title": "Invoices - Supplier Invoice No field",
+      "summary": "Supports external supplier invoice reference candidate.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Selected invoice field label: Supplier Invoice No",
+      "excerpt": "Supplier Invoice No: NW-INV-7788",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports external supplier invoice reference candidate.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.field.grn_no",
+      "evidence_type": "web_page",
+      "title": "Invoices - GRN No field",
+      "summary": "Supports GRN/Goods Receipt alias and invoice matching relation.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Selected invoice field label: GRN No",
+      "excerpt": "GRN No: GRN-2024-001",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports GRN/Goods Receipt alias and invoice matching relation.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.match.difference_percent",
+      "evidence_type": "web_page",
+      "title": "Invoices - Difference percent column",
+      "summary": "Supports invoice matching tolerance candidate only.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Invoice matching table header: Difference %",
+      "excerpt": "Difference %",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports invoice matching tolerance candidate only.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table thead th",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.button.match_invoice",
+      "evidence_type": "web_page",
+      "title": "Invoices - Match Invoice button",
+      "summary": "Supports match invoice action candidate.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Actions and notes button text",
+      "excerpt": "Match Invoice",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports match invoice action candidate.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button.primary",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:invoices.button.create_payment_request",
+      "evidence_type": "web_page",
+      "title": "Invoices - Create Payment Request button",
+      "summary": "Supports payment request creation action candidate.",
+      "source": {
+        "name": "web_snapshots/invoices.html",
+        "type": "file",
+        "uri": "web_snapshots/invoices.html"
+      },
+      "locator": "Actions and notes button text",
+      "excerpt": "Create Payment Request",
+      "content_ref": "web_snapshots/invoices.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports payment request creation action candidate.",
+      "web_page": {
+        "url": "web_snapshots/invoices.html",
+        "page_title": "Invoices",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".actions .button",
+        "archive_ref": "web_snapshots/invoices.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:payments.field.payment_application_no",
+      "evidence_type": "web_page",
+      "title": "Payments - Payment Application No field",
+      "summary": "Supports Payment Application / Payment Request alias.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Selected payment details field label: Payment Application No",
+      "excerpt": "Payment Application No: PAY-2024-001",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports Payment Application / Payment Request alias.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payments",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:payments.field.payment_request_no",
+      "evidence_type": "web_page",
+      "title": "Payments - Payment Request No field",
+      "summary": "Supports payment request number field.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Selected payment details field label: Payment Request No",
+      "excerpt": "Payment Request No: PAY-2024-001",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports payment request number field.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payments",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:payments.field.hold_reason",
+      "evidence_type": "web_page",
+      "title": "Payments - Hold Reason field",
+      "summary": "Supports held payment operational note candidate.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Selected payment details field label: Hold Reason",
+      "excerpt": "Hold Reason: Blank unless HELD",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports held payment operational note candidate.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payments",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": ".field-list",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:payments.button.mark_paid",
+      "evidence_type": "web_page",
+      "title": "Payments - Mark Paid button",
+      "summary": "Supports mark paid action candidate.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Payment request list row action",
+      "excerpt": "Mark Paid",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports mark paid action candidate.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payments",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table .button.primary",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:payments.button.release_hold",
+      "evidence_type": "web_page",
+      "title": "Payments - Release Hold button",
+      "summary": "Supports UI-only release hold candidate action.",
+      "source": {
+        "name": "web_snapshots/payments.html",
+        "type": "file",
+        "uri": "web_snapshots/payments.html"
+      },
+      "locator": "Payment request list row action",
+      "excerpt": "Release Hold",
+      "content_ref": "web_snapshots/payments.html",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports UI-only release hold candidate action.",
+      "web_page": {
+        "url": "web_snapshots/payments.html",
+        "page_title": "Payments",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "table .button",
+        "archive_ref": "web_snapshots/payments.html"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:payments"
+      }
+    },
+    {
+      "evidence_id": "web:flow.home_to_purchase_requests",
+      "evidence_type": "web_page",
+      "title": "Page flow - Home to Purchase Requests",
+      "summary": "Supports navigation edge from home to PR list.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "pages[web:home].outgoing_links includes web:purchase_requests",
+      "excerpt": "web:home -> web:purchase_requests",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports navigation edge from home to PR list.",
+      "web_page": {
+        "url": "web_map/page_map.json",
+        "page_title": "Page flow",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "$.pages[*].outgoing_links",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:home"
+      }
+    },
+    {
+      "evidence_id": "web:flow.purchase_request_to_contract",
+      "evidence_type": "web_page",
+      "title": "Page flow - PR detail to Contract",
+      "summary": "Supports candidate PR-to-contract page flow.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "pages[web:purchase_request_detail].outgoing_links includes web:contract_detail",
+      "excerpt": "web:purchase_request_detail -> web:contract_detail",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports candidate PR-to-contract page flow.",
+      "web_page": {
+        "url": "web_map/page_map.json",
+        "page_title": "Page flow",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "$.pages[*].outgoing_links",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:purchase_request_detail"
+      }
+    },
+    {
+      "evidence_id": "web:flow.contract_to_invoice",
+      "evidence_type": "web_page",
+      "title": "Page flow - Contract to Invoices",
+      "summary": "Supports candidate contract-to-invoice page flow.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "pages[web:contract_detail].outgoing_links includes web:invoices",
+      "excerpt": "web:contract_detail -> web:invoices",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports candidate contract-to-invoice page flow.",
+      "web_page": {
+        "url": "web_map/page_map.json",
+        "page_title": "Page flow",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "$.pages[*].outgoing_links",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:contract_detail"
+      }
+    },
+    {
+      "evidence_id": "web:flow.invoice_to_payment",
+      "evidence_type": "web_page",
+      "title": "Page flow - Invoices to Payments",
+      "summary": "Supports candidate invoice-to-payment page flow.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "pages[web:invoices].outgoing_links includes web:payments",
+      "excerpt": "web:invoices -> web:payments",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports candidate invoice-to-payment page flow.",
+      "web_page": {
+        "url": "web_map/page_map.json",
+        "page_title": "Page flow",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "$.pages[*].outgoing_links",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:invoices"
+      }
+    },
+    {
+      "evidence_id": "web:page_map.missing_pages",
+      "evidence_type": "web_page",
+      "title": "Page map - missing pages",
+      "summary": "Supports missing-page uncertainty for Web analysis.",
+      "source": {
+        "name": "web_map/page_map.json",
+        "type": "file",
+        "uri": "web_map/page_map.json"
+      },
+      "locator": "known_broken_or_missing_pages",
+      "excerpt": "Supplier Master, Purchase Order Detail, Goods Receipt Detail",
+      "content_ref": "web_map/page_map.json",
+      "collected_at": "2026-07-04T10:30:00Z",
+      "confidence": 0.9,
+      "relevance": "Supports missing-page uncertainty for Web analysis.",
+      "web_page": {
+        "url": "web_map/page_map.json",
+        "page_title": "Page map",
+        "captured_at": "2026-07-04T10:30:00Z",
+        "selector": "$.known_broken_or_missing_pages",
+        "archive_ref": "web_map/page_map.json"
+      },
+      "metadata": {
+        "input_mode": "html_snapshot",
+        "page_id": "web:home"
+      }
+    }
+  ]
+}

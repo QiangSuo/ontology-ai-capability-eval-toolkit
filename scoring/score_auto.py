@@ -29,6 +29,12 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 
+def load_optional_json(path: Path) -> Any | None:
+    if not path.exists():
+        return None
+    return load_json(path)
+
+
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
@@ -498,7 +504,7 @@ def build_available_evidence_refs(evaluation_dir: Path, dataset_dir: Path, evide
         evidence_id = item.get("evidence_id")
         if evidence_id:
             available.add(str(evidence_id))
-        for field in ("locator", "content_ref"):
+        for field in ("locator", "content_ref", "source_file", "source_location"):
             if item.get(field):
                 available.add(str(item[field]))
     for task in task_results:
@@ -549,6 +555,72 @@ def evidence_ref_exists(ref: str, available: set[str], evaluation_dir: Path, dat
     if raw_path.is_absolute() and raw_path.exists():
         return True
     return (evaluation_dir / raw_path).exists() or (dataset_dir / raw_path).exists()
+
+
+def extract_screenshot_gold_items(data: Any | None) -> list[dict[str, Any]]:
+    if not isinstance(data, dict):
+        return []
+    return [item for item in data.get("evidence", []) if isinstance(item, dict) and item.get("evidence_id")]
+
+
+def extract_web_gold_items(data: Any | None) -> list[dict[str, Any]]:
+    if not isinstance(data, dict):
+        return []
+    return [item for item in data.get("evidence", []) if isinstance(item, dict) and item.get("evidence_id")]
+
+
+def build_screenshot_evidence_summary(screenshot_items: list[dict[str, Any]], evidence_rows: list[dict[str, str]], dataset_dir: Path) -> dict[str, Any]:
+    screenshot_ids = {str(item.get("evidence_id")) for item in screenshot_items if item.get("evidence_id")}
+    referenced = sorted({row["evidence_ref"] for row in evidence_rows if row["evidence_ref"].startswith("screen:")})
+    missing_refs = [ref for ref in referenced if ref not in screenshot_ids]
+    invalid_source_files = sorted({
+        str(item.get("source_file"))
+        for item in screenshot_items
+        if item.get("source_file") and not (dataset_dir / str(item["source_file"])).exists()
+    })
+    return {
+        "enabled": bool(screenshot_items),
+        "gold_screenshot_evidence_count": len(screenshot_items),
+        "referenced_screenshot_evidence_count": len(referenced),
+        "matched_screenshot_evidence_count": len([ref for ref in referenced if ref in screenshot_ids]),
+        "missing_screenshot_evidence_refs": missing_refs,
+        "invalid_screenshot_source_files": invalid_source_files,
+        "input_mode": "surrogate_only" if screenshot_items else None,
+        "note": "Screenshot evidence checks are optional and do not change MVP gold ontology coverage.",
+    }
+
+
+def build_web_evidence_summary(web_items: list[dict[str, Any]], evidence_rows: list[dict[str, str]], dataset_dir: Path) -> dict[str, Any]:
+    web_ids = {str(item.get("evidence_id")) for item in web_items if item.get("evidence_id")}
+    referenced = sorted({row["evidence_ref"] for row in evidence_rows if row["evidence_ref"].startswith("web:")})
+    missing_refs = [ref for ref in referenced if ref not in web_ids]
+
+    invalid_paths: set[str] = set()
+    page_map_files: set[str] = set()
+    input_modes: set[str] = set()
+    for item in web_items:
+        metadata = item.get("metadata") if isinstance(item.get("metadata"), dict) else {}
+        if metadata.get("input_mode"):
+            input_modes.add(str(metadata["input_mode"]))
+        content_ref = item.get("content_ref")
+        if content_ref:
+            content_ref_str = str(content_ref)
+            if content_ref_str.startswith("web_map/"):
+                page_map_files.add(content_ref_str)
+            if not (dataset_dir / content_ref_str).exists():
+                invalid_paths.add(content_ref_str)
+
+    return {
+        "enabled": bool(web_items),
+        "gold_web_evidence_count": len(web_items),
+        "referenced_web_evidence_count": len(referenced),
+        "matched_web_evidence_count": len([ref for ref in referenced if ref in web_ids]),
+        "missing_web_evidence_refs": missing_refs,
+        "invalid_web_snapshot_paths": sorted(invalid_paths),
+        "page_map_file_count": len(page_map_files),
+        "input_mode": sorted(input_modes)[0] if input_modes else ("html_snapshot" if web_items else None),
+        "note": "Web evidence checks are optional and do not change MVP gold ontology coverage.",
+    }
 
 
 def compare_ontology(ontology: dict[str, Any], gold_index: dict[str, Any]) -> dict[str, Any]:
@@ -717,6 +789,13 @@ def build_markdown(result: dict[str, Any]) -> str:
         "",
         f"- Evidence references checked: {evidence['referenced_evidence_count']}",
         f"- Missing evidence references: {len(evidence['missing_evidence_refs'])}",
+        f"- Screenshot evidence enabled: {evidence.get('screenshot_evidence', {}).get('enabled', False)}",
+        f"- Screenshot evidence refs checked: {evidence.get('screenshot_evidence', {}).get('referenced_screenshot_evidence_count', 0)}",
+        f"- Missing screenshot evidence refs: {len(evidence.get('screenshot_evidence', {}).get('missing_screenshot_evidence_refs', []))}",
+        f"- Web evidence enabled: {evidence.get('web_evidence', {}).get('enabled', False)}",
+        f"- Web evidence refs checked: {evidence.get('web_evidence', {}).get('referenced_web_evidence_count', 0)}",
+        f"- Missing Web evidence refs: {len(evidence.get('web_evidence', {}).get('missing_web_evidence_refs', []))}",
+        f"- Invalid Web snapshot paths: {len(evidence.get('web_evidence', {}).get('invalid_web_snapshot_paths', []))}",
         format_records("Missing evidence reference details", evidence["missing_evidence_refs"], ["element_id", "evidence_ref"]),
         "",
         "## Possible Hallucinations",
@@ -790,6 +869,12 @@ def main() -> int:
     evidence_schema = load_json(schemas_dir / "evidence.schema.json")
     gold = load_json(dataset_dir / "gold" / "gold_ontology.json")
     aliases = load_json(dataset_dir / "gold" / "acceptable_aliases.json")
+    screenshot_gold_path = dataset_dir / "gold" / "gold_evidence_map.screenshot.json"
+    screenshot_gold = load_optional_json(screenshot_gold_path)
+    screenshot_evidence_items = extract_screenshot_gold_items(screenshot_gold)
+    web_gold_path = dataset_dir / "gold" / "gold_evidence_map.web.json"
+    web_gold = load_optional_json(web_gold_path)
+    web_evidence_items = extract_web_gold_items(web_gold)
     gold_index = build_gold_index(gold, aliases)
 
     discovered = discover_outputs(evaluation_dir, root_dir)
@@ -837,8 +922,10 @@ def main() -> int:
         schema_validation.append({"path": display_path, "schema": schema_name, "is_valid": not errors, "errors": errors})
 
     comparison = merge_comparisons(comparisons, gold_index)
-    available_refs = build_available_evidence_refs(evaluation_dir, dataset_dir, evidence_items, discovered["task_results"])
+    available_refs = build_available_evidence_refs(evaluation_dir, dataset_dir, evidence_items + screenshot_evidence_items + web_evidence_items, discovered["task_results"])
     missing_evidence_refs = [row for row in evidence_rows if not evidence_ref_exists(row["evidence_ref"], available_refs, evaluation_dir, dataset_dir)]
+    screenshot_evidence_summary = build_screenshot_evidence_summary(screenshot_evidence_items, evidence_rows, dataset_dir)
+    web_evidence_summary = build_web_evidence_summary(web_evidence_items, evidence_rows, dataset_dir)
 
     valid_ontology_count = sum(1 for row in schema_validation if row["schema"] == "ontology.schema.json" and row["is_valid"])
     result = {
@@ -848,8 +935,10 @@ def main() -> int:
         "inputs": {
             "evaluation_dir": str(evaluation_dir),
             "dataset_dir": str(dataset_dir),
-            "gold_ontology": str(dataset_dir / "gold" / "gold_ontology.json"),
-            "acceptable_aliases": str(dataset_dir / "gold" / "acceptable_aliases.json"),
+            "gold_ontology": "gold/gold_ontology.json",
+            "acceptable_aliases": "gold/acceptable_aliases.json",
+            "gold_screenshot_evidence": "gold/gold_evidence_map.screenshot.json" if screenshot_gold_path.exists() else None,
+            "gold_web_evidence": "gold/gold_evidence_map.web.json" if web_gold_path.exists() else None,
         },
         "summary": {
             "task_result_file_count": len(discovered["task_results"]),
@@ -864,12 +953,21 @@ def main() -> int:
             "referenced_evidence_count": len(evidence_rows),
             "available_evidence_ref_count": len(available_refs),
             "missing_evidence_refs": missing_evidence_refs,
+            "screenshot_evidence": screenshot_evidence_summary,
+            "web_evidence": web_evidence_summary,
         },
         "possible_hallucinations": comparison["possible_hallucinations"],
         "machine_metrics": {
             **comparison["coverage"],
             "schema_validity_rate": ratio(valid_ontology_count, len(discovered["ontology_paths"])),
             "missing_evidence_ref_count": len(missing_evidence_refs),
+            "missing_screenshot_evidence_ref_count": len(screenshot_evidence_summary["missing_screenshot_evidence_refs"]),
+            "referenced_screenshot_evidence_count": screenshot_evidence_summary["referenced_screenshot_evidence_count"],
+            "web_evidence_enabled": web_evidence_summary["enabled"],
+            "referenced_web_evidence_count": web_evidence_summary["referenced_web_evidence_count"],
+            "matched_web_evidence_count": web_evidence_summary["matched_web_evidence_count"],
+            "missing_web_evidence_ref_count": len(web_evidence_summary["missing_web_evidence_refs"]),
+            "invalid_web_snapshot_path_count": len(web_evidence_summary["invalid_web_snapshot_paths"]),
             "possible_hallucinated_concept_count": len(comparison["possible_hallucinations"]["concepts"]),
             "possible_hallucinated_attribute_count": len(comparison["possible_hallucinations"]["attributes"]),
             "possible_hallucinated_relation_count": len(comparison["possible_hallucinations"]["relations"]),
@@ -886,6 +984,7 @@ def main() -> int:
         "notes": [
             "Machine checks are conservative and alias-based; they do not replace human ontology quality review.",
             "Possible hallucinations are unmatched items, not final false-positive judgments.",
+            "Gold/reference paths in inputs are evaluator-side relative identifiers and must not be provided to AI tools under evaluation.",
         ],
     }
 

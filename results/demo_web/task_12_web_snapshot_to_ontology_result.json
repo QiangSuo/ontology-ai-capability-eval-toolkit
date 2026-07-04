@@ -1,0 +1,102 @@
+{
+  "task_id": "task_12_web_snapshot_to_ontology",
+  "task_name": "Web Snapshot 到本体",
+  "mode": "fixed_prompt",
+  "level": "custom",
+  "status": "completed",
+  "tool_profile_ref": "tool:demo_web",
+  "started_at": "2026-07-04T11:00:00Z",
+  "completed_at": "2026-07-04T11:10:00Z",
+  "duration_minutes": 10,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "input_artifacts": [
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp.web_snapshots",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp/web_snapshots/",
+      "description": "Optional C-stage offline HTML snapshots."
+    },
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp.page_map",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp/web_map/page_map.json",
+      "description": "Optional C-stage Web page map."
+    },
+    {
+      "artifact_id": "prompt:task_12_web_snapshot_to_ontology",
+      "artifact_type": "prompt",
+      "path": "prompts/tasks/task_12_web_snapshot_to_ontology.md",
+      "description": "Web snapshot extraction prompt."
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "artifact:task_12_web_snapshot_to_ontology.ontology",
+      "artifact_type": "ontology",
+      "path": "normalized_outputs/task_12_web_snapshot_to_ontology.json",
+      "schema_ref": "schemas/ontology.schema.json",
+      "description": "Simulated Web snapshot ontology output."
+    },
+    {
+      "artifact_id": "artifact:task_12_web_snapshot_to_ontology.evidence",
+      "artifact_type": "evidence",
+      "path": "normalized_outputs/evidence_map_web_demo.json",
+      "schema_ref": "schemas/evidence.schema.json",
+      "description": "Simulated Web evidence map."
+    },
+    {
+      "artifact_id": "artifact:task_12_web_snapshot_to_ontology.raw",
+      "artifact_type": "raw_output",
+      "path": "raw_outputs/task_12_web_snapshot_to_ontology_raw.md",
+      "description": "Simulated raw AI response."
+    }
+  ],
+  "evidence_refs": [
+    "web:home.page",
+    "web:purchase_requests.table.pr_no",
+    "web:purchase_request_detail.field.preferred_vendor",
+    "web:contract_detail.button.activate_contract",
+    "web:invoices.field.grn_no",
+    "web:payments.field.payment_application_no",
+    "web:page_map.missing_pages"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "task_result.schema.json",
+    "validator": "demo_manual_check",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "manual_fix",
+      "description": "Operator normalized the simulated AI response into schema-compatible JSON for demo purposes.",
+      "occurred_at": "2026-07-04T11:10:00Z",
+      "operator_id": "operator:demo_low_exp"
+    }
+  ],
+  "limitations": [
+    "Demo sample, not a real tool run.",
+    "Input mode is html_snapshot; no live Web crawling, login, JS execution or browser automation is evaluated.",
+    "UI button actions are candidates and require later fusion with code/documents."
+  ],
+  "metrics": {
+    "prompt_retry_count": 0,
+    "manual_edit_minutes": 8,
+    "web_page_count": 8,
+    "referenced_web_evidence_count": 7
+  },
+  "notes": "Simulated Web snapshot task result for demonstrating optional C-stage Web scoring flow.",
+  "provenance": {
+    "created_by": "demo_web_generator",
+    "created_at": "2026-07-04T11:00:00Z",
+    "method": "hybrid",
+    "source_system": "generic_procurement_contract_mvp",
+    "tool_profile_ref": "tool:demo_web",
+    "prompt_ref": "task_12_web_snapshot_to_ontology",
+    "version": "demo-sample"
+  }
+}

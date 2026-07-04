@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "TASK-13",
+  "title": "Procurement Contract MVP Web Page Map Business Flow Analysis",
+  "domain": "procurement_contract",
+  "input_mode": "html_snapshot_with_page_map",
+  "source_system": "web_page_map",
+  "module_paths": [
+    {
+      "module": "Procurement",
+      "pages": [
+        "web:purchase_requests",
+        "web:purchase_request_detail",
+        "web:contracts",
+        "web:contract_detail"
+      ],
+      "evidence_refs": [
+        "web:purchase_requests.page",
+        "web:contracts.page"
+      ]
+    },
+    {
+      "module": "Finance",
+      "pages": [
+        "web:invoices",
+        "web:payments"
+      ],
+      "evidence_refs": [
+        "web:invoices.page",
+        "web:payments.page"
+      ]
+    },
+    {
+      "module": "Workflow",
+      "pages": [
+        "web:approval_tasks"
+      ],
+      "evidence_refs": [
+        "web:approval_tasks.page"
+      ]
+    }
+  ],
+  "business_flows": [
+    {
+      "flow_id": "flow:pr_to_payment",
+      "flow_name": "Purchase Request to Payment candidate page path",
+      "pages_in_order": [
+        "web:home",
+        "web:purchase_requests",
+        "web:purchase_request_detail",
+        "web:contract_detail",
+        "web:invoices",
+        "web:payments"
+      ],
+      "primary_business_objects": [
+        "purchase_request",
+        "contract",
+        "invoice",
+        "payment_request"
+      ],
+      "roles_involved": [
+        "Requester",
+        "Procurement Specialist",
+        "AP Clerk",
+        "Finance Manager"
+      ],
+      "navigation_edges": [
+        "web:flow.home_to_purchase_requests",
+        "web:flow.purchase_request_to_contract",
+        "web:flow.contract_to_invoice",
+        "web:flow.invoice_to_payment"
+      ],
+      "missing_or_implied_pages": [
+        "Purchase Order Detail",
+        "Goods Receipt Detail"
+      ],
+      "evidence_refs": [
+        "web:flow.home_to_purchase_requests",
+        "web:flow.purchase_request_to_contract",
+        "web:flow.contract_to_invoice",
+        "web:flow.invoice_to_payment"
+      ],
+      "confidence": 0.78,
+      "uncertainties": [
+        "Flow is static snapshot navigation, not live crawl or backend proof."
+      ]
+    }
+  ],
+  "role_paths": [
+    {
+      "role": "Finance Manager",
+      "pages": [
+        "web:approval_tasks",
+        "web:payments"
+      ],
+      "evidence_refs": [
+        "web:approval_tasks.button.approve",
+        "web:payments.page"
+      ],
+      "confidence": 0.72
+    }
+  ],
+  "navigation_graph": {
+    "nodes": [
+      "web:home",
+      "web:purchase_requests",
+      "web:purchase_request_detail",
+      "web:approval_tasks",
+      "web:contracts",
+      "web:contract_detail",
+      "web:invoices",
+      "web:payments"
+    ],
+    "edges": [
+      {
+        "from_page_id": "web:home",
+        "to_page_id": "web:purchase_requests",
+        "evidence_refs": [
+          "web:flow.home_to_purchase_requests"
+        ]
+      },
+      {
+        "from_page_id": "web:purchase_request_detail",
+        "to_page_id": "web:contract_detail",
+        "evidence_refs": [
+          "web:flow.purchase_request_to_contract"
+        ]
+      },
+      {
+        "from_page_id": "web:contract_detail",
+        "to_page_id": "web:invoices",
+        "evidence_refs": [
+          "web:flow.contract_to_invoice"
+        ]
+      },
+      {
+        "from_page_id": "web:invoices",
+        "to_page_id": "web:payments",
+        "evidence_refs": [
+          "web:flow.invoice_to_payment"
+        ]
+      }
+    ]
+  },
+  "recursive_analysis_points": [
+    "Generic approval task page links to multiple target types.",
+    "Related document tables create cross-module links.",
+    "Some business objects appear without standalone pages."
+  ],
+  "repeated_templates": [
+    "list pages",
+    "detail pages",
+    "workbench pages"
+  ],
+  "missing_pages": [
+    "Supplier Master",
+    "Purchase Order Detail",
+    "Goods Receipt Detail"
+  ],
+  "flow_mappings": [
+    {
+      "mapping_id": "flowmap:invoice_payment",
+      "source_page": "web:invoices",
+      "target_page": "web:payments",
+      "evidence_refs": [
+        "web:flow.invoice_to_payment"
+      ]
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:page_map.static_only",
+      "description": "Page map and HTML snapshots do not prove live crawl, dynamic JS or backend execution.",
+      "evidence_refs": [
+        "web:page_map.missing_pages"
+      ]
+    }
+  ],
+  "evidence_refs": [
+    "web:flow.home_to_purchase_requests",
+    "web:flow.purchase_request_to_contract",
+    "web:flow.contract_to_invoice",
+    "web:flow.invoice_to_payment",
+    "web:page_map.missing_pages"
+  ],
+  "confidence": 0.78,
+  "provenance": {
+    "created_by": "demo_web_generator",
+    "created_at": "2026-07-04T11:00:00Z",
+    "method": "hybrid",
+    "source_system": "web_page_map",
+    "tool_profile_ref": "tool:demo_web",
+    "prompt_ref": "task_13_page_map_to_business_flow",
+    "version": "demo-sample"
+  }
+}

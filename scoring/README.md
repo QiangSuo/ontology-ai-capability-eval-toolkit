@@ -13,8 +13,10 @@
 3. 将输出 ontology 与数据集 gold ontology 做 alias-aware 对比。
 4. 统计核心概念、关键属性、关键关系的覆盖率。
 5. 检查 ontology 中引用的 evidence ref 是否能在数据集或评估结果中找到。
-6. 标记无法匹配 gold 或 alias 的 concept / attribute / relation，作为 possible hallucinations。
-7. 输出机器可读的 `machine_score.json` 和操作员可读的 `machine_score.md`。
+6. 如果数据集提供可选 `gold_evidence_map.screenshot.json`，额外汇总 screenshot surrogate evidence 覆盖信号。
+7. 如果数据集提供可选 `gold_evidence_map.web.json`，额外汇总 Web snapshot evidence 覆盖信号。
+8. 标记无法匹配 gold 或 alias 的 concept / attribute / relation，作为 possible hallucinations。
+9. 输出机器可读的 `machine_score.json` 和操作员可读的 `machine_score.md`。
 
 它适合用于 MVP 阶段的自动检查，尤其是判断输出是否能被后续评分和报告流程消费。
 
@@ -56,6 +58,10 @@ results/<evaluation_id>/
 1. **Task result JSON**：包含 `task_id` 和 `output_artifacts` 的文件。
 2. **Ontology JSON**：task result 的 `output_artifacts` 中 `artifact_type = ontology` 指向的文件，或包含 `ontology_id` 和 `concepts` 的 standalone JSON。
 3. **Evidence JSON / evidence map**：task result 的 `output_artifacts` 中 `artifact_type = evidence` 指向的文件，或包含 `evidence_id`、`evidence`、`evidences`、`items` 等 evidence 结构的 JSON。
+
+如果数据集目录中存在 `gold/gold_evidence_map.screenshot.json`，脚本会把其中的 `screen:*` evidence handle 加入可用证据集合，并在 `evidence_check.screenshot_evidence` 中输出可选截图 evidence 覆盖摘要。该逻辑是 additive，不会改变 MVP 核心概念、属性、关系覆盖率。
+
+如果数据集目录中存在 `gold/gold_evidence_map.web.json`，脚本会把其中的 `web:*` evidence handle 加入可用证据集合，并在 `evidence_check.web_evidence` 中输出可选 Web evidence 覆盖摘要。该逻辑同样是 additive，不会改变 MVP 核心概念、属性、关系覆盖率，也不代表 live Web crawling 能力。
 
 建议操作员把标准化结果放在 `normalized_outputs/`，并在 task result 的 `output_artifacts` 中引用这些文件。
 
@@ -167,11 +173,11 @@ python3 scoring/score_auto.py demo_baseline \
 | `schema_version` | 机器评分结果格式版本。 |
 | `evaluation_id` | 被评分的评估结果目录名。 |
 | `generated_at` | 评分生成时间。 |
-| `inputs` | 本次评分使用的 evaluation directory、dataset directory、gold ontology 和 aliases 路径。 |
+| `inputs` | 本次评分使用的 evaluation directory、dataset directory、gold ontology、aliases、可选 screenshot evidence 路径和可选 Web evidence 路径。 |
 | `summary` | 文件发现摘要，包括 task result、ontology、evidence 文件数量和 JSON 加载错误数量。 |
 | `schema_validation` | 每个被检查 JSON 的 schema 校验结果。 |
 | `gold_comparison` | 输出 ontology 与 gold ontology 的匹配、缺失和覆盖情况。 |
-| `evidence_check` | evidence 引用检查结果，包括引用数量、可用引用数量和缺失引用。 |
+| `evidence_check` | evidence 引用检查结果，包括引用数量、可用引用数量、缺失引用，以及可选 `screenshot_evidence` / `web_evidence` 摘要。 |
 | `possible_hallucinations` | 无法通过 gold ontology 或 aliases 匹配的 concept / attribute / relation。 |
 | `machine_metrics` | 自动评分核心指标。 |
 | `json_load_errors` | 无法解析的 JSON 文件及错误信息。 |
@@ -187,6 +193,13 @@ python3 scoring/score_auto.py demo_baseline \
 | `key_relation_coverage` | 关键关系覆盖率 | 输出命中的 relation 数 / gold relation 数。 |
 | `schema_validity_rate` | ontology schema 通过率 | schema 合法 ontology 文件数 / 发现的 ontology 文件数。 |
 | `missing_evidence_ref_count` | 缺失 evidence 引用数 | ontology 中引用但无法找到来源的 evidence ref 数量。 |
+| `referenced_screenshot_evidence_count` | 已引用截图 evidence 数 | ontology 中引用的 `screen:*` evidence ref 数量；只有可选 screenshot evidence 文件存在时有意义。 |
+| `missing_screenshot_evidence_ref_count` | 缺失截图 evidence 引用数 | 引用了 `screen:*` 但未在 screenshot evidence map 中找到的数量。 |
+| `web_evidence_enabled` | Web evidence 是否启用 | 数据集中存在 `gold_evidence_map.web.json` 时为 true。 |
+| `referenced_web_evidence_count` | 已引用 Web evidence 数 | ontology 中引用的 `web:*` evidence ref 数量；只有可选 Web evidence 文件存在时有意义。 |
+| `matched_web_evidence_count` | 命中的 Web evidence 数 | 引用的 `web:*` ref 中能在 Web evidence map 找到的数量。 |
+| `missing_web_evidence_ref_count` | 缺失 Web evidence 引用数 | 引用了 `web:*` 但未在 Web evidence map 中找到的数量。 |
+| `invalid_web_snapshot_path_count` | 无效 Web snapshot 路径数 | Web evidence map 中 `content_ref` 指向不存在文件的数量。 |
 | `possible_hallucinated_concept_count` | 疑似幻觉 concept 数 | 输出中无法匹配 gold/alias 的 concept 数量。 |
 | `possible_hallucinated_attribute_count` | 疑似幻觉 attribute 数 | 输出中无法匹配 gold/alias 的 attribute 数量。 |
 | `possible_hallucinated_relation_count` | 疑似幻觉 relation 数 | 输出中无法匹配 gold/alias 的 relation 数量。 |
@@ -202,7 +215,7 @@ python3 scoring/score_auto.py demo_baseline \
 | `Summary` | 显示 evaluation id、生成时间、发现的 ontology/task result 数量和 schema-valid ontology 数量。 |
 | `Coverage` | 展示核心概念、关键属性、关键关系覆盖率。 |
 | `Missing Items` | 列出缺失的核心概念、关键属性和关键关系。 |
-| `Evidence References` | 展示 evidence 引用检查结果和缺失 evidence ref 明细。 |
+| `Evidence References` | 展示 evidence 引用检查结果、可选 screenshot evidence 摘要和缺失 evidence ref 明细。 |
 | `Possible Hallucinations` | 列出疑似幻觉的 concept、attribute、relation。 |
 | `Schema Validation` | 展示每个被检查文件的 schema 校验结果。 |
 | `Human Review Fields` | 提醒人工复核仍未完成。 |
