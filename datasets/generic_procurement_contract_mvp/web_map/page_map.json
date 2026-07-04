@@ -1,0 +1,612 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "generic_procurement_contract_mvp",
+  "input_mode": "html_snapshot",
+  "artifact_root": "web_snapshots/",
+  "description": "Offline page map for procurement contract MVP web snapshots. This is input-side navigation metadata, not a gold answer.",
+  "pages": [
+    {
+      "page_id": "web:home",
+      "url_or_file": "web_snapshots/index.html",
+      "title": "Procurement Console Home",
+      "page_type": "home",
+      "menu_path": [
+        "Home"
+      ],
+      "breadcrumb": [
+        "Home"
+      ],
+      "visible_concepts": [
+        "purchase_request",
+        "approval_task",
+        "contract",
+        "invoice",
+        "payment_request",
+        "goods_receipt"
+      ],
+      "visible_fields": [
+        "open_purchase_request_count",
+        "pending_approval_task_count",
+        "active_contract_count"
+      ],
+      "visible_actions": [
+        "open_purchase_requests",
+        "review_approval_tasks",
+        "view_contracts",
+        "match_invoice",
+        "approve_payment_application"
+      ],
+      "visible_states": [
+        "open",
+        "pending",
+        "active"
+      ],
+      "outgoing_links": [
+        "web:purchase_requests",
+        "web:approval_tasks",
+        "web:contracts",
+        "web:invoices",
+        "web:payments"
+      ],
+      "incoming_links": [],
+      "required_role": [
+        "Procurement Admin",
+        "All business roles"
+      ],
+      "evidence_refs": [
+        "web_snapshots/index.html#web:home",
+        "web_map/page_map.json#web:home"
+      ],
+      "crawl_notes": "Recommended start page. Supplier Master is intentionally absent as a snapshot; menu labels expose Vendor/Supplier and Payment Application/Payment Request naming differences.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Offline static HTML only",
+        "Dashboard counts are UI context and not scoring gold"
+      ]
+    },
+    {
+      "page_id": "web:purchase_requests",
+      "url_or_file": "web_snapshots/purchase_requests.html",
+      "title": "Purchase Requests",
+      "page_type": "list",
+      "menu_path": [
+        "Procurement",
+        "Purchase Requests"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Procurement",
+        "Purchase Requests"
+      ],
+      "visible_concepts": [
+        "purchase_request",
+        "employee",
+        "department",
+        "supplier"
+      ],
+      "visible_fields": [
+        "PR No",
+        "Title",
+        "Requester",
+        "Department",
+        "Supplier",
+        "Amount",
+        "Status",
+        "Required By"
+      ],
+      "visible_actions": [
+        "new_purchase_request",
+        "search_purchase_request",
+        "view_purchase_request",
+        "edit_purchase_request",
+        "submit_purchase_request"
+      ],
+      "visible_states": [
+        "DRAFT",
+        "SUBMITTED",
+        "APPROVED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:purchase_request_detail",
+        "web:approval_tasks"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:purchase_request_detail"
+      ],
+      "required_role": [
+        "Requester",
+        "Department Manager",
+        "Procurement Specialist"
+      ],
+      "evidence_refs": [
+        "web_snapshots/purchase_requests.html#web:purchase_requests",
+        "web_map/page_map.json#web:purchase_requests"
+      ],
+      "crawl_notes": "List page exposes PR abbreviation, preferred supplier display name and lifecycle badges. It links to detail and approval task context.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Search controls are static",
+        "New Purchase Request link points to an existing detail snapshot as an offline placeholder"
+      ]
+    },
+    {
+      "page_id": "web:purchase_request_detail",
+      "url_or_file": "web_snapshots/purchase_request_detail_PR-2024-001.html",
+      "title": "Purchase Request Detail PR-2024-001",
+      "page_type": "detail",
+      "menu_path": [
+        "Procurement",
+        "Purchase Requests",
+        "PR-2024-001"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Purchase Requests",
+        "PR-2024-001"
+      ],
+      "visible_concepts": [
+        "purchase_request",
+        "purchase_request_item",
+        "material",
+        "supplier",
+        "approval_task",
+        "contract",
+        "purchase_order",
+        "employee",
+        "department"
+      ],
+      "visible_fields": [
+        "PR No",
+        "Request Title",
+        "Requester",
+        "Department",
+        "Preferred Vendor",
+        "Estimated Amount",
+        "Business Justification",
+        "Required By Date",
+        "Submitted At",
+        "Approved At",
+        "Line Items"
+      ],
+      "visible_actions": [
+        "create_contract",
+        "view_contract",
+        "view_approval_history",
+        "cancel_request",
+        "release_po_disabled"
+      ],
+      "visible_states": [
+        "APPROVED",
+        "APPROVED approval history",
+        "Not Created",
+        "Not Released"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:purchase_requests",
+        "web:contracts",
+        "web:contract_detail",
+        "web:approval_tasks"
+      ],
+      "incoming_links": [
+        "web:purchase_requests",
+        "web:approval_tasks",
+        "web:contract_detail"
+      ],
+      "required_role": [
+        "Requester",
+        "Procurement Specialist",
+        "Department Manager"
+      ],
+      "evidence_refs": [
+        "web_snapshots/purchase_request_detail_PR-2024-001.html#web:purchase_request_detail",
+        "web_map/page_map.json#web:purchase_request_detail"
+      ],
+      "crawl_notes": "Core detail page for PR-to-contract transition. Uses Preferred Vendor while documents usually say Supplier.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Release PO action is displayed as disabled context",
+        "Only one PR detail instance is represented"
+      ]
+    },
+    {
+      "page_id": "web:approval_tasks",
+      "url_or_file": "web_snapshots/approval_tasks.html",
+      "title": "My Approval Tasks",
+      "page_type": "approval_task",
+      "menu_path": [
+        "Workflow",
+        "My Approval Tasks"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Workflow",
+        "My Approval Tasks"
+      ],
+      "visible_concepts": [
+        "approval_task",
+        "purchase_request",
+        "contract",
+        "payment_request",
+        "employee"
+      ],
+      "visible_fields": [
+        "Task ID",
+        "Target Type",
+        "Target No",
+        "Step",
+        "Approver Role",
+        "Amount",
+        "Comment",
+        "Submitted At"
+      ],
+      "visible_actions": [
+        "approve",
+        "reject",
+        "return_for_revision",
+        "view_source_document",
+        "approve_payment"
+      ],
+      "visible_states": [
+        "PENDING",
+        "APPROVED",
+        "REJECTED",
+        "SKIPPED"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:purchase_request_detail",
+        "web:contract_detail",
+        "web:payments"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:purchase_requests",
+        "web:purchase_request_detail",
+        "web:contracts",
+        "web:payments"
+      ],
+      "required_role": [
+        "Department Manager",
+        "Finance Manager",
+        "Legal Reviewer"
+      ],
+      "evidence_refs": [
+        "web_snapshots/approval_tasks.html#web:approval_tasks",
+        "web_map/page_map.json#web:approval_tasks"
+      ],
+      "crawl_notes": "Tests recursive analysis because one generic task page links to multiple target object types through Target Type / Target No.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Return action is UI-only candidate",
+        "Polymorphic targets require fusion with code or DDL before final rules"
+      ]
+    },
+    {
+      "page_id": "web:contracts",
+      "url_or_file": "web_snapshots/contracts.html",
+      "title": "Contracts",
+      "page_type": "list",
+      "menu_path": [
+        "Procurement",
+        "Contracts"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Procurement",
+        "Contracts"
+      ],
+      "visible_concepts": [
+        "contract",
+        "supplier",
+        "purchase_request",
+        "legal_review",
+        "purchase_order"
+      ],
+      "visible_fields": [
+        "Contract No",
+        "Title",
+        "Vendor",
+        "Source PR",
+        "Amount",
+        "Status",
+        "Legal Approved At"
+      ],
+      "visible_actions": [
+        "draft_from_approved_pr",
+        "view_contract",
+        "submit_legal_review",
+        "legal_review"
+      ],
+      "visible_states": [
+        "DRAFT",
+        "LEGAL_REVIEW",
+        "ACTIVE",
+        "EXPIRED",
+        "TERMINATED"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:contract_detail",
+        "web:purchase_request_detail",
+        "web:approval_tasks"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:purchase_request_detail",
+        "web:contract_detail"
+      ],
+      "required_role": [
+        "Procurement Specialist",
+        "Legal Reviewer",
+        "Finance Manager"
+      ],
+      "evidence_refs": [
+        "web_snapshots/contracts.html#web:contracts",
+        "web_map/page_map.json#web:contracts"
+      ],
+      "crawl_notes": "Contract list emphasizes Vendor label and legal review states before opening the CT-2024-001 detail page.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Only one contract detail page is available",
+        "Draft action is a navigation affordance, not backend proof"
+      ]
+    },
+    {
+      "page_id": "web:contract_detail",
+      "url_or_file": "web_snapshots/contract_detail_CT-2024-001.html",
+      "title": "Contract Detail CT-2024-001",
+      "page_type": "detail",
+      "menu_path": [
+        "Procurement",
+        "Contracts",
+        "CT-2024-001"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Contracts",
+        "CT-2024-001"
+      ],
+      "visible_concepts": [
+        "contract",
+        "supplier",
+        "purchase_request",
+        "purchase_order",
+        "approval_task",
+        "invoice",
+        "employee",
+        "department"
+      ],
+      "visible_fields": [
+        "Contract No",
+        "Contract Title",
+        "Vendor",
+        "Source PR No",
+        "Source PO No",
+        "Contract Amount",
+        "Effective Date",
+        "Expiry Date",
+        "Legal Approved At",
+        "Activated At",
+        "Contract Status"
+      ],
+      "visible_actions": [
+        "submit_legal_review",
+        "approve_legal_review",
+        "activate_contract",
+        "create_or_view_invoice",
+        "view_source_pr",
+        "terminate_contract"
+      ],
+      "visible_states": [
+        "DRAFT",
+        "LEGAL_REVIEW",
+        "ACTIVE",
+        "TERMINATED",
+        "APPROVED approval history"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:contracts",
+        "web:purchase_request_detail",
+        "web:invoices"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:purchase_request_detail",
+        "web:contracts",
+        "web:invoices"
+      ],
+      "required_role": [
+        "Procurement Specialist",
+        "Legal Reviewer",
+        "Finance Manager"
+      ],
+      "evidence_refs": [
+        "web_snapshots/contract_detail_CT-2024-001.html#web:contract_detail",
+        "web_map/page_map.json#web:contract_detail"
+      ],
+      "crawl_notes": "Core contract detail page connects PR, PO and invoice evidence. It shows Vendor/Supplier naming variation and activation action candidate.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "PO has no separate snapshot page",
+        "Both parties signed note is UI text and requires document fusion"
+      ]
+    },
+    {
+      "page_id": "web:invoices",
+      "url_or_file": "web_snapshots/invoices.html",
+      "title": "Invoice Matching Workbench",
+      "page_type": "invoice_matching",
+      "menu_path": [
+        "Finance",
+        "Invoices"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Finance",
+        "Invoices"
+      ],
+      "visible_concepts": [
+        "invoice",
+        "supplier",
+        "contract",
+        "purchase_order",
+        "goods_receipt",
+        "payment_request"
+      ],
+      "visible_fields": [
+        "Invoice No",
+        "Supplier Invoice No",
+        "Supplier",
+        "Contract No",
+        "PO No",
+        "GRN No",
+        "Invoice Amount",
+        "Tax Amount",
+        "Match Status",
+        "Difference %"
+      ],
+      "visible_actions": [
+        "capture_invoice",
+        "match_invoice",
+        "create_payment_request",
+        "view_contract"
+      ],
+      "visible_states": [
+        "RECEIVED",
+        "MATCHED",
+        "EXCEPTION"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:contract_detail",
+        "web:payments"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:contract_detail",
+        "web:payments"
+      ],
+      "required_role": [
+        "AP Clerk",
+        "Finance Specialist",
+        "Finance Manager"
+      ],
+      "evidence_refs": [
+        "web_snapshots/invoices.html#web:invoices",
+        "web_map/page_map.json#web:invoices"
+      ],
+      "crawl_notes": "Workbench combines invoice matching, PO, GRN and payment creation. Difference % is a candidate signal, not canonical tolerance evidence.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Goods Receipt has no separate page",
+        "Difference percentage is a static UI example"
+      ]
+    },
+    {
+      "page_id": "web:payments",
+      "url_or_file": "web_snapshots/payments.html",
+      "title": "Payment Applications",
+      "page_type": "payment",
+      "menu_path": [
+        "Finance",
+        "Payment Applications"
+      ],
+      "breadcrumb": [
+        "Home",
+        "Finance",
+        "Payment Applications"
+      ],
+      "visible_concepts": [
+        "payment_request",
+        "payment_application",
+        "invoice",
+        "supplier",
+        "approval_task",
+        "finance_manager"
+      ],
+      "visible_fields": [
+        "Payment Request No",
+        "Payment Application No",
+        "Invoice No",
+        "Supplier",
+        "Payment Amount",
+        "Payment Status",
+        "Approver Role",
+        "Paid At",
+        "Hold Reason"
+      ],
+      "visible_actions": [
+        "create_from_matched_invoice",
+        "submit_payment_approval",
+        "approve_payment",
+        "mark_paid",
+        "release_hold",
+        "view_invoice"
+      ],
+      "visible_states": [
+        "DRAFT",
+        "SUBMITTED",
+        "APPROVED",
+        "PAID",
+        "HELD",
+        "REJECTED"
+      ],
+      "outgoing_links": [
+        "web:home",
+        "web:invoices",
+        "web:approval_tasks"
+      ],
+      "incoming_links": [
+        "web:home",
+        "web:invoices",
+        "web:approval_tasks"
+      ],
+      "required_role": [
+        "AP Clerk",
+        "Finance Specialist",
+        "Finance Manager"
+      ],
+      "evidence_refs": [
+        "web_snapshots/payments.html#web:payments",
+        "web_map/page_map.json#web:payments"
+      ],
+      "crawl_notes": "Page deliberately uses Payment Applications in title and Payment Request in fields to test alias handling. HELD exposes hold reason as an operational UI clue.",
+      "input_mode": "html_snapshot",
+      "known_limitations": [
+        "Payment state names differ slightly from policy text",
+        "Release Hold is UI-only candidate"
+      ]
+    }
+  ],
+  "known_broken_or_missing_pages": [
+    {
+      "label": "Supplier Master",
+      "referenced_from": [
+        "web:home"
+      ],
+      "reason": "Mentioned as absent navigation context only; no snapshot file is provided. Do not infer supplier master fields from this map."
+    },
+    {
+      "label": "Purchase Order Detail",
+      "referenced_from": [
+        "web:purchase_request_detail",
+        "web:contract_detail",
+        "web:invoices"
+      ],
+      "reason": "PO is represented through PR, contract and invoice pages; no standalone PO detail snapshot exists."
+    },
+    {
+      "label": "Goods Receipt Detail",
+      "referenced_from": [
+        "web:invoices"
+      ],
+      "reason": "GRN appears in invoice matching, but no standalone goods receipt page is provided."
+    }
+  ]
+}

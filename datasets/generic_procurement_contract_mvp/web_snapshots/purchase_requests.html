@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-page-id="web:purchase_requests">
+<head>
+  <meta charset="utf-8">
+  <title>Purchase Requests</title>
+  <style>
+  :root { color-scheme: light; --bg: #f6f8fb; --panel: #ffffff; --ink: #1f2937; --muted: #64748b; --line: #d8dee9; --brand: #2454a6; --brand-soft: #e8f0ff; --ok: #137333; --warn: #b7791f; --bad: #b42318; --hold: #6b46c1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: #0f2f57; color: white; padding: 14px 28px; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; color: #c9d7ee; font-size: 13px; }
+  .layout { display: grid; grid-template-columns: 250px 1fr; min-height: calc(100vh - 70px); }
+  nav { background: #132b49; color: #e6edf7; padding: 20px; }
+  nav a { display: block; color: #e6edf7; text-decoration: none; padding: 9px 10px; border-radius: 8px; margin-bottom: 4px; }
+  nav a:hover, nav a[aria-current="page"] { background: #244b78; }
+  nav .group { margin: 18px 0 8px; color: #9fb3cf; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  main { padding: 24px 30px 40px; }
+  .crumb { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .crumb a { color: var(--brand); text-decoration: none; }
+  .page-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  .page-title h2 { margin: 0; font-size: 26px; }
+  .subtitle { color: var(--muted); margin-top: 5px; }
+  .role { background: var(--brand-soft); color: #173b75; border: 1px solid #c8d8f4; border-radius: 999px; padding: 6px 12px; font-size: 13px; white-space: nowrap; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15, 23, 42, .05); }
+  .card h3 { margin: 0 0 12px; font-size: 17px; }
+  .field-list { display: grid; grid-template-columns: 170px 1fr; gap: 8px 14px; font-size: 14px; }
+  .field-list dt { color: var(--muted); }
+  .field-list dd { margin: 0; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 10px 8px; vertical-align: top; }
+  th { color: #334155; background: #f8fafc; font-weight: 700; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .filter { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 8px 10px; color: var(--muted); min-width: 130px; }
+  .button { display: inline-block; border: 1px solid #b7c6dd; background: #fff; color: #173b75; border-radius: 8px; padding: 8px 11px; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .button.danger { color: var(--bad); border-color: #efb4ae; }
+  .status { display: inline-block; border-radius: 999px; padding: 4px 9px; font-size: 12px; font-weight: 700; background: #edf2f7; color: #334155; }
+  .status.ok { background: #e6f4ea; color: var(--ok); }
+  .status.warn { background: #fff4d6; color: var(--warn); }
+  .status.bad { background: #fde8e7; color: var(--bad); }
+  .status.info { background: #e8f0ff; color: var(--brand); }
+  .status.hold { background: #f0e7ff; color: var(--hold); }
+  .note { color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .kpi { font-size: 25px; font-weight: 800; margin: 6px 0; }
+  .split { display: grid; grid-template-columns: 1.3fr .7fr; gap: 16px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Acme Procurement and Contract Console</h1>
+    <p>Offline web snapshot for ontology capability evaluation. No live backend is connected.</p>
+  </header>
+  <div class="layout">
+    <nav>
+<div class="group">Procurement Console</div>
+<a href="index.html">Home</a>
+<a href="purchase_requests.html" aria-current="page">Purchase Requests</a>
+<a href="approval_tasks.html">Approval Tasks</a>
+<a href="contracts.html">Contracts</a>
+<a href="invoices.html">Invoices</a>
+<a href="payments.html">Payment Applications</a>
+<div class="group">Role Hints</div>
+<p class="note">Visible menus vary by Requester, Procurement Specialist, Legal Reviewer, AP Clerk and Finance Manager roles.</p>
+</nav>
+    <main>
+      
+<div class="crumb"><a href="index.html">Home</a> / Procurement / Purchase Requests</div>
+<div class="page-title">
+  <div>
+    <h2>Purchase Requests</h2>
+    <div class="subtitle">Search PRs, submit drafts, and open request details.</div>
+  </div>
+  <span class="role">Visible to: Requester / Department Manager / Procurement Specialist</span>
+</div>
+<div class="toolbar">
+  <span class="filter">PR No</span><span class="filter">Request Title</span><span class="filter">Requester</span><span class="filter">Department</span><span class="filter">Status</span><span class="filter">Required By</span>
+  <a class="button primary" href="purchase_request_detail_PR-2024-001.html">New Purchase Request</a>
+  <a class="button" href="#results">Search</a>
+</div>
+<section id="results" class="card">
+  <h3>Purchase request search results</h3>
+  <table>
+    <thead><tr><th>PR No</th><th>Title</th><th>Requester</th><th>Department</th><th>Supplier</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+      <tr><td><a href="purchase_request_detail_PR-2024-001.html">PR-2024-001</a></td><td>Office laptop refresh</td><td>Alice Chen</td><td>IT Operations</td><td>Northwind Office Supplies</td><td>CNY 68,000.00</td><td><span class="status ok">APPROVED</span></td><td><a class="button" href="purchase_request_detail_PR-2024-001.html">View</a></td></tr>
+      <tr><td>PR-2024-002</td><td>Warehouse barcode scanner purchase</td><td>Ben Liu</td><td>Warehouse</td><td>Contoso Industrial</td><td>CNY 72,500.00</td><td><span class="status info">SUBMITTED</span></td><td><a class="button" href="approval_tasks.html">View Approval</a></td></tr>
+      <tr><td>PR-2024-003</td><td>Office stationery replenishment</td><td>Alice Chen</td><td>IT Operations</td><td>Preferred Vendor TBD</td><td>CNY 8,900.00</td><td><span class="status">DRAFT</span></td><td><a class="button">Edit</a> <a class="button">Submit</a></td></tr>
+      <tr><td>PR-2024-004</td><td>Facility repair service</td><td>Ben Liu</td><td>Facilities</td><td>Blue River Maintenance</td><td>CNY 31,500.00</td><td><span class="status bad">REJECTED</span></td><td><a class="button">Revise</a></td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="card">
+  <h3>Visible concepts and status hints</h3>
+  <p class="note">UI terms: PR No, Purchase Request, Preferred Supplier, Vendor TBD, Required By, Submit, Cancel. Status badges include DRAFT, SUBMITTED, APPROVED, REJECTED and CANCELLED.</p>
+</section>
+
+      <footer>Snapshot input_mode: html_snapshot. UI labels are evidence candidates only and must be fused with code, DDL, CSV and business documents before becoming final facts.</footer>
+    </main>
+  </div>
+</body>
+</html>

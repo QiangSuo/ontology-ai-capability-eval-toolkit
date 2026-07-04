@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-page-id="web:contract_detail">
+<head>
+  <meta charset="utf-8">
+  <title>Contract Detail CT-2024-001</title>
+  <style>
+  :root { color-scheme: light; --bg: #f6f8fb; --panel: #ffffff; --ink: #1f2937; --muted: #64748b; --line: #d8dee9; --brand: #2454a6; --brand-soft: #e8f0ff; --ok: #137333; --warn: #b7791f; --bad: #b42318; --hold: #6b46c1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: #0f2f57; color: white; padding: 14px 28px; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; color: #c9d7ee; font-size: 13px; }
+  .layout { display: grid; grid-template-columns: 250px 1fr; min-height: calc(100vh - 70px); }
+  nav { background: #132b49; color: #e6edf7; padding: 20px; }
+  nav a { display: block; color: #e6edf7; text-decoration: none; padding: 9px 10px; border-radius: 8px; margin-bottom: 4px; }
+  nav a:hover, nav a[aria-current="page"] { background: #244b78; }
+  nav .group { margin: 18px 0 8px; color: #9fb3cf; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  main { padding: 24px 30px 40px; }
+  .crumb { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .crumb a { color: var(--brand); text-decoration: none; }
+  .page-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  .page-title h2 { margin: 0; font-size: 26px; }
+  .subtitle { color: var(--muted); margin-top: 5px; }
+  .role { background: var(--brand-soft); color: #173b75; border: 1px solid #c8d8f4; border-radius: 999px; padding: 6px 12px; font-size: 13px; white-space: nowrap; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15, 23, 42, .05); }
+  .card h3 { margin: 0 0 12px; font-size: 17px; }
+  .field-list { display: grid; grid-template-columns: 170px 1fr; gap: 8px 14px; font-size: 14px; }
+  .field-list dt { color: var(--muted); }
+  .field-list dd { margin: 0; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 10px 8px; vertical-align: top; }
+  th { color: #334155; background: #f8fafc; font-weight: 700; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .filter { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 8px 10px; color: var(--muted); min-width: 130px; }
+  .button { display: inline-block; border: 1px solid #b7c6dd; background: #fff; color: #173b75; border-radius: 8px; padding: 8px 11px; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .button.danger { color: var(--bad); border-color: #efb4ae; }
+  .status { display: inline-block; border-radius: 999px; padding: 4px 9px; font-size: 12px; font-weight: 700; background: #edf2f7; color: #334155; }
+  .status.ok { background: #e6f4ea; color: var(--ok); }
+  .status.warn { background: #fff4d6; color: var(--warn); }
+  .status.bad { background: #fde8e7; color: var(--bad); }
+  .status.info { background: #e8f0ff; color: var(--brand); }
+  .status.hold { background: #f0e7ff; color: var(--hold); }
+  .note { color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .kpi { font-size: 25px; font-weight: 800; margin: 6px 0; }
+  .split { display: grid; grid-template-columns: 1.3fr .7fr; gap: 16px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Acme Procurement and Contract Console</h1>
+    <p>Offline web snapshot for ontology capability evaluation. No live backend is connected.</p>
+  </header>
+  <div class="layout">
+    <nav>
+<div class="group">Procurement Console</div>
+<a href="index.html">Home</a>
+<a href="purchase_requests.html">Purchase Requests</a>
+<a href="approval_tasks.html">Approval Tasks</a>
+<a href="contracts.html" aria-current="page">Contracts</a>
+<a href="invoices.html">Invoices</a>
+<a href="payments.html">Payment Applications</a>
+<div class="group">Role Hints</div>
+<p class="note">Visible menus vary by Requester, Procurement Specialist, Legal Reviewer, AP Clerk and Finance Manager roles.</p>
+</nav>
+    <main>
+      
+<div class="crumb"><a href="index.html">Home</a> / <a href="contracts.html">Contracts</a> / CT-2024-001</div>
+<div class="page-title">
+  <div>
+    <h2>CT-2024-001 - Office laptop framework agreement</h2>
+    <div class="subtitle">Active contract linked to source PR, purchase order and approval history.</div>
+  </div>
+  <span class="role">Visible to: Procurement Specialist / Legal Reviewer / Finance Manager</span>
+</div>
+<div class="split">
+  <section class="card">
+    <h3>Basic Information</h3>
+    <dl class="field-list">
+      <dt>Contract No</dt><dd>CT-2024-001</dd>
+      <dt>Contract Title</dt><dd>Office laptop framework agreement</dd>
+      <dt>Vendor</dt><dd>Northwind Office Supplies</dd>
+      <dt>Source PR No</dt><dd><a href="purchase_request_detail_PR-2024-001.html">PR-2024-001</a></dd>
+      <dt>Source PO No</dt><dd>PO-2024-001</dd>
+      <dt>Contract Amount</dt><dd>CNY 68,000.00</dd>
+      <dt>Effective Date</dt><dd>2024-03-15</dd>
+      <dt>Expiry Date</dt><dd>2025-03-14</dd>
+      <dt>Legal Approved At</dt><dd>2024-03-14 17:30</dd>
+      <dt>Activated At</dt><dd>2024-03-15 09:00</dd>
+      <dt>Contract Status</dt><dd><span class="status ok">ACTIVE</span></dd>
+    </dl>
+  </section>
+  <aside class="card">
+    <h3>Action Panel</h3>
+    <div class="actions">
+      <a class="button">Submit Legal Review</a>
+      <a class="button">Approve Legal Review</a>
+      <a class="button primary">Activate Contract</a>
+      <a class="button" href="invoices.html">Create / View Invoice</a>
+      <a class="button" href="purchase_request_detail_PR-2024-001.html">View Source PR</a>
+      <a class="button danger">Terminate Contract</a>
+    </div>
+    <p class="note">Button visibility is UI evidence only; backend availability must be checked separately.</p>
+  </aside>
+</div>
+<section class="card">
+  <h3>Approval History</h3>
+  <table>
+    <thead><tr><th>Step</th><th>Approver</th><th>Role</th><th>Decision</th><th>Comment</th><th>Decided At</th></tr></thead>
+    <tbody>
+      <tr><td>Legal Review</td><td>Grace Lin</td><td>Legal Reviewer</td><td><span class="status ok">APPROVED</span></td><td>Terms accepted</td><td>2024-03-14 17:30</td></tr>
+      <tr><td>Activation Check</td><td>Pat Admin</td><td>Procurement Admin</td><td><span class="status ok">APPROVED</span></td><td>Both parties signed</td><td>2024-03-15 09:00</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="card">
+  <h3>Related Documents</h3>
+  <table>
+    <thead><tr><th>Document Type</th><th>Document No</th><th>Status</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td>Purchase Request</td><td>PR-2024-001</td><td>APPROVED</td><td><a href="purchase_request_detail_PR-2024-001.html">Open PR</a></td></tr>
+      <tr><td>Purchase Order</td><td>PO-2024-001</td><td>RELEASED</td><td>Displayed only in this snapshot</td></tr>
+      <tr><td>Invoice</td><td>INV-2024-001</td><td>MATCHED</td><td><a href="invoices.html">Open invoice workbench</a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+      <footer>Snapshot input_mode: html_snapshot. UI labels are evidence candidates only and must be fused with code, DDL, CSV and business documents before becoming final facts.</footer>
+    </main>
+  </div>
+</body>
+</html>
