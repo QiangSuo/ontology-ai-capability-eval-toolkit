@@ -1,0 +1,18 @@
+{
+  "customer_profile_id": "customer:local_smoke_20260704",
+  "customer_name": "local_test_environment",
+  "environment_type": "local",
+  "restrictions": [
+    "Only dataset input paths were intended for evaluated tool use; gold/reference/demo/scoring files excluded by prompt."
+  ],
+  "available_inputs": [
+    "source_code",
+    "database_ddl",
+    "sample_data_csv",
+    "documents"
+  ],
+  "metadata": {
+    "evaluation_id": "20260704-local-claude-code-smoke",
+    "created_at": "2026-07-04T14:05:37Z"
+  }
+}

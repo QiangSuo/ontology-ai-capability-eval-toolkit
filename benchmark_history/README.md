@@ -14,6 +14,10 @@
 - 匿名化历史 benchmark
 - 推荐使用场景和不推荐使用场景记录
 
+## 已沉淀报告
+
+- [CodeBuddy vs Claude Code 对比报告（2026-07-05）](codebuddy_vs_claude_code_20260705.md)：基于公开资料与本地脱敏 Smoke Test 的工具选型参考。
+
 ## 输入
 
 - 脱敏后的评分结果

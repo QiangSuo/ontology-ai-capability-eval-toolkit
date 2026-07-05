@@ -1,0 +1,102 @@
+{
+  "task_id": "task_08_screenshot_to_ontology",
+  "task_name": "Screenshot Surrogate 到本体",
+  "mode": "fixed_prompt",
+  "level": "custom",
+  "status": "completed",
+  "tool_profile_ref": "tool:demo_screenshot",
+  "started_at": "2026-07-04T10:00:00Z",
+  "completed_at": "2026-07-04T10:08:00Z",
+  "duration_minutes": 8,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "input_artifacts": [
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp.screenshot_manifest",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp/metadata/screenshot_manifest.json",
+      "description": "Optional B2 screenshot surrogate manifest."
+    },
+    {
+      "artifact_id": "prompt:task_08_screenshot_to_ontology",
+      "artifact_type": "prompt",
+      "path": "prompts/tasks/task_08_screenshot_to_ontology.md",
+      "description": "Screenshot surrogate extraction prompt."
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "artifact:task_08_screenshot_to_ontology.ontology",
+      "artifact_type": "ontology",
+      "path": "normalized_outputs/ontology_screenshot_demo.json",
+      "schema_ref": "schemas/ontology.schema.json",
+      "description": "Simulated screenshot surrogate ontology output."
+    },
+    {
+      "artifact_id": "artifact:task_08_screenshot_to_ontology.evidence",
+      "artifact_type": "evidence",
+      "path": "normalized_outputs/evidence_map_screenshot_demo.json",
+      "schema_ref": "schemas/evidence.schema.json",
+      "description": "Simulated screenshot surrogate evidence map."
+    },
+    {
+      "artifact_id": "artifact:task_08_screenshot_to_ontology.raw",
+      "artifact_type": "raw_output",
+      "path": "raw_outputs/task_08_screenshot_to_ontology_raw.md",
+      "description": "Simulated raw AI response."
+    }
+  ],
+  "evidence_refs": [
+    "screen:purchase_request_list.field.pr_no",
+    "screen:purchase_request_list.button.submit",
+    "screen:purchase_request_detail.button.create_contract",
+    "screen:approval_task.field.target_type",
+    "screen:approval_task.button.approve",
+    "screen:contract_detail.field.contract_no",
+    "screen:contract_detail.field.vendor",
+    "screen:contract_detail.button.activate_contract",
+    "screen:invoice_payment.field.invoice_no",
+    "screen:invoice_payment.field.grn_no",
+    "screen:invoice_payment.match.difference_percent",
+    "screen:invoice_payment.field.payment_request_no",
+    "screen:invoice_payment.button.mark_paid"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "task_result.schema.json",
+    "validator": "demo_manual_check",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "manual_fix",
+      "description": "Operator normalized the simulated AI response into schema-compatible JSON for demo purposes.",
+      "occurred_at": "2026-07-04T10:08:00Z",
+      "operator_id": "operator:demo_low_exp"
+    }
+  ],
+  "limitations": [
+    "Demo sample, not a real tool run.",
+    "Input mode is surrogate_only; no real image/OCR/visual layout capability is evaluated.",
+    "UI button actions are candidates and require later fusion with code/documents."
+  ],
+  "metrics": {
+    "prompt_retry_count": 0,
+    "manual_edit_minutes": 6,
+    "screen_count": 5,
+    "referenced_screenshot_evidence_count": 13
+  },
+  "notes": "Simulated screenshot surrogate task result for demonstrating optional B2/B3/B5 scoring flow.",
+  "provenance": {
+    "created_by": "demo_screenshot_generator",
+    "created_at": "2026-07-04T10:00:00Z",
+    "method": "hybrid",
+    "source_system": "generic_procurement_contract_mvp",
+    "tool_profile_ref": "tool:demo_screenshot",
+    "prompt_ref": "task_08_screenshot_to_ontology",
+    "version": "demo-sample"
+  }
+}

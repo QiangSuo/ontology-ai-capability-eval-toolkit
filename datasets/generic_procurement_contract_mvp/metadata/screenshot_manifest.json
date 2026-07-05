@@ -1,0 +1,148 @@
+{
+  "manifest_id": "generic_procurement_contract_mvp_screenshot_surrogates",
+  "dataset_id": "generic_procurement_contract_mvp",
+  "version": "0.1.0",
+  "extension_stage": "B2",
+  "input_modes_supported": [
+    "surrogate_only"
+  ],
+  "baseline_impact": "optional_extension_only",
+  "gold_policy": {
+    "contains_evaluator_gold": false,
+    "may_be_provided_to_ai_tool": true,
+    "notes": "This manifest inventories optional screenshot surrogate inputs only. It is not a gold answer, scoring artifact or evaluator-only reference."
+  },
+  "image_policy": {
+    "contains_real_images": false,
+    "contains_ocr_text_files": false,
+    "visual_capability_tested": false,
+    "notes": "All entries are Markdown screenshot surrogates. They do not test OCR, pixel-level layout, icon recognition or actual visual perception."
+  },
+  "screens": [
+    {
+      "screenshot_id": "screen:purchase_request_list",
+      "page_id": "screen:purchase_request_list",
+      "page_name": "Purchase Request List",
+      "page_type": "list",
+      "input_mode": "surrogate_only",
+      "surrogate_path": "screenshots/purchase_request_list.screen.md",
+      "image_path": null,
+      "ocr_text_path": null,
+      "role_context": "Requester / Department Manager",
+      "view_context": "Procurement purchase request search and list view",
+      "known_limitations": [
+        "No PNG or JPG image is included.",
+        "No OCR quality, visual layout or icon recognition is tested."
+      ],
+      "primary_business_objects": [
+        "purchase_request",
+        "employee",
+        "department",
+        "supplier"
+      ],
+      "expected_evidence_prefix": "screen:purchase_request_list",
+      "source_type": "screenshot_surrogate"
+    },
+    {
+      "screenshot_id": "screen:purchase_request_detail",
+      "page_id": "screen:purchase_request_detail",
+      "page_name": "Purchase Request Detail",
+      "page_type": "detail",
+      "input_mode": "surrogate_only",
+      "surrogate_path": "screenshots/purchase_request_detail.screen.md",
+      "image_path": null,
+      "ocr_text_path": null,
+      "role_context": "Requester / Procurement Specialist / Department Manager",
+      "view_context": "Purchase request detail with line items and approval history",
+      "known_limitations": [
+        "No PNG or JPG image is included.",
+        "Button visibility is UI text evidence only and must be fused with backend/document evidence."
+      ],
+      "primary_business_objects": [
+        "purchase_request",
+        "purchase_request_item",
+        "approval_task",
+        "contract",
+        "purchase_order"
+      ],
+      "expected_evidence_prefix": "screen:purchase_request_detail",
+      "source_type": "screenshot_surrogate"
+    },
+    {
+      "screenshot_id": "screen:approval_task",
+      "page_id": "screen:approval_task",
+      "page_name": "Approval Task Workbench",
+      "page_type": "approval_task",
+      "input_mode": "surrogate_only",
+      "surrogate_path": "screenshots/approval_task.screen.md",
+      "image_path": null,
+      "ocr_text_path": null,
+      "role_context": "Department Manager / Finance Manager / Legal Reviewer",
+      "view_context": "Generic approval task queue and selected task detail",
+      "known_limitations": [
+        "No PNG or JPG image is included.",
+        "Polymorphic target support is a UI signal and requires backend/document confirmation."
+      ],
+      "primary_business_objects": [
+        "approval_task",
+        "purchase_request",
+        "payment_request",
+        "contract",
+        "employee"
+      ],
+      "expected_evidence_prefix": "screen:approval_task",
+      "source_type": "screenshot_surrogate"
+    },
+    {
+      "screenshot_id": "screen:contract_detail",
+      "page_id": "screen:contract_detail",
+      "page_name": "Contract Detail",
+      "page_type": "detail",
+      "input_mode": "surrogate_only",
+      "surrogate_path": "screenshots/contract_detail.screen.md",
+      "image_path": null,
+      "ocr_text_path": null,
+      "role_context": "Procurement Specialist / Legal Reviewer / Finance Manager",
+      "view_context": "Contract lifecycle detail with supplier, source PR/PO and approval history",
+      "known_limitations": [
+        "No PNG or JPG image is included.",
+        "Contract lifecycle actions are UI evidence only until confirmed against code and documents."
+      ],
+      "primary_business_objects": [
+        "contract",
+        "supplier",
+        "purchase_request",
+        "purchase_order",
+        "approval_task"
+      ],
+      "expected_evidence_prefix": "screen:contract_detail",
+      "source_type": "screenshot_surrogate"
+    },
+    {
+      "screenshot_id": "screen:invoice_payment",
+      "page_id": "screen:invoice_payment",
+      "page_name": "Invoice and Payment Workbench",
+      "page_type": "payment",
+      "input_mode": "surrogate_only",
+      "surrogate_path": "screenshots/invoice_payment.screen.md",
+      "image_path": null,
+      "ocr_text_path": null,
+      "role_context": "Finance Specialist / Finance Manager",
+      "view_context": "Invoice matching and payment request approval workbench",
+      "known_limitations": [
+        "No PNG or JPG image is included.",
+        "Invoice matching tolerance shown in UI is a candidate signal and requires policy/code confirmation."
+      ],
+      "primary_business_objects": [
+        "invoice",
+        "payment_request",
+        "supplier",
+        "contract",
+        "purchase_order",
+        "goods_receipt"
+      ],
+      "expected_evidence_prefix": "screen:invoice_payment",
+      "source_type": "screenshot_surrogate"
+    }
+  ]
+}

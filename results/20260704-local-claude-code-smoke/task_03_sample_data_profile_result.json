@@ -1,0 +1,65 @@
+{
+  "task_id": "task_03_sample_data_profile",
+  "task_name": "task 03 sample data profile",
+  "mode": "fixed_prompt",
+  "level": "smoke",
+  "status": "completed",
+  "tool_profile_ref": "tool:claude_code_local_20260704",
+  "started_at": "2026-07-05T01:57:52Z",
+  "completed_at": "2026-07-05T01:57:52Z",
+  "duration_minutes": 0,
+  "input_artifacts": [
+    {
+      "artifact_id": "dataset:generic_procurement_contract_mvp",
+      "artifact_type": "other",
+      "path": "datasets/generic_procurement_contract_mvp"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "artifact_id": "artifact:task_03_sample_data_profile.ontology",
+      "artifact_type": "ontology",
+      "path": "normalized_outputs/task_05_multi_source_fusion.json",
+      "schema_ref": "schemas/ontology.schema.json"
+    },
+    {
+      "artifact_id": "artifact:task_03_sample_data_profile.raw",
+      "artifact_type": "raw_output",
+      "path": "raw_outputs/task_03_sample_data_profile_raw.md"
+    }
+  ],
+  "evidence_refs": [
+    "source_code",
+    "ddl.sql",
+    "sample_data",
+    "documents"
+  ],
+  "schema_validation": {
+    "is_valid": true,
+    "schema_name": "task_result.schema.json",
+    "validator": "operator_packaging",
+    "errors": []
+  },
+  "human_interventions": [
+    {
+      "intervention_type": "manual_fix",
+      "description": "Operator packaged the raw CLI output and normalized final fused ontology for scoring.",
+      "occurred_at": "2026-07-05T01:57:52Z",
+      "operator_id": "operator:local"
+    }
+  ],
+  "limitations": [
+    "Automatic machine score uses the final fused ontology; raw intermediate task outputs are preserved separately."
+  ],
+  "metrics": {},
+  "notes": "Generated as result wrapper after CLI run for score_auto.py discovery.",
+  "provenance": {
+    "created_by": "operator_packaging_script",
+    "created_at": "2026-07-05T01:57:52Z",
+    "method": "hybrid",
+    "source_system": "local_cli_run",
+    "tool_profile_ref": "tool:claude_code_local_20260704",
+    "prompt_ref": "task_03_sample_data_profile",
+    "version": "local-smoke"
+  }
+}

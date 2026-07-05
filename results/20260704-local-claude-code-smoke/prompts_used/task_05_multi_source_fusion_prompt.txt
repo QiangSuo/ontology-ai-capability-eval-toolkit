@@ -1,0 +1,84 @@
+你正在执行采购合同 MVP 多源融合任务。请基于代码抽取结果、DDL 抽取结果、CSV 数据画像和业务文档抽取结果，生成统一本体 JSON。不要简单拼接四份结果，必须去重、归并、融合并保留证据和冲突。
+
+【任务目标】
+生成采购合同 MVP 统一本体，覆盖 concept、attribute、relation、event、rule、action、state、role、permission、alias、mapping、conflict、uncertainty、confidence、evidence_refs、provenance。
+
+【融合原则】
+1. 同义词归并：Supplier/Vendor；Purchase Request/PR；Purchase Order/PO；Goods Receipt/GRN；Payment Request/Payment Application。
+2. 命名不一致保留 alias：`pc_` 表前缀、`pr_number`、`po_number`、`target_type`/`target_id`、`role_code`、Material/Item。
+3. 多源一致时提高 confidence；单一来源支持时保留但降低 confidence。
+4. 来源冲突时不要强行选择，写入 `conflicts`，并说明来源差异。
+5. 文档说明业务规则，代码说明实际实现，DDL 说明结构约束，CSV 说明样例事实；都要保留 provenance。
+6. 不要为了完整性创造没有来源支持的对象或规则。
+
+【必须检查的融合点】
+- Supplier / Vendor 是否归并。
+- Purchase Request / PR 是否归并，并与 Purchase Order / PO 保持边界。
+- Goods Receipt / GRN 是否归并。
+- Payment Request / Payment Application 是否归并。
+- 审批阈值是否存在 `>= 50000` 与 `> 50000` 差异。
+- 发票匹配容差是否存在 2% 与 1.5% 差异。
+- 合同激活签署要求是否只有文档证据、缺少 DDL/代码字段支持。
+- 付款 hold reason 是否只有文档政策、缺少 DDL/CSV 字段支持。
+- Material / Item 语义是否在申请行中出现但缺少独立物料主数据表。
+- `pc_approval_record.target_type` / `target_id` 是否需要作为多态关系低置信度处理。
+- Goods Receipt 的 COMPLETE 与 Purchase Order 的 CLOSED 是否被错误合并为同一状态。
+
+【输出要求】
+只输出合法 JSON，字段名使用英文：
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-fused-ontology",
+  "title": "Procurement Contract MVP Fused Ontology",
+  "domain": "procurement_contract",
+  "description": "Unified ontology fused from code, DDL, sample data and procurement documents.",
+  "concepts": [],
+  "attributes": [],
+  "relations": [],
+  "events": [],
+  "rules": [],
+  "actions": [],
+  "states": [],
+  "roles": [],
+  "permissions": [],
+  "aliases": [],
+  "mappings": [],
+  "conflicts": [],
+  "uncertainties": [],
+  "evidence_refs": [],
+  "confidence": 0.0,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "multi_source_fusion"
+  }
+}
+
+【证据要求】
+核心 concept 尽量有 2 类来源证据；核心 relation 应引用 DDL 或代码证据；核心 rule 应引用文档或代码证据；冲突必须引用至少两个来源。
+
+【不确定性要求】
+单源结论、候选关系、样本推断、规则边界差异都必须表达 uncertainty 或 conflict。
+
+【禁止事项】
+不要生成四类输入中都没有证据的对象、字段、关系、规则或动作；不要隐藏冲突。
+
+【本次实际输入路径】
+- 工具包根目录：ontology-ai-capability-eval-toolkit/
+- 数据集根目录：ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/
+
+【执行边界】
+- 只能读取本任务列出的输入路径和 schemas/ 下的结构说明。
+- 禁止读取 datasets/generic_procurement_contract_mvp/gold/、results/demo_baseline/、results/demo_web/、results/demo_screenshot/、scoring/ 和任何 machine_score/manual_review/report 参考结果。
+- 不要执行 shell 命令；如需查看文件，只使用读取/搜索能力。
+- 输出只允许是一个 JSON 对象，不要 Markdown，不要解释。
+- 为了让机器评分能匹配 evidence_refs，优先使用这些稳定证据 ID：code:<ClassName>、ddl:<table>、ddl:<table>.<column>、csv:<filename_stem>、doc:<filename_stem>。更精确的位置放入 mappings.source_element 或 description。
+- 本体对象请只使用 ontology.schema.json 允许的字段；不要给 concept/attribute/relation 添加 schema 未定义字段。
+
+
+【本任务输入】
+- 代码抽取结果：ontology-ai-capability-eval-toolkit/results/20260704-local-claude-code-smoke/artifacts/task_01_code_to_ontology.intermediate.txt
+- DDL 抽取结果：ontology-ai-capability-eval-toolkit/results/20260704-local-claude-code-smoke/artifacts/task_02_ddl_to_ontology.intermediate.txt
+- CSV 数据画像：ontology-ai-capability-eval-toolkit/results/20260704-local-claude-code-smoke/artifacts/task_03_sample_data_profile.intermediate.txt
+- 文档抽取结果：ontology-ai-capability-eval-toolkit/results/20260704-local-claude-code-smoke/artifacts/task_04_document_to_ontology.intermediate.txt
+- 如需复核，可读取原始 source_code/、database/ddl.sql、database/sample_data/、documents/。

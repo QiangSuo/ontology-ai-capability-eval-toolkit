@@ -1,0 +1,329 @@
+{
+  "items": [
+    {
+      "evidence_id": "screen:purchase_request_list.field.pr_no",
+      "evidence_type": "screenshot",
+      "title": "PR No field on purchase request list",
+      "summary": "List page shows PR No.",
+      "source": {
+        "name": "screenshots/purchase_request_list.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / PR No",
+      "content_ref": "screenshots/purchase_request_list.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/purchase_request_list.screen.md",
+        "ui_area": "Visible Fields / PR No",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:purchase_request_list.button.submit",
+      "evidence_type": "screenshot",
+      "title": "Submit button on purchase request list",
+      "summary": "List page shows Submit action.",
+      "source": {
+        "name": "screenshots/purchase_request_list.screen.md",
+        "type": "file"
+      },
+      "locator": "Button Actions / Submit",
+      "content_ref": "screenshots/purchase_request_list.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/purchase_request_list.screen.md",
+        "ui_area": "Button Actions / Submit",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:purchase_request_detail.button.create_contract",
+      "evidence_type": "screenshot",
+      "title": "Create Contract button on PR detail",
+      "summary": "PR detail shows Create Contract action.",
+      "source": {
+        "name": "screenshots/purchase_request_detail.screen.md",
+        "type": "file"
+      },
+      "locator": "Button Actions / Create Contract",
+      "content_ref": "screenshots/purchase_request_detail.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/purchase_request_detail.screen.md",
+        "ui_area": "Button Actions / Create Contract",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:approval_task.field.target_type",
+      "evidence_type": "screenshot",
+      "title": "Target Type field on approval task",
+      "summary": "Approval task shows polymorphic target type.",
+      "source": {
+        "name": "screenshots/approval_task.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / Target Type",
+      "content_ref": "screenshots/approval_task.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/approval_task.screen.md",
+        "ui_area": "Visible Fields / Target Type",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:approval_task.button.approve",
+      "evidence_type": "screenshot",
+      "title": "Approve button on approval task",
+      "summary": "Approval task exposes approval action.",
+      "source": {
+        "name": "screenshots/approval_task.screen.md",
+        "type": "file"
+      },
+      "locator": "Button Actions / Approve",
+      "content_ref": "screenshots/approval_task.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/approval_task.screen.md",
+        "ui_area": "Button Actions / Approve",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:contract_detail.field.contract_no",
+      "evidence_type": "screenshot",
+      "title": "Contract No field",
+      "summary": "Contract detail shows contract number.",
+      "source": {
+        "name": "screenshots/contract_detail.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / Contract No",
+      "content_ref": "screenshots/contract_detail.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/contract_detail.screen.md",
+        "ui_area": "Visible Fields / Contract No",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:contract_detail.field.vendor",
+      "evidence_type": "screenshot",
+      "title": "Vendor field",
+      "summary": "Contract detail uses Vendor label for Supplier.",
+      "source": {
+        "name": "screenshots/contract_detail.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / Vendor",
+      "content_ref": "screenshots/contract_detail.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/contract_detail.screen.md",
+        "ui_area": "Visible Fields / Vendor",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:contract_detail.button.activate_contract",
+      "evidence_type": "screenshot",
+      "title": "Activate Contract button",
+      "summary": "Contract detail exposes activation candidate action.",
+      "source": {
+        "name": "screenshots/contract_detail.screen.md",
+        "type": "file"
+      },
+      "locator": "Button Actions / Activate Contract",
+      "content_ref": "screenshots/contract_detail.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/contract_detail.screen.md",
+        "ui_area": "Button Actions / Activate Contract",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.invoice_no",
+      "evidence_type": "screenshot",
+      "title": "Invoice No field",
+      "summary": "Invoice workbench shows invoice number.",
+      "source": {
+        "name": "screenshots/invoice_payment.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / Invoice No",
+      "content_ref": "screenshots/invoice_payment.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/invoice_payment.screen.md",
+        "ui_area": "Visible Fields / Invoice No",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.grn_no",
+      "evidence_type": "screenshot",
+      "title": "GRN No field",
+      "summary": "Invoice workbench uses GRN abbreviation.",
+      "source": {
+        "name": "screenshots/invoice_payment.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / GRN No",
+      "content_ref": "screenshots/invoice_payment.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/invoice_payment.screen.md",
+        "ui_area": "Visible Fields / GRN No",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:invoice_payment.match.difference_percent",
+      "evidence_type": "screenshot",
+      "title": "Difference percent column",
+      "summary": "Invoice matching table shows a Difference % indicator.",
+      "source": {
+        "name": "screenshots/invoice_payment.screen.md",
+        "type": "file"
+      },
+      "locator": "Invoice matching table / Difference %",
+      "content_ref": "screenshots/invoice_payment.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/invoice_payment.screen.md",
+        "ui_area": "Invoice matching table / Difference %",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.payment_request_no",
+      "evidence_type": "screenshot",
+      "title": "Payment Request No field",
+      "summary": "Payment panel shows payment request number.",
+      "source": {
+        "name": "screenshots/invoice_payment.screen.md",
+        "type": "file"
+      },
+      "locator": "Visible Fields / Payment Request No",
+      "content_ref": "screenshots/invoice_payment.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/invoice_payment.screen.md",
+        "ui_area": "Visible Fields / Payment Request No",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    },
+    {
+      "evidence_id": "screen:invoice_payment.button.mark_paid",
+      "evidence_type": "screenshot",
+      "title": "Mark Paid button",
+      "summary": "Payment workbench exposes Mark Paid candidate action.",
+      "source": {
+        "name": "screenshots/invoice_payment.screen.md",
+        "type": "file"
+      },
+      "locator": "Button Actions / Mark Paid",
+      "content_ref": "screenshots/invoice_payment.screen.md",
+      "confidence": 0.8,
+      "screenshot": {
+        "image_path": "screenshots/invoice_payment.screen.md",
+        "ui_area": "Button Actions / Mark Paid",
+        "annotations": [
+          "surrogate_only",
+          "markdown_screen_description"
+        ]
+      },
+      "metadata": {
+        "input_mode": "surrogate_only",
+        "real_image": false
+      }
+    }
+  ]
+}

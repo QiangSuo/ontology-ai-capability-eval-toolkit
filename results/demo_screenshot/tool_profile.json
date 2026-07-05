@@ -1,0 +1,46 @@
+{
+  "tool_profile_id": "tool:demo_screenshot",
+  "tool_name": "Demo Screenshot Surrogate Tool",
+  "tool_version": "demo",
+  "vendor": "internal_demo",
+  "model_name": "simulated-model",
+  "model_version": "demo-sample",
+  "customer_environment": {
+    "environment_type": "offline_demo",
+    "network_access": "disabled",
+    "data_access": "local_files_only"
+  },
+  "capabilities": {
+    "can_read_files": true,
+    "can_execute_commands": false,
+    "can_process_real_images": false,
+    "can_process_screenshot_surrogates": true,
+    "long_context_capability": {
+      "supported": true,
+      "notes": "Simulated demo only."
+    }
+  },
+  "json_output_stability": "medium",
+  "recommended_use_cases": [
+    "screenshot surrogate semantic extraction demo"
+  ],
+  "not_recommended_use_cases": [
+    "real image OCR",
+    "visual layout detection",
+    "customer-site readiness claim"
+  ],
+  "known_limitations": [
+    "Demo sample only.",
+    "No real image input was processed."
+  ],
+  "evaluated_at": "2026-07-04T10:00:00Z",
+  "provenance": {
+    "created_by": "demo_screenshot_generator",
+    "method": "manual",
+    "source_system": "demo_screenshot"
+  },
+  "metadata": {
+    "demo_sample": true,
+    "input_mode": "surrogate_only"
+  }
+}

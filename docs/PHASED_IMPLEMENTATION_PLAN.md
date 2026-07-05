@@ -475,7 +475,7 @@ data: add screenshot surrogate inputs
 
 请创建：
 
-prompts/tasks/task_06_screenshot_to_ontology.md
+prompts/tasks/task_08_screenshot_to_ontology.md
 
 要求包含：
 1. 任务目标
@@ -584,7 +584,7 @@ scoring: support optional screenshot evidence
 results/demo_screenshot/
 
 内容包括：
-1. 模拟 AI 对 task_06_screenshot_to_ontology.md 的输出
+1. 模拟 AI 对 task_08_screenshot_to_ontology.md 的输出
 2. tool_profile.json
 3. human_effort_log.json
 4. machine_score.json
@@ -752,9 +752,9 @@ data: add web page map
 
 请创建：
 
-prompts/tasks/task_07_web_snapshot_to_ontology.md
-prompts/tasks/task_08_page_map_to_business_flow.md
-prompts/tasks/task_09_extended_multi_source_fusion.md
+prompts/tasks/task_12_web_snapshot_to_ontology.md
+prompts/tasks/task_13_page_map_to_business_flow.md
+prompts/tasks/task_14_extended_multi_source_fusion.md
 
 每个 prompt 必须包含：
 - 任务目标

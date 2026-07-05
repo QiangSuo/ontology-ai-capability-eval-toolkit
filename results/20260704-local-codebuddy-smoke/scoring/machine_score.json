@@ -1,0 +1,969 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation_id": "20260704-local-codebuddy-smoke",
+  "generated_at": "2026-07-05T02:09:16Z",
+  "inputs": {
+    "evaluation_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/results/20260704-local-codebuddy-smoke",
+    "dataset_dir": "/Users/suoqiang/Desktop/本体项目 AI 工具能力评估工具包/ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp",
+    "gold_ontology": "gold/gold_ontology.json",
+    "acceptable_aliases": "gold/acceptable_aliases.json",
+    "gold_screenshot_evidence": "gold/gold_evidence_map.screenshot.json",
+    "gold_web_evidence": "gold/gold_evidence_map.web.json"
+  },
+  "summary": {
+    "task_result_file_count": 5,
+    "ontology_file_count": 1,
+    "valid_ontology_file_count": 1,
+    "evidence_file_count": 0,
+    "json_load_error_count": 0
+  },
+  "schema_validation": [
+    {
+      "path": "task_01_code_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_02_ddl_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_03_sample_data_profile_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_04_document_to_ontology_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "task_05_multi_source_fusion_result.json",
+      "schema": "task_result.schema.json",
+      "is_valid": true,
+      "errors": []
+    },
+    {
+      "path": "normalized_outputs/task_05_multi_source_fusion.json",
+      "schema": "ontology.schema.json",
+      "is_valid": true,
+      "errors": []
+    }
+  ],
+  "gold_comparison": {
+    "matched_concepts": {
+      "concept:department": {
+        "output_id": "department",
+        "output_name": "Department"
+      },
+      "concept:employee": {
+        "output_id": "user",
+        "output_name": "User"
+      },
+      "concept:supplier": {
+        "output_id": "supplier",
+        "output_name": "Supplier"
+      },
+      "concept:purchase_request": {
+        "output_id": "purchase_request",
+        "output_name": "Purchase Request"
+      },
+      "concept:purchase_request_item": {
+        "output_id": "purchase_request_line",
+        "output_name": "Purchase Request Line"
+      },
+      "concept:approval_task": {
+        "output_id": "approval_record",
+        "output_name": "Approval Record"
+      },
+      "concept:contract": {
+        "output_id": "contract",
+        "output_name": "Contract"
+      },
+      "concept:purchase_order": {
+        "output_id": "purchase_order",
+        "output_name": "Purchase Order"
+      },
+      "concept:goods_receipt": {
+        "output_id": "goods_receipt",
+        "output_name": "Goods Receipt"
+      },
+      "concept:invoice": {
+        "output_id": "invoice",
+        "output_name": "Invoice"
+      },
+      "concept:payment": {
+        "output_id": "payment_request",
+        "output_name": "Payment Request"
+      }
+    },
+    "matched_attributes": {
+      "attr:department.department_code": {
+        "output_id": "department.department_code",
+        "output_name": "department_code"
+      },
+      "attr:department.department_name": {
+        "output_id": "department.department_name",
+        "output_name": "department_name"
+      },
+      "attr:department.cost_center": {
+        "output_id": "department.cost_center",
+        "output_name": "cost_center"
+      },
+      "attr:department.is_active": {
+        "output_id": "department.is_active",
+        "output_name": "is_active"
+      },
+      "attr:employee.user_name": {
+        "output_id": "user.user_name",
+        "output_name": "user_name"
+      },
+      "attr:employee.role_code": {
+        "output_id": "user.role_code",
+        "output_name": "role_code"
+      },
+      "attr:employee.email": {
+        "output_id": "user.email",
+        "output_name": "email"
+      },
+      "attr:employee.is_active": {
+        "output_id": "user.is_active",
+        "output_name": "is_active"
+      },
+      "attr:supplier.supplier_code": {
+        "output_id": "supplier.supplier_code",
+        "output_name": "supplier_code"
+      },
+      "attr:supplier.supplier_status": {
+        "output_id": "supplier.supplier_status",
+        "output_name": "supplier_status"
+      },
+      "attr:supplier.risk_rating": {
+        "output_id": "supplier.risk_rating",
+        "output_name": "risk_rating"
+      },
+      "attr:purchase_request.request_no": {
+        "output_id": "purchase_request.request_no",
+        "output_name": "request_no"
+      },
+      "attr:purchase_request.estimated_amount": {
+        "output_id": "purchase_request.estimated_amount",
+        "output_name": "estimated_amount"
+      },
+      "attr:purchase_request.request_status": {
+        "output_id": "purchase_request.request_status",
+        "output_name": "request_status"
+      },
+      "attr:purchase_request.business_justification": {
+        "output_id": "purchase_request.business_justification",
+        "output_name": "business_justification"
+      },
+      "attr:purchase_request_item.item_description": {
+        "output_id": "purchase_request_line.item_description",
+        "output_name": "item_description"
+      },
+      "attr:purchase_request_item.quantity": {
+        "output_id": "purchase_request_line.quantity",
+        "output_name": "quantity"
+      },
+      "attr:purchase_request_item.line_amount": {
+        "output_id": "purchase_request_line.line_amount",
+        "output_name": "line_amount"
+      },
+      "attr:approval_task.target_type": {
+        "output_id": "approval_record.target_type",
+        "output_name": "target_type"
+      },
+      "attr:approval_task.target_id": {
+        "output_id": "approval_record.target_id",
+        "output_name": "target_id"
+      },
+      "attr:approval_task.approval_status": {
+        "output_id": "approval_record.approval_status",
+        "output_name": "approval_status"
+      },
+      "attr:approval_task.approval_comment": {
+        "output_id": "approval_record.approval_comment",
+        "output_name": "approval_comment"
+      },
+      "attr:contract.contract_no": {
+        "output_id": "contract.contract_no",
+        "output_name": "contract_no"
+      },
+      "attr:contract.contract_amount": {
+        "output_id": "contract.contract_amount",
+        "output_name": "contract_amount"
+      },
+      "attr:contract.contract_status": {
+        "output_id": "contract.contract_status",
+        "output_name": "contract_status"
+      },
+      "attr:contract.legal_approved_at": {
+        "output_id": "contract.legal_approved_at",
+        "output_name": "legal_approved_at"
+      },
+      "attr:contract.activated_at": {
+        "output_id": "contract.activated_at",
+        "output_name": "activated_at"
+      },
+      "attr:contract.termination_reason": {
+        "output_id": "contract.termination_reason",
+        "output_name": "termination_reason"
+      },
+      "attr:purchase_order.po_no": {
+        "output_id": "purchase_order.po_no",
+        "output_name": "po_no"
+      },
+      "attr:purchase_order.po_amount": {
+        "output_id": "purchase_order.po_amount",
+        "output_name": "po_amount"
+      },
+      "attr:purchase_order.po_status": {
+        "output_id": "purchase_order.po_status",
+        "output_name": "po_status"
+      },
+      "attr:goods_receipt.receipt_no": {
+        "output_id": "goods_receipt.receipt_no",
+        "output_name": "receipt_no"
+      },
+      "attr:goods_receipt.receipt_status": {
+        "output_id": "goods_receipt.receipt_status",
+        "output_name": "receipt_status"
+      },
+      "attr:goods_receipt.inspection_result": {
+        "output_id": "goods_receipt.inspection_result",
+        "output_name": "inspection_result"
+      },
+      "attr:invoice.invoice_no": {
+        "output_id": "invoice.invoice_no",
+        "output_name": "invoice_no"
+      },
+      "attr:invoice.invoice_amount": {
+        "output_id": "invoice.invoice_amount",
+        "output_name": "invoice_amount"
+      },
+      "attr:invoice.invoice_status": {
+        "output_id": "invoice.invoice_status",
+        "output_name": "invoice_status"
+      },
+      "attr:invoice.match_variance_amount": {
+        "output_id": "invoice.match_variance_amount",
+        "output_name": "match_variance_amount"
+      },
+      "attr:payment.payment_no": {
+        "output_id": "payment_request.payment_no",
+        "output_name": "payment_no"
+      },
+      "attr:payment.payment_amount": {
+        "output_id": "payment_request.payment_amount",
+        "output_name": "payment_amount"
+      },
+      "attr:payment.payment_status": {
+        "output_id": "payment_request.payment_status",
+        "output_name": "payment_status"
+      },
+      "attr:payment.due_date": {
+        "output_id": "payment_request.due_date",
+        "output_name": "due_date"
+      }
+    },
+    "matched_relations": {
+      "rel:purchase_request.has_item": {
+        "output_id": "rel.purchase_request.has_lines",
+        "output_predicate": "has lines"
+      },
+      "rel:purchase_request.requested_by_employee": {
+        "output_id": "rel.purchase_request.requested_by",
+        "output_predicate": "requested_by"
+      },
+      "rel:purchase_request.belongs_to_department": {
+        "output_id": "rel.purchase_request.belongs_to_department",
+        "output_predicate": "belongs_to"
+      },
+      "rel:employee.belongs_to_department": {
+        "output_id": "rel.user.belongs_to_department",
+        "output_predicate": "belongs_to"
+      },
+      "rel:approval_task.approves_purchase_request": {
+        "output_id": "rel.approval_record.targets_purchase_request",
+        "output_predicate": "target"
+      },
+      "rel:approval_task.approves_payment": {
+        "output_id": "rel.approval_record.targets_payment_request",
+        "output_predicate": "target"
+      },
+      "rel:contract.with_supplier": {
+        "output_id": "rel.contract.supplier",
+        "output_predicate": "supplier"
+      },
+      "rel:contract.from_purchase_request": {
+        "output_id": "rel.contract.from_purchase_request",
+        "output_predicate": "created_from"
+      },
+      "rel:purchase_order.released_against_contract": {
+        "output_id": "rel.purchase_order.contract",
+        "output_predicate": "contract"
+      },
+      "rel:purchase_order.sent_to_supplier": {
+        "output_id": "rel.purchase_order.supplier",
+        "output_predicate": "supplier"
+      },
+      "rel:goods_receipt.for_purchase_order": {
+        "output_id": "rel.goods_receipt.purchase_order",
+        "output_predicate": "purchase_order"
+      },
+      "rel:invoice.matched_to_receipt": {
+        "output_id": "rel.invoice.goods_receipt",
+        "output_predicate": "goods_receipt"
+      },
+      "rel:invoice.issued_by_supplier": {
+        "output_id": "rel.invoice.supplier",
+        "output_predicate": "supplier"
+      },
+      "rel:invoice.for_purchase_order": {
+        "output_id": "rel.invoice.purchase_order",
+        "output_predicate": "purchase_order"
+      },
+      "rel:payment.for_invoice": {
+        "output_id": "rel.payment_request.invoice",
+        "output_predicate": "invoice"
+      }
+    },
+    "missing_core_concepts": [
+      "concept:material"
+    ],
+    "missing_key_attributes": [
+      "attr:approval_task.approval_id",
+      "attr:approval_task.approver_user_id",
+      "attr:approval_task.step_name",
+      "attr:approval_task.submitted_at",
+      "attr:contract.contract_id",
+      "attr:contract.contract_title",
+      "attr:contract.request_id",
+      "attr:contract.supplier_id",
+      "attr:department.department_id",
+      "attr:employee.department_id",
+      "attr:employee.user_id",
+      "attr:goods_receipt.po_id",
+      "attr:goods_receipt.receipt_id",
+      "attr:goods_receipt.received_by",
+      "attr:invoice.invoice_date",
+      "attr:invoice.invoice_id",
+      "attr:invoice.po_id",
+      "attr:invoice.supplier_id",
+      "attr:material.category_code",
+      "attr:material.item_description",
+      "attr:payment.invoice_id",
+      "attr:payment.payment_request_id",
+      "attr:purchase_order.contract_id",
+      "attr:purchase_order.po_id",
+      "attr:purchase_order.request_id",
+      "attr:purchase_order.supplier_id",
+      "attr:purchase_request.currency_code",
+      "attr:purchase_request.department_id",
+      "attr:purchase_request.request_id",
+      "attr:purchase_request.request_title",
+      "attr:purchase_request.requester_user_id",
+      "attr:purchase_request_item.category_code",
+      "attr:purchase_request_item.estimated_unit_price",
+      "attr:purchase_request_item.line_id",
+      "attr:purchase_request_item.request_id",
+      "attr:purchase_request_item.unit_of_measure",
+      "attr:supplier.supplier_id",
+      "attr:supplier.supplier_name"
+    ],
+    "missing_key_relations": [
+      "rel:approval_task.performed_by_employee",
+      "rel:contract.enables_purchase_order",
+      "rel:contract.reviewed_by_employee",
+      "rel:department.has_employee",
+      "rel:department.owns_purchase_request",
+      "rel:employee.approves_payment",
+      "rel:employee.creates_purchase_request",
+      "rel:employee.performs_approval_task",
+      "rel:employee.records_goods_receipt",
+      "rel:goods_receipt.recorded_by_employee",
+      "rel:goods_receipt.supports_invoice_match",
+      "rel:invoice.generates_payment",
+      "rel:material.requested_on_item",
+      "rel:payment.approved_by_employee",
+      "rel:payment.has_approval_task",
+      "rel:purchase_order.for_purchase_request",
+      "rel:purchase_order.has_goods_receipt",
+      "rel:purchase_order.has_invoice",
+      "rel:purchase_request.has_approval_task",
+      "rel:purchase_request.prefers_supplier",
+      "rel:purchase_request.results_in_contract",
+      "rel:purchase_request.results_in_purchase_order",
+      "rel:purchase_request_item.belongs_to_request",
+      "rel:purchase_request_item.describes_material",
+      "rel:supplier.issues_invoice",
+      "rel:supplier.party_to_contract",
+      "rel:supplier.preferred_by_request",
+      "rel:supplier.receives_purchase_order"
+    ],
+    "possible_hallucinations": {
+      "concepts": [],
+      "attributes": [],
+      "relations": [
+        {
+          "id": "rel.approval_record.targets_contract",
+          "predicate": "target",
+          "source_concept_id": "approval_record",
+          "target_concept_id": "contract"
+        }
+      ]
+    },
+    "counts": {
+      "output_concepts": 11,
+      "output_attributes": 84,
+      "output_relations": 16,
+      "matched_core_concepts": 11,
+      "total_core_concepts": 12,
+      "matched_key_attributes": 36,
+      "total_key_attributes": 74,
+      "matched_key_relations": 15,
+      "total_key_relations": 43
+    },
+    "coverage": {
+      "core_concept_coverage": 0.9167,
+      "key_attribute_coverage": 0.4865,
+      "key_relation_coverage": 0.3488
+    }
+  },
+  "evidence_check": {
+    "referenced_evidence_count": 270,
+    "available_evidence_ref_count": 439,
+    "missing_evidence_refs": [
+      {
+        "element_type": "attribute",
+        "element_id": "department.department_code",
+        "evidence_ref": "ddl:pc_department.department_code"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "department.department_name",
+        "evidence_ref": "ddl:pc_department.department_name"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "department.cost_center",
+        "evidence_ref": "ddl:pc_department.cost_center"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "department.is_active",
+        "evidence_ref": "ddl:pc_department.is_active"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "user.user_name",
+        "evidence_ref": "ddl:pc_user.user_name"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "user.role_code",
+        "evidence_ref": "ddl:pc_user.role_code"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "user.email",
+        "evidence_ref": "ddl:pc_user.email"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "user.is_active",
+        "evidence_ref": "ddl:pc_user.is_active"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "supplier.supplier_code",
+        "evidence_ref": "ddl:pc_supplier.supplier_code"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "supplier.supplier_status",
+        "evidence_ref": "ddl:pc_supplier.supplier_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "supplier.risk_rating",
+        "evidence_ref": "ddl:pc_supplier.risk_rating"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request.request_no",
+        "evidence_ref": "ddl:pc_purchase_request.request_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request.request_status",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request.business_justification",
+        "evidence_ref": "ddl:pc_purchase_request.business_justification"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request_line.item_description",
+        "evidence_ref": "ddl:pc_purchase_request_line.item_description"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request_line.quantity",
+        "evidence_ref": "ddl:pc_purchase_request_line.quantity"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_request_line.line_amount",
+        "evidence_ref": "ddl:pc_purchase_request_line.line_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "approval_record.target_type",
+        "evidence_ref": "ddl:pc_approval_record.target_type"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "approval_record.target_id",
+        "evidence_ref": "ddl:pc_approval_record.target_id"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "approval_record.approval_status",
+        "evidence_ref": "ddl:pc_approval_record.approval_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "approval_record.approval_comment",
+        "evidence_ref": "ddl:pc_approval_record.approval_comment"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.contract_no",
+        "evidence_ref": "ddl:pc_contract.contract_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.contract_amount",
+        "evidence_ref": "ddl:pc_contract.contract_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.contract_status",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.legal_approved_at",
+        "evidence_ref": "ddl:pc_contract.legal_approved_at"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.activated_at",
+        "evidence_ref": "ddl:pc_contract.activated_at"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "contract.termination_reason",
+        "evidence_ref": "ddl:pc_contract.termination_reason"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_order.po_no",
+        "evidence_ref": "ddl:pc_purchase_order.po_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_order.po_amount",
+        "evidence_ref": "ddl:pc_purchase_order.po_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "purchase_order.po_status",
+        "evidence_ref": "ddl:pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "goods_receipt.receipt_no",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "goods_receipt.receipt_status",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "goods_receipt.inspection_result",
+        "evidence_ref": "ddl:pc_goods_receipt.inspection_result"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "invoice.invoice_no",
+        "evidence_ref": "ddl:pc_invoice.invoice_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "invoice.invoice_amount",
+        "evidence_ref": "ddl:pc_invoice.invoice_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "invoice.invoice_status",
+        "evidence_ref": "ddl:pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "invoice.match_variance_amount",
+        "evidence_ref": "ddl:pc_invoice.match_variance_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "payment_request.payment_no",
+        "evidence_ref": "ddl:pc_payment_request.payment_no"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "payment_request.payment_amount",
+        "evidence_ref": "ddl:pc_payment_request.payment_amount"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "payment_request.payment_status",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "attribute",
+        "element_id": "payment_request.due_date",
+        "evidence_ref": "ddl:pc_payment_request.due_date"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.purchase_request.has_lines",
+        "evidence_ref": "ddl:pc_purchase_request_line.request_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.purchase_request.requested_by",
+        "evidence_ref": "ddl:pc_purchase_request.requester_user_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.purchase_request.belongs_to_department",
+        "evidence_ref": "ddl:pc_purchase_request.department_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.user.belongs_to_department",
+        "evidence_ref": "ddl:pc_user.department_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.approval_record.targets_purchase_request",
+        "evidence_ref": "ddl:pc_approval_record.target_type"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.approval_record.targets_contract",
+        "evidence_ref": "ddl:pc_approval_record.target_type"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.approval_record.targets_payment_request",
+        "evidence_ref": "ddl:pc_approval_record.target_type"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.contract.supplier",
+        "evidence_ref": "ddl:pc_contract.supplier_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.contract.from_purchase_request",
+        "evidence_ref": "ddl:pc_contract.request_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.purchase_order.contract",
+        "evidence_ref": "ddl:pc_purchase_order.contract_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.purchase_order.supplier",
+        "evidence_ref": "ddl:pc_purchase_order.supplier_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.goods_receipt.purchase_order",
+        "evidence_ref": "ddl:pc_goods_receipt.po_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.invoice.goods_receipt",
+        "evidence_ref": "ddl:pc_invoice.receipt_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.invoice.supplier",
+        "evidence_ref": "ddl:pc_invoice.supplier_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.invoice.purchase_order",
+        "evidence_ref": "ddl:pc_invoice.po_id"
+      },
+      {
+        "element_type": "relation",
+        "element_id": "rel.payment_request.invoice",
+        "evidence_ref": "ddl:pc_payment_request.invoice_id"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule.pr.business_justification_required",
+        "evidence_ref": "ddl:pc_purchase_request.business_justification"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule.supplier.active_not_high_risk",
+        "evidence_ref": "ddl:pc_supplier.supplier_status"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule.supplier.active_not_high_risk",
+        "evidence_ref": "ddl:pc_supplier.risk_rating"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule.contract.activation",
+        "evidence_ref": "ddl:pc_contract.legal_approved_at"
+      },
+      {
+        "element_type": "rule",
+        "element_id": "rule.payment.hold_reason",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.pr.draft",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.pr.submitted",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.pr.approved",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.pr.rejected",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.pr.cancelled",
+        "evidence_ref": "ddl:pc_purchase_request.request_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.contract.draft",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.contract.legal_review",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.contract.active",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.contract.expired",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.contract.terminated",
+        "evidence_ref": "ddl:pc_contract.contract_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.po.released",
+        "evidence_ref": "ddl:pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.po.partially_received",
+        "evidence_ref": "ddl:pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.po.closed",
+        "evidence_ref": "ddl:pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.po.cancelled",
+        "evidence_ref": "ddl:pc_purchase_order.po_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.gr.pending",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.gr.partial",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.gr.complete",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.gr.rejected",
+        "evidence_ref": "ddl:pc_goods_receipt.receipt_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.invoice.pending_match",
+        "evidence_ref": "ddl:pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.invoice.matched",
+        "evidence_ref": "ddl:pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.invoice.exception",
+        "evidence_ref": "ddl:pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.invoice.cancelled",
+        "evidence_ref": "ddl:pc_invoice.invoice_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.payment.requested",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.payment.approved",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.payment.paid",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.payment.held",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "state",
+        "element_id": "state.payment.cancelled",
+        "evidence_ref": "ddl:pc_payment_request.payment_status"
+      },
+      {
+        "element_type": "alias",
+        "element_id": "alias.purchase_request_line.material_item",
+        "evidence_ref": "ddl:pc_purchase_request_line.item_description"
+      },
+      {
+        "element_type": "uncertainty",
+        "element_id": "uncertainty.approval_record.polymorphic_target",
+        "evidence_ref": "ddl:pc_approval_record.target_type"
+      },
+      {
+        "element_type": "uncertainty",
+        "element_id": "uncertainty.approval_record.polymorphic_target",
+        "evidence_ref": "ddl:pc_approval_record.target_id"
+      }
+    ],
+    "screenshot_evidence": {
+      "enabled": true,
+      "gold_screenshot_evidence_count": 15,
+      "referenced_screenshot_evidence_count": 0,
+      "matched_screenshot_evidence_count": 0,
+      "missing_screenshot_evidence_refs": [],
+      "invalid_screenshot_source_files": [],
+      "input_mode": "surrogate_only",
+      "note": "Screenshot evidence checks are optional and do not change MVP gold ontology coverage."
+    },
+    "web_evidence": {
+      "enabled": true,
+      "gold_web_evidence_count": 40,
+      "referenced_web_evidence_count": 0,
+      "matched_web_evidence_count": 0,
+      "missing_web_evidence_refs": [],
+      "invalid_web_snapshot_paths": [],
+      "page_map_file_count": 1,
+      "input_mode": "html_snapshot",
+      "note": "Web evidence checks are optional and do not change MVP gold ontology coverage."
+    }
+  },
+  "possible_hallucinations": {
+    "concepts": [],
+    "attributes": [],
+    "relations": [
+      {
+        "id": "rel.approval_record.targets_contract",
+        "predicate": "target",
+        "source_concept_id": "approval_record",
+        "target_concept_id": "contract"
+      }
+    ]
+  },
+  "machine_metrics": {
+    "core_concept_coverage": 0.9167,
+    "key_attribute_coverage": 0.4865,
+    "key_relation_coverage": 0.3488,
+    "schema_validity_rate": 1.0,
+    "missing_evidence_ref_count": 92,
+    "missing_screenshot_evidence_ref_count": 0,
+    "referenced_screenshot_evidence_count": 0,
+    "web_evidence_enabled": true,
+    "referenced_web_evidence_count": 0,
+    "matched_web_evidence_count": 0,
+    "missing_web_evidence_ref_count": 0,
+    "invalid_web_snapshot_path_count": 0,
+    "possible_hallucinated_concept_count": 0,
+    "possible_hallucinated_attribute_count": 0,
+    "possible_hallucinated_relation_count": 1
+  },
+  "json_load_errors": [],
+  "human_review": {
+    "status": "pending",
+    "reviewer": null,
+    "manual_score": null,
+    "manual_decision": null,
+    "notes": null,
+    "overrides": []
+  },
+  "notes": [
+    "Machine checks are conservative and alias-based; they do not replace human ontology quality review.",
+    "Possible hallucinations are unmatched items, not final false-positive judgments.",
+    "Gold/reference paths in inputs are evaluator-side relative identifiers and must not be provided to AI tools under evaluation."
+  ]
+}

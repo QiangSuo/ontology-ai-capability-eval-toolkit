@@ -1,0 +1,3075 @@
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-document-ontology",
+  "title": "Procurement Contract MVP Document Ontology Draft",
+  "domain": "procurement_contract",
+  "concepts": [
+    {
+      "id": "concept.purchase_request",
+      "name": "Purchase Request",
+      "type": "concept",
+      "description": "A business request for goods or services before sourcing or contracting.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.purchase_request.title",
+        "attribute.purchase_request.department",
+        "attribute.purchase_request.expected_amount",
+        "attribute.purchase_request.required_date",
+        "attribute.purchase_request.business_justification",
+        "attribute.purchase_request.status",
+        "attribute.purchase_request.rejection_reason",
+        "attribute.purchase_request.cancellation_reason"
+      ],
+      "state_ids": [
+        "state.purchase_request.draft",
+        "state.purchase_request.submitted",
+        "state.purchase_request.approved",
+        "state.purchase_request.rejected",
+        "state.purchase_request.cancelled"
+      ],
+      "alias_ids": [
+        "alias.purchase_request.pr",
+        "alias.purchase_request.purchase_requisition"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:procurement_process#Purchase_Request_Creation",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "concept.purchase_request_line",
+      "name": "Purchase Request Line",
+      "type": "concept",
+      "description": "An item or service line under a purchase request.",
+      "category": "business_object",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "concept.supplier",
+      "name": "Supplier",
+      "type": "concept",
+      "description": "An external vendor that provides goods or services.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.supplier.active_status",
+        "attribute.supplier.risk_status",
+        "attribute.supplier.suspension_status"
+      ],
+      "alias_ids": [
+        "alias.supplier.vendor"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "concept.approval_record",
+      "name": "Approval Record",
+      "type": "concept",
+      "description": "A decision record for purchase request, contract, or payment application approval.",
+      "category": "workflow_evidence",
+      "attribute_ids": [
+        "attribute.approval_record.decision",
+        "attribute.approval_record.rejection_comment"
+      ],
+      "alias_ids": [
+        "alias.approval_record.approval_step",
+        "alias.approval_record.decision_record"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "concept.contract",
+      "name": "Contract",
+      "type": "concept",
+      "description": "A legal agreement between the company and a Supplier.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.contract.status",
+        "attribute.contract.amount",
+        "attribute.contract.termination_reason"
+      ],
+      "state_ids": [
+        "state.contract.draft",
+        "state.contract.legal_review",
+        "state.contract.active",
+        "state.contract.expired",
+        "state.contract.terminated"
+      ],
+      "alias_ids": [
+        "alias.contract.agreement"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:contract_lifecycle#Contract_Definition",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "concept.purchase_order",
+      "name": "Purchase Order",
+      "type": "concept",
+      "description": "An operational order released against an active contract.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.purchase_order.amount",
+        "attribute.purchase_order.status"
+      ],
+      "state_ids": [
+        "state.purchase_order.released",
+        "state.purchase_order.closed"
+      ],
+      "alias_ids": [
+        "alias.purchase_order.po"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:glossary#Glossary",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "concept.goods_receipt",
+      "name": "Goods Receipt",
+      "type": "concept",
+      "description": "A receiving record and receiving evidence for delivered goods or services.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.goods_receipt.status",
+        "attribute.goods_receipt.received_time",
+        "attribute.goods_receipt.receiver",
+        "attribute.goods_receipt.inspection_result"
+      ],
+      "state_ids": [
+        "state.goods_receipt.pending",
+        "state.goods_receipt.partial",
+        "state.goods_receipt.complete",
+        "state.goods_receipt.rejected"
+      ],
+      "alias_ids": [
+        "alias.goods_receipt.grn",
+        "alias.goods_receipt.receipt_record"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Goods_Receipt",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "concept.invoice",
+      "name": "Invoice",
+      "type": "concept",
+      "description": "A supplier billing document matched against purchase order and goods receipt.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.invoice.status",
+        "attribute.invoice.amount"
+      ],
+      "state_ids": [
+        "state.invoice.pending_match",
+        "state.invoice.matched",
+        "state.invoice.exception",
+        "state.invoice.cancelled"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "concept.payment_request",
+      "name": "Payment Request",
+      "type": "concept",
+      "description": "A finance request to pay a matched invoice.",
+      "category": "business_object",
+      "attribute_ids": [
+        "attribute.payment_request.status",
+        "attribute.payment_request.paid_time",
+        "attribute.payment_request.hold_reason"
+      ],
+      "state_ids": [
+        "state.payment_request.requested",
+        "state.payment_request.approved",
+        "state.payment_request.paid",
+        "state.payment_request.held",
+        "state.payment_request.cancelled"
+      ],
+      "alias_ids": [
+        "alias.payment_request.payment_application"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "concept.department",
+      "name": "Department",
+      "type": "concept",
+      "description": "Organizational actor that owns requests and approvals.",
+      "category": "organization",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept.user",
+      "name": "User",
+      "type": "concept",
+      "description": "Organizational actor that owns requests, approvals, receiving, and payment actions.",
+      "category": "actor",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept.accounts_payable",
+      "name": "Accounts Payable",
+      "type": "concept",
+      "description": "Function that matches supplier invoice against purchase order and receipt.",
+      "category": "organization_function",
+      "alias_ids": [
+        "alias.accounts_payable.ap"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:glossary#Abbreviation_Notes"
+      ],
+      "confidence": 0.86
+    }
+  ],
+  "attributes": [
+    {
+      "id": "attribute.purchase_request.title",
+      "concept_id": "concept.purchase_request",
+      "name": "title",
+      "type": "attribute",
+      "required": true,
+      "description": "Title provided when a requester creates a Purchase Request.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "attribute.purchase_request.department",
+      "concept_id": "concept.purchase_request",
+      "name": "department",
+      "type": "attribute",
+      "required": true,
+      "description": "Department provided when a requester creates a Purchase Request.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "attribute.purchase_request.expected_amount",
+      "concept_id": "concept.purchase_request",
+      "name": "expected amount",
+      "type": "attribute",
+      "required": true,
+      "description": "Expected amount provided when creating a Purchase Request; request amount must be non-negative.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation",
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "attribute.purchase_request.required_date",
+      "concept_id": "concept.purchase_request",
+      "name": "required date",
+      "type": "attribute",
+      "required": true,
+      "description": "Required date provided when creating a Purchase Request.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "attribute.purchase_request.business_justification",
+      "concept_id": "concept.purchase_request",
+      "name": "business justification",
+      "type": "attribute",
+      "required": true,
+      "description": "Business justification is required before submission.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation",
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.purchase_request.status",
+      "concept_id": "concept.purchase_request",
+      "name": "status",
+      "type": "attribute",
+      "required": true,
+      "allowed_values": [
+        "DRAFT",
+        "SUBMITTED",
+        "APPROVED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "description": "Purchase Request status values from the documented status flow.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.purchase_request.rejection_reason",
+      "concept_id": "concept.purchase_request",
+      "name": "rejection reason",
+      "type": "attribute",
+      "required": true,
+      "description": "A rejected request must include a rejection reason.",
+      "evidence_refs": [
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "attribute.purchase_request.cancellation_reason",
+      "concept_id": "concept.purchase_request",
+      "name": "cancellation reason",
+      "type": "attribute",
+      "required": true,
+      "description": "A cancelled request must include a cancellation reason.",
+      "evidence_refs": [
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "attribute.supplier.active_status",
+      "concept_id": "concept.supplier",
+      "name": "active status",
+      "type": "attribute",
+      "required": false,
+      "description": "Supplier must be active before award.",
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules",
+        "doc:procurement_process#Supplier_Selection"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attribute.supplier.risk_status",
+      "concept_id": "concept.supplier",
+      "name": "risk status",
+      "type": "attribute",
+      "required": false,
+      "description": "Procurement must confirm the Supplier is not high risk before award; high-risk suppliers should not be selected for new contracts.",
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules",
+        "doc:procurement_process#Supplier_Selection"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attribute.supplier.suspension_status",
+      "concept_id": "concept.supplier",
+      "name": "suspension status",
+      "type": "attribute",
+      "required": false,
+      "description": "Suspended suppliers must not receive purchase orders.",
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attribute.approval_record.decision",
+      "concept_id": "concept.approval_record",
+      "name": "decision",
+      "type": "attribute",
+      "required": false,
+      "description": "Approval Record is a decision record for approvals.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attribute.approval_record.rejection_comment",
+      "concept_id": "concept.approval_record",
+      "name": "rejection comment",
+      "type": "attribute",
+      "required": false,
+      "description": "Rejection comments should explain the reason.",
+      "evidence_refs": [
+        "doc:business_rules#Approval_Rules"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "attribute.contract.status",
+      "concept_id": "concept.contract",
+      "name": "status",
+      "type": "attribute",
+      "required": true,
+      "allowed_values": [
+        "DRAFT",
+        "LEGAL_REVIEW",
+        "ACTIVE",
+        "EXPIRED",
+        "TERMINATED"
+      ],
+      "description": "Contract status values from the documented status flow.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.contract.amount",
+      "concept_id": "concept.contract",
+      "name": "amount",
+      "type": "attribute",
+      "required": false,
+      "description": "Contract amount should normally equal the approved purchase request amount unless procurement documents a split award.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "attribute.contract.termination_reason",
+      "concept_id": "concept.contract",
+      "name": "termination reason",
+      "type": "attribute",
+      "required": true,
+      "description": "A terminated Contract must have a termination reason.",
+      "evidence_refs": [
+        "doc:business_rules#Contract_Rules",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.purchase_order.amount",
+      "concept_id": "concept.purchase_order",
+      "name": "amount",
+      "type": "attribute",
+      "required": false,
+      "description": "Invoice matching compares invoice amount to purchase order amount.",
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "attribute.purchase_order.status",
+      "concept_id": "concept.purchase_order",
+      "name": "status",
+      "type": "attribute",
+      "required": false,
+      "allowed_values": [
+        "RELEASED",
+        "CLOSED"
+      ],
+      "description": "Purchase Order may be released and may be closed, but no formal Purchase Order status flow is defined in the documents.",
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Order_Rules",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.72
+    },
+    {
+      "id": "attribute.goods_receipt.status",
+      "concept_id": "concept.goods_receipt",
+      "name": "status",
+      "type": "attribute",
+      "required": true,
+      "allowed_values": [
+        "PENDING",
+        "PARTIAL",
+        "COMPLETE",
+        "REJECTED"
+      ],
+      "description": "Goods Receipt status values from the documented status flow.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.goods_receipt.received_time",
+      "concept_id": "concept.goods_receipt",
+      "name": "received time",
+      "type": "attribute",
+      "required": false,
+      "description": "A complete receipt should include received time.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attribute.goods_receipt.receiver",
+      "concept_id": "concept.goods_receipt",
+      "name": "receiver",
+      "type": "attribute",
+      "required": false,
+      "description": "A complete receipt should include receiver.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attribute.goods_receipt.inspection_result",
+      "concept_id": "concept.goods_receipt",
+      "name": "inspection result",
+      "type": "attribute",
+      "required": false,
+      "description": "A complete receipt should include inspection result.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "attribute.invoice.status",
+      "concept_id": "concept.invoice",
+      "name": "status",
+      "type": "attribute",
+      "required": true,
+      "allowed_values": [
+        "PENDING_MATCH",
+        "MATCHED",
+        "EXCEPTION",
+        "CANCELLED"
+      ],
+      "description": "Invoice status values from the documented status flow.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.invoice.amount",
+      "concept_id": "concept.invoice",
+      "name": "invoice amount",
+      "type": "attribute",
+      "required": false,
+      "description": "Invoice matching compares invoice amount to purchase order amount and receiving evidence.",
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attribute.payment_request.status",
+      "concept_id": "concept.payment_request",
+      "name": "status",
+      "type": "attribute",
+      "required": true,
+      "allowed_values": [
+        "REQUESTED",
+        "APPROVED",
+        "PAID",
+        "HELD",
+        "CANCELLED"
+      ],
+      "description": "Payment Request status values from the documented payment status flow.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.payment_request.paid_time",
+      "concept_id": "concept.payment_request",
+      "name": "paid time",
+      "type": "attribute",
+      "required": true,
+      "description": "Paid payment applications or paid requests must store paid time.",
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "attribute.payment_request.hold_reason",
+      "concept_id": "concept.payment_request",
+      "name": "hold reason",
+      "type": "attribute",
+      "required": true,
+      "description": "Held payment requires a hold reason in operational notes.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation.purchase_request.contains_line",
+      "type": "relation",
+      "source_concept_id": "concept.purchase_request",
+      "target_concept_id": "concept.purchase_request_line",
+      "predicate": "contains",
+      "cardinality": "one_to_many",
+      "description": "A Purchase Request must have at least one line item before submission.",
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules",
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "relation.contract.created_from_purchase_request",
+      "type": "relation",
+      "source_concept_id": "concept.contract",
+      "target_concept_id": "concept.purchase_request",
+      "predicate": "created_from",
+      "cardinality": "many_to_one",
+      "description": "A Contract is normally created from an approved Purchase Request and must reference one approved Purchase Request.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Definition",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "relation.contract.references_supplier",
+      "type": "relation",
+      "source_concept_id": "concept.contract",
+      "target_concept_id": "concept.supplier",
+      "predicate": "references",
+      "cardinality": "many_to_one",
+      "description": "A contract must reference one Supplier.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "relation.purchase_order.released_against_contract",
+      "type": "relation",
+      "source_concept_id": "concept.purchase_order",
+      "target_concept_id": "concept.contract",
+      "predicate": "released_against",
+      "cardinality": "many_to_one",
+      "description": "A Purchase Order is released against an active contract and can be released only after the related contract is active.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "relation.purchase_request.leads_to_purchase_order",
+      "type": "relation",
+      "source_concept_id": "concept.purchase_request",
+      "target_concept_id": "concept.purchase_order",
+      "predicate": "leads_to",
+      "cardinality": "one_to_many",
+      "description": "One Purchase Request may lead to one or more Purchase Orders if delivery is split.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "relation.goods_receipt.evidences_purchase_order_receipt",
+      "type": "relation",
+      "source_concept_id": "concept.goods_receipt",
+      "target_concept_id": "concept.purchase_order",
+      "predicate": "evidences_receipt_for",
+      "cardinality": "many_to_one",
+      "description": "Goods Receipt is receiving evidence used when matching invoice against Purchase Order and receipt.",
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "relation.invoice.matched_against_purchase_order",
+      "type": "relation",
+      "source_concept_id": "concept.invoice",
+      "target_concept_id": "concept.purchase_order",
+      "predicate": "matched_against",
+      "cardinality": "many_to_one",
+      "description": "Accounts payable matches Invoice against Purchase Order.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "relation.invoice.matched_against_goods_receipt",
+      "type": "relation",
+      "source_concept_id": "concept.invoice",
+      "target_concept_id": "concept.goods_receipt",
+      "predicate": "matched_against",
+      "cardinality": "many_to_one",
+      "description": "Accounts payable matches Invoice against Goods Receipt; a matched goods invoice should reference a Goods Receipt.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "relation.payment_request.pays_invoice",
+      "type": "relation",
+      "source_concept_id": "concept.payment_request",
+      "target_concept_id": "concept.invoice",
+      "predicate": "pays",
+      "cardinality": "many_to_one",
+      "description": "Payment Request is a finance request to pay a matched invoice and can be created only for a matched Invoice.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "relation.approval_record.records_purchase_request_approval",
+      "type": "relation",
+      "source_concept_id": "concept.approval_record",
+      "target_concept_id": "concept.purchase_request",
+      "predicate": "records_approval_for",
+      "cardinality": "many_to_one",
+      "description": "Approval Record is a decision record for purchase request approval.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "relation.approval_record.records_contract_approval",
+      "type": "relation",
+      "source_concept_id": "concept.approval_record",
+      "target_concept_id": "concept.contract",
+      "predicate": "records_approval_for",
+      "cardinality": "many_to_one",
+      "description": "Approval Record is a decision record for contract approval.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "relation.approval_record.records_payment_approval",
+      "type": "relation",
+      "source_concept_id": "concept.approval_record",
+      "target_concept_id": "concept.payment_request",
+      "predicate": "records_approval_for",
+      "cardinality": "many_to_one",
+      "description": "Approval Record is a decision record for payment application approval.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "relation.purchase_request.owned_by_department",
+      "type": "relation",
+      "source_concept_id": "concept.purchase_request",
+      "target_concept_id": "concept.department",
+      "predicate": "owned_by",
+      "cardinality": "many_to_one",
+      "description": "Department is provided for a Purchase Request and organizational actors own requests.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.86
+    }
+  ],
+  "events": [
+    {
+      "id": "event.purchase_request_created",
+      "type": "event",
+      "name": "Purchase Request Created",
+      "trigger": "Requester creates a Purchase Request.",
+      "participant_concept_ids": [
+        "concept.purchase_request",
+        "concept.purchase_request_line",
+        "concept.department"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_request.draft"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.purchase_request_submitted",
+      "type": "event",
+      "name": "Purchase Request Submitted",
+      "trigger": "Purchase Request is submitted for approval.",
+      "participant_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_request.submitted"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "event.purchase_request_approved",
+      "type": "event",
+      "name": "Purchase Request Approved",
+      "trigger": "Department Manager and, when high-value, Finance Manager approve the request.",
+      "participant_concept_ids": [
+        "concept.purchase_request",
+        "concept.approval_record"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_request.approved"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.purchase_request_rejected",
+      "type": "event",
+      "name": "Purchase Request Rejected",
+      "trigger": "Approval rejection occurs and includes a rejection reason.",
+      "participant_concept_ids": [
+        "concept.purchase_request",
+        "concept.approval_record"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_request.rejected"
+      ],
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow",
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "event.purchase_request_cancelled",
+      "type": "event",
+      "name": "Purchase Request Cancelled",
+      "trigger": "Draft request is cancelled with a cancellation reason.",
+      "participant_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_request.cancelled"
+      ],
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow",
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "event.contract_drafted",
+      "type": "event",
+      "name": "Contract Drafted",
+      "trigger": "Procurement prepares or drafts a contract from an approved Purchase Request.",
+      "participant_concept_ids": [
+        "concept.contract",
+        "concept.purchase_request",
+        "concept.supplier"
+      ],
+      "resulting_state_ids": [
+        "state.contract.draft"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:business_overview#End-to-End_Flow"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "event.contract_submitted_for_legal_review",
+      "type": "event",
+      "name": "Contract Submitted for Legal Review",
+      "trigger": "Contract is submitted for legal review.",
+      "participant_concept_ids": [
+        "concept.contract"
+      ],
+      "resulting_state_ids": [
+        "state.contract.legal_review"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "event.contract_legal_approved",
+      "type": "event",
+      "name": "Contract Legal Approved",
+      "trigger": "Legal Reviewer approves contract legal terms.",
+      "participant_concept_ids": [
+        "concept.contract",
+        "concept.approval_record"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.contract_activated",
+      "type": "event",
+      "name": "Contract Activated",
+      "trigger": "Legal approval and signatures by both parties are complete.",
+      "participant_concept_ids": [
+        "concept.contract"
+      ],
+      "resulting_state_ids": [
+        "state.contract.active"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "event.contract_expired",
+      "type": "event",
+      "name": "Contract Expired",
+      "trigger": "Contract reaches expiration.",
+      "participant_concept_ids": [
+        "concept.contract"
+      ],
+      "resulting_state_ids": [
+        "state.contract.expired"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "event.contract_terminated",
+      "type": "event",
+      "name": "Contract Terminated",
+      "trigger": "Contract is terminated and must include a termination reason.",
+      "participant_concept_ids": [
+        "concept.contract"
+      ],
+      "resulting_state_ids": [
+        "state.contract.terminated"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Events",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "event.purchase_order_released",
+      "type": "event",
+      "name": "Purchase Order Released",
+      "trigger": "Related contract is active.",
+      "participant_concept_ids": [
+        "concept.purchase_order",
+        "concept.contract"
+      ],
+      "resulting_state_ids": [
+        "state.purchase_order.released"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.goods_receipt_recorded",
+      "type": "event",
+      "name": "Goods Receipt Recorded",
+      "trigger": "Goods or services are delivered and warehouse users record receipt.",
+      "participant_concept_ids": [
+        "concept.goods_receipt",
+        "concept.purchase_order"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.invoice_matched",
+      "type": "event",
+      "name": "Invoice Matched",
+      "trigger": "Accounts payable matches Invoice against Purchase Order and Goods Receipt within policy.",
+      "participant_concept_ids": [
+        "concept.invoice",
+        "concept.purchase_order",
+        "concept.goods_receipt"
+      ],
+      "resulting_state_ids": [
+        "state.invoice.matched"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "event.payment_request_created",
+      "type": "event",
+      "name": "Payment Request Created",
+      "trigger": "A Payment Request is created for a matched Invoice.",
+      "participant_concept_ids": [
+        "concept.payment_request",
+        "concept.invoice"
+      ],
+      "resulting_state_ids": [
+        "state.payment_request.requested"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.payment_approved",
+      "type": "event",
+      "name": "Payment Approved",
+      "trigger": "Finance Manager approves the Payment Request or Payment Application.",
+      "participant_concept_ids": [
+        "concept.payment_request",
+        "concept.approval_record"
+      ],
+      "resulting_state_ids": [
+        "state.payment_request.approved"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "event.payment_paid",
+      "type": "event",
+      "name": "Payment Paid",
+      "trigger": "Finance executes or marks payment paid.",
+      "participant_concept_ids": [
+        "concept.payment_request"
+      ],
+      "resulting_state_ids": [
+        "state.payment_request.paid"
+      ],
+      "evidence_refs": [
+        "doc:business_overview#End-to-End_Flow",
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.94
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule.purchase_request.minimum_one_line_before_submission",
+      "type": "rule",
+      "name": "Purchase Request requires line item before submission",
+      "condition": "Before submission of a Purchase Request",
+      "effect": "The Purchase Request must have at least one line item.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "concept.purchase_request_line"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.purchase_request.business_justification_required",
+      "type": "rule",
+      "name": "Business justification required before submission",
+      "condition": "Before submission of a Purchase Request",
+      "effect": "Business justification is required.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "attribute.purchase_request.business_justification"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.purchase_request.amount_non_negative",
+      "type": "rule",
+      "name": "Purchase Request amount non-negative",
+      "condition": "When a Purchase Request has a request amount",
+      "effect": "The request amount must be non-negative.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "attribute.purchase_request.expected_amount"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.purchase_request.approved_not_cancelled_by_normal_requester",
+      "type": "rule",
+      "name": "Approved requests cannot be cancelled by normal requester",
+      "condition": "Purchase Request is approved and actor is a normal requester",
+      "effect": "The normal requester cannot cancel it.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "role.requester"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "rule.purchase_request.rejected_may_be_revised_resubmitted",
+      "type": "rule",
+      "name": "Rejected requests may be revised and resubmitted",
+      "condition": "Purchase Request is rejected",
+      "effect": "The request may be revised and resubmitted.",
+      "applies_to_ids": [
+        "concept.purchase_request"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules",
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "rule.approval.department_manager_under_50000",
+      "type": "rule",
+      "name": "Department Manager approval for requests under 50000 CNY",
+      "condition": "Purchase Request amount is less than 50000 CNY",
+      "effect": "Department Manager approval is required.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "role.department_manager"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Approval_Rules",
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.approval.finance_after_department_for_50000_or_more",
+      "type": "rule",
+      "name": "Finance approval after department approval for requests 50000 CNY or more",
+      "condition": "Purchase Request amount is greater than or equal to 50000 CNY",
+      "effect": "Department Manager approval and then Finance Manager approval are required.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "role.department_manager",
+        "role.finance_manager"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Approval_Rules",
+        "doc:procurement_process#Approval_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.approval.rejection_comments_explain_reason",
+      "type": "rule",
+      "name": "Rejection comments explain reason",
+      "condition": "An approval is rejected",
+      "effect": "Rejection comments should explain the reason.",
+      "applies_to_ids": [
+        "concept.approval_record"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Approval_Rules"
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "rule.supplier.active_before_award",
+      "type": "rule",
+      "name": "Supplier active before award",
+      "condition": "Before supplier award",
+      "effect": "Supplier must be active.",
+      "applies_to_ids": [
+        "concept.supplier"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules",
+        "doc:procurement_process#Supplier_Selection"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.supplier.high_risk_not_selected",
+      "type": "rule",
+      "name": "High-risk supplier not selected for new contracts",
+      "condition": "Supplier is high risk",
+      "effect": "Supplier should not be selected for new contracts.",
+      "applies_to_ids": [
+        "concept.supplier",
+        "concept.contract"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "rule.supplier.suspended_no_purchase_orders",
+      "type": "rule",
+      "name": "Suspended supplier must not receive purchase orders",
+      "condition": "Supplier is suspended",
+      "effect": "Supplier must not receive purchase orders.",
+      "applies_to_ids": [
+        "concept.supplier",
+        "concept.purchase_order"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.contract.legal_approval_before_activation",
+      "type": "rule",
+      "name": "Legal approval required before contract activation",
+      "condition": "Before Contract activation",
+      "effect": "Legal approval is required.",
+      "applies_to_ids": [
+        "concept.contract",
+        "role.legal_reviewer"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Contract_Rules",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.contract.active_after_legal_approval_and_signatures",
+      "type": "rule",
+      "name": "Contract active only after legal approval and both signatures",
+      "condition": "Contract lacks legal approval or signature by both parties",
+      "effect": "Contract should not be active.",
+      "applies_to_ids": [
+        "concept.contract"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Contract_Rules",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "rule.contract.references_one_approved_purchase_request",
+      "type": "rule",
+      "name": "Contract references one approved Purchase Request",
+      "condition": "Contract exists",
+      "effect": "Contract must reference one approved Purchase Request.",
+      "applies_to_ids": [
+        "concept.contract",
+        "concept.purchase_request"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.contract.references_one_supplier",
+      "type": "rule",
+      "name": "Contract references one Supplier",
+      "condition": "Contract exists",
+      "effect": "Contract must reference one Supplier.",
+      "applies_to_ids": [
+        "concept.contract",
+        "concept.supplier"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.contract.amount_equals_approved_request_unless_split_award",
+      "type": "rule",
+      "name": "Contract amount normally equals approved request amount unless split award",
+      "condition": "Contract is created from an approved Purchase Request",
+      "effect": "Contract amount should normally equal approved purchase request amount unless procurement documents a split award.",
+      "applies_to_ids": [
+        "concept.contract",
+        "concept.purchase_request"
+      ],
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "rule.contract.terminated_requires_reason",
+      "type": "rule",
+      "name": "Terminated Contract requires termination reason",
+      "condition": "Contract is terminated",
+      "effect": "Termination reason is required.",
+      "applies_to_ids": [
+        "concept.contract",
+        "attribute.contract.termination_reason"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Contract_Rules",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.purchase_order.only_for_active_contract",
+      "type": "rule",
+      "name": "Purchase Order release only for active Contract",
+      "condition": "Before Purchase Order release",
+      "effect": "Related Contract must be active.",
+      "applies_to_ids": [
+        "concept.purchase_order",
+        "concept.contract"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Order_Rules",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.purchase_order.closed_after_complete_receipt_or_admin_review",
+      "type": "rule",
+      "name": "Purchase Order may close after complete receipt or admin review",
+      "condition": "Goods receipt is complete or procurement admin review has occurred",
+      "effect": "Purchase Order may be closed.",
+      "applies_to_ids": [
+        "concept.purchase_order",
+        "concept.goods_receipt",
+        "role.procurement_admin"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Order_Rules"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "rule.invoice.matching_compares_amount_and_receiving_evidence",
+      "type": "rule",
+      "name": "Invoice matching compares amount and receiving evidence",
+      "condition": "Invoice matching is performed",
+      "effect": "Invoice amount is compared to Purchase Order amount and receiving evidence.",
+      "applies_to_ids": [
+        "concept.invoice",
+        "concept.purchase_order",
+        "concept.goods_receipt"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "rule.invoice.variance_two_percent_unless_exception",
+      "type": "rule",
+      "name": "Invoice variance allowed up to 2 percent unless finance exception",
+      "condition": "Invoice variance is evaluated against Purchase Order amount",
+      "effect": "Business policy allows invoice variance up to 2% of the Purchase Order amount unless finance grants an exception.",
+      "applies_to_ids": [
+        "concept.invoice",
+        "concept.purchase_order"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "rule.invoice.not_paid_before_matching",
+      "type": "rule",
+      "name": "Invoice not paid before matching",
+      "condition": "Invoice is not matched",
+      "effect": "Invoice should not be paid.",
+      "applies_to_ids": [
+        "concept.invoice",
+        "concept.payment_request"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "rule.invoice.matched_requires_purchase_order",
+      "type": "rule",
+      "name": "Matched invoice references Purchase Order",
+      "condition": "Invoice is matched",
+      "effect": "Matched invoice must reference a Purchase Order.",
+      "applies_to_ids": [
+        "concept.invoice",
+        "concept.purchase_order"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.invoice.matched_goods_invoice_references_goods_receipt",
+      "type": "rule",
+      "name": "Matched goods invoice references Goods Receipt",
+      "condition": "Matched invoice is a goods invoice",
+      "effect": "Matched goods invoice should reference a Goods Receipt.",
+      "applies_to_ids": [
+        "concept.invoice",
+        "concept.goods_receipt"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "rule.payment_request.only_for_matched_invoice",
+      "type": "rule",
+      "name": "Payment Request only for matched Invoice",
+      "condition": "Before Payment Request creation or approval",
+      "effect": "Related Invoice must be matched.",
+      "applies_to_ids": [
+        "concept.payment_request",
+        "concept.invoice"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.payment_request.approval_by_finance_manager",
+      "type": "rule",
+      "name": "Payment approval by Finance Manager",
+      "condition": "Payment Request approval is performed",
+      "effect": "Finance Manager performs payment approval.",
+      "applies_to_ids": [
+        "concept.payment_request",
+        "role.finance_manager"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "rule.payment_request.paid_requires_paid_time",
+      "type": "rule",
+      "name": "Paid request requires paid time",
+      "condition": "Payment Request is paid",
+      "effect": "Paid time must be stored.",
+      "applies_to_ids": [
+        "concept.payment_request",
+        "attribute.payment_request.paid_time"
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Invoice_and_Payment_Rules",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "rule.payment_request.held_requires_hold_reason",
+      "type": "rule",
+      "name": "Held payment requires hold reason",
+      "condition": "Payment Request is held",
+      "effect": "A hold reason is required in operational notes.",
+      "applies_to_ids": [
+        "concept.payment_request",
+        "attribute.payment_request.hold_reason"
+      ],
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "rule.purchase_request.approved_and_cancelled_terminal",
+      "type": "rule",
+      "name": "Approved and Cancelled Purchase Request states are terminal",
+      "condition": "Purchase Request reaches APPROVED or CANCELLED",
+      "effect": "The Purchase Request process is terminal.",
+      "applies_to_ids": [
+        "concept.purchase_request",
+        "state.purchase_request.approved",
+        "state.purchase_request.cancelled"
+      ],
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.99
+    }
+  ],
+  "actions": [
+    {
+      "id": "action.create_purchase_request",
+      "type": "action",
+      "name": "Create Purchase Request",
+      "actor_role_ids": [
+        "role.requester",
+        "role.department_manager",
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.submit_purchase_request",
+      "type": "action",
+      "name": "Submit Purchase Request",
+      "actor_role_ids": [
+        "role.requester",
+        "role.department_manager",
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "preconditions": [
+        "Purchase Request has at least one line item.",
+        "Business justification is present."
+      ],
+      "postconditions": [
+        "Purchase Request status becomes SUBMITTED."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.approve_normal_purchase_request",
+      "type": "action",
+      "name": "Approve normal Purchase Request",
+      "actor_role_ids": [
+        "role.department_manager",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_request",
+        "concept.approval_record"
+      ],
+      "preconditions": [
+        "Purchase Request amount is less than 50000 CNY."
+      ],
+      "postconditions": [
+        "Approval decision is recorded."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:business_rules#Approval_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.approve_high_value_purchase_request",
+      "type": "action",
+      "name": "Approve high-value Purchase Request",
+      "actor_role_ids": [
+        "role.finance_manager",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_request",
+        "concept.approval_record"
+      ],
+      "preconditions": [
+        "Purchase Request amount is greater than or equal to 50000 CNY.",
+        "Department Manager approval has occurred."
+      ],
+      "postconditions": [
+        "Finance approval decision is recorded."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:business_rules#Approval_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.select_supplier",
+      "type": "action",
+      "name": "Select Supplier",
+      "actor_role_ids": [
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.supplier",
+        "concept.purchase_request"
+      ],
+      "preconditions": [
+        "Supplier is active.",
+        "Supplier is not high risk."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:procurement_process#Supplier_Selection"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "action.draft_contract",
+      "type": "action",
+      "name": "Draft Contract",
+      "actor_role_ids": [
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.contract",
+        "concept.purchase_request",
+        "concept.supplier"
+      ],
+      "preconditions": [
+        "Purchase Request is approved.",
+        "Supplier eligibility is confirmed."
+      ],
+      "postconditions": [
+        "Contract is drafted."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:contract_lifecycle#Contract_Definition"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "action.legal_review_contract",
+      "type": "action",
+      "name": "Legal Review Contract",
+      "actor_role_ids": [
+        "role.legal_reviewer",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.contract",
+        "concept.approval_record"
+      ],
+      "postconditions": [
+        "Legal approval decision is recorded."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.activate_contract",
+      "type": "action",
+      "name": "Activate Contract",
+      "actor_role_ids": [
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.contract"
+      ],
+      "preconditions": [
+        "Legal approval is complete.",
+        "Both parties have signed."
+      ],
+      "postconditions": [
+        "Contract status becomes ACTIVE."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.release_purchase_order",
+      "type": "action",
+      "name": "Release Purchase Order",
+      "actor_role_ids": [
+        "role.procurement_specialist",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_order",
+        "concept.contract"
+      ],
+      "preconditions": [
+        "Related contract is active."
+      ],
+      "postconditions": [
+        "Purchase Order is released."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:procurement_process#Purchase_Order_Release"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.record_goods_receipt",
+      "type": "action",
+      "name": "Record Goods Receipt",
+      "actor_role_ids": [
+        "role.warehouse_clerk",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.goods_receipt"
+      ],
+      "preconditions": [
+        "Goods or services are delivered."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.match_invoice",
+      "type": "action",
+      "name": "Match Invoice",
+      "actor_role_ids": [
+        "role.ap_clerk",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.invoice",
+        "concept.purchase_order",
+        "concept.goods_receipt"
+      ],
+      "preconditions": [
+        "Invoice, Purchase Order, and receiving evidence are available."
+      ],
+      "postconditions": [
+        "Invoice status may become MATCHED or EXCEPTION."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.approve_payment_application",
+      "type": "action",
+      "name": "Approve Payment Application",
+      "actor_role_ids": [
+        "role.finance_manager",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.payment_request",
+        "concept.approval_record"
+      ],
+      "preconditions": [
+        "Related Invoice is matched."
+      ],
+      "postconditions": [
+        "Payment Request status becomes APPROVED."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "action.mark_payment_paid",
+      "type": "action",
+      "name": "Mark Payment Paid",
+      "actor_role_ids": [
+        "role.finance_manager",
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.payment_request"
+      ],
+      "preconditions": [
+        "Payment Request is approved."
+      ],
+      "postconditions": [
+        "Payment Request status becomes PAID and paid time is stored."
+      ],
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "action.edit_draft_purchase_request",
+      "type": "action",
+      "name": "Edit draft Purchase Request",
+      "actor_role_ids": [
+        "role.requester"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "preconditions": [
+        "Purchase Request is in DRAFT status."
+      ],
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Creation"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "action.revise_and_resubmit_rejected_purchase_request",
+      "type": "action",
+      "name": "Revise and resubmit rejected Purchase Request",
+      "target_concept_ids": [
+        "concept.purchase_request"
+      ],
+      "preconditions": [
+        "Purchase Request is rejected."
+      ],
+      "postconditions": [
+        "Purchase Request may return to SUBMITTED status."
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Request_Rules",
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "action.close_purchase_order",
+      "type": "action",
+      "name": "Close Purchase Order",
+      "actor_role_ids": [
+        "role.procurement_admin"
+      ],
+      "target_concept_ids": [
+        "concept.purchase_order"
+      ],
+      "preconditions": [
+        "Complete goods receipt exists or procurement admin review has occurred."
+      ],
+      "postconditions": [
+        "Purchase Order is closed."
+      ],
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Order_Rules"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "states": [
+    {
+      "id": "state.purchase_request.draft",
+      "type": "state",
+      "name": "DRAFT",
+      "owner_concept_id": "concept.purchase_request",
+      "description": "Initial editable Purchase Request state.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.purchase_request.submitted",
+      "type": "state",
+      "name": "SUBMITTED",
+      "owner_concept_id": "concept.purchase_request",
+      "description": "Purchase Request submitted for approval.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.purchase_request.approved",
+      "type": "state",
+      "name": "APPROVED",
+      "owner_concept_id": "concept.purchase_request",
+      "description": "Terminal state for the purchase request process.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.purchase_request.rejected",
+      "type": "state",
+      "name": "REJECTED",
+      "owner_concept_id": "concept.purchase_request",
+      "description": "Rejected requests may be revised and resubmitted.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow",
+        "doc:business_rules#Purchase_Request_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.purchase_request.cancelled",
+      "type": "state",
+      "name": "CANCELLED",
+      "owner_concept_id": "concept.purchase_request",
+      "description": "Terminal state for the purchase request process.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.contract.draft",
+      "type": "state",
+      "name": "DRAFT",
+      "owner_concept_id": "concept.contract",
+      "description": "Contract draft state.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.contract.legal_review",
+      "type": "state",
+      "name": "LEGAL_REVIEW",
+      "owner_concept_id": "concept.contract",
+      "description": "Contract is under legal review.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.contract.active",
+      "type": "state",
+      "name": "ACTIVE",
+      "owner_concept_id": "concept.contract",
+      "description": "Contract is active after legal approval and signature by both parties.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.contract.expired",
+      "type": "state",
+      "name": "EXPIRED",
+      "owner_concept_id": "concept.contract",
+      "description": "Contract expired state.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.contract.terminated",
+      "type": "state",
+      "name": "TERMINATED",
+      "owner_concept_id": "concept.contract",
+      "description": "Contract terminated state requiring termination reason.",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.goods_receipt.pending",
+      "type": "state",
+      "name": "PENDING",
+      "owner_concept_id": "concept.goods_receipt",
+      "description": "Goods Receipt pending state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.goods_receipt.partial",
+      "type": "state",
+      "name": "PARTIAL",
+      "owner_concept_id": "concept.goods_receipt",
+      "description": "Goods Receipt partial state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.goods_receipt.complete",
+      "type": "state",
+      "name": "COMPLETE",
+      "owner_concept_id": "concept.goods_receipt",
+      "description": "Goods Receipt complete state; complete receipt should include received time, receiver, and inspection result.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.goods_receipt.rejected",
+      "type": "state",
+      "name": "REJECTED",
+      "owner_concept_id": "concept.goods_receipt",
+      "description": "Goods Receipt rejected state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.invoice.pending_match",
+      "type": "state",
+      "name": "PENDING_MATCH",
+      "owner_concept_id": "concept.invoice",
+      "description": "Invoice pending matching state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.invoice.matched",
+      "type": "state",
+      "name": "MATCHED",
+      "owner_concept_id": "concept.invoice",
+      "description": "Invoice matched state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.invoice.exception",
+      "type": "state",
+      "name": "EXCEPTION",
+      "owner_concept_id": "concept.invoice",
+      "description": "Invoice matching exception state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.invoice.cancelled",
+      "type": "state",
+      "name": "CANCELLED",
+      "owner_concept_id": "concept.invoice",
+      "description": "Invoice cancelled state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.payment_request.requested",
+      "type": "state",
+      "name": "REQUESTED",
+      "owner_concept_id": "concept.payment_request",
+      "description": "Payment Request requested state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.payment_request.approved",
+      "type": "state",
+      "name": "APPROVED",
+      "owner_concept_id": "concept.payment_request",
+      "description": "Payment Request approved state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.payment_request.paid",
+      "type": "state",
+      "name": "PAID",
+      "owner_concept_id": "concept.payment_request",
+      "description": "Payment Request paid state requiring paid time.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:business_rules#Invoice_and_Payment_Rules"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.payment_request.held",
+      "type": "state",
+      "name": "HELD",
+      "owner_concept_id": "concept.payment_request",
+      "description": "Payment Request held state requiring hold reason in operational notes.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.payment_request.cancelled",
+      "type": "state",
+      "name": "CANCELLED",
+      "owner_concept_id": "concept.payment_request",
+      "description": "Payment Request cancelled state.",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "state.purchase_order.released",
+      "type": "state",
+      "name": "RELEASED",
+      "owner_concept_id": "concept.purchase_order",
+      "description": "Purchase Order released against an active contract; no formal status flow is documented.",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Order_Release",
+        "doc:business_rules#Purchase_Order_Rules"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "id": "state.purchase_order.closed",
+      "type": "state",
+      "name": "CLOSED",
+      "owner_concept_id": "concept.purchase_order",
+      "description": "Purchase Order may be closed after complete goods receipt or procurement admin review; no formal status flow is documented.",
+      "evidence_refs": [
+        "doc:business_rules#Purchase_Order_Rules"
+      ],
+      "confidence": 0.76
+    }
+  ],
+  "roles": [
+    {
+      "id": "role.requester",
+      "type": "role",
+      "name": "Requester",
+      "description": "Creates and submits Purchase Requests.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.department_manager",
+      "type": "role",
+      "name": "Department Manager",
+      "description": "Approves normal Purchase Requests for their department.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.procurement_specialist",
+      "type": "role",
+      "name": "Procurement Specialist",
+      "description": "Reviews supplier, prepares contracts, releases purchase orders.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.finance_manager",
+      "type": "role",
+      "name": "Finance Manager",
+      "description": "Approves high-value purchase requests and payment applications.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.legal_reviewer",
+      "type": "role",
+      "name": "Legal Reviewer",
+      "description": "Reviews and approves contract legal terms.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.warehouse_clerk",
+      "type": "role",
+      "name": "Warehouse Clerk",
+      "description": "Records goods receipt or GRN.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.ap_clerk",
+      "type": "role",
+      "name": "AP Clerk",
+      "description": "Performs invoice matching and creates payment requests.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "role.procurement_admin",
+      "type": "role",
+      "name": "Procurement Admin",
+      "description": "Maintains master data and can override some workflow issues.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    }
+  ],
+  "permissions": [
+    {
+      "id": "permission.requester.create_purchase_request",
+      "type": "permission",
+      "role_id": "role.requester",
+      "action_id": "action.create_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.department_manager.create_purchase_request",
+      "type": "permission",
+      "role_id": "role.department_manager",
+      "action_id": "action.create_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_specialist.create_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.create_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.create_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.create_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.requester.submit_purchase_request",
+      "type": "permission",
+      "role_id": "role.requester",
+      "action_id": "action.submit_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.department_manager.submit_purchase_request",
+      "type": "permission",
+      "role_id": "role.department_manager",
+      "action_id": "action.submit_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_specialist.submit_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.submit_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.submit_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.submit_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.department_manager.approve_normal_purchase_request",
+      "type": "permission",
+      "role_id": "role.department_manager",
+      "action_id": "action.approve_normal_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "condition": "For normal Purchase Requests for their department.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.approve_normal_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.approve_normal_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "condition": "Procurement Admin can override some workflow issues.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "permission.finance_manager.approve_high_value_purchase_request",
+      "type": "permission",
+      "role_id": "role.finance_manager",
+      "action_id": "action.approve_high_value_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "condition": "For high-value Purchase Requests.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.approve_high_value_purchase_request",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.approve_high_value_purchase_request",
+      "resource_concept_id": "concept.purchase_request",
+      "effect": "allow",
+      "condition": "Procurement Admin can override some workflow issues.",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions",
+        "doc:role_permission_matrix#Roles"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "permission.procurement_specialist.select_supplier",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.select_supplier",
+      "resource_concept_id": "concept.supplier",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.select_supplier",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.select_supplier",
+      "resource_concept_id": "concept.supplier",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_specialist.draft_contract",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.draft_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.draft_contract",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.draft_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.legal_reviewer.legal_review_contract",
+      "type": "permission",
+      "role_id": "role.legal_reviewer",
+      "action_id": "action.legal_review_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.legal_review_contract",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.legal_review_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_specialist.activate_contract",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.activate_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.activate_contract",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.activate_contract",
+      "resource_concept_id": "concept.contract",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_specialist.release_purchase_order",
+      "type": "permission",
+      "role_id": "role.procurement_specialist",
+      "action_id": "action.release_purchase_order",
+      "resource_concept_id": "concept.purchase_order",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.release_purchase_order",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.release_purchase_order",
+      "resource_concept_id": "concept.purchase_order",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.warehouse_clerk.record_goods_receipt",
+      "type": "permission",
+      "role_id": "role.warehouse_clerk",
+      "action_id": "action.record_goods_receipt",
+      "resource_concept_id": "concept.goods_receipt",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.record_goods_receipt",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.record_goods_receipt",
+      "resource_concept_id": "concept.goods_receipt",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.ap_clerk.match_invoice",
+      "type": "permission",
+      "role_id": "role.ap_clerk",
+      "action_id": "action.match_invoice",
+      "resource_concept_id": "concept.invoice",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.match_invoice",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.match_invoice",
+      "resource_concept_id": "concept.invoice",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.finance_manager.approve_payment_application",
+      "type": "permission",
+      "role_id": "role.finance_manager",
+      "action_id": "action.approve_payment_application",
+      "resource_concept_id": "concept.payment_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.approve_payment_application",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.approve_payment_application",
+      "resource_concept_id": "concept.payment_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.finance_manager.mark_payment_paid",
+      "type": "permission",
+      "role_id": "role.finance_manager",
+      "action_id": "action.mark_payment_paid",
+      "resource_concept_id": "concept.payment_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "permission.procurement_admin.mark_payment_paid",
+      "type": "permission",
+      "role_id": "role.procurement_admin",
+      "action_id": "action.mark_payment_paid",
+      "resource_concept_id": "concept.payment_request",
+      "effect": "allow",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    }
+  ],
+  "aliases": [
+    {
+      "id": "alias.purchase_request.pr",
+      "type": "alias",
+      "canonical_id": "concept.purchase_request",
+      "alias": "PR",
+      "language": "en",
+      "source_context": "Abbreviation for Purchase Request.",
+      "evidence_refs": [
+        "doc:glossary#Glossary",
+        "doc:glossary#Abbreviation_Notes"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.purchase_request.purchase_requisition",
+      "type": "alias",
+      "canonical_id": "concept.purchase_request",
+      "alias": "purchase requisition",
+      "language": "en",
+      "source_context": "Other term in dataset for Purchase Request.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.supplier.vendor",
+      "type": "alias",
+      "canonical_id": "concept.supplier",
+      "alias": "Vendor",
+      "language": "en",
+      "source_context": "Other term in dataset for Supplier; some technical notes use Vendor to mean Supplier.",
+      "evidence_refs": [
+        "doc:glossary#Glossary",
+        "doc:procurement_process#Supplier_Selection"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.purchase_order.po",
+      "type": "alias",
+      "canonical_id": "concept.purchase_order",
+      "alias": "PO",
+      "language": "en",
+      "source_context": "Abbreviation for Purchase Order.",
+      "evidence_refs": [
+        "doc:glossary#Glossary",
+        "doc:glossary#Abbreviation_Notes"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.goods_receipt.grn",
+      "type": "alias",
+      "canonical_id": "concept.goods_receipt",
+      "alias": "GRN",
+      "language": "en",
+      "source_context": "Warehouse teams often call Goods Receipt a GRN; GRN means Goods Receipt Note.",
+      "evidence_refs": [
+        "doc:glossary#Glossary",
+        "doc:glossary#Abbreviation_Notes",
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.goods_receipt.receipt_record",
+      "type": "alias",
+      "canonical_id": "concept.goods_receipt",
+      "alias": "receipt record",
+      "language": "en",
+      "source_context": "Other term in dataset for Goods Receipt.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.payment_request.payment_application",
+      "type": "alias",
+      "canonical_id": "concept.payment_request",
+      "alias": "Payment Application",
+      "language": "en",
+      "source_context": "Some users and finance users call Payment Request a Payment Application.",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.department_manager.dept_manager",
+      "type": "alias",
+      "canonical_id": "role.department_manager",
+      "alias": "Dept Manager",
+      "language": "en",
+      "source_context": "Other term in dataset for Department Manager.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.finance_manager.finance_approver",
+      "type": "alias",
+      "canonical_id": "role.finance_manager",
+      "alias": "Finance Approver",
+      "language": "en",
+      "source_context": "Other term in dataset for Finance Manager.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.legal_reviewer.legal_approver",
+      "type": "alias",
+      "canonical_id": "role.legal_reviewer",
+      "alias": "Legal Approver",
+      "language": "en",
+      "source_context": "Other term in dataset for Legal Reviewer.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.approval_record.approval_step",
+      "type": "alias",
+      "canonical_id": "concept.approval_record",
+      "alias": "Approval Step",
+      "language": "en",
+      "source_context": "Other term in dataset for Approval Record.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.approval_record.decision_record",
+      "type": "alias",
+      "canonical_id": "concept.approval_record",
+      "alias": "decision record",
+      "language": "en",
+      "source_context": "Other term in dataset for Approval Record.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.contract.agreement",
+      "type": "alias",
+      "canonical_id": "concept.contract",
+      "alias": "Agreement",
+      "language": "en",
+      "source_context": "Other term in dataset for Contract.",
+      "evidence_refs": [
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "alias.accounts_payable.ap",
+      "type": "alias",
+      "canonical_id": "concept.accounts_payable",
+      "alias": "AP",
+      "language": "en",
+      "source_context": "AP means Accounts Payable.",
+      "evidence_refs": [
+        "doc:glossary#Abbreviation_Notes"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mappings": [
+    {
+      "id": "mapping.concept.purchase_request.documents",
+      "type": "mapping",
+      "ontology_element_id": "concept.purchase_request",
+      "source_element": "business_overview.md#Core Business Objects; procurement_process.md#Purchase Request Creation; glossary.md#Glossary",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:procurement_process#Purchase_Request_Creation",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.concept.contract.documents",
+      "type": "mapping",
+      "ontology_element_id": "concept.contract",
+      "source_element": "business_overview.md#Core Business Objects; contract_lifecycle.md#Contract Definition",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:contract_lifecycle#Contract_Definition"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.concept.payment_request.documents",
+      "type": "mapping",
+      "ontology_element_id": "concept.payment_request",
+      "source_element": "business_overview.md#Core Business Objects; receipt_invoice_payment_policy.md#Payment Application; glossary.md#Glossary",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:business_overview#Core_Business_Objects",
+        "doc:receipt_invoice_payment_policy#Payment_Application",
+        "doc:glossary#Glossary"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.states.purchase_request.documents",
+      "type": "mapping",
+      "ontology_element_id": "state.purchase_request.draft",
+      "source_element": "procurement_process.md#Purchase Request Status Flow lists DRAFT, SUBMITTED, APPROVED, REJECTED, CANCELLED and terminal states",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Request_Status_Flow"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.states.contract.documents",
+      "type": "mapping",
+      "ontology_element_id": "state.contract.draft",
+      "source_element": "contract_lifecycle.md#Contract Status Flow lists DRAFT, LEGAL_REVIEW, ACTIVE, EXPIRED, TERMINATED",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Status_Flow"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.states.goods_receipt.documents",
+      "type": "mapping",
+      "ontology_element_id": "state.goods_receipt.pending",
+      "source_element": "receipt_invoice_payment_policy.md#Goods Receipt lists PENDING, PARTIAL, COMPLETE, REJECTED",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Goods_Receipt"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.states.invoice.documents",
+      "type": "mapping",
+      "ontology_element_id": "state.invoice.pending_match",
+      "source_element": "receipt_invoice_payment_policy.md#Invoice Matching lists PENDING_MATCH, MATCHED, EXCEPTION, CANCELLED",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.states.payment_request.documents",
+      "type": "mapping",
+      "ontology_element_id": "state.payment_request.requested",
+      "source_element": "receipt_invoice_payment_policy.md#Payment Application lists REQUESTED, APPROVED, PAID, HELD, CANCELLED",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "mapping.permissions.matrix",
+      "type": "mapping",
+      "ontology_element_id": "action.create_purchase_request",
+      "source_element": "role_permission_matrix.md#Permissions matrix maps actions to roles with Yes/No values",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.99
+    },
+    {
+      "id": "mapping.aliases.glossary",
+      "type": "mapping",
+      "ontology_element_id": "alias.purchase_request.pr",
+      "source_element": "glossary.md#Glossary and glossary.md#Abbreviation Notes define aliases and abbreviations",
+      "source_type": "document",
+      "mapping_type": "exact",
+      "evidence_refs": [
+        "doc:glossary#Glossary",
+        "doc:glossary#Abbreviation_Notes"
+      ],
+      "confidence": 0.99
+    }
+  ],
+  "conflicts": [],
+  "uncertainties": [
+    {
+      "id": "uncertainty.purchase_order.status_flow_not_formalized",
+      "type": "uncertainty",
+      "target_id": "concept.purchase_order",
+      "description": "Documents mention Purchase Order release and possible closure, but do not provide a formal Purchase Order status flow comparable to other objects.",
+      "reason": "State values RELEASED and CLOSED are inferred from process and rule language rather than a dedicated status-flow section.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:procurement_process#Purchase_Order_Release",
+        "doc:business_rules#Purchase_Order_Rules"
+      ],
+      "confidence": 0.72
+    },
+    {
+      "id": "uncertainty.payment_hold_reason_storage",
+      "type": "uncertainty",
+      "target_id": "attribute.payment_request.hold_reason",
+      "description": "Held payment requires a hold reason in operational notes, but the document also states the MVP table stores only status.",
+      "reason": "The business requirement for hold reason is clear, but the storage boundary is unclear in the business document.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Payment_Application"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "uncertainty.invoice_variance_exception_process",
+      "type": "uncertainty",
+      "target_id": "rule.invoice.variance_two_percent_unless_exception",
+      "description": "Finance may grant an exception to the 2% invoice variance policy, but the documents do not define the approval process, required role action, or evidence for that exception.",
+      "reason": "Rule boundary is incomplete.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:receipt_invoice_payment_policy#Invoice_Matching",
+        "doc:business_rules#Invoice_and_Payment_Rules"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "uncertainty.split_award_documentation",
+      "type": "uncertainty",
+      "target_id": "rule.contract.amount_equals_approved_request_unless_split_award",
+      "description": "Contract amount may differ from approved purchase request amount when procurement documents a split award, but required documentation fields and approval boundaries are not defined.",
+      "reason": "Exception condition is stated without detailed field or workflow definition.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "uncertainty.procurement_admin_override_scope",
+      "type": "uncertainty",
+      "target_id": "role.procurement_admin",
+      "description": "Procurement Admin can override some workflow issues, but the documents do not define which workflow issues, limits, or audit requirements apply.",
+      "reason": "Permission scope is broad and underspecified.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:role_permission_matrix#Roles",
+        "doc:role_permission_matrix#Permissions"
+      ],
+      "confidence": 0.76
+    },
+    {
+      "id": "uncertainty.high_risk_supplier_rule_strength",
+      "type": "uncertainty",
+      "target_id": "rule.supplier.high_risk_not_selected",
+      "description": "Documents use both stronger supplier-selection language requiring confirmation that Supplier is not high risk before award and softer policy language saying high-risk suppliers should not be selected for new contracts.",
+      "reason": "Rule strength and exception handling for high-risk suppliers are not fully specified.",
+      "needs_human_review": true,
+      "evidence_refs": [
+        "doc:business_rules#Supplier_Rules",
+        "doc:procurement_process#Supplier_Selection",
+        "doc:contract_lifecycle#Contract_Rules"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "evidence_refs": [
+    "doc:business_overview#System_Purpose",
+    "doc:business_overview#Core_Business_Objects",
+    "doc:business_overview#End-to-End_Flow",
+    "doc:business_overview#Scope_Notes",
+    "doc:business_rules#Purchase_Request_Rules",
+    "doc:business_rules#Approval_Rules",
+    "doc:business_rules#Supplier_Rules",
+    "doc:business_rules#Contract_Rules",
+    "doc:business_rules#Purchase_Order_Rules",
+    "doc:business_rules#Invoice_and_Payment_Rules",
+    "doc:contract_lifecycle#Contract_Definition",
+    "doc:contract_lifecycle#Contract_Status_Flow",
+    "doc:contract_lifecycle#Contract_Rules",
+    "doc:contract_lifecycle#Contract_Events",
+    "doc:glossary#Glossary",
+    "doc:glossary#Abbreviation_Notes",
+    "doc:procurement_process#Purchase_Request_Creation",
+    "doc:procurement_process#Purchase_Request_Status_Flow",
+    "doc:procurement_process#Approval_Flow",
+    "doc:procurement_process#Supplier_Selection",
+    "doc:procurement_process#Purchase_Order_Release",
+    "doc:receipt_invoice_payment_policy#Goods_Receipt",
+    "doc:receipt_invoice_payment_policy#Invoice_Matching",
+    "doc:receipt_invoice_payment_policy#Payment_Application",
+    "doc:role_permission_matrix#Roles",
+    "doc:role_permission_matrix#Permissions"
+  ],
+  "confidence": 0.93,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "documents"
+  }
+}

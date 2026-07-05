@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "evaluation_id": "demo_screenshot",
+  "demo_sample": true,
+  "operator": {
+    "operator_id": "operator:demo_low_exp",
+    "experience_level": "low",
+    "role": "demo_operator"
+  },
+  "total_minutes": 16,
+  "activities": [
+    {
+      "activity": "Prepare screenshot surrogate inputs",
+      "minutes": 3,
+      "notes": "Selected five .screen.md files and manifest."
+    },
+    {
+      "activity": "Run Task 08 prompt simulation",
+      "minutes": 7,
+      "notes": "Simulated extraction from screenshot surrogates."
+    },
+    {
+      "activity": "Normalize output and wrapper",
+      "minutes": 6,
+      "notes": "Created schema-compatible ontology/evidence artifacts."
+    }
+  ],
+  "interventions": [
+    {
+      "task_id": "task_08_screenshot_to_ontology",
+      "intervention_type": "manual_normalization",
+      "minutes": 6,
+      "reason": "Demo output normalized for stable scoring."
+    }
+  ],
+  "notes": "Demo effort log for optional screenshot surrogate evaluation."
+}

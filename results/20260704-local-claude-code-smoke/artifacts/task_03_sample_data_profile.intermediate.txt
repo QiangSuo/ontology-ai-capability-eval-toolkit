@@ -1,0 +1,2598 @@
+{
+  "task_id": "TASK-03",
+  "title": "Procurement Contract MVP Sample Data Profile",
+  "source_system": "sample_data_csv",
+  "sample_is_partial": null,
+  "table_profiles": [
+    {
+      "file_name": "pc_department.csv",
+      "row_count": 6,
+      "candidate_concept": "Department",
+      "columns": [
+        {
+          "column_name": "department_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "10",
+            "20",
+            "30"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Department primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_department#column:department_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "department_code",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "OPS",
+            "IT",
+            "FIN",
+            "LEGAL",
+            "WH",
+            "ADMIN"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Short department code.",
+          "candidate_enum_values": [
+            "OPS",
+            "IT",
+            "FIN",
+            "LEGAL",
+            "WH",
+            "ADMIN"
+          ],
+          "evidence_refs": [
+            "csv:pc_department#column:department_code"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "department_name",
+          "inferred_type": "string",
+          "sample_values": [
+            "Operations",
+            "Information Technology",
+            "Finance"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Department display name.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_department#column:department_name"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "cost_center",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "CC-100",
+            "CC-200",
+            "CC-300"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Cost center code associated with department.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_department#column:cost_center"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "is_active",
+          "inferred_type": "boolean",
+          "sample_values": [
+            "true"
+          ],
+          "null_observation": "No null values observed; only true appears in sample.",
+          "candidate_attribute": "Department active flag.",
+          "candidate_enum_values": [
+            "true"
+          ],
+          "evidence_refs": [
+            "csv:pc_department#column:is_active"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "created_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-01-02 09:00:00",
+            "2026-01-02 09:05:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Department record creation timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_department#column:created_at"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_user.department_id may reference pc_department.department_id",
+          "evidence_refs": [
+            "csv:pc_user#column:department_id",
+            "csv:pc_department#column:department_id"
+          ]
+        },
+        {
+          "relation": "pc_purchase_request.department_id may reference pc_department.department_id",
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:department_id",
+            "csv:pc_department#column:department_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Only active departments appear, so inactive-state handling cannot be assessed.",
+          "evidence_refs": [
+            "csv:pc_department#column:is_active"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_department"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_user.csv",
+      "row_count": 9,
+      "candidate_concept": "User",
+      "columns": [
+        {
+          "column_name": "user_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1001",
+            "1002",
+            "1003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "User primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_user#column:user_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "user_name",
+          "inferred_type": "string",
+          "sample_values": [
+            "Avery Lin",
+            "Blair Chen",
+            "Casey Wu"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "User display name.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_user#column:user_name"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "role_code",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "REQUESTER",
+            "DEPT_MANAGER",
+            "PROCUREMENT_SPECIALIST"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "User role code.",
+          "candidate_enum_values": [
+            "REQUESTER",
+            "DEPT_MANAGER",
+            "PROCUREMENT_SPECIALIST",
+            "FINANCE_MANAGER",
+            "LEGAL_REVIEWER",
+            "WAREHOUSE_CLERK",
+            "AP_CLERK",
+            "PROCUREMENT_ADMIN"
+          ],
+          "evidence_refs": [
+            "csv:pc_user#column:role_code"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "department_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "20",
+            "60",
+            "30"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Department reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_user#column:department_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "email",
+          "inferred_type": "email_string",
+          "sample_values": [
+            "avery.lin@example.test",
+            "blair.chen@example.test"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "User email address.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_user#column:email"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "is_active",
+          "inferred_type": "boolean",
+          "sample_values": [
+            "true"
+          ],
+          "null_observation": "No null values observed; only true appears in sample.",
+          "candidate_attribute": "User active flag.",
+          "candidate_enum_values": [
+            "true"
+          ],
+          "evidence_refs": [
+            "csv:pc_user#column:is_active"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "created_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-01-03 08:00:00",
+            "2026-01-03 08:05:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "User record creation timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_user#column:created_at"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_purchase_request.requester_user_id may reference pc_user.user_id",
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:requester_user_id",
+            "csv:pc_user#column:user_id"
+          ]
+        },
+        {
+          "relation": "pc_approval_record.approver_user_id may reference pc_user.user_id",
+          "evidence_refs": [
+            "csv:pc_approval_record#column:approver_user_id",
+            "csv:pc_user#column:user_id"
+          ]
+        },
+        {
+          "relation": "pc_goods_receipt.received_by may reference pc_user.user_id",
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:received_by",
+            "csv:pc_user#column:user_id"
+          ]
+        },
+        {
+          "relation": "pc_contract.legal_reviewer_id may reference pc_user.user_id",
+          "evidence_refs": [
+            "csv:pc_contract#column:legal_reviewer_id",
+            "csv:pc_user#column:user_id"
+          ]
+        },
+        {
+          "relation": "pc_payment_request.approved_by may reference pc_user.user_id",
+          "evidence_refs": [
+            "csv:pc_payment_request#column:approved_by",
+            "csv:pc_user#column:user_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Only active users appear, so inactive-user cases are not represented.",
+          "evidence_refs": [
+            "csv:pc_user#column:is_active"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_user"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_supplier.csv",
+      "row_count": 7,
+      "candidate_concept": "Supplier",
+      "columns": [
+        {
+          "column_name": "supplier_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "2001",
+            "2002",
+            "2003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_supplier#column:supplier_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "supplier_code",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "SUP-ASTER",
+            "SUP-BRAVO",
+            "SUP-CEDAR"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier code.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_supplier#column:supplier_code"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "supplier_name",
+          "inferred_type": "string",
+          "sample_values": [
+            "Aster Office Supply Co.",
+            "Bravo Industrial Services"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier legal or display name.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_supplier#column:supplier_name"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "supplier_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "ACTIVE",
+            "SUSPENDED",
+            "PENDING_REVIEW"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier lifecycle or eligibility status.",
+          "candidate_enum_values": [
+            "ACTIVE",
+            "SUSPENDED",
+            "PENDING_REVIEW"
+          ],
+          "evidence_refs": [
+            "csv:pc_supplier#column:supplier_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "risk_rating",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier risk rating.",
+          "candidate_enum_values": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "evidence_refs": [
+            "csv:pc_supplier#column:risk_rating"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "contact_email",
+          "inferred_type": "email_string",
+          "sample_values": [
+            "contact@aster-supply.example.test",
+            "service@bravo-industrial.example.test"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier contact email.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_supplier#column:contact_email"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "onboarded_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2025-09-01 10:00:00",
+            "2025-09-15 10:00:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier onboarding timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_supplier#column:onboarded_at"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "Supplier identifiers appear in purchase requests, contracts, purchase orders, and invoices.",
+          "evidence_refs": [
+            "csv:pc_supplier#column:supplier_id",
+            "csv:pc_purchase_request#column:preferred_supplier_id",
+            "csv:pc_contract#column:supplier_id",
+            "csv:pc_purchase_order#column:supplier_id",
+            "csv:pc_invoice#column:supplier_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Supplier 2004 is SUSPENDED and HIGH risk, and related legacy contract/order/invoice/payment rows are terminated, cancelled, or rejected candidates.",
+          "evidence_refs": [
+            "csv:pc_supplier#row:5",
+            "csv:pc_contract#row:8",
+            "csv:pc_purchase_order#row:8",
+            "csv:pc_invoice#row:8",
+            "csv:pc_payment_request#row:8"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_supplier"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_purchase_request.csv",
+      "row_count": 10,
+      "candidate_concept": "Purchase Request",
+      "columns": [
+        {
+          "column_name": "request_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "3001",
+            "3002",
+            "3003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "request_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "PR-2026-0001",
+            "PR-2026-0002",
+            "PR-2026-0003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable purchase request number; PR abbreviation appears.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "request_title",
+          "inferred_type": "string",
+          "sample_values": [
+            "Laptop refresh for analytics team",
+            "Warehouse barcode scanner purchase"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request title or summary.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_title"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "requester_user_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1001",
+            "1009"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Requester user reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:requester_user_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "department_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "20",
+            "10"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Requesting department reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:department_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "preferred_supplier_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "2003",
+            "2005",
+            "2001"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Preferred supplier reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:preferred_supplier_id"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "estimated_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "72500.00",
+            "8900.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Estimated request amount.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:estimated_amount"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "currency_code",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "CNY"
+          ],
+          "null_observation": "No null values observed; only CNY appears in sample.",
+          "candidate_attribute": "Currency code for estimated amount.",
+          "candidate_enum_values": [
+            "CNY"
+          ],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:currency_code"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "request_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "APPROVED",
+            "SUBMITTED",
+            "REJECTED",
+            "DRAFT",
+            "CANCELLED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request workflow status.",
+          "candidate_enum_values": [
+            "APPROVED",
+            "SUBMITTED",
+            "REJECTED",
+            "DRAFT",
+            "CANCELLED"
+          ],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "business_justification",
+          "inferred_type": "string",
+          "sample_values": [
+            "Replace aging laptops for data analytics work",
+            "Improve receiving accuracy for warehouse operations"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Business justification text.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:business_justification"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "required_by_date",
+          "inferred_type": "date",
+          "sample_values": [
+            "2026-03-15",
+            "2026-03-20"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Required-by date.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:required_by_date"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "submitted_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-01 09:10:00",
+            "2026-02-02 10:20:00"
+          ],
+          "null_observation": "Null observed for DRAFT row 3005.",
+          "candidate_attribute": "Submission timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:submitted_at",
+            "csv:pc_purchase_request#row:6"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "approved_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-01 14:30:00",
+            "2026-02-03 11:15:00"
+          ],
+          "null_observation": "Null observed for SUBMITTED, REJECTED, DRAFT, and CANCELLED rows.",
+          "candidate_attribute": "Approval completion timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:approved_at",
+            "csv:pc_purchase_request#row:4",
+            "csv:pc_purchase_request#row:5",
+            "csv:pc_purchase_request#row:6",
+            "csv:pc_purchase_request#row:8"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "created_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-01 08:50:00",
+            "2026-02-02 09:40:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Request creation timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:created_at"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_purchase_request_line.request_id may reference pc_purchase_request.request_id with one-to-many lines.",
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:request_id",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "relation": "pc_contract.request_id and pc_purchase_order.request_id may reference pc_purchase_request.request_id for non-legacy sampled requests.",
+          "evidence_refs": [
+            "csv:pc_contract#column:request_id",
+            "csv:pc_purchase_order#column:request_id",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "relation": "pc_approval_record target_type PURCHASE_REQUEST and target_id may reference pc_purchase_request.request_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#column:target_type",
+            "csv:pc_approval_record#column:target_id",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "No duplicate request_id values observed.",
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "note": "Approved requests have approved_at populated in sample; non-approved statuses have blank approved_at.",
+          "evidence_refs": [
+            "csv:pc_purchase_request#column:request_status",
+            "csv:pc_purchase_request#column:approved_at"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_purchase_request"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_purchase_request_line.csv",
+      "row_count": 15,
+      "candidate_concept": "Purchase Request Line",
+      "columns": [
+        {
+          "column_name": "line_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "4001",
+            "4002",
+            "4003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request line primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:line_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "request_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "3001",
+            "3002",
+            "3003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Parent purchase request reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:request_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "item_description",
+          "inferred_type": "string",
+          "sample_values": [
+            "Standard business laptop",
+            "Wireless barcode scanner"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Requested item or service description.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:item_description"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "category_code",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "IT_HARDWARE",
+            "WAREHOUSE_EQUIP",
+            "OFFICE_SUPPLY"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Procurement category code.",
+          "candidate_enum_values": [
+            "IT_HARDWARE",
+            "WAREHOUSE_EQUIP",
+            "OFFICE_SUPPLY",
+            "FACILITY_SERVICE",
+            "LOGISTICS_SERVICE",
+            "SAFETY_SUPPLY",
+            "TRAINING_SERVICE"
+          ],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:category_code"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "quantity",
+          "inferred_type": "decimal_or_integer_quantity",
+          "sample_values": [
+            "12",
+            "10",
+            "30"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Requested quantity.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:quantity"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "unit_of_measure",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "EA",
+            "BOX",
+            "SET",
+            "JOB",
+            "DAY",
+            "VISIT"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Unit of measure.",
+          "candidate_enum_values": [
+            "EA",
+            "BOX",
+            "SET",
+            "JOB",
+            "DAY",
+            "VISIT"
+          ],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:unit_of_measure"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "estimated_unit_price",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "3900.00",
+            "6800.00",
+            "450.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Estimated unit price.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:estimated_unit_price"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "line_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "68000.00",
+            "4500.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Line amount candidate; appears consistent with quantity multiplied by estimated_unit_price in observed rows.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:line_amount",
+            "csv:pc_purchase_request_line#column:quantity",
+            "csv:pc_purchase_request_line#column:estimated_unit_price"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "Multiple line rows can share the same request_id, suggesting purchase request to line one-to-many.",
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#row:3",
+            "csv:pc_purchase_request_line#row:4",
+            "csv:pc_purchase_request_line#column:request_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "No null values observed across line fields.",
+          "evidence_refs": [
+            "csv:pc_purchase_request_line"
+          ]
+        },
+        {
+          "note": "Line_amount appears arithmetically consistent with quantity and estimated_unit_price in visible sample, but this is only a candidate rule.",
+          "evidence_refs": [
+            "csv:pc_purchase_request_line#column:quantity",
+            "csv:pc_purchase_request_line#column:estimated_unit_price",
+            "csv:pc_purchase_request_line#column:line_amount"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_purchase_request_line"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_approval_record.csv",
+      "row_count": 14,
+      "candidate_concept": "Approval Record",
+      "columns": [
+        {
+          "column_name": "approval_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "5001",
+            "5002",
+            "5003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approval record primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:approval_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "target_type",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "PURCHASE_REQUEST",
+            "CONTRACT",
+            "PAYMENT_REQUEST"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Polymorphic approval target entity type.",
+          "candidate_enum_values": [
+            "PURCHASE_REQUEST",
+            "CONTRACT",
+            "PAYMENT_REQUEST"
+          ],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:target_type"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "target_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "3001",
+            "3002",
+            "6001",
+            "9001"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Polymorphic target record identifier.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:target_id"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "step_name",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "Department approval",
+            "Finance approval",
+            "Legal review",
+            "Payment approval"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approval workflow step name.",
+          "candidate_enum_values": [
+            "Department approval",
+            "Finance approval",
+            "Legal review",
+            "Payment approval"
+          ],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:step_name"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "approver_user_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1002",
+            "1004",
+            "1005"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approver user reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:approver_user_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "approval_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approval decision status.",
+          "candidate_enum_values": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:approval_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "approval_comment",
+          "inferred_type": "string",
+          "sample_values": [
+            "Approved for planned laptop refresh",
+            "Waiting for manager decision"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approver comment or decision rationale.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:approval_comment"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "submitted_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-01 09:10:00",
+            "2026-02-02 10:20:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Approval step submission timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:submitted_at"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "decided_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-01 14:30:00",
+            "2026-02-03 11:15:00"
+          ],
+          "null_observation": "Null observed for PENDING approvals.",
+          "candidate_attribute": "Decision timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_approval_record#column:decided_at",
+            "csv:pc_approval_record#row:5",
+            "csv:pc_approval_record#row:12"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "target_type PURCHASE_REQUEST with target_id may reference pc_purchase_request.request_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#column:target_type",
+            "csv:pc_approval_record#column:target_id",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "relation": "target_type CONTRACT with target_id may reference pc_contract.contract_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#row:13",
+            "csv:pc_contract#column:contract_id"
+          ]
+        },
+        {
+          "relation": "target_type PAYMENT_REQUEST with target_id may reference pc_payment_request.payment_request_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#row:14",
+            "csv:pc_approval_record#row:15",
+            "csv:pc_payment_request#column:payment_request_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "PENDING approval rows have blank decided_at.",
+          "evidence_refs": [
+            "csv:pc_approval_record#row:5",
+            "csv:pc_approval_record#row:12"
+          ]
+        },
+        {
+          "note": "Payment approval for target_id 9004 is REJECTED while payment request row has approved_by and approved_at populated; candidate inconsistency.",
+          "evidence_refs": [
+            "csv:pc_approval_record#row:15",
+            "csv:pc_payment_request#row:5"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_approval_record"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_contract.csv",
+      "row_count": 7,
+      "candidate_concept": "Contract",
+      "columns": [
+        {
+          "column_name": "contract_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "6001",
+            "6002",
+            "6003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:contract_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "contract_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "CT-2026-0001",
+            "CT-2026-0002",
+            "CT-2025-0048"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable contract number.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:contract_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "request_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "3001",
+            "3002",
+            "2990"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:request_id"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "supplier_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "2003",
+            "2005",
+            "2002"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:supplier_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "contract_title",
+          "inferred_type": "string",
+          "sample_values": [
+            "Laptop refresh supply contract",
+            "Warehouse scanner supply contract"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract title.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:contract_title"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "contract_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "72500.00",
+            "12600.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract monetary amount.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:contract_amount"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "contract_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "ACTIVE",
+            "LEGAL_REVIEW",
+            "DRAFT",
+            "EXPIRED",
+            "TERMINATED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract lifecycle status.",
+          "candidate_enum_values": [
+            "ACTIVE",
+            "LEGAL_REVIEW",
+            "DRAFT",
+            "EXPIRED",
+            "TERMINATED"
+          ],
+          "evidence_refs": [
+            "csv:pc_contract#column:contract_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "start_date",
+          "inferred_type": "date",
+          "sample_values": [
+            "2026-02-14",
+            "2026-02-15"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract start date.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:start_date"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "end_date",
+          "inferred_type": "date",
+          "sample_values": [
+            "2026-05-31",
+            "2026-06-30",
+            "2027-02-28"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract end date.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:end_date"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "legal_reviewer_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1005"
+          ],
+          "null_observation": "Null observed for DRAFT contract row 6004.",
+          "candidate_attribute": "Legal reviewer user reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:legal_reviewer_id",
+            "csv:pc_contract#row:5"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "legal_approved_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-13 16:30:00",
+            "2026-02-14 17:00:00"
+          ],
+          "null_observation": "Null observed for LEGAL_REVIEW and DRAFT contracts.",
+          "candidate_attribute": "Legal approval timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:legal_approved_at",
+            "csv:pc_contract#row:4",
+            "csv:pc_contract#row:5"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "activated_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-14 09:00:00",
+            "2026-02-15 09:10:00"
+          ],
+          "null_observation": "Null observed for LEGAL_REVIEW and DRAFT contracts.",
+          "candidate_attribute": "Activation timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:activated_at",
+            "csv:pc_contract#row:4",
+            "csv:pc_contract#row:5"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "termination_reason",
+          "inferred_type": "string",
+          "sample_values": [
+            "Supplier suspended after risk review"
+          ],
+          "null_observation": "Null observed for all rows except TERMINATED contract 6007.",
+          "candidate_attribute": "Termination reason text.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:termination_reason",
+            "csv:pc_contract#row:8"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "created_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-12 10:00:00",
+            "2026-02-13 10:00:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract creation timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_contract#column:created_at"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_purchase_order.contract_id may reference pc_contract.contract_id.",
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:contract_id",
+            "csv:pc_contract#column:contract_id"
+          ]
+        },
+        {
+          "relation": "pc_approval_record target_type CONTRACT and target_id may reference pc_contract.contract_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#row:13",
+            "csv:pc_contract#column:contract_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Contract request_id values 2990 and 2988 do not appear in the purchase request sample; could be out-of-sample legacy references.",
+          "evidence_refs": [
+            "csv:pc_contract#row:7",
+            "csv:pc_contract#row:8",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "note": "Purchase orders exist for contracts with LEGAL_REVIEW and DRAFT statuses; candidate lifecycle conflict or sample exception.",
+          "evidence_refs": [
+            "csv:pc_contract#row:4",
+            "csv:pc_contract#row:5",
+            "csv:pc_purchase_order#row:4",
+            "csv:pc_purchase_order#row:5"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_contract"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_purchase_order.csv",
+      "row_count": 8,
+      "candidate_concept": "Purchase Order",
+      "columns": [
+        {
+          "column_name": "po_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "7001",
+            "7002",
+            "7003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:po_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "po_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "PO-2026-0001",
+            "PO-2026-0002",
+            "PO-2025-0099"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable purchase order number; PO abbreviation appears.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:po_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "contract_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "6001",
+            "6002",
+            "6003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Contract reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:contract_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "request_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "3001",
+            "3002",
+            "2990"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase request reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:request_id"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "supplier_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "2003",
+            "2005",
+            "2001"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:supplier_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "po_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "72500.00",
+            "12600.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order monetary amount.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:po_amount"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "po_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "CLOSED",
+            "PARTIALLY_RECEIVED",
+            "RELEASED",
+            "CANCELLED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order lifecycle or fulfillment status.",
+          "candidate_enum_values": [
+            "CLOSED",
+            "PARTIALLY_RECEIVED",
+            "RELEASED",
+            "CANCELLED"
+          ],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:po_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "released_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-14 10:00:00",
+            "2026-02-15 10:30:00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order release timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:released_at"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "closed_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-24 17:00:00",
+            "2025-02-10 17:30:00"
+          ],
+          "null_observation": "Null observed for PARTIALLY_RECEIVED, RELEASED, and CANCELLED rows.",
+          "candidate_attribute": "Purchase order close timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_purchase_order#column:closed_at",
+            "csv:pc_purchase_order#row:3",
+            "csv:pc_purchase_order#row:4",
+            "csv:pc_purchase_order#row:8"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_goods_receipt.po_id and pc_invoice.po_id may reference pc_purchase_order.po_id.",
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:po_id",
+            "csv:pc_invoice#column:po_id",
+            "csv:pc_purchase_order#column:po_id"
+          ]
+        },
+        {
+          "relation": "Multiple purchase orders may reference the same contract/request, observed for contract_id 6002 and request_id 3002.",
+          "evidence_refs": [
+            "csv:pc_purchase_order#row:3",
+            "csv:pc_purchase_order#row:9"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Purchase order request_id values 2990 and 2988 do not appear in purchase request sample; could be out-of-sample legacy references.",
+          "evidence_refs": [
+            "csv:pc_purchase_order#row:7",
+            "csv:pc_purchase_order#row:8",
+            "csv:pc_purchase_request#column:request_id"
+          ]
+        },
+        {
+          "note": "PO 7008 shares contract_id 6002 and request_id 3002 with PO 7002, suggesting split or additional order candidate.",
+          "evidence_refs": [
+            "csv:pc_purchase_order#row:3",
+            "csv:pc_purchase_order#row:9"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_purchase_order"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_goods_receipt.csv",
+      "row_count": 8,
+      "candidate_concept": "Goods Receipt",
+      "columns": [
+        {
+          "column_name": "receipt_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "8001",
+            "8002",
+            "8003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Goods receipt primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:receipt_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "receipt_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "GRN-2026-0001",
+            "GRN-2026-0002",
+            "GRN-2025-0077"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable goods receipt number; GRN abbreviation appears.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:receipt_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "po_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "7001",
+            "7002",
+            "7003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:po_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "receipt_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "COMPLETE",
+            "PARTIAL",
+            "PENDING",
+            "REJECTED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Goods receipt status.",
+          "candidate_enum_values": [
+            "COMPLETE",
+            "PARTIAL",
+            "PENDING",
+            "REJECTED"
+          ],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:receipt_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "received_by",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1006"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Receiving user reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:received_by"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "received_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-22 15:30:00",
+            "2026-02-24 11:20:00"
+          ],
+          "null_observation": "Null observed for PENDING receipt rows.",
+          "candidate_attribute": "Receipt timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:received_at",
+            "csv:pc_goods_receipt#row:4",
+            "csv:pc_goods_receipt#row:5",
+            "csv:pc_goods_receipt#row:6"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "inspection_result",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "PASS",
+            "NOT_REQUIRED",
+            "FAIL"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Inspection result for received goods or services.",
+          "candidate_enum_values": [
+            "PASS",
+            "NOT_REQUIRED",
+            "FAIL"
+          ],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:inspection_result"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "remarks",
+          "inferred_type": "string",
+          "sample_values": [
+            "Laptops received and tagged",
+            "Seven scanners received first batch"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Receipt remarks.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_goods_receipt#column:remarks"
+          ],
+          "confidence": 0.85
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_invoice.receipt_id may reference pc_goods_receipt.receipt_id when populated.",
+          "evidence_refs": [
+            "csv:pc_invoice#column:receipt_id",
+            "csv:pc_goods_receipt#column:receipt_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "PENDING receipts have blank received_at and NOT_REQUIRED inspection_result in sample.",
+          "evidence_refs": [
+            "csv:pc_goods_receipt#row:4",
+            "csv:pc_goods_receipt#row:5",
+            "csv:pc_goods_receipt#row:6"
+          ]
+        },
+        {
+          "note": "REJECTED receipt has FAIL inspection_result.",
+          "evidence_refs": [
+            "csv:pc_goods_receipt#row:8"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_goods_receipt"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_invoice.csv",
+      "row_count": 9,
+      "candidate_concept": "Invoice",
+      "columns": [
+        {
+          "column_name": "invoice_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "8501",
+            "8502",
+            "8503"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Invoice primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:invoice_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "invoice_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "INV-2026-0101",
+            "INV-2026-0102",
+            "INV-2025-0901"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable invoice number.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:invoice_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "supplier_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "2003",
+            "2005",
+            "2002"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Supplier reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:supplier_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "po_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "7001",
+            "7002",
+            "7003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Purchase order reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:po_id"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "receipt_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "8001",
+            "8002",
+            "8006"
+          ],
+          "null_observation": "Null observed for several PENDING_MATCH or EXCEPTION invoice rows.",
+          "candidate_attribute": "Goods receipt reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:receipt_id",
+            "csv:pc_invoice#row:4",
+            "csv:pc_invoice#row:5",
+            "csv:pc_invoice#row:6"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "invoice_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "72500.00",
+            "12600.00",
+            "19050.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Invoice monetary amount.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:invoice_amount"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "invoice_date",
+          "inferred_type": "date",
+          "sample_values": [
+            "2026-02-23",
+            "2026-02-25",
+            "2025-02-03"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Invoice date.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:invoice_date"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "invoice_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "MATCHED",
+            "PENDING_MATCH",
+            "EXCEPTION",
+            "CANCELLED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Invoice matching or processing status.",
+          "candidate_enum_values": [
+            "MATCHED",
+            "PENDING_MATCH",
+            "EXCEPTION",
+            "CANCELLED"
+          ],
+          "evidence_refs": [
+            "csv:pc_invoice#column:invoice_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "match_variance_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "0.00",
+            "650.00",
+            "150.00",
+            "300.00"
+          ],
+          "null_observation": "Null observed for PENDING_MATCH and CANCELLED invoices.",
+          "candidate_attribute": "Amount variance identified during invoice matching.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:match_variance_amount",
+            "csv:pc_invoice#row:3",
+            "csv:pc_invoice#row:4",
+            "csv:pc_invoice#row:8"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "matched_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-24 09:20:00",
+            "2026-02-27 16:00:00"
+          ],
+          "null_observation": "Null observed for PENDING_MATCH and CANCELLED invoices.",
+          "candidate_attribute": "Invoice match timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_invoice#column:matched_at",
+            "csv:pc_invoice#row:3",
+            "csv:pc_invoice#row:4",
+            "csv:pc_invoice#row:8"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "pc_payment_request.invoice_id may reference pc_invoice.invoice_id.",
+          "evidence_refs": [
+            "csv:pc_payment_request#column:invoice_id",
+            "csv:pc_invoice#column:invoice_id"
+          ]
+        },
+        {
+          "relation": "Invoice po_id and receipt_id link invoice to purchase order and goods receipt candidates.",
+          "evidence_refs": [
+            "csv:pc_invoice#column:po_id",
+            "csv:pc_invoice#column:receipt_id",
+            "csv:pc_purchase_order#column:po_id",
+            "csv:pc_goods_receipt#column:receipt_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Invoice 8504 has EXCEPTION status and variance amount 650.00; invoice amount 19050.00 differs from related PO 7004 amount 18400.00.",
+          "evidence_refs": [
+            "csv:pc_invoice#row:5",
+            "csv:pc_purchase_order#row:5"
+          ]
+        },
+        {
+          "note": "Invoice 8508 has MATCHED status but non-zero match_variance_amount 150.00; candidate anomaly or tolerated variance.",
+          "evidence_refs": [
+            "csv:pc_invoice#row:9"
+          ]
+        },
+        {
+          "note": "Invoice 8509 is an additional EXCEPTION invoice for PO 7001 and receipt 8001 with amount and variance 300.00.",
+          "evidence_refs": [
+            "csv:pc_invoice#row:10",
+            "csv:pc_invoice#row:2"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_invoice"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "file_name": "pc_payment_request.csv",
+      "row_count": 8,
+      "candidate_concept": "Payment Request",
+      "columns": [
+        {
+          "column_name": "payment_request_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "9001",
+            "9002",
+            "9003"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Payment request primary identifier candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:payment_request_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "payment_no",
+          "inferred_type": "string_code",
+          "sample_values": [
+            "PAY-2026-0001",
+            "PAY-2026-0002",
+            "PAY-2025-0301"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Human-readable payment request number; PAY abbreviation appears.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:payment_no"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "invoice_id",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "8501",
+            "8502",
+            "8503"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Invoice reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:invoice_id"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "payment_amount",
+          "inferred_type": "decimal_amount",
+          "sample_values": [
+            "46800.00",
+            "72500.00",
+            "12600.00"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Requested payment amount.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:payment_amount"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "payment_status",
+          "inferred_type": "string_enum",
+          "sample_values": [
+            "PAID",
+            "REQUESTED",
+            "HELD",
+            "CANCELLED",
+            "APPROVED"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Payment request processing status.",
+          "candidate_enum_values": [
+            "PAID",
+            "REQUESTED",
+            "HELD",
+            "CANCELLED",
+            "APPROVED"
+          ],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:payment_status"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "column_name": "due_date",
+          "inferred_type": "date",
+          "sample_values": [
+            "2026-03-10",
+            "2026-03-20",
+            "2025-02-28"
+          ],
+          "null_observation": "No null values observed in sample.",
+          "candidate_attribute": "Payment due date.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:due_date"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "column_name": "approved_by",
+          "inferred_type": "integer_identifier",
+          "sample_values": [
+            "1004"
+          ],
+          "null_observation": "Null observed for REQUESTED, HELD row 9003, and CANCELLED payment requests.",
+          "candidate_attribute": "Approving user reference candidate.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:approved_by",
+            "csv:pc_payment_request#row:3",
+            "csv:pc_payment_request#row:4",
+            "csv:pc_payment_request#row:8"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "approved_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-02-25 15:00:00",
+            "2026-02-26 16:20:00"
+          ],
+          "null_observation": "Null observed for REQUESTED, HELD row 9003, and CANCELLED payment requests.",
+          "candidate_attribute": "Payment approval timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:approved_at",
+            "csv:pc_payment_request#row:3",
+            "csv:pc_payment_request#row:4",
+            "csv:pc_payment_request#row:8"
+          ],
+          "confidence": 0.85
+        },
+        {
+          "column_name": "paid_at",
+          "inferred_type": "datetime",
+          "sample_values": [
+            "2026-03-01 10:00:00",
+            "2025-02-20 10:00:00"
+          ],
+          "null_observation": "Null observed for non-PAID payment statuses.",
+          "candidate_attribute": "Actual payment timestamp.",
+          "candidate_enum_values": [],
+          "evidence_refs": [
+            "csv:pc_payment_request#column:paid_at",
+            "csv:pc_payment_request#row:3",
+            "csv:pc_payment_request#row:9"
+          ],
+          "confidence": 0.9
+        }
+      ],
+      "candidate_relations": [
+        {
+          "relation": "Payment request invoice_id may reference pc_invoice.invoice_id.",
+          "evidence_refs": [
+            "csv:pc_payment_request#column:invoice_id",
+            "csv:pc_invoice#column:invoice_id"
+          ]
+        },
+        {
+          "relation": "pc_approval_record target_type PAYMENT_REQUEST and target_id may reference payment_request_id.",
+          "evidence_refs": [
+            "csv:pc_approval_record#column:target_type",
+            "csv:pc_approval_record#column:target_id",
+            "csv:pc_payment_request#column:payment_request_id"
+          ]
+        }
+      ],
+      "data_quality_notes": [
+        {
+          "note": "Payment 9004 is HELD but has approved_by and approved_at populated while approval record 5014 is REJECTED.",
+          "evidence_refs": [
+            "csv:pc_payment_request#row:5",
+            "csv:pc_approval_record#row:15"
+          ]
+        },
+        {
+          "note": "PAID payment requests have paid_at populated; non-PAID rows have blank paid_at in sample.",
+          "evidence_refs": [
+            "csv:pc_payment_request#column:payment_status",
+            "csv:pc_payment_request#column:paid_at"
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "csv:pc_payment_request"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "candidate_states": [
+    {
+      "field": "pc_purchase_request.request_status",
+      "values": [
+        "APPROVED",
+        "SUBMITTED",
+        "REJECTED",
+        "DRAFT",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "csv:pc_purchase_request#column:request_status"
+      ]
+    },
+    {
+      "field": "pc_approval_record.approval_status",
+      "values": [
+        "APPROVED",
+        "PENDING",
+        "REJECTED"
+      ],
+      "evidence_refs": [
+        "csv:pc_approval_record#column:approval_status"
+      ]
+    },
+    {
+      "field": "pc_approval_record.target_type",
+      "values": [
+        "PURCHASE_REQUEST",
+        "CONTRACT",
+        "PAYMENT_REQUEST"
+      ],
+      "evidence_refs": [
+        "csv:pc_approval_record#column:target_type"
+      ]
+    },
+    {
+      "field": "pc_contract.contract_status",
+      "values": [
+        "ACTIVE",
+        "LEGAL_REVIEW",
+        "DRAFT",
+        "EXPIRED",
+        "TERMINATED"
+      ],
+      "evidence_refs": [
+        "csv:pc_contract#column:contract_status"
+      ]
+    },
+    {
+      "field": "pc_purchase_order.po_status",
+      "values": [
+        "CLOSED",
+        "PARTIALLY_RECEIVED",
+        "RELEASED",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "csv:pc_purchase_order#column:po_status"
+      ]
+    },
+    {
+      "field": "pc_goods_receipt.receipt_status",
+      "values": [
+        "COMPLETE",
+        "PARTIAL",
+        "PENDING",
+        "REJECTED"
+      ],
+      "evidence_refs": [
+        "csv:pc_goods_receipt#column:receipt_status"
+      ]
+    },
+    {
+      "field": "pc_goods_receipt.inspection_result",
+      "values": [
+        "PASS",
+        "NOT_REQUIRED",
+        "FAIL"
+      ],
+      "evidence_refs": [
+        "csv:pc_goods_receipt#column:inspection_result"
+      ]
+    },
+    {
+      "field": "pc_invoice.invoice_status",
+      "values": [
+        "MATCHED",
+        "PENDING_MATCH",
+        "EXCEPTION",
+        "CANCELLED"
+      ],
+      "evidence_refs": [
+        "csv:pc_invoice#column:invoice_status"
+      ]
+    },
+    {
+      "field": "pc_payment_request.payment_status",
+      "values": [
+        "PAID",
+        "REQUESTED",
+        "HELD",
+        "CANCELLED",
+        "APPROVED"
+      ],
+      "evidence_refs": [
+        "csv:pc_payment_request#column:payment_status"
+      ]
+    },
+    {
+      "field": "pc_supplier.supplier_status",
+      "values": [
+        "ACTIVE",
+        "SUSPENDED",
+        "PENDING_REVIEW"
+      ],
+      "evidence_refs": [
+        "csv:pc_supplier#column:supplier_status"
+      ]
+    },
+    {
+      "field": "pc_supplier.risk_rating",
+      "values": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
+      "evidence_refs": [
+        "csv:pc_supplier#column:risk_rating"
+      ]
+    },
+    {
+      "field": "pc_user.role_code",
+      "values": [
+        "REQUESTER",
+        "DEPT_MANAGER",
+        "PROCUREMENT_SPECIALIST",
+        "FINANCE_MANAGER",
+        "LEGAL_REVIEWER",
+        "WAREHOUSE_CLERK",
+        "AP_CLERK",
+        "PROCUREMENT_ADMIN"
+      ],
+      "evidence_refs": [
+        "csv:pc_user#column:role_code"
+      ]
+    }
+  ],
+  "candidate_rules": [
+    {
+      "rule_candidate": "Purchase request line amount may equal quantity multiplied by estimated_unit_price.",
+      "evidence_refs": [
+        "csv:pc_purchase_request_line#column:quantity",
+        "csv:pc_purchase_request_line#column:estimated_unit_price",
+        "csv:pc_purchase_request_line#column:line_amount"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "rule_candidate": "Purchase request estimated_amount may equal the sum of related purchase request line amounts.",
+      "evidence_refs": [
+        "csv:pc_purchase_request#column:estimated_amount",
+        "csv:pc_purchase_request_line#column:request_id",
+        "csv:pc_purchase_request_line#column:line_amount"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "rule_candidate": "PENDING approval records may have blank decided_at, while APPROVED or REJECTED records may have decided_at populated.",
+      "evidence_refs": [
+        "csv:pc_approval_record#column:approval_status",
+        "csv:pc_approval_record#column:decided_at",
+        "csv:pc_approval_record#row:5",
+        "csv:pc_approval_record#row:12"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "rule_candidate": "Approved purchase requests may have approved_at populated; non-approved statuses in sample have approved_at blank.",
+      "evidence_refs": [
+        "csv:pc_purchase_request#column:request_status",
+        "csv:pc_purchase_request#column:approved_at"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "rule_candidate": "Contract activation may depend on legal approval, suggested by ACTIVE contracts having legal_approved_at and activated_at populated.",
+      "evidence_refs": [
+        "csv:pc_contract#column:contract_status",
+        "csv:pc_contract#column:legal_approved_at",
+        "csv:pc_contract#column:activated_at"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "rule_candidate": "Invoice EXCEPTION status may be associated with non-zero match_variance_amount.",
+      "evidence_refs": [
+        "csv:pc_invoice#column:invoice_status",
+        "csv:pc_invoice#column:match_variance_amount",
+        "csv:pc_invoice#row:5",
+        "csv:pc_invoice#row:10"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "rule_candidate": "Payment PAID status may require paid_at populated.",
+      "evidence_refs": [
+        "csv:pc_payment_request#column:payment_status",
+        "csv:pc_payment_request#column:paid_at",
+        "csv:pc_payment_request#row:2",
+        "csv:pc_payment_request#row:7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "rule_candidate": "Approval records appear polymorphic: target_type determines whether target_id points to purchase request, contract, or payment request.",
+      "evidence_refs": [
+        "csv:pc_approval_record#column:target_type",
+        "csv:pc_approval_record#column:target_id"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "rule_candidate": "Suspended or high-risk supplier rows may be associated with terminated, cancelled, rejected, or held downstream records, but sample is too small for a complete rule.",
+      "evidence_refs": [
+        "csv:pc_supplier#row:5",
+        "csv:pc_contract#row:8",
+        "csv:pc_purchase_order#row:8",
+        "csv:pc_invoice#row:8",
+        "csv:pc_payment_request#row:8"
+      ],
+      "confidence": 0.65
+    }
+  ],
+  "candidate_aliases": [
+    {
+      "alias": "PR",
+      "candidate_meaning": "Purchase Request",
+      "evidence_refs": [
+        "csv:pc_purchase_request#column:request_no"
+      ]
+    },
+    {
+      "alias": "PO",
+      "candidate_meaning": "Purchase Order",
+      "evidence_refs": [
+        "csv:pc_purchase_order#column:po_no",
+        "csv:pc_purchase_order#column:po_id"
+      ]
+    },
+    {
+      "alias": "GRN",
+      "candidate_meaning": "Goods Receipt Note or goods receipt number pattern",
+      "evidence_refs": [
+        "csv:pc_goods_receipt#column:receipt_no"
+      ]
+    },
+    {
+      "alias": "Supplier",
+      "candidate_meaning": "Vendor-like party in procurement flow; no separate Vendor field appears in the CSV sample.",
+      "evidence_refs": [
+        "csv:pc_supplier#column:supplier_id",
+        "csv:pc_supplier#column:supplier_name"
+      ]
+    },
+    {
+      "alias": "Payment Application",
+      "candidate_meaning": "Possible synonym for Payment Request in this sample context; actual CSV naming uses payment_request.",
+      "evidence_refs": [
+        "csv:pc_payment_request#column:payment_request_id",
+        "csv:pc_payment_request#column:payment_no"
+      ]
+    },
+    {
+      "alias": "CT",
+      "candidate_meaning": "Contract number prefix candidate.",
+      "evidence_refs": [
+        "csv:pc_contract#column:contract_no"
+      ]
+    },
+    {
+      "alias": "INV",
+      "candidate_meaning": "Invoice number prefix candidate.",
+      "evidence_refs": [
+        "csv:pc_invoice#column:invoice_no"
+      ]
+    },
+    {
+      "alias": "PAY",
+      "candidate_meaning": "Payment request number prefix candidate.",
+      "evidence_refs": [
+        "csv:pc_payment_request#column:payment_no"
+      ]
+    }
+  ],
+  "candidate_conflicts": [
+    {
+      "conflict": "Contract 6003 is LEGAL_REVIEW but related PO 7003 is RELEASED.",
+      "evidence_refs": [
+        "csv:pc_contract#row:4",
+        "csv:pc_purchase_order#row:4"
+      ],
+      "severity": "candidate_medium"
+    },
+    {
+      "conflict": "Contract 6004 is DRAFT but related PO 7004 is RELEASED.",
+      "evidence_refs": [
+        "csv:pc_contract#row:5",
+        "csv:pc_purchase_order#row:5"
+      ],
+      "severity": "candidate_medium"
+    },
+    {
+      "conflict": "Payment request 9004 is HELD with approved_by and approved_at populated, while related approval record 5014 is REJECTED.",
+      "evidence_refs": [
+        "csv:pc_payment_request#row:5",
+        "csv:pc_approval_record#row:15"
+      ],
+      "severity": "candidate_high"
+    },
+    {
+      "conflict": "Invoice 8508 is MATCHED with non-zero match_variance_amount 150.00.",
+      "evidence_refs": [
+        "csv:pc_invoice#row:9"
+      ],
+      "severity": "candidate_low"
+    },
+    {
+      "conflict": "Contract and purchase order rows reference request_id 2990 and 2988, which are absent from the purchase request CSV sample.",
+      "evidence_refs": [
+        "csv:pc_contract#row:7",
+        "csv:pc_contract#row:8",
+        "csv:pc_purchase_order#row:7",
+        "csv:pc_purchase_order#row:8",
+        "csv:pc_purchase_request#column:request_id"
+      ],
+      "severity": "candidate_medium"
+    },
+    {
+      "conflict": "Invoice 8509 creates an additional EXCEPTION invoice against PO 7001 and receipt 8001, which already have matched invoice 8501.",
+      "evidence_refs": [
+        "csv:pc_invoice#row:2",
+        "csv:pc_invoice#row:10"
+      ],
+      "severity": "candidate_medium"
+    }
+  ],
+  "uncertainties": [
+    "Sample completeness is unknown; sample_is_partial is left null because the CSV files do not state whether rows are complete.",
+    "Row counts are counted from visible CSV records excluding headers; no external metadata was used.",
+    "Primary keys are candidates inferred from id-like fields and apparent uniqueness within the sample only.",
+    "Foreign key relations are candidates inferred from matching id values and *_id naming; they were not validated against DDL or constraints.",
+    "Request_id values 2990 and 2988 are absent from pc_purchase_request.csv but may be valid out-of-sample legacy records.",
+    "Status enumerations include only values observed in the CSV sample; no missing or future states are inferred.",
+    "Business rules are candidate patterns only and may not represent complete workflow rules.",
+    "Payment request 9004 approval semantics are uncertain because payment_status, approved_at, and approval_status provide mixed signals.",
+    "Invoice variance semantics are uncertain because one MATCHED invoice has non-zero variance.",
+    "Supplier/Vendor and Payment Application naming aliases are candidates based only on CSV names and visible number prefixes."
+  ],
+  "evidence_refs": [
+    "csv:pc_department",
+    "csv:pc_user",
+    "csv:pc_supplier",
+    "csv:pc_purchase_request",
+    "csv:pc_purchase_request_line",
+    "csv:pc_approval_record",
+    "csv:pc_contract",
+    "csv:pc_purchase_order",
+    "csv:pc_goods_receipt",
+    "csv:pc_invoice",
+    "csv:pc_payment_request"
+  ],
+  "confidence": 0.88,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "sample_data_csv"
+  }
+}

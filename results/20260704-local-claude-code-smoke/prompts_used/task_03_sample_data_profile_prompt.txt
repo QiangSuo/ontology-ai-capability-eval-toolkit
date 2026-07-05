@@ -1,0 +1,79 @@
+你正在执行采购合同 MVP 样例数据画像任务。请只基于我提供的 CSV 样例数据作答，不要使用源代码、DDL、业务文档或外部知识。
+
+【任务目标】
+分析 CSV 样例数据，识别字段含义线索、枚举值、状态值、空值、异常值、主外键候选、关系候选和业务规则线索。
+
+【分析要求】
+1. 为每个 CSV 输出 table profile：文件名、行数、字段列表、候选 concept。
+2. 为每个字段输出 column profile：字段名、样例值、空值情况、可能数据类型、候选业务含义。
+3. 识别枚举候选：status、type、role_code、approval_status、contract_status、invoice_status、payment_status 等。
+4. 识别关系候选：相同 ID 值、`*_id` 字段、引用模式。
+5. 识别数据质量问题：空值、重复、疑似异常金额、无效状态、引用缺失。
+6. 识别业务规则线索，但只能作为 candidate，不要直接断言完整规则。
+7. 识别命名差异：PR、PO、GRN、Vendor/Supplier、Payment Application 等缩写或同义词。
+
+【输出要求】
+只输出合法 JSON，字段名使用英文：
+{
+  "task_id": "TASK-03",
+  "title": "Procurement Contract MVP Sample Data Profile",
+  "source_system": "sample_data_csv",
+  "sample_is_partial": null,
+  "table_profiles": [
+    {
+      "file_name": "",
+      "row_count": null,
+      "candidate_concept": "",
+      "columns": [
+        {
+          "column_name": "",
+          "inferred_type": "",
+          "sample_values": [],
+          "null_observation": "",
+          "candidate_attribute": "",
+          "candidate_enum_values": [],
+          "evidence_refs": [],
+          "confidence": 0.0
+        }
+      ],
+      "candidate_relations": [],
+      "data_quality_notes": [],
+      "evidence_refs": []
+    }
+  ],
+  "candidate_states": [],
+  "candidate_rules": [],
+  "candidate_aliases": [],
+  "candidate_conflicts": [],
+  "uncertainties": [],
+  "evidence_refs": [],
+  "confidence": 0.0,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "sample_data_csv"
+  }
+}
+
+【证据要求】
+`evidence_refs` 使用 `csv:<file>#column:<column>` 或 `csv:<file>#row:<row_number>`；异常值和枚举值必须引用具体文件与字段。
+
+【不确定性要求】
+样本不足、行数未知、关系未验证、字段含义不确定都必须写入 `uncertainties`。
+
+【禁止事项】
+不要补充 CSV 中未出现的状态值；不要把样例数据推断成完整业务规则。
+
+【本次实际输入路径】
+- 工具包根目录：ontology-ai-capability-eval-toolkit/
+- 数据集根目录：ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/
+
+【执行边界】
+- 只能读取本任务列出的输入路径和 schemas/ 下的结构说明。
+- 禁止读取 datasets/generic_procurement_contract_mvp/gold/、results/demo_baseline/、results/demo_web/、results/demo_screenshot/、scoring/ 和任何 machine_score/manual_review/report 参考结果。
+- 不要执行 shell 命令；如需查看文件，只使用读取/搜索能力。
+- 输出只允许是一个 JSON 对象，不要 Markdown，不要解释。
+- 为了让机器评分能匹配 evidence_refs，优先使用这些稳定证据 ID：code:<ClassName>、ddl:<table>、ddl:<table>.<column>、csv:<filename_stem>、doc:<filename_stem>。更精确的位置放入 mappings.source_element 或 description。
+- 本体对象请只使用 ontology.schema.json 允许的字段；不要给 concept/attribute/relation 添加 schema 未定义字段。
+
+【本任务输入】只读取 datasets/generic_procurement_contract_mvp/database/sample_data/*.csv。

@@ -1,0 +1,67 @@
+你正在执行采购合同 MVP DDL 到本体抽取任务。请只基于我提供的数据库 DDL 作答，不要使用源代码、CSV、业务文档或外部知识。
+
+【任务目标】
+从 DDL 中抽取 concept、attribute、relation、state、rule、alias、mapping、conflict、uncertainty。
+
+【抽取要求】
+1. concept：通常由核心业务表抽取；纯技术表不要轻易作为业务概念。
+2. attribute：由列名、类型、是否必填、默认值、注释抽取。
+3. relation：由外键、`*_id` 字段、表间引用和约束抽取。
+4. state：从 status、stage、type、role_code、check 约束或注释中抽取。
+5. rule：从 NOT NULL、CHECK、UNIQUE、FK、注释中的业务约束抽取。
+6. event/action：DDL 证据通常不足，除非表或字段明确表示事件/动作，否则写入 `uncertainties`。
+7. alias：识别 `pc_` 表前缀、`pr_number`、`po_number`、`receipt_number` 等缩写或同义命名。
+8. mapping：将本体元素映射到表、列、约束。
+9. conflict / uncertainty：记录缺失外键、命名歧义、注释与约束不一致。
+
+【输出要求】
+只输出合法 JSON，字段名使用英文：
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-ddl-ontology",
+  "title": "Procurement Contract MVP DDL Ontology Draft",
+  "domain": "procurement_contract",
+  "concepts": [],
+  "attributes": [],
+  "relations": [],
+  "events": [],
+  "rules": [],
+  "actions": [],
+  "states": [],
+  "roles": [],
+  "permissions": [],
+  "aliases": [],
+  "mappings": [],
+  "conflicts": [],
+  "uncertainties": [],
+  "evidence_refs": [],
+  "confidence": 0.0,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "database_ddl"
+  }
+}
+
+【证据要求】
+`evidence_refs` 使用 `ddl:ddl.sql#<table>` 或 `ddl:ddl.sql#<table>.<column>`；relation 引用外键或相关 `*_id` 字段。
+
+【不确定性要求】
+只有 `*_id` 但无外键时 relation confidence 不高于 0.75；无枚举证据时不要展开状态全集。
+
+【禁止事项】
+不要补充 DDL 中不存在的表、字段、完整流程或角色权限。
+
+【本次实际输入路径】
+- 工具包根目录：ontology-ai-capability-eval-toolkit/
+- 数据集根目录：ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/
+
+【执行边界】
+- 只能读取本任务列出的输入路径和 schemas/ 下的结构说明。
+- 禁止读取 datasets/generic_procurement_contract_mvp/gold/、results/demo_baseline/、results/demo_web/、results/demo_screenshot/、scoring/ 和任何 machine_score/manual_review/report 参考结果。
+- 不要执行 shell 命令；如需查看文件，只使用读取/搜索能力。
+- 输出只允许是一个 JSON 对象，不要 Markdown，不要解释。
+- 为了让机器评分能匹配 evidence_refs，优先使用这些稳定证据 ID：code:<ClassName>、ddl:<table>、ddl:<table>.<column>、csv:<filename_stem>、doc:<filename_stem>。更精确的位置放入 mappings.source_element 或 description。
+- 本体对象请只使用 ontology.schema.json 允许的字段；不要给 concept/attribute/relation 添加 schema 未定义字段。
+
+【本任务输入】只读取 datasets/generic_procurement_contract_mvp/database/ddl.sql 和 schemas/ontology.schema.json。

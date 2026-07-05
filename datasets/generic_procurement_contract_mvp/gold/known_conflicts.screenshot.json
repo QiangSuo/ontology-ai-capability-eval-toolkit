@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0.0",
+  "known_conflicts_id": "known_conflicts:generic_procurement_contract_mvp:screenshot",
+  "title": "Known Screenshot Surrogate Conflicts for Generic Procurement Contract MVP",
+  "description": "Evaluator-only UI/screenshot surrogate conflicts for testing optional screenshot semantic extraction and multi-source fusion. This file is not an AI input.",
+  "dataset_ref": "datasets/generic_procurement_contract_mvp",
+  "screenshot_manifest_ref": "metadata/screenshot_manifest.json",
+  "evidence_map_ref": "gold/gold_evidence_map.screenshot.json",
+  "conflict_types": [
+    "ui_vs_database_naming_mismatch",
+    "screenshot_only_business_term",
+    "role_permission_ui_vs_doc_mismatch",
+    "button_action_ambiguity",
+    "visible_status_mismatch"
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "conflict:screenshot.naming.vendor_supplier",
+      "conflict_type": "ui_vs_database_naming_mismatch",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/contract_detail.screen.md",
+          "source_location": "Visible Fields / Vendor",
+          "evidence_id": "screen:contract_detail.field.vendor",
+          "evidence_summary": "Contract detail UI uses Vendor for the external supplier party."
+        },
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/purchase_request_detail.screen.md",
+          "source_location": "Visible Fields / Preferred Vendor",
+          "evidence_id": "screen:purchase_request_detail.field.preferred_vendor",
+          "evidence_summary": "Purchase request detail UI uses Preferred Vendor."
+        },
+        {
+          "source_type": "database_ddl",
+          "source_file": "database/ddl.sql",
+          "source_location": "CREATE TABLE pc_supplier",
+          "evidence_summary": "DDL uses supplier terminology."
+        }
+      ],
+      "description": "UI screens use Vendor labels while the database and canonical business term use Supplier.",
+      "expected_resolution": "Normalize Vendor to Supplier, preserve Vendor as UI alias, and do not create a separate Vendor concept.",
+      "severity": "low",
+      "scoring_guidance": "Award credit if the screenshot extraction records Vendor as an alias/mapping for Supplier. Penalize duplicate Vendor and Supplier concepts.",
+      "tests_capability": [
+        "ui_term_normalization",
+        "alias_detection",
+        "duplicate_concept_control"
+      ]
+    },
+    {
+      "conflict_id": "conflict:screenshot.naming.grn_goods_receipt",
+      "conflict_type": "ui_vs_database_naming_mismatch",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/invoice_payment.screen.md",
+          "source_location": "Visible Fields / GRN No",
+          "evidence_id": "screen:invoice_payment.field.grn_no",
+          "evidence_summary": "Invoice/payment UI uses GRN No for goods receipt reference."
+        },
+        {
+          "source_type": "database_ddl",
+          "source_file": "database/ddl.sql",
+          "source_location": "CREATE TABLE pc_goods_receipt",
+          "evidence_summary": "DDL uses goods_receipt terminology."
+        }
+      ],
+      "description": "UI uses GRN while database and canonical ontology use Goods Receipt.",
+      "expected_resolution": "Normalize GRN to Goods Receipt and preserve it as an alias/abbreviation.",
+      "severity": "low",
+      "scoring_guidance": "Award credit for mapping GRN to Goods Receipt. Penalize a separate GRN business concept unless marked as alias.",
+      "tests_capability": [
+        "abbreviation_handling",
+        "ui_database_mapping"
+      ]
+    },
+    {
+      "conflict_id": "conflict:screenshot.action.return_for_revision",
+      "conflict_type": "screenshot_only_business_term",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/approval_task.screen.md",
+          "source_location": "Button Actions / Return",
+          "evidence_id": "screen:approval_task.button.return",
+          "evidence_summary": "Approval task UI includes Return action."
+        }
+      ],
+      "description": "Return action appears in UI surrogate but is not part of the core MVP gold action set.",
+      "expected_resolution": "Treat Return as screenshot-only action candidate or uncertainty until confirmed by code/documents.",
+      "severity": "medium",
+      "scoring_guidance": "Award credit if the output marks Return as screenshot-only or uncertain. Penalize if it is promoted to canonical backend action without provenance.",
+      "tests_capability": [
+        "hallucination_control",
+        "ui_only_candidate_handling"
+      ]
+    },
+    {
+      "conflict_id": "conflict:screenshot.role.activate_contract_visibility",
+      "conflict_type": "role_permission_ui_vs_doc_mismatch",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/contract_detail.screen.md",
+          "source_location": "Button Actions / Activate Contract",
+          "evidence_id": "screen:contract_detail.button.activate_contract",
+          "evidence_summary": "UI shows Activate Contract for Procurement Admin after legal approval and date validation."
+        },
+        {
+          "source_type": "document",
+          "source_file": "documents/contract_lifecycle.md",
+          "source_location": "Contract Activation",
+          "evidence_summary": "Contract activation policy must be reconciled with document and code rules."
+        }
+      ],
+      "description": "UI button visibility suggests who may activate contracts, but authorization must be confirmed by non-UI sources.",
+      "expected_resolution": "Record the role/action as UI evidence with low or candidate confidence unless supported by code or documents.",
+      "severity": "medium",
+      "scoring_guidance": "Award credit for distinguishing UI visibility from authoritative permission. Penalize declaring final permission solely from screenshot surrogate.",
+      "tests_capability": [
+        "permission_inference_control",
+        "multi_source_fusion"
+      ]
+    },
+    {
+      "conflict_id": "conflict:screenshot.rule.invoice_difference_percent",
+      "conflict_type": "screenshot_only_business_term",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/invoice_payment.screen.md",
+          "source_location": "Invoice matching table / Difference %",
+          "evidence_id": "screen:invoice_payment.match.difference_percent",
+          "evidence_summary": "UI displays Difference % but does not define the canonical tolerance threshold."
+        },
+        {
+          "source_type": "document",
+          "source_file": "documents/receipt_invoice_payment_policy.md",
+          "source_location": "Invoice Matching",
+          "evidence_summary": "Policy defines tolerance terms outside the screenshot surrogate."
+        },
+        {
+          "source_type": "code",
+          "source_file": "source_code/src/main/java/com/example/procurement/service/ReceiptInvoiceMatchingService.java",
+          "source_location": "CODE_MATCH_TOLERANCE_RATE",
+          "evidence_summary": "Code defines a specific tolerance constant outside the screenshot surrogate."
+        }
+      ],
+      "description": "The UI shows a calculated Difference % indicator but cannot by itself decide the canonical invoice matching tolerance threshold.",
+      "expected_resolution": "Treat Difference % as a UI signal for the matching process and defer threshold resolution to document/code fusion.",
+      "severity": "medium",
+      "scoring_guidance": "Award credit if the output records the UI signal without inventing the threshold. Penalize if it claims a threshold from screenshot surrogate alone.",
+      "tests_capability": [
+        "rule_evidence_boundary",
+        "conflict_handling",
+        "hallucination_control"
+      ]
+    },
+    {
+      "conflict_id": "conflict:screenshot.status.payment_paid",
+      "conflict_type": "visible_status_mismatch",
+      "involved_sources": [
+        {
+          "source_type": "screenshot",
+          "source_file": "screenshots/invoice_payment.screen.md",
+          "source_location": "Status Display / Payment PAID",
+          "evidence_id": "screen:invoice_payment.button.mark_paid",
+          "evidence_summary": "UI shows Mark Paid and PAID status for payment requests."
+        },
+        {
+          "source_type": "database_ddl",
+          "source_file": "database/ddl.sql",
+          "source_location": "pc_payment_request payment_status check constraint",
+          "evidence_summary": "DDL defines payment request statuses and should be used to confirm status vocabulary."
+        }
+      ],
+      "description": "UI-visible paid status and action need to be reconciled with the canonical payment status vocabulary.",
+      "expected_resolution": "Map UI PAID to canonical payment request paid state if supported by DDL/code; otherwise keep as UI-derived candidate.",
+      "severity": "low",
+      "scoring_guidance": "Award credit for status mapping with evidence. Penalize merging invoice paid, payment request paid and purchase order closed states.",
+      "tests_capability": [
+        "state_boundary_control",
+        "ui_status_mapping"
+      ]
+    }
+  ],
+  "severity_counts": {
+    "low": 3,
+    "medium": 3,
+    "high": 0,
+    "critical": 0
+  }
+}

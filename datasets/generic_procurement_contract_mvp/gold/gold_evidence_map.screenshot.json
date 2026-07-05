@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_map_id": "gold_evidence_map:generic_procurement_contract_mvp:screenshot",
+  "title": "Gold Screenshot Surrogate Evidence Map for Generic Procurement Contract MVP",
+  "description": "Evaluator-only screenshot surrogate evidence handles for optional B2/B3 screenshot tasks. This file is not an AI input and does not contain real PNG/JPG image evidence.",
+  "dataset_ref": "datasets/generic_procurement_contract_mvp",
+  "screenshot_manifest_ref": "metadata/screenshot_manifest.json",
+  "source_types": [
+    "screenshot"
+  ],
+  "input_modes": [
+    "surrogate_only"
+  ],
+  "evidence": [
+    {
+      "evidence_id": "screen:purchase_request_list.field.pr_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/purchase_request_list.screen.md",
+      "source_location": "Visible Fields / PR No",
+      "evidence_summary": "Purchase request list shows PR No as the human-readable purchase request number.",
+      "supports": [
+        "concept:purchase_request",
+        "attr:purchase_request.request_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "screen:purchase_request_list.button.submit",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/purchase_request_list.screen.md",
+      "source_location": "Button Actions / Submit",
+      "evidence_summary": "Purchase request list exposes a Submit button for requester-owned DRAFT requests.",
+      "supports": [
+        "action:submit_purchase_request",
+        "state:purchase_request.draft"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "evidence_id": "screen:purchase_request_detail.line_items",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/purchase_request_detail.screen.md",
+      "source_location": "Table Columns / Line Items table",
+      "evidence_summary": "Purchase request detail shows line item fields including item description, category, quantity, UOM, unit price and line amount.",
+      "supports": [
+        "concept:purchase_request_item",
+        "concept:material",
+        "rel:purchase_request.has_item",
+        "attr:purchase_request_item.item_description",
+        "attr:purchase_request_item.quantity",
+        "attr:purchase_request_item.unit_of_measure"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "evidence_id": "screen:purchase_request_detail.button.create_contract",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/purchase_request_detail.screen.md",
+      "source_location": "Button Actions / Create Contract",
+      "evidence_summary": "Purchase request detail shows Create Contract action for approved purchase requests.",
+      "supports": [
+        "concept:contract",
+        "rel:purchase_request.results_in_contract",
+        "action:draft_contract"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "evidence_id": "screen:approval_task.field.target_type",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/approval_task.screen.md",
+      "source_location": "Visible Fields / Target Type",
+      "evidence_summary": "Approval task workbench shows Target Type and Target No, indicating a polymorphic approval target pattern.",
+      "supports": [
+        "concept:approval_task",
+        "attr:approval_task.target_type",
+        "attr:approval_task.target_id"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "evidence_id": "screen:approval_task.button.approve",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/approval_task.screen.md",
+      "source_location": "Button Actions / Approve",
+      "evidence_summary": "Approval task workbench exposes an Approve button to assigned approvers.",
+      "supports": [
+        "action:approve_normal_purchase_request",
+        "action:approve_high_value_purchase_request",
+        "action:approve_payment",
+        "role:department_manager",
+        "role:finance_manager"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "evidence_id": "screen:contract_detail.field.contract_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/contract_detail.screen.md",
+      "source_location": "Visible Fields / Contract No",
+      "evidence_summary": "Contract detail page shows Contract No as the human-readable contract identifier.",
+      "supports": [
+        "concept:contract",
+        "attr:contract.contract_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "screen:contract_detail.field.vendor",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/contract_detail.screen.md",
+      "source_location": "Visible Fields / Vendor",
+      "evidence_summary": "Contract detail page uses Vendor label for the supplier party to the contract.",
+      "supports": [
+        "concept:supplier",
+        "rel:contract.signed_with_supplier",
+        "alias:supplier.vendor"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "evidence_id": "screen:contract_detail.button.activate_contract",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/contract_detail.screen.md",
+      "source_location": "Button Actions / Activate Contract",
+      "evidence_summary": "Contract detail page exposes Activate Contract action after legal approval and date validation.",
+      "supports": [
+        "action:activate_contract",
+        "state:contract.active"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "evidence_id": "screen:contract_detail.related.po_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/contract_detail.screen.md",
+      "source_location": "Related Documents table / PO No",
+      "evidence_summary": "Contract detail related document table links a contract to a purchase order number.",
+      "supports": [
+        "concept:purchase_order",
+        "rel:purchase_order.created_from_contract"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.invoice_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/invoice_payment.screen.md",
+      "source_location": "Visible Fields / Invoice No",
+      "evidence_summary": "Invoice and Payment Workbench shows Invoice No as the internal invoice identifier.",
+      "supports": [
+        "concept:invoice",
+        "attr:invoice.invoice_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.grn_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/invoice_payment.screen.md",
+      "source_location": "Visible Fields / GRN No",
+      "evidence_summary": "Invoice workbench uses GRN No to link an invoice to goods receipt evidence.",
+      "supports": [
+        "concept:goods_receipt",
+        "rel:invoice.matched_with_goods_receipt",
+        "alias:goods_receipt.grn"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "evidence_id": "screen:invoice_payment.match.difference_percent",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/invoice_payment.screen.md",
+      "source_location": "Invoice matching table / Difference %",
+      "evidence_summary": "Invoice matching table shows Difference %, indicating that tolerance is visible in the UI but not establishing the canonical threshold by itself.",
+      "supports": [
+        "rule:invoice_matching_tolerance",
+        "state:invoice.matched",
+        "state:invoice.mismatched"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "evidence_id": "screen:invoice_payment.field.payment_request_no",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/invoice_payment.screen.md",
+      "source_location": "Visible Fields / Payment Request No",
+      "evidence_summary": "Invoice and Payment Workbench shows payment request number in the payment summary panel.",
+      "supports": [
+        "concept:payment_request",
+        "attr:payment_request.payment_request_no",
+        "rel:payment_request.pays_invoice"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "evidence_id": "screen:invoice_payment.button.mark_paid",
+      "source_type": "screenshot",
+      "input_mode": "surrogate_only",
+      "source_file": "screenshots/invoice_payment.screen.md",
+      "source_location": "Button Actions / Mark Paid",
+      "evidence_summary": "Payment workbench exposes Mark Paid action for approved payment requests.",
+      "supports": [
+        "action:mark_payment_paid",
+        "state:payment_request.paid"
+      ],
+      "confidence": 0.78
+    }
+  ]
+}

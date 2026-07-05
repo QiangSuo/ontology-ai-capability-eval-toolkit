@@ -1,0 +1,417 @@
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-screenshot-surrogate-demo",
+  "title": "Procurement Contract MVP Screenshot Surrogate Demo Ontology",
+  "domain": "procurement_contract",
+  "description": "Demo UI-derived ontology supplement extracted from screenshot surrogate Markdown files. This is surrogate_only and does not prove real image understanding.",
+  "concepts": [
+    {
+      "id": "concept:purchase_request",
+      "name": "Purchase Request",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "screen:purchase_request_list.field.pr_no"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "concept:contract",
+      "name": "Contract",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "screen:contract_detail.field.contract_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept:invoice",
+      "name": "Invoice",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "screen:invoice_payment.field.invoice_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept:payment_request",
+      "name": "Payment Request",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "screen:invoice_payment.field.payment_request_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "concept:goods_receipt",
+      "name": "Goods Receipt",
+      "type": "concept",
+      "category": "document",
+      "evidence_refs": [
+        "screen:invoice_payment.field.grn_no"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "concept:approval_task",
+      "name": "Approval Task",
+      "type": "concept",
+      "category": "workflow",
+      "evidence_refs": [
+        "screen:approval_task.field.target_type"
+      ],
+      "confidence": 0.86
+    },
+    {
+      "id": "concept:supplier",
+      "name": "Supplier",
+      "type": "concept",
+      "category": "party",
+      "evidence_refs": [
+        "screen:contract_detail.field.vendor"
+      ],
+      "confidence": 0.84
+    }
+  ],
+  "attributes": [
+    {
+      "id": "attr:purchase_request.request_no",
+      "concept_id": "concept:purchase_request",
+      "name": "request_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "screen:purchase_request_list.field.pr_no"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "attr:contract.contract_no",
+      "concept_id": "concept:contract",
+      "name": "contract_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "screen:contract_detail.field.contract_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:invoice.invoice_no",
+      "concept_id": "concept:invoice",
+      "name": "invoice_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "screen:invoice_payment.field.invoice_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:payment_request.payment_request_no",
+      "concept_id": "concept:payment_request",
+      "name": "payment_request_no",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "screen:invoice_payment.field.payment_request_no"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "attr:approval_task.target_type",
+      "concept_id": "concept:approval_task",
+      "name": "target_type",
+      "type": "attribute",
+      "data_type": "string",
+      "evidence_refs": [
+        "screen:approval_task.field.target_type"
+      ],
+      "confidence": 0.86
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel:contract.signed_with_supplier",
+      "type": "relation",
+      "source_concept_id": "concept:contract",
+      "target_concept_id": "concept:supplier",
+      "predicate": "signed_with_supplier",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "screen:contract_detail.field.vendor"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "rel:purchase_request.results_in_contract",
+      "type": "relation",
+      "source_concept_id": "concept:purchase_request",
+      "target_concept_id": "concept:contract",
+      "predicate": "results_in_contract",
+      "cardinality": "one_to_many",
+      "evidence_refs": [
+        "screen:purchase_request_detail.button.create_contract"
+      ],
+      "confidence": 0.72
+    },
+    {
+      "id": "rel:invoice.matched_with_goods_receipt",
+      "type": "relation",
+      "source_concept_id": "concept:invoice",
+      "target_concept_id": "concept:goods_receipt",
+      "predicate": "matched_with_goods_receipt",
+      "cardinality": "many_to_one",
+      "evidence_refs": [
+        "screen:invoice_payment.field.grn_no"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "rel:payment_request.pays_invoice",
+      "type": "relation",
+      "source_concept_id": "concept:payment_request",
+      "target_concept_id": "concept:invoice",
+      "predicate": "pays_invoice",
+      "cardinality": "one_to_one",
+      "evidence_refs": [
+        "screen:invoice_payment.field.payment_request_no"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "events": [],
+  "rules": [
+    {
+      "id": "rule:invoice_matching_tolerance",
+      "type": "rule",
+      "name": "Invoice matching tolerance appears in UI",
+      "condition": "Invoice matching table displays Difference %.",
+      "effect": "Treat tolerance threshold as candidate only until confirmed by policy/code.",
+      "applies_to_ids": [
+        "concept:invoice"
+      ],
+      "evidence_refs": [
+        "screen:invoice_payment.match.difference_percent"
+      ],
+      "confidence": 0.62
+    }
+  ],
+  "actions": [
+    {
+      "id": "action:submit_purchase_request",
+      "type": "action",
+      "name": "Submit Purchase Request",
+      "target_concept_ids": [
+        "concept:purchase_request"
+      ],
+      "evidence_refs": [
+        "screen:purchase_request_list.button.submit"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "action:activate_contract",
+      "type": "action",
+      "name": "Activate Contract",
+      "target_concept_ids": [
+        "concept:contract"
+      ],
+      "evidence_refs": [
+        "screen:contract_detail.button.activate_contract"
+      ],
+      "confidence": 0.72
+    },
+    {
+      "id": "action:mark_payment_paid",
+      "type": "action",
+      "name": "Mark Payment Paid",
+      "target_concept_ids": [
+        "concept:payment_request"
+      ],
+      "evidence_refs": [
+        "screen:invoice_payment.button.mark_paid"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "states": [
+    {
+      "id": "state:contract.active",
+      "type": "state",
+      "name": "ACTIVE",
+      "owner_concept_id": "concept:contract",
+      "evidence_refs": [
+        "screen:contract_detail.button.activate_contract"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "state:invoice.matched",
+      "type": "state",
+      "name": "MATCHED",
+      "owner_concept_id": "concept:invoice",
+      "evidence_refs": [
+        "screen:invoice_payment.match.difference_percent"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "state:payment_request.paid",
+      "type": "state",
+      "name": "PAID",
+      "owner_concept_id": "concept:payment_request",
+      "evidence_refs": [
+        "screen:invoice_payment.button.mark_paid"
+      ],
+      "confidence": 0.72
+    }
+  ],
+  "roles": [
+    {
+      "id": "role:finance_manager",
+      "type": "role",
+      "name": "Finance Manager",
+      "evidence_refs": [
+        "screen:approval_task.button.approve"
+      ],
+      "confidence": 0.74
+    }
+  ],
+  "permissions": [],
+  "aliases": [
+    {
+      "id": "alias:supplier.vendor",
+      "type": "alias",
+      "canonical_id": "concept:supplier",
+      "alias": "Vendor",
+      "source_context": "contract detail UI label",
+      "evidence_refs": [
+        "screen:contract_detail.field.vendor"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "alias:goods_receipt.grn",
+      "type": "alias",
+      "canonical_id": "concept:goods_receipt",
+      "alias": "GRN",
+      "source_context": "invoice payment UI label",
+      "evidence_refs": [
+        "screen:invoice_payment.field.grn_no"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mappings": [
+    {
+      "id": "mapping:ui.contract_vendor.supplier",
+      "type": "mapping",
+      "ontology_element_id": "concept:supplier",
+      "source_element": "Contract Detail / Vendor",
+      "source_type": "screenshot",
+      "mapping_type": "candidate",
+      "transform_note": "UI label Vendor maps to canonical Supplier candidate.",
+      "evidence_refs": [
+        "screen:contract_detail.field.vendor"
+      ],
+      "confidence": 0.84
+    },
+    {
+      "id": "mapping:ui.invoice_grn.goods_receipt",
+      "type": "mapping",
+      "ontology_element_id": "concept:goods_receipt",
+      "source_element": "Invoice and Payment / GRN No",
+      "source_type": "screenshot",
+      "mapping_type": "candidate",
+      "transform_note": "GRN is treated as Goods Receipt abbreviation.",
+      "evidence_refs": [
+        "screen:invoice_payment.field.grn_no"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "conflict:screenshot.rule.invoice_difference_percent",
+      "type": "conflict",
+      "description": "UI shows Difference % but does not define the canonical invoice tolerance threshold.",
+      "involved_ids": [
+        "rule:invoice_matching_tolerance"
+      ],
+      "severity": "medium",
+      "resolution_status": "needs_human_review",
+      "evidence_refs": [
+        "screen:invoice_payment.match.difference_percent"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:screenshot.real_image_not_tested",
+      "type": "uncertainty",
+      "description": "Task 08 demo uses surrogate_only Markdown inputs and does not test real image, OCR or visual layout capability.",
+      "evidence_refs": [
+        "screen:contract_detail.field.contract_no",
+        "screen:invoice_payment.field.invoice_no"
+      ],
+      "confidence": 1.0,
+      "target_id": "concept:contract",
+      "reason": "Affected ids: concept:contract, concept:invoice"
+    },
+    {
+      "id": "uncertainty:screenshot.button_backend_not_proven",
+      "type": "uncertainty",
+      "description": "UI buttons are candidates and do not prove backend service implementation.",
+      "evidence_refs": [
+        "screen:contract_detail.button.activate_contract",
+        "screen:invoice_payment.button.mark_paid"
+      ],
+      "confidence": 0.95,
+      "target_id": "action:activate_contract",
+      "reason": "Affected ids: action:activate_contract, action:mark_payment_paid"
+    }
+  ],
+  "evidence_refs": [
+    "screen:purchase_request_list.field.pr_no",
+    "screen:purchase_request_list.button.submit",
+    "screen:purchase_request_detail.button.create_contract",
+    "screen:approval_task.field.target_type",
+    "screen:approval_task.button.approve",
+    "screen:contract_detail.field.contract_no",
+    "screen:contract_detail.field.vendor",
+    "screen:contract_detail.button.activate_contract",
+    "screen:invoice_payment.field.invoice_no",
+    "screen:invoice_payment.field.grn_no",
+    "screen:invoice_payment.match.difference_percent",
+    "screen:invoice_payment.field.payment_request_no",
+    "screen:invoice_payment.button.mark_paid"
+  ],
+  "confidence": 0.78,
+  "provenance": {
+    "created_by": "demo_screenshot_generator",
+    "created_at": "2026-07-04T10:00:00Z",
+    "method": "hybrid",
+    "source_system": "screenshot_surrogate",
+    "tool_profile_ref": "tool:demo_screenshot",
+    "prompt_ref": "task_08_screenshot_to_ontology",
+    "version": "demo-sample",
+    "notes": "Input mode is surrogate_only; no real image or OCR evidence was evaluated."
+  },
+  "metadata": {
+    "input_mode": "surrogate_only",
+    "pages": [
+      "screen:purchase_request_list",
+      "screen:purchase_request_detail",
+      "screen:approval_task",
+      "screen:contract_detail",
+      "screen:invoice_payment"
+    ],
+    "real_image_tested": false,
+    "ocr_tested": false
+  }
+}

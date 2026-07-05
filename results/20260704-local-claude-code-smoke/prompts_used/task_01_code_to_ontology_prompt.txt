@@ -1,0 +1,69 @@
+你正在执行采购合同 MVP 源代码到本体抽取任务。请只基于我提供的源代码作答，不要使用 DDL、CSV、业务文档或外部采购合同常识。
+
+【任务目标】
+从代码中抽取本体草案，覆盖 concept、attribute、relation、event、rule、action、state、role、permission、alias、mapping、conflict、uncertainty。
+
+【抽取要求】
+1. concept：从模型类、核心业务对象、服务对象中抽取。
+2. attribute：从模型字段、DTO 字段、函数参数和关键常量中抽取。
+3. relation：从对象引用、`*_id` 字段、服务调用和业务逻辑中抽取。
+4. event：从创建、提交、审批、关闭、激活、状态变化等代码逻辑中抽取。
+5. rule：从 if/else、校验函数、异常、审批判断、状态流转限制中抽取。
+6. action：从 service 方法、API 方法和关键业务函数中抽取。
+7. state：从枚举、常量、状态字段、阶段字段中抽取。
+8. role / permission：从角色常量、权限判断和审批角色判断中抽取。
+9. alias：识别 Supplier/Vendor、Purchase Request/PR、Purchase Order/PO、Goods Receipt/GRN、Payment Request/Payment Application 等命名差异。
+10. mapping：将本体元素映射到代码文件、类名、函数名或字段名。
+11. conflict / uncertainty：代码内部命名不一致、规则缺失或证据不足时必须记录。
+
+【输出要求】
+只输出合法 JSON，字段名使用英文：
+{
+  "schema_version": "1.0.0",
+  "ontology_id": "procurement-contract-mvp-code-ontology",
+  "title": "Procurement Contract MVP Code Ontology Draft",
+  "domain": "procurement_contract",
+  "concepts": [],
+  "attributes": [],
+  "relations": [],
+  "events": [],
+  "rules": [],
+  "actions": [],
+  "states": [],
+  "roles": [],
+  "permissions": [],
+  "aliases": [],
+  "mappings": [],
+  "conflicts": [],
+  "uncertainties": [],
+  "evidence_refs": [],
+  "confidence": 0.0,
+  "provenance": {
+    "created_by": "AI tool under evaluation",
+    "method": "ai_generated",
+    "source_system": "source_code"
+  }
+}
+
+【证据要求】
+`evidence_refs` 使用 `code:<file_path>#<class_or_function_or_field>`；不能给行号时至少给文件和符号名。
+
+【不确定性要求】
+只从函数名推断业务含义时 confidence 不高于 0.7；状态流转不完整时写入 `uncertainties`。
+
+【禁止事项】
+不要补充代码中没有出现的字段、状态、审批规则或权限矩阵。
+
+【本次实际输入路径】
+- 工具包根目录：ontology-ai-capability-eval-toolkit/
+- 数据集根目录：ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/
+
+【执行边界】
+- 只能读取本任务列出的输入路径和 schemas/ 下的结构说明。
+- 禁止读取 datasets/generic_procurement_contract_mvp/gold/、results/demo_baseline/、results/demo_web/、results/demo_screenshot/、scoring/ 和任何 machine_score/manual_review/report 参考结果。
+- 不要执行 shell 命令；如需查看文件，只使用读取/搜索能力。
+- 输出只允许是一个 JSON 对象，不要 Markdown，不要解释。
+- 为了让机器评分能匹配 evidence_refs，优先使用这些稳定证据 ID：code:<ClassName>、ddl:<table>、ddl:<table>.<column>、csv:<filename_stem>、doc:<filename_stem>。更精确的位置放入 mappings.source_element 或 description。
+- 本体对象请只使用 ontology.schema.json 允许的字段；不要给 concept/attribute/relation 添加 schema 未定义字段。
+
+【本任务输入】只读取 datasets/generic_procurement_contract_mvp/source_code/ 和 schemas/ontology.schema.json。

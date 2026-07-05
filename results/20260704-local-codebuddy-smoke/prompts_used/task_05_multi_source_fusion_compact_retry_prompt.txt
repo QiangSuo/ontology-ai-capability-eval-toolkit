@@ -1,0 +1,30 @@
+你正在执行采购合同 MVP 多源融合能力测试。请读取并只基于以下输入生成一个可被 ontology.schema.json 校验的统一本体 JSON：
+- ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/source_code/
+- ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/database/ddl.sql
+- ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/database/sample_data/*.csv
+- ontology-ai-capability-eval-toolkit/datasets/generic_procurement_contract_mvp/documents/
+
+禁止读取：datasets/generic_procurement_contract_mvp/gold/、results/demo_baseline/、results/demo_web/、results/demo_screenshot/、scoring/、machine_score、manual_review、report。
+
+输出必须：
+1. 只输出一个合法 JSON 对象，不要 Markdown，不要解释。
+2. 总长度控制在 45000 字符以内，避免截断。
+3. 使用 ontology.schema.json 允许字段：顶层 schema_version, ontology_id, title, domain, description, concepts, attributes, relations, events, rules, actions, states, roles, permissions, aliases, mappings, conflicts, uncertainties, evidence_refs, confidence, provenance。
+4. 子对象字段严格使用 schema 允许字段：
+   - concept: id,name,type,description,category,attribute_ids,state_ids,alias_ids,evidence_refs,confidence
+   - attribute: id,concept_id,name,type,data_type,required,description,allowed_values,evidence_refs,confidence
+   - relation: id,source_concept_id,target_concept_id,type,predicate,cardinality,description,evidence_refs,confidence
+   - state: id,name,type,owner_concept_id,description,evidence_refs,confidence
+   - rule: id,name,type,condition,effect,applies_to_ids,evidence_refs,confidence
+   - action: id,name,type,actor_role_ids,target_concept_ids,preconditions,postconditions,evidence_refs,confidence
+   - role: id,name,type,description,evidence_refs,confidence
+   - permission: id,type,role_id,action_id,resource_concept_id,effect,condition,evidence_refs,confidence
+   - alias: id,type,canonical_id,alias,language,source_context,evidence_refs,confidence
+   - mapping: id,type,ontology_element_id,source_element,source_type,mapping_type,transform_note,evidence_refs,confidence
+   - conflict: id,type,description,involved_ids,severity,resolution_status,resolution_note,evidence_refs,confidence
+   - uncertainty: id,type,target_id,description,reason,needs_human_review,evidence_refs,confidence
+5. evidence_refs 使用稳定 ID：code:<ClassName>、ddl:<table>、ddl:<table>.<column>、csv:<filename_stem>、doc:<filename_stem>。不要使用 #column 形式。
+6. 必须覆盖核心概念：department,user,supplier,purchase_request,purchase_request_line,approval_record,contract,purchase_order,goods_receipt,invoice,payment_request。
+7. 必须覆盖核心关系：purchase_request has lines; purchase_request requested_by user; purchase_request belongs_to department; purchase_request approved_by approval_record; contract references supplier; purchase_order references contract; goods_receipt references purchase_order; invoice references goods_receipt and supplier; payment_request references invoice; approval_record polymorphic target_type/target_id。
+8. 必须记录 alias：Supplier/Vendor, Purchase Request/PR, Purchase Order/PO, Goods Receipt/GRN, Payment Request/Payment Application, Material/Item。
+9. 必须记录冲突/不确定性：>=50000 vs >50000 阈值差异；2% vs 1.5% 发票容差差异；合同激活签署要求缺少 DDL/代码字段；payment hold reason 缺少结构字段；approval_record 多态关系低置信度；GoodsReceipt COMPLETE 不要和 PurchaseOrder CLOSED 合并。

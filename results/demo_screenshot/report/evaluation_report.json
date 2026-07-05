@@ -1,0 +1,95 @@
+{
+  "report_id": "report:demo_screenshot",
+  "title": "Demo Screenshot Surrogate Evaluation Report",
+  "customer_profile_ref": "customer:demo_screenshot",
+  "tool_profile_ref": "tool:demo_screenshot",
+  "evaluation_period": {
+    "start_date": "2026-07-04",
+    "end_date": "2026-07-04"
+  },
+  "executive_summary": "Demo screenshot surrogate evaluation completed using Markdown .screen.md inputs only. The run demonstrates optional UI semantic extraction and screenshot evidence coverage, not real image or OCR capability.",
+  "overall_grade": "N/A",
+  "capability_results": [
+    {
+      "capability_id": "capability:ui_screenshot_understanding",
+      "capability_name": "UI / Screenshot Surrogate Understanding",
+      "grade": "N/A",
+      "evidence_refs": [
+        "screen:contract_detail.field.contract_no",
+        "screen:invoice_payment.field.invoice_no"
+      ],
+      "task_result_refs": [
+        "task_08_screenshot_to_ontology"
+      ],
+      "notes": "Surrogate-only demo; real visual capability is not graded."
+    },
+    {
+      "capability_id": "capability:evidence_traceability",
+      "capability_name": "Evidence Traceability",
+      "grade": "B",
+      "evidence_refs": [
+        "screen:purchase_request_list.field.pr_no",
+        "screen:invoice_payment.field.payment_request_no"
+      ],
+      "task_result_refs": [
+        "task_08_screenshot_to_ontology"
+      ],
+      "notes": "Demo output uses screen evidence handles."
+    }
+  ],
+  "task_result_refs": [
+    "task_08_screenshot_to_ontology"
+  ],
+  "redline_results": [
+    {
+      "rule_id": "redline:no_real_image_claim",
+      "status": "pass",
+      "description": "Demo explicitly declares surrogate_only and does not claim real image/OCR capability.",
+      "evidence_refs": [
+        "screen:contract_detail.field.contract_no"
+      ]
+    }
+  ],
+  "score_caps": [
+    {
+      "reason": "Only screenshot surrogate Markdown files were used; real image/OCR/layout capability was not tested.",
+      "max_grade": "N/A",
+      "affected_capabilities": [
+        "capability:ui_screenshot_understanding"
+      ]
+    }
+  ],
+  "key_findings": [
+    "Five screenshot surrogate pages were processed in the demo.",
+    "UI-derived claims cite screen evidence handles.",
+    "Button actions remain candidates pending fusion with code/documents."
+  ],
+  "risks": [
+    "Demo output is not a customer-site readiness result.",
+    "Surrogate-only evaluation can be misread as real visual understanding if not labeled clearly."
+  ],
+  "recommendations": [
+    {
+      "priority": "medium",
+      "description": "Run B4/B5/B6 with real tool outputs before using screenshot surrogate capability in a pilot.",
+      "owner": "FDE evaluation lead"
+    }
+  ],
+  "conclusion": {
+    "decision": "insufficient_data",
+    "rationale": "The demo validates result packaging and optional screenshot evidence mechanics, but does not evaluate real customer tools or real image capability.",
+    "next_steps": [
+      "Use Task 08 with an actual tool under evaluation.",
+      "Complete human review before any readiness claim."
+    ]
+  },
+  "generated_at": "2026-07-04T10:20:00Z",
+  "provenance": {
+    "created_by": "demo_screenshot_generator",
+    "created_at": "2026-07-04T10:20:00Z",
+    "method": "manual",
+    "source_system": "demo_screenshot",
+    "tool_profile_ref": "tool:demo_screenshot",
+    "version": "demo-sample"
+  }
+}
